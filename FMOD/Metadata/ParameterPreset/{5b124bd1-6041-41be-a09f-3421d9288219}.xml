@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{5b124bd1-6041-41be-a09f-3421d9288219}">
+		<property name="name">
+			<value>HeatMeter</value>
+		</property>
+		<relationship name="folder">
+			<destination>{88110182-52c1-4731-b137-ef69240c6e4c}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{f8375576-bd0c-4f90-ba75-f6674341f8d1}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
