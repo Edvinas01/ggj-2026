@@ -1,0 +1,189 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using CHARK.GameManagement.Serialization;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
+#if UNITASK_INSTALLED
+using Cysharp.Threading.Tasks;
+#else
+using System.Threading.Tasks;
+#endif
+
+namespace CHARK.GameManagement.Assets
+{
+    internal sealed class DefaultResourceLoader : IResourceLoader
+    {
+        private readonly ISerializer serializer;
+
+        public DefaultResourceLoader(ISerializer serializer)
+        {
+            this.serializer = serializer;
+        }
+
+        public IEnumerable<TResource> GetResources<TResource>(string path = null) where TResource : Object
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return Resources.FindObjectsOfTypeAll<TResource>();
+            }
+
+            return Resources.LoadAll<TResource>(path);
+        }
+
+        public bool TryGetResource<TResource>(string path, out TResource resource) where TResource : Object
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                resource = default;
+                return false;
+            }
+
+            var loadedResource = Resources.Load<TResource>(path);
+            if (loadedResource)
+            {
+                resource = loadedResource;
+                return true;
+            }
+
+            resource = default;
+            return false;
+        }
+
+#if UNITASK_INSTALLED
+        public async UniTask<TResource> ReadResourceAsync<TResource>(
+#else
+        public async Task<TResource> ReadResourceAsync<TResource>(
+#endif
+            string path,
+            CancellationToken cancellationToken = default
+        )
+        {
+            var actualPath = Path.Combine(Application.streamingAssetsPath, path);
+
+#if UNITY_ANDROID
+            using var request = UnityEngine.Networking.UnityWebRequest.Get(actualPath);
+            var operation = request.SendWebRequest();
+
+#if UNITASK_INSTALLED
+            await UnityAsyncExtensions.ToUniTask(
+                operation,
+                cancellationToken: cancellationToken
+            );
+#else
+            var completionSource = new TaskCompletionSource<UnityEngine.Networking.UnityWebRequest>();
+            operation.completed += _ =>
+            {
+                if (request.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+                {
+                    completionSource.SetResult(request);
+                }
+                else
+                {
+                    completionSource.SetException(new Exception(request.error));
+                }
+            };
+
+            await completionSource.Task;
+#endif
+
+            var handler = request.downloadHandler;
+            var content = handler.text;
+#else
+            var content = await File.ReadAllTextAsync(actualPath, cancellationToken);
+#endif
+
+            if (serializer.TryDeserializeValue<TResource>(content, out var value))
+            {
+                return value;
+            }
+
+            throw new Exception($"Could not retrieve resource from path: {actualPath}");
+        }
+
+#pragma warning disable CS1998
+#if UNITASK_INSTALLED
+        public async UniTask<Stream> ReadResourceStreamAsync(
+#else
+        public async Task<Stream> ReadResourceStreamAsync(
+#endif
+#pragma warning restore CS1998
+            string path,
+            CancellationToken cancellationToken = default
+        )
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                return Stream.Null;
+            }
+
+            var actualPath = Path.Combine(Application.streamingAssetsPath, path);
+
+            try
+            {
+#if UNITY_ANDROID
+                using var request = UnityEngine.Networking.UnityWebRequest.Get(actualPath);
+                var operation = request.SendWebRequest();
+
+#if UNITASK_INSTALLED
+                try
+                {
+                    await UnityAsyncExtensions.ToUniTask(
+                        operation,
+                        cancellationToken: cancellationToken
+                    );
+                }
+                catch (Exception exception)
+                {
+                    throw new Exception($"Could not retrieve resource from path: {actualPath}", exception);
+                }
+#else
+                var completionSource = new TaskCompletionSource<UnityEngine.Networking.UnityWebRequest>();
+                operation.completed += _ =>
+                {
+                    if (request.result == UnityEngine.Networking.UnityWebRequest.Result.Success)
+                    {
+                        completionSource.SetResult(request);
+                    }
+                    else
+                    {
+                        completionSource.SetException(new Exception($"Could not retrieve resource from path: {actualPath}\n{request.error}"));
+                    }
+                };
+
+                await completionSource.Task;
+#endif
+
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    return Stream.Null;
+                }
+
+                var handler = request.downloadHandler;
+                var data = handler.data;
+                if (data == null || data.Length == 0)
+                {
+                    return Stream.Null;
+                }
+
+                return new MemoryStream(data);
+#else
+
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    return Stream.Null;
+                }
+
+                return File.OpenRead(actualPath);
+#endif
+            }
+            catch (Exception exception)
+            {
+                GameManager.LogWith(GetType()).LogError(exception);
+                return Stream.Null;
+            }
+        }
+    }
+}
