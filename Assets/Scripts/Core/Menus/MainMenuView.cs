@@ -141,31 +141,36 @@ namespace RIEVES.GGJ2026.Core.Menus
         {
             if (resumeButton)
             {
-                EventSystem.current.SetSelectedGameObject(resumeButton.gameObject);
+                GameObjectToSelect = resumeButton.gameObject;
+                base.SelectGameObject();
                 return;
             }
 
             if (startButton)
             {
-                EventSystem.current.SetSelectedGameObject(startButton.gameObject);
+                GameObjectToSelect = startButton.gameObject;
+                base.SelectGameObject();
                 return;
             }
 
             if (restartButton)
             {
-                EventSystem.current.SetSelectedGameObject(restartButton.gameObject);
+                GameObjectToSelect = restartButton.gameObject;
+                base.SelectGameObject();
                 return;
             }
 
             if (mainMenuButton)
             {
-                EventSystem.current.SetSelectedGameObject(mainMenuButton.gameObject);
+                GameObjectToSelect = mainMenuButton.gameObject;
+                base.SelectGameObject();
                 return;
             }
 
             if (exitGameButton)
             {
-                EventSystem.current.SetSelectedGameObject(exitGameButton.gameObject);
+                GameObjectToSelect = exitGameButton.gameObject;
+                base.SelectGameObject();
             }
         }
     }

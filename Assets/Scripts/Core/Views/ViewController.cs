@@ -80,6 +80,7 @@ namespace RIEVES.GGJ2026.Core.Views
                 {
                     View.EnableCanvas();
                     View.EnableInteraction();
+                    View.SelectGameObject();
                     break;
                 }
                 case StartMode.Hide:

@@ -131,9 +131,9 @@ MonoBehaviour:
   viewData:
     canvas: {fileID: 5964521599661437378}
     canvasGroup: {fileID: 1673272245857100794}
-    gameObjectToSelect: {fileID: 2089585233615162641}
+    gameObjectToSelect: {fileID: 0}
     isAutoSelectGameObject: 1
-    isAutoDeselectGameObject: 1
+    isAutoDeselectGameObject: 0
     isSelectLastGameObject: 0
     showAnimation: {fileID: 0}
     hideAnimation: {fileID: 0}
@@ -720,17 +720,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
---- !u!1 &2089585233615162641 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
-  m_PrefabInstance: {fileID: 6811584509265498188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6517014458709775505 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 357625066963977437, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
   m_PrefabInstance: {fileID: 6811584509265498188}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089585233615162641}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb8d18a39f824b32b59b007f20ed4707, type: 3}

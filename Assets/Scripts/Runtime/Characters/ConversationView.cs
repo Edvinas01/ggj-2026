@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using RIEVES.GGJ2026.Core.Menus;
 using RIEVES.GGJ2026.Core.Views;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
 {
@@ -25,6 +26,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [SerializeField]
         private TMP_Text contentText;
+
+        private readonly List<MenuButtonElement> elements = new();
 
         public string TitleText
         {
@@ -50,6 +53,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             var element = Instantiate(choiceButtonPrefab, choiceParent);
             element.OnClicked += onClicked;
+            elements.Add(element);
 
             if (string.IsNullOrWhiteSpace(choice.Content))
             {
@@ -63,11 +67,23 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public void ClearChoices()
         {
-            for (var index = 0; index < choiceParent.childCount; index++)
+            foreach (var element in elements)
             {
-                var childTransform = choiceParent.GetChild(index);
-                Destroy(childTransform.gameObject);
+                Destroy(element.gameObject);
             }
+
+            elements.Clear();
+        }
+
+        public override void SelectGameObject()
+        {
+            var element = elements.FirstOrDefault();
+            if (element)
+            {
+                GameObjectToSelect = element.gameObject;
+            }
+
+            base.SelectGameObject();
         }
     }
 }

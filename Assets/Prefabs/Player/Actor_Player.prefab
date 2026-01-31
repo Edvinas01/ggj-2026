@@ -687,7 +687,7 @@ MonoBehaviour:
   conversationController: {fileID: 3720372723344079548}
   resourceController: {fileID: 8557895804664849490}
   movementController: {fileID: 5901985342004967491}
-  interactInputAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  interactInputAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   defaultHoverPopupController: {fileID: 9029458643344921814}
   characterHoverPopupController: {fileID: 4097770793118596070}
   itemHoverPopupController: {fileID: 2130607430814783093}

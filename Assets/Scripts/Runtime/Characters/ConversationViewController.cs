@@ -20,5 +20,15 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 View.AddChoice(choice, () => OnChoiceSelected?.Invoke(choice));
             }
         }
+
+        public override void ShowView()
+        {
+            if (View.State is ViewState.Showing or ViewState.Shown)
+            {
+                View.SelectGameObject();
+            }
+
+            base.ShowView();
+        }
     }
 }
