@@ -66,6 +66,7 @@ namespace RIEVES.GGJ2026
         private AgentSystem agentSystem;
 
         public CharacterData CharacterData => runtimeData;
+        Transform interactingWith;
 
         private void Awake()
         {
@@ -120,7 +121,7 @@ namespace RIEVES.GGJ2026
                 var oldTrigger = onStateChange.FirstOrDefault(s => s.State == TransitioningAnimationState);
                 if (oldTrigger != null)
                 {
-                    oldTrigger.OnStateEnding.Invoke();
+                    oldTrigger.OnStateEnding?.Invoke();
                     if (oldTrigger.EndDelay > 0)
                     {
                         stateChangeTimer = Time.time + oldTrigger.EndDelay;
@@ -137,7 +138,7 @@ namespace RIEVES.GGJ2026
                 var oldTrigger = onStateChange.FirstOrDefault(s => s.State == CurrentAnimationState);
                 if (oldTrigger != null)
                 {
-                    oldTrigger.OnStateEnding.Invoke();
+                    oldTrigger.OnStateEnding?.Invoke();
                     if (oldTrigger.EndDelay > 0)
                     {
                         stateChangeTimer = Time.time + oldTrigger.EndDelay;
@@ -153,7 +154,7 @@ namespace RIEVES.GGJ2026
                 var newTrigger = onStateChange.FirstOrDefault(s => s.State == newState);
                 if (newTrigger != null)
                 {
-                    newTrigger.OnStateStarting.Invoke();
+                    newTrigger.OnStateStarting?.Invoke();
                     if (newTrigger.StartDelay > 0)
                     {
                         stateChangeTimer = Time.time + newTrigger.StartDelay;
@@ -168,7 +169,6 @@ namespace RIEVES.GGJ2026
             changingFromState = false;
             changingToState = false;
             CurrentAnimationState = newState;
-            Debug.Log($"Character '{name}' changed animation state to {newState}. 4");
             return true;
         }
 
@@ -191,7 +191,11 @@ namespace RIEVES.GGJ2026
             }
 
             if (isInteractingWithPlayer)
+            {
+                navMeshAgent.enabled = false;
+                RotateTowards(interactingWith.position);
                 return;
+            }
 
             if (stateChangeTimer < Time.time)
             {
@@ -267,10 +271,6 @@ namespace RIEVES.GGJ2026
                 case CharacterActivity.Hunting:
                 case CharacterActivity.Walking:
                     {
-                        navMeshAgent.enabled = true;
-
-                        var characterPosition = rigidBody.position;
-                        movementPositionInput.TargetPosition = characterPosition;
                         var distanceSqr = (transform.position - CurrentTarget.transform.position).sqrMagnitude;
                         if (distanceSqr <= CurrentTarget.MoveWithinRange * CurrentTarget.MoveWithinRange)
                         {
@@ -290,9 +290,10 @@ namespace RIEVES.GGJ2026
                                     break;
                             }
                         }
-
-                        var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
-                        movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
+                        else
+                        {
+                            UpdateMovement();
+                        }
 
                         break;
                     }
@@ -305,9 +306,7 @@ namespace RIEVES.GGJ2026
                         navMeshAgent.enabled = false;
                         if (CurrentTarget != null && CurrentTarget.Facing)
                         {
-                            var directionToTarget = (CurrentTarget.transform.position - transform.position).normalized;
-                            var lookAtPosition = transform.position + new Vector3(directionToTarget.x, 0, directionToTarget.z);
-                            movementPositionInput.TargetPosition = lookAtPosition;
+                            RotateTowards(CurrentTarget.transform.position);
                         }
 
                         SetAnimationState(CurrentState switch
@@ -321,6 +320,25 @@ namespace RIEVES.GGJ2026
                         break;
                     }
             }
+        }
+
+        void UpdateMovement()
+        {
+            navMeshAgent.enabled = true;
+
+            var characterPosition = rigidBody.position;
+            var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
+            movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
+        }
+
+        void RotateTowards(Vector3 targetPosition)
+        {
+            var direction = (targetPosition - transform.position).normalized;
+            if (direction.sqrMagnitude < 0.001f)
+                return;
+
+            var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
+            rigidBody.rotation = Quaternion.Slerp(rigidBody.rotation, targetRotation, Time.deltaTime * 5f);
         }
 
         bool MoveToPoint(PointOfInterest target)
@@ -395,6 +413,7 @@ namespace RIEVES.GGJ2026
             if (controller)
             {
                 isInteractingWithPlayer = true;
+                interactingWith = component.transform;
                 SetAnimationState(CharacterAnimationState.Talking);
                 controller.StartConversation(this);
                 onConversationStarted.Invoke();
