@@ -42,6 +42,10 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private CharacterConversationData conversation;
 
+        [Header("Behaviour Data")]
+        [SerializeField]
+        private List<ActivityPatiencePair> activityPatience;
+
         public string CharacterName => characterName;
 
         public int AddsAlcohol => addsAlcohol;
@@ -57,5 +61,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public IEnumerable<Texture2D> PunchHandTextures => punchHandTextures;
 
         public CharacterConversationData ConversationData => conversation;
+        public List<ActivityPatiencePair> ActivityPatience => activityPatience;
     }
 }

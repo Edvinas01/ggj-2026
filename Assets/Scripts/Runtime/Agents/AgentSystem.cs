@@ -57,44 +57,94 @@ namespace RIEVES.GGJ2026
 
         public CharacterState GetRandomState(CharacterActor agent)
         {
-            var states = System.Enum.GetValues(typeof(CharacterState));
-            int[] stateCounts = new int[states.Length];
+            var states = (CharacterState[])System.Enum.GetValues(typeof(CharacterState));
+            int stateCount = states.Length;
+
+            // 1. Calculate current population counts
+            int[] populationCounts = new int[stateCount];
             foreach (var a in agents)
             {
-                stateCounts[(int)a.CurrentState]++;
+                populationCounts[(int)a.CurrentState]++;
             }
 
-            int[] desiredCounts = new int[stateCounts.Length];
-            for (int i = 0; i < desiredCounts.Length; i++)
-            {
-                desiredCounts[i] = desiredProportions.ContainsKey((CharacterState)i)
-                    ? desiredProportions[(CharacterState)i]
-                    : 0;
-            }
+            var agentPrefs = agent.CharacterData.ActivityPatience;
+            float[] finalWeights = new float[stateCount];
+            float totalWeight = 0;
 
-            float[] weights = new float[desiredCounts.Length];
-            for (int i = 0; i < weights.Length; i++)
-            {
-                var count = desiredCounts[i] - stateCounts[i];
-                weights[i] = count > 0 ? count * 1.5f : 0;
-            }
+            // A "Generalist" has no specific activity definitions and can do anything
+            bool isGeneralist = agentPrefs == null || agentPrefs.Count == 0;
 
-            float totalWeight = weights.Sum();
-            if (totalWeight <= 0)
-                return CharacterState.Idling;
-
-            weights.Shuffle();
-            float randomValue = Random.Range(0, totalWeight);
-            for (int i = 0; i < weights.Length; i++)
+            for (int i = 0; i < stateCount; i++)
             {
-                if (randomValue < weights[i])
+                CharacterState state = states[i];
+
+                // Calculate Global Demand: (Desired - Current)
+                int desired = desiredProportions.ContainsKey(state) ? desiredProportions[state] : 0;
+                int demand = Mathf.Max(0, desired - populationCounts[i]);
+
+                if (isGeneralist)
                 {
-                    return (CharacterState)i;
+                    // Generalists follow pure demand
+                    finalWeights[i] = demand;
                 }
-                randomValue -= weights[i];
+                else
+                {
+                    // Specialists only weigh activities they have defined
+                    // Using Find matches the CharacterState directly now
+                    int prefIndex = agentPrefs.FindIndex(p => p.activity == state);
+
+                    if (prefIndex != -1)
+                    {
+                        // Weight = Demand * Max Patience
+                        finalWeights[i] = demand * agentPrefs[prefIndex].maxTime;
+                    }
+                    else
+                    {
+                        finalWeights[i] = 0;
+                    }
+                }
+
+                totalWeight += finalWeights[i];
             }
 
-            return CharacterState.Idling;
+            // 2. Selection & Fallback Logic
+            if (totalWeight <= 0)
+            {
+                return HandleDefaultState(agent);
+            }
+
+            // Weighted Random Roll
+            float randomValue = Random.Range(0, totalWeight);
+            float cursor = 0;
+            for (int i = 0; i < stateCount; i++)
+            {
+                cursor += finalWeights[i];
+                if (randomValue <= cursor) return states[i];
+            }
+
+            return HandleDefaultState(agent);
+        }
+
+        private CharacterState HandleDefaultState(CharacterActor agent)
+        {
+            var agentPrefs = agent.CharacterData.ActivityPatience;
+
+            // Rule: If they can Idle, they should default to Idle.
+            // Generalists (empty list) can always idle.
+            if (agentPrefs.Count == 0)
+            {
+                return CharacterState.Idling;
+            }
+
+            // Specialists can only idle if they have it in their list.
+            bool canIdle = agentPrefs.Exists(p => p.activity == CharacterState.Idling);
+            if (canIdle)
+            {
+                return CharacterState.Idling;
+            }
+
+            // If they can't idle, pick their first defined activity so they aren't stuck.
+            return agentPrefs[0].activity;
         }
 
         public void AddPointOfInterest(PointOfInterest poi)
