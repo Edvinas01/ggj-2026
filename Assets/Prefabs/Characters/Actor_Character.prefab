@@ -448,6 +448,76 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     EndDelay: 0
+  - State: 8
+    OnStateStarting:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4720778261430800174}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Runtime.Characters.CharacterAnimationController,
+            RIEVES.GGJ2026.Runtime
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    StartDelay: 0
+    OnStateEnding:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4720778261430800174}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Runtime.Characters.CharacterAnimationController,
+            RIEVES.GGJ2026.Runtime
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    EndDelay: 0
+  - State: 9
+    OnStateStarting:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4720778261430800174}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Runtime.Characters.CharacterAnimationController,
+            RIEVES.GGJ2026.Runtime
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    StartDelay: 0
+    OnStateEnding:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4720778261430800174}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Runtime.Characters.CharacterAnimationController,
+            RIEVES.GGJ2026.Runtime
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    EndDelay: 0
   frontRenderer: {fileID: 630822908284679852}
   backRenderer: {fileID: 5860055808095123040}
   texturePropertyId: _BaseMap

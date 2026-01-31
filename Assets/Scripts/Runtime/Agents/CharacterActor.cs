@@ -228,6 +228,7 @@ namespace RIEVES.GGJ2026
                     break;
                 case CharacterState.Talking:
                     CurrentActivity = CharacterActivity.Idling;
+                    SetAnimationState(CharacterAnimationState.Idling);
                     break;
 
                 case CharacterState.Guarding:
