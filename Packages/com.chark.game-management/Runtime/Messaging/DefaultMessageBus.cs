@@ -183,7 +183,7 @@ namespace CHARK.GameManagement.Messaging
             var listenerType = typeof(TMessage);
             if (TryGetListener<TMessage>(out var messageListener) == false)
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && GAME_MANAGER_DEBUG
                 GameManager.LogWith(GetType()).LogWarning($"Could not find a listener for {typeof(TMessage)}");
 #endif
                 return;
@@ -211,7 +211,7 @@ namespace CHARK.GameManagement.Messaging
             var listenerType = typeof(TMessage);
             if (TryGetListener<TMessage>(out var messageListener) == false)
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && GAME_MANAGER_DEBUG
                 GameManager.LogWith(GetType()).LogWarning($"Could not find a listener for {typeof(TMessage)}");
 #endif
                 return;
@@ -239,7 +239,7 @@ namespace CHARK.GameManagement.Messaging
             var listenerType = typeof(TMessage);
             if (TryGetListener<TMessage>(out var messageListener) == false)
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && GAME_MANAGER_DEBUG
                 GameManager.LogWith(GetType()).LogWarning($"Could not find a listener for {typeof(TMessage)}");
 #endif
                 return;
@@ -258,7 +258,7 @@ namespace CHARK.GameManagement.Messaging
         {
             if (TryGetListener<TMessage>(out var messageListener) == false)
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && GAME_MANAGER_DEBUG
                 GameManager.LogWith(GetType()).LogWarning($"Could not find a listener for {typeof(TMessage)}");
 #endif
                 return;
@@ -271,7 +271,7 @@ namespace CHARK.GameManagement.Messaging
         {
             if (TryGetListener<TMessage>(out var messageListener) == false)
             {
-#if UNITY_EDITOR
+#if UNITY_EDITOR && GAME_MANAGER_DEBUG
                 GameManager.LogWith(GetType()).LogWarning($"Could not find a listener for {typeof(TMessage)}");
 #endif
                 return;
