@@ -15,7 +15,7 @@ MonoBehaviour:
   sceneAsset: {fileID: 102900000, guid: 776a8210c1c7136498a3762016ba09c3, type: 3}
   scenePath: Assets/Scenes/Scene_MainMenu.unity
   prettyName: Main Menu
-  isActivate: 1
+  isActivate: 0
   isPersist: 0
   sceneEvents:
     onLoadEntered:

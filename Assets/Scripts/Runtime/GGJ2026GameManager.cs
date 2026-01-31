@@ -7,6 +7,7 @@ using RIEVES.GGJ2026.Core.Pausing;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Core.Settings;
 using RIEVES.GGJ2026.Core.Transforms;
+using RIEVES.GGJ2026.Runtime.Agents;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime
@@ -35,6 +36,9 @@ namespace RIEVES.GGJ2026.Runtime
         [SerializeField]
         private SimpleGameStateSystem gameStateSystem;
 
+        [SerializeField]
+        private AgentSystem agentSystem;
+
         protected override void OnBeforeInitializeSystems()
         {
             AddSystem(audioSystem);
@@ -45,6 +49,7 @@ namespace RIEVES.GGJ2026.Runtime
             AddSystem(sceneSystem);
             AddSystem(sceneSystem);
             AddSystem(gameStateSystem);
+            AddSystem(agentSystem);
 
             AddSystem(new SimpleTransformSystem());
         }
