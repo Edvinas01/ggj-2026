@@ -79,6 +79,7 @@ namespace RIEVES.GGJ2026.Editor
             var backTextureColumn = headers.IndexOf("Back");
             var messageColumn = headers.IndexOf("Message");
             var typeColumn = headers.IndexOf("Type");
+            var huntMessageColumn = headers.IndexOf("Hunt Message");
 
             var groupedByCharacter = rows.GroupBy(r => r[characterColumn]);
             var importedCharacters = 0;
@@ -116,6 +117,7 @@ namespace RIEVES.GGJ2026.Editor
                         messageType = parsedMessageType;
                     }
 
+                    var huntMessage = row[huntMessageColumn];
                     var content = row[messageColumn];
 
                     var correctChoices = new List<string>();
@@ -138,6 +140,7 @@ namespace RIEVES.GGJ2026.Editor
 
                     SetField(message, "messageType", messageType);
                     SetField(message, "content", content);
+                    SetField(message, "huntMessage", huntMessage);
                     SetField(message, "correctChoices", correctChoices);
                     SetField(message, "incorrectChoices", incorrectChoices);
 

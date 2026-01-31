@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
 {
@@ -15,6 +14,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private string content;
 
         [SerializeField]
+        private string huntMessage;
+
+        [SerializeField]
         private List<string> correctChoices;
 
         [SerializeField]
@@ -23,6 +25,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public CharacterMessageType MessageType => messageType;
 
         public string Content => content;
+
+        public string HuntMessage => huntMessage;
 
         public IEnumerable<string> CorrectChoices => correctChoices;
 
