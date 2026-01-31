@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 namespace RIEVES.GGJ2026.Runtime.Movement
 {
-    internal sealed class ActionInputProvider : InputProvider
+    internal sealed class MovementActionInputProvider : MovementInputProvider
     {
         [SerializeField]
         private InputActionReference moveAction;

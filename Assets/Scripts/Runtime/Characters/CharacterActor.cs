@@ -1,8 +1,10 @@
 ﻿using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Interaction.Interactables;
 using RIEVES.GGJ2026.Runtime.Agents;
+using RIEVES.GGJ2026.Runtime.Movement;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
 {
@@ -25,24 +27,41 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private string texturePropertyId = "_BaseMap";
 
+        [Header("Movement")]
+        [FormerlySerializedAs("movementPointerInput")]
+        [SerializeField]
+        private MovementPositionInputProvider movementPositionInput;
+
         [Header("Physics")]
         [SerializeField]
         private Rigidbody rigidBody;
 
         [Header("AI")]
+        [FormerlySerializedAs("agent")]
         [SerializeField]
-        private NavMeshAgent agent;
+        private NavMeshAgent navMeshAgent;
 
         private AgentSystem agentSystem;
 
         public CharacterData CharacterData => data;
 
+        public Vector3 TargetPosition
+        {
+            set
+            {
+                if (NavMesh.SamplePosition(value, out var hit, 10f, NavMesh.AllAreas))
+                {
+                    navMeshAgent.SetDestination(hit.position);
+                }
+            }
+        }
+
         private void Awake()
         {
             agentSystem = GameManager.GetSystem<AgentSystem>();
 
-            agent.updatePosition = false;
-            agent.updateRotation = false;
+            navMeshAgent.updatePosition = false;
+            navMeshAgent.updateRotation = false;
         }
 
         private void OnEnable()
@@ -65,9 +84,17 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             interactable.OnSelectExited -= OnInteractableSelectExited;
         }
 
+        private void Update()
+        {
+            var characterPosition = rigidBody.position;
+            var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
+
+            movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
+        }
+
         private void LateUpdate()
         {
-            agent.nextPosition = rigidBody.position;
+            navMeshAgent.nextPosition = rigidBody.position;
         }
 
         public void Initialize(CharacterData newData)

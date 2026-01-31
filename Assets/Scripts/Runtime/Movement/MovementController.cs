@@ -8,7 +8,7 @@ namespace RIEVES.GGJ2026.Runtime.Movement
     {
         [Header("General")]
         [SerializeField]
-        private InputProvider inputProvider;
+        private MovementInputProvider inputProvider;
 
         [SerializeField]
         private Transform forwardSource;

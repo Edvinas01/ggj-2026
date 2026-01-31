@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 3594350978816022881}
   - component: {fileID: 1267336869467435128}
   - component: {fileID: 4005990158675576400}
+  - component: {fileID: 1077988864004706138}
+  - component: {fileID: 6074354703141026245}
   m_Layer: 7
   m_Name: Actor_Character
   m_TagString: Untagged
@@ -193,8 +195,9 @@ MonoBehaviour:
   frontRenderer: {fileID: 0}
   backRenderer: {fileID: 0}
   texturePropertyId: _BaseMap
+  movementPointerInput: {fileID: 0}
   rigidBody: {fileID: 3092334648691783407}
-  agent: {fileID: 3594350978816022881}
+  navMeshAgent: {fileID: 3594350978816022881}
 --- !u!114 &4005990158675576400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +222,65 @@ MonoBehaviour:
   onSelectExited:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1077988864004706138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672928781318159380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f78e7c075b46ed843c05587ceffa31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Movement.MovementController
+  inputProvider: {fileID: 6074354703141026245}
+  forwardSource: {fileID: 5245456870027734552}
+  forceBySpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 60
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 5
+      value: 10
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  onMoveEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  onMoveExited:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6074354703141026245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672928781318159380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d2bc4a4f954436aa667aa0823d1def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Movement.MovementPointerInputProvider
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &4595033836742868509
 GameObject:
   m_ObjectHideFlags: 0
