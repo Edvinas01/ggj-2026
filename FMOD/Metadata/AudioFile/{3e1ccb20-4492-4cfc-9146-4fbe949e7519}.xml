@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{d0f195ff-a078-4270-9a65-dad5c3ce9a6c}">
+	<object class="AudioFile" id="{3e1ccb20-4492-4cfc-9146-4fbe949e7519}">
 		<property name="assetPath">
-			<value>Lietuvių kalbos pamokėlė.mp3</value>
+			<value>High Heels Sound Effect #backgroundsoundeffects.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
@@ -14,7 +14,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>141.21795918367346</value>
+			<value>29.805714285714284</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
