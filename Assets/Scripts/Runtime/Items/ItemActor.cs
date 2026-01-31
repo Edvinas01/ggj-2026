@@ -25,10 +25,10 @@ namespace RIEVES.GGJ2026.Runtime.Items
 
         private void Start()
         {
-            var block = new MaterialPropertyBlock();
-
-            block.SetTexture(texturePropertyId, data.Texture);
-            frontRenderer.SetPropertyBlock(block);
+            if (data)
+            {
+                Initialize(data);
+            }
         }
 
         private void OnEnable()
@@ -45,6 +45,16 @@ namespace RIEVES.GGJ2026.Runtime.Items
             interactable.OnHoverExited -= OnInteractableHoverExited;
             interactable.OnSelectEntered -= OnInteractableSelectEntered;
             interactable.OnSelectExited -= OnInteractableSelectExited;
+        }
+
+        public void Initialize(ItemData newData)
+        {
+            data = newData;
+
+            var block = new MaterialPropertyBlock();
+
+            block.SetTexture(texturePropertyId, newData.Texture);
+            frontRenderer.SetPropertyBlock(block);
         }
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
