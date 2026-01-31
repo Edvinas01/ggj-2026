@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RIEVES.GGJ2026.Core.Menus
 {
-    internal sealed class MenuButtonElement :
+    public sealed class MenuButtonElement :
         MonoBehaviour,
         ISelectHandler,
         IDeselectHandler,
