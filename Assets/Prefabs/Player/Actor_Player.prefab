@@ -297,6 +297,55 @@ MonoBehaviour:
     view: {fileID: 2822036968310964496, guid: c1dbec80fac41f8459a6d775422d5111, type: 3}
     viewParent: {fileID: 6920054493127851465}
     startMode: 2
+--- !u!1 &4318614666142800061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6042555539102671970}
+  - component: {fileID: 3891850867586591219}
+  m_Layer: 6
+  m_Name: UI_Meter_Alcochol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6042555539102671970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318614666142800061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3891850867586591219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318614666142800061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287a58609350490793bc04c65a9ffb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Resources.AlcoholMeterViewController
+  controllerData:
+    view: {fileID: 477449963560735649, guid: ada9ec574ef44f747aa82a65a8392eeb, type: 3}
+    viewParent: {fileID: 6042555539102671970}
+    startMode: 1
+  resourceController: {fileID: 8557895804664849490}
 --- !u!1 &5313617542729358294
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +597,7 @@ Transform:
   - {fileID: 5571720615813670355}
   - {fileID: 8260041410107984311}
   - {fileID: 6920054493127851465}
+  - {fileID: 6042555539102671970}
   - {fileID: 2814657626727972773}
   - {fileID: 6961747848575189930}
   m_Father: {fileID: 0}
