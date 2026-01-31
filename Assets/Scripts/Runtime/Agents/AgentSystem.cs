@@ -25,6 +25,7 @@ namespace RIEVES.GGJ2026
             desiredProportions[CharacterState.Dancing] = 1;
             desiredProportions[CharacterState.Watching] = 2;
             desiredProportions[CharacterState.Guarding] = 3;
+            desiredProportions[CharacterState.Hunting] = 1;
         }
 
         public PointOfInterest PickRandomWaypoint(InterestType interestType)
