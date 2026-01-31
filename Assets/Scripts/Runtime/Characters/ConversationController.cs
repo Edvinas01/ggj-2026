@@ -24,6 +24,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private UnityEvent onIncorrectChoiceSelected;
 
+        [SerializeField]
+        private UnityEvent onRandomBlurbChoiceSelected;
+
         public CharacterActor conversingWith { get; private set; }
 
         public event Action OnConversationStarted;
@@ -45,43 +48,34 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             conversingWith = character;
 
             var conversationData = character.CharacterData.Conversation;
-            if (conversationData.Messages.TryGetRandom(out var randomMessage) == false)
+            if (conversationData.ConversedCount <= 0)
             {
+                var correctIncorrect = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
+                if (correctIncorrect.TryGetRandom(out var message))
+                {
+                    OnCorrectIncorrectConversation(character, message);
+
+                    conversationData.ConversedCount++;
+
+                    viewController.ShowView();
+                    OnConversationStarted?.Invoke();
+                    return;
+                }
+            }
+
+            var randomBlurbs = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.RandomBlurb);
+            if (randomBlurbs.TryGetRandom(out var blurb))
+            {
+                OnRandomBlurbChoiceConversation(character, blurb);
+
+                conversationData.ConversedCount++;
+
+                viewController.ShowView();
+                OnConversationStarted?.Invoke();
                 return;
             }
 
-            var correctChoices = randomMessage.CorrectChoices
-                .OrderBy(_ => Random.value)
-                .Select(choice => new ConversationChoice(
-                        isCorrect: true,
-                        content: choice
-                    )
-                )
-                .Take(1);
-
-            var incorrectChoices = randomMessage.IncorrectChoices
-                .OrderBy(_ => Random.value)
-                .Select(choice => new ConversationChoice(
-                        isCorrect: false,
-                        content: choice
-                    )
-                )
-                .Take(3);
-
-            var choices = correctChoices
-                .Concat(incorrectChoices)
-                .OrderBy(_ => Random.value)
-                .ToList();
-
-            viewController.Initialize(
-                title: character.CharacterData.CharacterName,
-                content: randomMessage.Content,
-                choices: choices
-            );
-
-            viewController.ShowView();
-
-            OnConversationStarted?.Invoke();
+            StopConversation();
         }
 
         public void StopConversation()
@@ -94,25 +88,83 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             OnConversationStopped?.Invoke();
         }
 
+        private void OnCorrectIncorrectConversation(CharacterActor character, CharacterMessageData message)
+        {
+            var correctChoices = message.CorrectChoices
+                .OrderBy(_ => Random.value)
+                .Select(choice => new ConversationChoice(
+                        isCorrect: true,
+                        content: choice,
+                        messageType: message.MessageType
+                    )
+                )
+                .Take(1);
+
+            var incorrectChoices = message.IncorrectChoices
+                .OrderBy(_ => Random.value)
+                .Select(choice => new ConversationChoice(
+                        isCorrect: false,
+                        content: choice,
+                        messageType: message.MessageType
+                    )
+                )
+                .Take(3);
+
+            var choices = correctChoices
+                .Concat(incorrectChoices)
+                .OrderBy(_ => Random.value)
+                .ToList();
+
+            viewController.Initialize(
+                title: character.CharacterData.CharacterName,
+                content: message.Content,
+                choices: choices
+            );
+        }
+
+        private void OnRandomBlurbChoiceConversation(CharacterActor character, CharacterMessageData message)
+        {
+            viewController.Initialize(
+                title: character.CharacterData.CharacterName,
+                content: message.Content,
+                choices: new[]
+                {
+                    new ConversationChoice(
+                        messageType: CharacterMessageType.RandomBlurb,
+                        isCorrect: true,
+                        content: null
+                    ),
+                }
+            );
+        }
+
         private void OnChoiceSelected(ConversationChoice choice)
         {
-            if (choice.IsCorrect)
+            switch (choice.MessageType)
             {
-                resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
-                onCorrectChoiceSelected.Invoke();
+                case CharacterMessageType.CorrectIncorrect:
+                {
+                    if (choice.IsCorrect)
+                    {
+                        resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
+                        onCorrectChoiceSelected.Invoke();
+                    }
+                    else
+                    {
+                        resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
+                        onIncorrectChoiceSelected.Invoke();
+                    }
+
+                    break;
+                }
+                case CharacterMessageType.RandomBlurb:
+                {
+                    onRandomBlurbChoiceSelected.Invoke();
+                    break;
+                }
             }
-            else
-            {
-                resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
-                onIncorrectChoiceSelected.Invoke();
-            }
 
-            viewController.HideView();
-
-            conversingWith?.ConversationStopped();
-            conversingWith = null;
-
-            OnConversationStopped?.Invoke();
+            StopConversation();
         }
     }
 }

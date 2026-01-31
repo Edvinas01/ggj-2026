@@ -14,9 +14,16 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public int MessageCount => messages.Count;
 
+        public int ConversedCount { get; set; }
+
         public void RemoveMessage(CharacterMessageData message)
         {
             messages.Remove(message);
+        }
+
+        public void ClearMessages()
+        {
+            messages.Clear();
         }
     }
 }

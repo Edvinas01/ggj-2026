@@ -3,5 +3,6 @@
     internal enum CharacterMessageType
     {
         CorrectIncorrect,
+        RandomBlurb,
     }
 }

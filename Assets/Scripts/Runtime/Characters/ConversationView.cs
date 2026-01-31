@@ -17,6 +17,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [Header("Text")]
         [SerializeField]
+        private string defaultButtonText = "Gerai";
+
+        [SerializeField]
         private TMP_Text titleText;
 
         [SerializeField]
@@ -46,7 +49,15 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             var element = Instantiate(choiceButtonPrefab, choiceParent);
             element.OnClicked += onClicked;
-            element.Text = choice.Content;
+
+            if (string.IsNullOrWhiteSpace(choice.Content))
+            {
+                element.Text = defaultButtonText;
+            }
+            else
+            {
+                element.Text = choice.Content;
+            }
         }
 
         public void ClearChoices()
