@@ -49,6 +49,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             set
             {
+                if (navMeshAgent.enabled == false)
+                {
+                    return;
+                }
+
                 if (NavMesh.SamplePosition(value, out var hit, 10f, NavMesh.AllAreas))
                 {
                     navMeshAgent.SetDestination(hit.position);
@@ -110,6 +115,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             backRenderer.SetPropertyBlock(block);
         }
 
+        public void ConversationStopped()
+        {
+            navMeshAgent.enabled = true;
+        }
+
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
         {
         }
@@ -128,6 +138,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             var controller = component.GetComponentInParent<ConversationController>();
             if (controller)
             {
+                navMeshAgent.enabled = false;
                 controller.StartConversation(this);
             }
         }

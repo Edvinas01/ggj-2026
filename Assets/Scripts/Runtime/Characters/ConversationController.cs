@@ -88,6 +88,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             viewController.HideView();
 
+            conversingWith?.ConversationStopped();
             conversingWith = null;
 
             OnConversationStopped?.Invoke();
@@ -108,6 +109,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             viewController.HideView();
 
+            conversingWith?.ConversationStopped();
             conversingWith = null;
 
             OnConversationStopped?.Invoke();
