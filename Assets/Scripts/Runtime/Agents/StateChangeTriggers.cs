@@ -8,9 +8,9 @@ namespace RIEVES.GGJ2026
     public class StateChangeTriggers
     {
         public CharacterState State;
-        public UnityAction OnStateStarting;
+        public UnityEvent OnStateStarting;
         public float StartDelay;
-        public UnityAction OnStateEnding;
+        public UnityEvent OnStateEnding;
         public float EndDelay;
     }
 }
