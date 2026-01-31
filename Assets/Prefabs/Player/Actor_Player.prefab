@@ -811,7 +811,11 @@ MonoBehaviour:
   conversationController: {fileID: 3720372723344079548}
   resourceController: {fileID: 8557895804664849490}
   movementController: {fileID: 5901985342004967491}
+  cinemachineCamera: {fileID: 761219450461382918}
+  zoomInSpeed: 4
+  zoomInFov: 20
   interactInputAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  zoomInputListener: {fileID: 7318049650304406683, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   defaultHoverPopupController: {fileID: 9029458643344921814}
   characterHoverPopupController: {fileID: 4097770793118596070}
   itemHoverPopupController: {fileID: 2130607430814783093}

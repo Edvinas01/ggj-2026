@@ -8,6 +8,7 @@ using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
 using RIEVES.GGJ2026.Runtime.Popups;
 using RIEVES.GGJ2026.Runtime.Resources;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,9 +32,24 @@ namespace RIEVES.GGJ2026.Runtime.Player
         [SerializeField]
         private MovementController movementController;
 
+        [Header("Cameras")]
+        [SerializeField]
+        private CinemachineCamera cinemachineCamera;
+
+        [SerializeField]
+        [Min(0f)]
+        private float zoomInSpeed = 8f;
+
+        [SerializeField]
+        [Min(0f)]
+        private float zoomInFov = 20f;
+
         [Header("Inputs")]
         [SerializeField]
         private InputActionReference interactInputAction;
+
+        [SerializeField]
+        private InputActionReference zoomInputListener;
 
         [Header("UI")]
         [SerializeField]
@@ -45,6 +61,10 @@ namespace RIEVES.GGJ2026.Runtime.Player
         [SerializeField]
         private HoverPopupViewController itemHoverPopupController;
 
+        private float initialFov;
+        private float currentFov;
+        private float targetFov;
+
         private ICursorSystem cursorSystem;
         private IInputSystem inputSystem;
         private ISceneSystem sceneSystem;
@@ -54,6 +74,15 @@ namespace RIEVES.GGJ2026.Runtime.Player
             cursorSystem = GameManager.GetSystem<ICursorSystem>();
             inputSystem = GameManager.GetSystem<IInputSystem>();
             sceneSystem = GameManager.GetSystem<ISceneSystem>();
+        }
+
+        private void Start()
+        {
+            initialFov = cinemachineCamera.Lens.FieldOfView;
+            targetFov = cinemachineCamera.Lens.FieldOfView;
+            currentFov = cinemachineCamera.Lens.FieldOfView;
+
+            cursorSystem.LockCursor();
         }
 
         private void OnEnable()
@@ -70,6 +99,9 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
             interactInputAction.action.performed += OnInteractPerformed;
             interactInputAction.action.canceled += OnInteractCanceled;
+
+            zoomInputListener.action.performed += OnZoomPerformed;
+            zoomInputListener.action.canceled += OnZoomCanceled;
         }
 
         private void OnDisable()
@@ -86,17 +118,21 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
             interactInputAction.action.performed -= OnInteractPerformed;
             interactInputAction.action.canceled -= OnInteractCanceled;
-        }
 
-        private void Start()
-        {
-            cursorSystem.LockCursor();
+            zoomInputListener.action.performed -= OnZoomPerformed;
+            zoomInputListener.action.canceled -= OnZoomCanceled;
         }
 
         private void OnDestroy()
         {
             cursorSystem.UnLockCursor();
         }
+
+        private void Update()
+        {
+            UpdateCameraZoom();
+        }
+
 
         private void OnAlcoholChanged(AlcoholChangedArgs args)
         {
@@ -176,6 +212,28 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
         private void OnInteractCanceled(InputAction.CallbackContext context)
         {
+        }
+
+
+        private void OnZoomPerformed(InputAction.CallbackContext context)
+        {
+            targetFov = zoomInFov;
+        }
+
+        private void OnZoomCanceled(InputAction.CallbackContext context)
+        {
+            targetFov = initialFov;
+        }
+
+        private void UpdateCameraZoom()
+        {
+            currentFov = Mathf.Lerp(
+                currentFov,
+                targetFov,
+                Time.deltaTime * zoomInSpeed
+            );
+
+            cinemachineCamera.Lens.FieldOfView = currentFov;
         }
     }
 }
