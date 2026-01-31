@@ -107,9 +107,9 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 110
+    FieldOfView: 70
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.1
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -373,6 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2814657626727972773}
   - component: {fileID: 4788599400237404731}
+  - component: {fileID: 5130037739957012707}
   m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
@@ -416,6 +417,29 @@ CapsuleCollider:
   serializedVersion: 2
   m_Radius: 0.4
   m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &5130037739957012707
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5313617542729358294}
+  m_Material: {fileID: 13400000, guid: e8c739d0084b9b842bf4d02b1ac5019d, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.45
+  m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6122874507203024641
@@ -798,6 +822,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9070244558202797252}
     m_Modifications:
+    - target: {fileID: 6614264548814815940, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
+      propertyPath: field of view
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6614264548814815940, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8173315482646916480, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_Name
       value: Camera_Main
