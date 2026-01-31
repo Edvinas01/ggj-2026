@@ -9,6 +9,7 @@ namespace RIEVES.GGJ2026
     {
         public CharacterState State;
         public UnityAction OnStateStarting;
+        public UnityAction OnStateStarted;
         public float StartDelay;
         public UnityAction OnStateEnding;
         public float EndDelay;

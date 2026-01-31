@@ -24,6 +24,9 @@ namespace RIEVES.GGJ2026
 
         [SerializeField]
         private List<StateChangeTriggers> onStateChange = new();
+        public CharacterState CurrentState { get; private set; } = CharacterState.Idle;
+        public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idle;
+        public PointOfInterest CurrentTarget { get; private set; }
 
         [Header("Rendering")]
         [SerializeField]
@@ -53,26 +56,6 @@ namespace RIEVES.GGJ2026
         private AgentSystem agentSystem;
 
         public CharacterData CharacterData => runtimeData;
-
-        public Vector3 TargetPosition
-        {
-            set
-            {
-                if (navMeshAgent.enabled == false)
-                {
-                    return;
-                }
-
-                if (NavMesh.SamplePosition(value, out var hit, 10f, NavMesh.AllAreas))
-                {
-                    navMeshAgent.SetDestination(hit.position);
-                }
-            }
-        }
-
-        public CharacterState CurrentState { get; private set; } = CharacterState.Idle;
-        public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idle;
-        public PointOfInterest CurrentTarget { get; private set; }
 
         public enum CharacterActivity
         {
@@ -203,12 +186,12 @@ namespace RIEVES.GGJ2026
                 case CharacterState.Idle:
                     CurrentActivity = CharacterActivity.Idle;
                     break;
-                case CharacterState.GuardingIdle:
+                case CharacterState.GuardingPointOfInterest:
                 case CharacterState.Dancing:
                     {
                         if (CurrentTarget == null)
                         {
-                            var targetType = CurrentState == CharacterState.GuardingIdle ? InterestType.Guard : InterestType.Dancing;
+                            var targetType = CurrentState == CharacterState.GuardingPointOfInterest ? InterestType.Guard : InterestType.Dancing;
                             var newTarget = agentSystem.PickRandomWaypoint(targetType);
                             if (newTarget != null)
                                 MoveToPoint(newTarget);
@@ -235,18 +218,6 @@ namespace RIEVES.GGJ2026
                         if (CurrentTarget == null || CurrentActivity != CharacterActivity.Moving)
                         {
                             var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                            if (newTarget != null)
-                                MoveToPoint(newTarget);
-                            else
-                                SetState(agentSystem.GetRandomState(this));
-                        }
-                    }
-                    break;
-                case CharacterState.GuardingPointOfInterest:
-                    {
-                        if (CurrentTarget == null || (CurrentActivity != CharacterActivity.AtDestination && CurrentActivity != CharacterActivity.Moving))
-                        {
-                            var newTarget = agentSystem.PickRandomWaypoint(InterestType.Guard);
                             if (newTarget != null)
                                 MoveToPoint(newTarget);
                             else
