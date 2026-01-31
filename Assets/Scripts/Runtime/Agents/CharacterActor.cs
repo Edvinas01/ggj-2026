@@ -25,6 +25,8 @@ namespace RIEVES.GGJ2026
 
         [SerializeField]
         private List<StateChangeTriggers> onStateChange = new();
+        public CharacterAnimationState CurrentAnimationState { get; private set; } = CharacterAnimationState.Idling;
+        private CharacterAnimationState TransitioningAnimationState = CharacterAnimationState.Idling;
         public CharacterState CurrentState { get; private set; } = CharacterState.Idling;
         public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
         public PointOfInterest CurrentTarget { get; private set; }
@@ -106,22 +108,41 @@ namespace RIEVES.GGJ2026
         float maxPatienceDuration = 20f;
         bool changingFromState = false;
         bool changingToState = false;
+        bool isInteractingWithPlayer = false;
 
-        public bool SetState(CharacterState newState)
+        public bool SetAnimationState(CharacterAnimationState newState)
         {
+            if (newState == CurrentAnimationState)
+                return true;
+
+            if (changingToState && newState != TransitioningAnimationState)
+            {
+                var oldTrigger = onStateChange.FirstOrDefault(s => s.State == TransitioningAnimationState);
+                if (oldTrigger != null)
+                {
+                    oldTrigger.OnStateEnding.Invoke();
+                    if (oldTrigger.EndDelay > 0)
+                    {
+                        stateChangeTimer = Time.time + oldTrigger.EndDelay;
+                        TransitioningAnimationState = newState;
+                        changingFromState = true;
+                        changingToState = false;
+                        return false;
+                    }
+                }
+            }
+
             if (!changingFromState)
             {
-                var OldTrigger = onStateChange.FirstOrDefault(s => s.State == CurrentState);
-                if (OldTrigger != null)
+                var oldTrigger = onStateChange.FirstOrDefault(s => s.State == CurrentAnimationState);
+                if (oldTrigger != null)
                 {
-                    OldTrigger.OnStateEnding.Invoke();
-                    if (OldTrigger.EndDelay > 0)
+                    oldTrigger.OnStateEnding.Invoke();
+                    if (oldTrigger.EndDelay > 0)
                     {
-                        stateChangeTimer = Time.time + OldTrigger.EndDelay;
-                        CurrentState = newState;
+                        stateChangeTimer = Time.time + oldTrigger.EndDelay;
+                        TransitioningAnimationState = newState;
                         changingFromState = true;
-                        CurrentActivity = CharacterActivity.Idling;
-                        CurrentTarget = null;
                         return false;
                     }
                 }
@@ -129,33 +150,33 @@ namespace RIEVES.GGJ2026
 
             if (!changingToState)
             {
-                var NewTrigger = onStateChange.FirstOrDefault(s => s.State == newState);
-                if (NewTrigger != null)
+                var newTrigger = onStateChange.FirstOrDefault(s => s.State == newState);
+                if (newTrigger != null)
                 {
-                    NewTrigger.OnStateStarting.Invoke();
-                    if (NewTrigger.StartDelay > 0)
+                    newTrigger.OnStateStarting.Invoke();
+                    if (newTrigger.StartDelay > 0)
                     {
-                        stateChangeTimer = Time.time + NewTrigger.StartDelay;
+                        stateChangeTimer = Time.time + newTrigger.StartDelay;
+                        TransitioningAnimationState = newState;
                         changingToState = true;
-                        CurrentActivity = CharacterActivity.Idling;
-                        CurrentTarget = null;
+                        changingFromState = true;
                         return false;
                     }
                 }
             }
 
-            CurrentState = newState;
             changingFromState = false;
             changingToState = false;
-            stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
-            CurrentActivity = CharacterActivity.Idling;
-            CurrentTarget = null;
+            CurrentAnimationState = newState;
             return true;
         }
 
-        public void SetActivity(CharacterActivity newActivity)
+        public void SetState(CharacterState newState)
         {
-            CurrentActivity = newActivity;
+            CurrentState = newState;
+            stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
+            CurrentActivity = CharacterActivity.Idling;
+            CurrentTarget = null;
         }
 
         private void Update()
@@ -163,26 +184,30 @@ namespace RIEVES.GGJ2026
             if (changingFromState || changingToState)
             {
                 if (stateChangeTimer < Time.time)
-                {
-                    SetState(CurrentState);
-                }
+                    SetAnimationState(TransitioningAnimationState);
 
                 return;
             }
 
-            if (CurrentState != CharacterState.Talking && stateChangeTimer < Time.time)
+            if (isInteractingWithPlayer)
+                return;
+
+            if (stateChangeTimer < Time.time)
             {
                 var currentTargetState = CurrentState;
-                CurrentState = agentSystem.GetRandomState(this);
-                stateChangeTimer = Time.time;
-                Debug.Log($"Changing state due to patience timeout: {currentTargetState} -> {CurrentState}");
-                if (currentTargetState != CurrentState)
-                    SetState(CurrentState);
+                var nextState = agentSystem.GetRandomState(this);
+                stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
+                Debug.Log($"Changing state due to patience timeout: {currentTargetState} -> {nextState}");
+                if (currentTargetState != nextState)
+                    SetState(nextState);
             }
 
             switch (CurrentState)
             {
                 case CharacterState.Idling:
+                    CurrentActivity = CharacterActivity.Idling;
+                    SetAnimationState(CharacterAnimationState.Idling);
+                    break;
                 case CharacterState.Talking:
                     CurrentActivity = CharacterActivity.Idling;
                     break;
@@ -199,9 +224,7 @@ namespace RIEVES.GGJ2026
                                     InterestType.Dancing;
 
                             var newTarget = agentSystem.PickRandomWaypoint(targetType);
-                            if (newTarget != null)
-                                MoveToPoint(newTarget);
-                            else
+                            if (newTarget != null && !MoveToPoint(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                         else if (CurrentActivity != CharacterActivity.Walking)
@@ -209,9 +232,7 @@ namespace RIEVES.GGJ2026
                             var distanceSqr = (transform.position - CurrentTarget.transform.position).sqrMagnitude;
                             if (distanceSqr >= CurrentTarget.StayWithinRange * CurrentTarget.StayWithinRange)
                             {
-                                if (CurrentTarget != null)
-                                    MoveToPoint(CurrentTarget);
-                                else
+                                if (CurrentTarget != null && !MoveToPoint(CurrentTarget))
                                     SetState(agentSystem.GetRandomState(this));
                             }
                         }
@@ -219,12 +240,10 @@ namespace RIEVES.GGJ2026
                     break;
                 case CharacterState.Hunting:
                     {
-                        if (CurrentTarget == null || CurrentActivity != CharacterActivity.Walking)
+                        if (CurrentTarget == null || CurrentActivity != CharacterActivity.Hunting)
                         {
                             var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                            if (newTarget != null)
-                                MoveToPoint(newTarget);
-                            else
+                            if (newTarget != null && !MoveToPoint(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                     }
@@ -249,12 +268,15 @@ namespace RIEVES.GGJ2026
                             {
                                 case CharacterState.Watching:
                                     CurrentActivity = CharacterActivity.Watching;
+                                    SetAnimationState(CharacterAnimationState.Watching);
                                     break;
                                 case CharacterState.Guarding:
                                     CurrentActivity = CharacterActivity.Guarding;
+                                    SetAnimationState(CharacterAnimationState.Guarding);
                                     break;
                                 case CharacterState.Dancing:
                                     CurrentActivity = CharacterActivity.Dancing;
+                                    SetAnimationState(CharacterAnimationState.Dancing);
                                     break;
                             }
                         }
@@ -266,9 +288,11 @@ namespace RIEVES.GGJ2026
                     }
                 case CharacterActivity.Idling:
                     navMeshAgent.enabled = false;
+                    SetAnimationState(CharacterAnimationState.Idling);
                     break;
                 default:
                     {
+                        navMeshAgent.enabled = false;
                         if (CurrentTarget != null && CurrentTarget.Facing)
                         {
                             var directionToTarget = (CurrentTarget.transform.position - transform.position).normalized;
@@ -276,12 +300,20 @@ namespace RIEVES.GGJ2026
                             movementPositionInput.TargetPosition = lookAtPosition;
                         }
 
+                        SetAnimationState(CurrentState switch
+                        {
+                            CharacterState.Watching => CharacterAnimationState.Watching,
+                            CharacterState.Guarding => CharacterAnimationState.Guarding,
+                            CharacterState.Dancing => CharacterAnimationState.Dancing,
+                            _ => CharacterAnimationState.Idling
+                        });
+
                         break;
                     }
             }
         }
 
-        void MoveToPoint(PointOfInterest target)
+        bool MoveToPoint(PointOfInterest target)
         {
             CurrentTarget = null;
             navMeshAgent.enabled = true;
@@ -290,8 +322,11 @@ namespace RIEVES.GGJ2026
             {
                 CurrentTarget = target;
                 navMeshAgent.SetDestination(hit.position);
-                CurrentActivity = CharacterActivity.Walking;
+                CurrentActivity = CurrentState == CharacterState.Hunting ? CharacterActivity.Hunting : CharacterActivity.Walking;
+                SetAnimationState(CurrentState == CharacterState.Hunting ? CharacterAnimationState.Hunting : CharacterAnimationState.Walking);
+                return true;
             }
+            return false;
         }
 
         private void LateUpdate()
@@ -319,7 +354,8 @@ namespace RIEVES.GGJ2026
 
         public void ConversationStopped()
         {
-            SetState(CharacterState.Idling);
+            isInteractingWithPlayer = false;
+            SetAnimationState(CharacterAnimationState.Talking);
             onConversationStopped.Invoke();
         }
 
@@ -341,7 +377,8 @@ namespace RIEVES.GGJ2026
             var controller = component.GetComponentInParent<ConversationController>();
             if (controller)
             {
-                SetState(CharacterState.Talking);
+                isInteractingWithPlayer = true;
+                SetAnimationState(CharacterAnimationState.Talking);
                 controller.StartConversation(this);
                 onConversationStarted.Invoke();
             }
