@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="DAWProject" id="{8a47269b-bd0e-4c82-972e-5886647532f9}">
+		<property name="assetPath">
+			<value>Walla.rpp.link/</value>
+		</property>
+		<property name="dawProjectPath">
+			<value>D:/Projects/Projects_drive/Projects/REAPER Media/RIEVĖS/Kaimiečio Išleistuvės/Walla/Walla.rpp</value>
+		</property>
+		<property name="renderedAssetsPath">
+			<value>export</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+	</object>
+</objects>

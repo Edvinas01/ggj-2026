@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="DAWAsset" id="{875ee58d-366e-4eb0-810c-7d1c8ed3c54d}">
+		<property name="assetPath">
+			<value>Bottle.rpp.link/S_Bottle_PourSlow_02.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.5787755102040815</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+		<relationship name="project">
+			<destination>{1d7a92f7-38aa-410b-93ad-8318647178fa}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="DAWAsset" id="{9cd19bb3-5180-4689-b65b-687cee6f0dbd}">
+		<property name="assetPath">
+			<value>Walla.rpp.link/S_Walla_Inv_06.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>16.091428571428573</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+		<relationship name="project">
+			<destination>{8a47269b-bd0e-4c82-972e-5886647532f9}</destination>
+		</relationship>
+	</object>
+</objects>
