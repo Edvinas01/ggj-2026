@@ -9,6 +9,8 @@ namespace RIEVES.GGJ2026
         Dancing,
         Guarding,
         Talking,
+        BadResponse,
+        GoodResponse,
         Walking,
         Hunting,
     }

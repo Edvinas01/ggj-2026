@@ -115,6 +115,8 @@ namespace RIEVES.GGJ2026
             if (newState == CurrentAnimationState)
                 return true;
 
+            Debug.Log($"Character '{name}' changing animation state from {CurrentAnimationState} to {newState}. 0");
+
             if (changingToState && newState != TransitioningAnimationState)
             {
                 var oldTrigger = onStateChange.FirstOrDefault(s => s.State == TransitioningAnimationState);
@@ -127,6 +129,7 @@ namespace RIEVES.GGJ2026
                         TransitioningAnimationState = newState;
                         changingFromState = true;
                         changingToState = false;
+                        Debug.Log($"Character '{name}' changing animation state interrupted, now changing to {newState}. 1");
                         return false;
                     }
                 }
@@ -143,6 +146,7 @@ namespace RIEVES.GGJ2026
                         stateChangeTimer = Time.time + oldTrigger.EndDelay;
                         TransitioningAnimationState = newState;
                         changingFromState = true;
+                        Debug.Log($"Character '{name}' delaying animation state change to {newState}. 2");
                         return false;
                     }
                 }
@@ -160,6 +164,7 @@ namespace RIEVES.GGJ2026
                         TransitioningAnimationState = newState;
                         changingToState = true;
                         changingFromState = true;
+                        Debug.Log($"Character '{name}' delaying animation state change to {newState}. 3");
                         return false;
                     }
                 }
@@ -168,6 +173,7 @@ namespace RIEVES.GGJ2026
             changingFromState = false;
             changingToState = false;
             CurrentAnimationState = newState;
+            Debug.Log($"Character '{name}' changed animation state to {newState}. 4");
             return true;
         }
 
@@ -197,7 +203,6 @@ namespace RIEVES.GGJ2026
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
                 stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
-                Debug.Log($"Changing state due to patience timeout: {currentTargetState} -> {nextState}");
                 if (currentTargetState != nextState)
                     SetState(nextState);
             }
@@ -362,10 +367,17 @@ namespace RIEVES.GGJ2026
             runtimeData.ConversationData.RemoveMessage(message);
         }
 
-        public void ConversationStopped()
+        public void ConversationStoppedCorrect()
         {
             isInteractingWithPlayer = false;
-            SetAnimationState(CharacterAnimationState.Talking);
+            SetAnimationState(CharacterAnimationState.GoodResponse);
+            onConversationStopped.Invoke();
+        }
+
+        public void ConversationStoppedIncorrect()
+        {
+            isInteractingWithPlayer = false;
+            SetAnimationState(CharacterAnimationState.BadResponse);
             onConversationStopped.Invoke();
         }
 
