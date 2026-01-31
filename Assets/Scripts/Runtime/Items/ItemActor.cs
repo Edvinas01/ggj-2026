@@ -12,6 +12,8 @@ namespace RIEVES.GGJ2026.Runtime.Items
         [SerializeField]
         private Interactable interactable;
 
+        public string Name => name; // TODO: use item name
+
         private void OnEnable()
         {
             interactable.OnHoverEntered += OnInteractableHoverEntered;

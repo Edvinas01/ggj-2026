@@ -25,6 +25,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private AgentSystem agentSystem;
 
+        public string Name => data.CharacterName;
+
         private void Awake()
         {
             agentSystem = GameManager.GetSystem<AgentSystem>();

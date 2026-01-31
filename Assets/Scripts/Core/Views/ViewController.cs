@@ -126,22 +126,42 @@ namespace RIEVES.GGJ2026.Core.Views
 
         public override void ShowView()
         {
+            if (View.State is ViewState.Shown or ViewState.Showing)
+            {
+                return;
+            }
+
             View.Show();
         }
 
         public override void HideView()
         {
+            if (View.State is ViewState.Hidden or ViewState.Hiding)
+            {
+                return;
+            }
+
             View.Hide();
         }
 
-        public override UniTask ShowViewAsync(CancellationToken cancellationToken = default)
+        public override async UniTask ShowViewAsync(CancellationToken cancellationToken = default)
         {
-            return View.ShowAsync(cancellationToken);
+            if (View.State is ViewState.Shown or ViewState.Showing)
+            {
+                return;
+            }
+
+            await View.ShowAsync(cancellationToken);
         }
 
-        public override UniTask HideViewAsync(CancellationToken cancellationToken = default)
+        public override async UniTask HideViewAsync(CancellationToken cancellationToken = default)
         {
-            return View.HideAsync(cancellationToken);
+            if (View.State is ViewState.Hidden or ViewState.Hiding)
+            {
+                return;
+            }
+
+            await View.HideAsync(cancellationToken);
         }
 
         private TView CreateView()
