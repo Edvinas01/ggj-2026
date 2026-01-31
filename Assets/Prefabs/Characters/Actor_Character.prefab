@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9832c81e4aebf7149aa56f9d4c2a9429, type: 2}
+  - {fileID: 2100000, guid: 140c1cc7aedf28d48b5d437b0ee564db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterActor
   data: {fileID: 11400000, guid: bd923bcae9a7c0b4d8488385e07bc612, type: 2}
   interactable: {fileID: 4005990158675576400}
+  onStateChange: []
   frontRenderer: {fileID: 630822908284679852}
   backRenderer: {fileID: 5860055808095123040}
   texturePropertyId: _BaseMap
