@@ -41,9 +41,10 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private NavMeshAgent navMeshAgent;
 
+        private CharacterData runtimeData;
         private AgentSystem agentSystem;
 
-        public CharacterData CharacterData => data;
+        public CharacterData CharacterData => runtimeData;
 
         public Vector3 TargetPosition
         {
@@ -112,7 +113,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public void Initialize(CharacterData newData)
         {
-            data = newData;
+            runtimeData = Instantiate(newData);
 
             var block = new MaterialPropertyBlock();
 
@@ -121,6 +122,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             block.SetTexture(texturePropertyId, data.BackTexture);
             backRenderer.SetPropertyBlock(block);
+        }
+
+        public void RemoveMessage(CharacterMessageData message)
+        {
+            runtimeData.Conversation.RemoveMessage(message);
         }
 
         public void ConversationStopped()
