@@ -69,6 +69,14 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             navMeshAgent.updateRotation = false;
         }
 
+        private void Start()
+        {
+            if (data)
+            {
+                Initialize(data);
+            }
+        }
+
         private void OnEnable()
         {
             agentSystem.AddAgent(this);
