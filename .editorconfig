@@ -12,7 +12,10 @@ insert_final_newline = true
 resharper_csharp_wrap_lines = false
 
 [*.cs]
-end_of_line = crlf
+end_of_line = lf
+
+# Default severity for analyzer diagnostics with category 'Style'
+dotnet_analyzer_diagnostic.category-Style.severity = silent
 
 [*.{md,json,yml,uss,uxml,sh}]
 indent_size = 2
