@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{97f2b11a-877c-4a3b-82bb-48275fcbf4b0}">
 		<property name="name">
-			<value>SFX_Walla_Full</value>
+			<value>S_Walla_Full</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.03.00">
-	<object class="AudioFile" id="{d0f195ff-a078-4270-9a65-dad5c3ce9a6c}">
+	<object class="DAWAsset" id="{a82b35c5-e694-4428-856e-1759e3e902bb}">
 		<property name="assetPath">
-			<value>Lietuvių kalbos pamokėlė.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>Footsteps.rpp.link/Footsteps_01_HighHeels_06.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>22.0499992</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>141.21795918367346</value>
+			<value>0.36571428571428571</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+		<relationship name="project">
+			<destination>{2a43a63f-8ee0-4379-9826-7f0e0855b499}</destination>
 		</relationship>
 	</object>
 </objects>
