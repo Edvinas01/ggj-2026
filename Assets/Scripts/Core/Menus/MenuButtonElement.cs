@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -26,6 +27,10 @@ namespace RIEVES.GGJ2026.Core.Menus
         [SerializeField]
         private float disabledAlpha = 0.5f;
 
+        [Header("Text")]
+        [SerializeField]
+        private TMP_Text titleText;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onClicked;
@@ -52,6 +57,11 @@ namespace RIEVES.GGJ2026.Core.Menus
                     canvasGroup.alpha = disabledAlpha;
                 }
             }
+        }
+
+        public string Text
+        {
+            set => titleText.text = value;
         }
 
         public event Action OnClicked;

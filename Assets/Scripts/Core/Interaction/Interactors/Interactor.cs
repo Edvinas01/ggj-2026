@@ -114,8 +114,9 @@ namespace RIEVES.GGJ2026.Core.Interaction.Interactors
                 return;
             }
 
-            foreach (var hoveredInteractable in hoveredInteractables)
+            for (var index = hoveredInteractables.Count - 1; index >= 0; index--)
             {
+                var hoveredInteractable = hoveredInteractables[index];
                 if (IsSelected(hoveredInteractable))
                 {
                     continue;
@@ -161,8 +162,9 @@ namespace RIEVES.GGJ2026.Core.Interaction.Interactors
                 return;
             }
 
-            foreach (var selectedInteractable in selectedInteractables)
+            for (var index = selectedInteractables.Count - 1; index >= 0; index--)
             {
+                var selectedInteractable = selectedInteractables[index];
                 selectedInteractable.Deselect(this);
 
                 var args = new InteractorSelectExitedArgs(selectedInteractable);
@@ -202,8 +204,9 @@ namespace RIEVES.GGJ2026.Core.Interaction.Interactors
                 return;
             }
 
-            foreach (var hoveredInteractable in hoveredInteractables)
+            for (var index = hoveredInteractables.Count - 1; index >= 0; index--)
             {
+                var hoveredInteractable = hoveredInteractables[index];
                 hoveredInteractable.UnHover(this);
 
                 var args = new InteractorHoverExitedArgs(hoveredInteractable, this);

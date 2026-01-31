@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36879b92cf3453fb38ae9d1f02c5704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Resources.ResourceController
-  alcohol: 0
+  alcohol: 10
   alcoholMax: 100
 --- !u!114 &5901985342004967491
 MonoBehaviour:
@@ -769,6 +769,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
   viewController: {fileID: 7475167151573011031}
+  resourceController: {fileID: 8557895804664849490}
+  onCorrectChoiceSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onIncorrectChoiceSelected:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2224434183499480555
 MonoBehaviour:
   m_ObjectHideFlags: 0

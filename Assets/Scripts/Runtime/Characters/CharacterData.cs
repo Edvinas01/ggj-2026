@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using RIEVES.GGJ2026.Core.Constants;
+﻿using RIEVES.GGJ2026.Core.Constants;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
@@ -15,6 +14,15 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private string characterName;
 
+        [Header("Resources")]
+        [Min(0)]
+        [SerializeField]
+        private int addsAlcohol = 10;
+
+        [Min(0)]
+        [SerializeField]
+        private int removesAlcohol = 10;
+
         [Header("Visuals")]
         [SerializeField]
         private Texture2D frontTexture;
@@ -24,14 +32,18 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [Header("Chatting")]
         [SerializeField]
-        private CharacterConversation conversation;
+        private CharacterConversationData conversation;
 
         public string CharacterName => characterName;
+
+        public int AddsAlcohol => addsAlcohol;
+
+        public int RemovesAlcohol => removesAlcohol;
 
         public Texture2D FrontTexture => frontTexture;
 
         public Texture2D BackTexture => backTexture;
 
-        public CharacterConversation Conversation => conversation;
+        public CharacterConversationData Conversation => conversation;
     }
 }

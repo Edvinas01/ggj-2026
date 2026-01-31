@@ -1,5 +1,6 @@
 ﻿using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Cursors;
+using RIEVES.GGJ2026.Core.Input;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
 using RIEVES.GGJ2026.Runtime.Characters;
 using RIEVES.GGJ2026.Runtime.Items;
@@ -9,7 +10,7 @@ using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace RIEVES.GGJ2026.Runtime
+namespace RIEVES.GGJ2026.Runtime.Player
 {
     internal sealed class PlayerActor : MonoBehaviour
     {
@@ -44,15 +45,20 @@ namespace RIEVES.GGJ2026.Runtime
         private HoverPopupViewController itemHoverPopupController;
 
         private ICursorSystem cursorSystem;
+        private IInputSystem inputSystem;
 
         private void Awake()
         {
             cursorSystem = GameManager.GetSystem<ICursorSystem>();
+            inputSystem = GameManager.GetSystem<IInputSystem>();
         }
 
         private void OnEnable()
         {
             resourceController.OnAlcoholChanged += OnAlcoholChanged;
+
+            conversationController.OnConversationStarted += OnConversationStarted;
+            conversationController.OnConversationStopped += OnConversationStopped;
 
             interactor.OnHoverEntered += OnInteractorHoverEntered;
             interactor.OnHoverExited += OnInteractorHoverExited;
@@ -66,6 +72,9 @@ namespace RIEVES.GGJ2026.Runtime
         private void OnDisable()
         {
             resourceController.OnAlcoholChanged -= OnAlcoholChanged;
+
+            conversationController.OnConversationStarted -= OnConversationStarted;
+            conversationController.OnConversationStopped -= OnConversationStopped;
 
             interactor.OnHoverEntered -= OnInteractorHoverEntered;
             interactor.OnHoverExited -= OnInteractorHoverExited;
@@ -81,8 +90,27 @@ namespace RIEVES.GGJ2026.Runtime
             cursorSystem.LockCursor();
         }
 
+        private void OnDestroy()
+        {
+            cursorSystem.UnLockCursor();
+        }
+
         private void OnAlcoholChanged(AlcoholChangedArgs args)
         {
+        }
+
+        private void OnConversationStarted()
+        {
+            cursorSystem.UnLockCursor();
+            inputSystem.DisablePlayerInput();
+            interactor.enabled = false;
+        }
+
+        private void OnConversationStopped()
+        {
+            cursorSystem.LockCursor();
+            inputSystem.EnablePlayerInput();
+            interactor.enabled = true;
         }
 
         private void OnInteractorHoverEntered(InteractorHoverEnteredArgs args)
@@ -97,7 +125,7 @@ namespace RIEVES.GGJ2026.Runtime
             var character = component.GetComponentInParent<CharacterActor>();
             if (character)
             {
-                characterHoverPopupController.TitleText = character.Name;
+                characterHoverPopupController.TitleText = character.CharacterData.CharacterName;
                 characterHoverPopupController.ShowView();
                 return;
             }
@@ -135,11 +163,6 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnInteractCanceled(InputAction.CallbackContext context)
         {
-        }
-
-        private void OnDestroy()
-        {
-            cursorSystem.UnLockCursor();
         }
     }
 }

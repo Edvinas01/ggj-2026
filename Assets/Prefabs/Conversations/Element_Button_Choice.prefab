@@ -321,6 +321,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 5051410847659854247}
   outlineImage: {fileID: 3435336392489304747}
   disabledAlpha: 0.5
+  titleText: {fileID: 2885147130609212567}
   onClicked:
     m_PersistentCalls:
       m_Calls: []

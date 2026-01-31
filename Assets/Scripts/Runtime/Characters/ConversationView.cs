@@ -1,4 +1,5 @@
-﻿using RIEVES.GGJ2026.Core.Menus;
+﻿using System;
+using RIEVES.GGJ2026.Core.Menus;
 using RIEVES.GGJ2026.Core.Views;
 using TMPro;
 using UnityEngine;
@@ -39,6 +40,22 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         protected override void OnDisable()
         {
             base.OnDisable();
+        }
+
+        public void AddChoice(ConversationChoice choice, Action onClicked)
+        {
+            var element = Instantiate(choiceButtonPrefab, choiceParent);
+            element.OnClicked += onClicked;
+            element.Text = choice.Content;
+        }
+
+        public void ClearChoices()
+        {
+            for (var index = 0; index < choiceParent.childCount; index++)
+            {
+                var childTransform = choiceParent.GetChild(index);
+                Destroy(childTransform.gameObject);
+            }
         }
     }
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 namespace RIEVES.GGJ2026.Runtime.Characters
 {
     [Serializable]
-    internal sealed class CharacterConversation
+    internal sealed class CharacterConversationData
     {
         [SerializeField]
-        private List<CharacterMessage> messages;
+        private List<CharacterMessageData> messages;
 
-        public IEnumerable<CharacterMessage> Messages => messages;
+        public IEnumerable<CharacterMessageData> Messages => messages;
     }
 }

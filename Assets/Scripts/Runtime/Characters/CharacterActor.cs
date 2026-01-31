@@ -35,7 +35,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private AgentSystem agentSystem;
 
-        public string Name => data.CharacterName;
+        public CharacterData CharacterData => data;
 
         private void Awake()
         {
@@ -103,8 +103,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             {
                 controller.StartConversation(this);
             }
-
-            args.Interactor.Deselect();
         }
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)

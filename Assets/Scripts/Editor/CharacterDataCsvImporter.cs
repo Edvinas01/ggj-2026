@@ -104,11 +104,11 @@ namespace RIEVES.GGJ2026.Editor
                 SetField(characterData, "frontTexture", frontTexture);
                 SetField(characterData, "backTexture", backTexture);
 
-                var messages = new List<CharacterMessage>();
+                var messages = new List<CharacterMessageData>();
 
                 foreach (var row in characterGroup)
                 {
-                    var message = new CharacterMessage();
+                    var message = new CharacterMessageData();
 
                     var messageType = CharacterMessageType.CorrectIncorrect;
                     if (Enum.TryParse<CharacterMessageType>(row[typeColumn], out var parsedMessageType))
@@ -144,7 +144,7 @@ namespace RIEVES.GGJ2026.Editor
                     messages.Add(message);
                 }
 
-                var conversation = new CharacterConversation();
+                var conversation = new CharacterConversationData();
                 SetField(conversation, "messages", messages);
                 Debug.Log($"Imported conversation {characterName} with {conversation.Messages.Count()} messages");
 

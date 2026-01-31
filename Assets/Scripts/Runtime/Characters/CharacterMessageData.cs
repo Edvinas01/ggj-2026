@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace RIEVES.GGJ2026.Runtime.Characters
 {
     [Serializable]
-    internal sealed class CharacterMessage
+    internal sealed class CharacterMessageData
     {
         [SerializeField]
         private CharacterMessageType messageType = CharacterMessageType.CorrectIncorrect;
