@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using CHARK.GameManagement;
 using InSun.JamOne.Core.Utilities;
+using RIEVES.GGJ2026.Runtime.Heat;
 using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
 using UnityEngine.Events;
@@ -40,6 +42,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private UnityEvent onRandomBlurbChoiceSelected;
 
+        private HeatSystem heatSystem;
+
         private int currentMessageCount;
         private int currentMessageMax;
 
@@ -48,6 +52,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public event Action OnConversationStarted;
 
         public event Action OnConversationStopped;
+
+        private void Awake()
+        {
+            heatSystem = GameManager.GetSystem<HeatSystem>();
+        }
 
         private void OnEnable()
         {
@@ -64,8 +73,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             conversingWith = character;
             currentMessageCount = 0;
 
-            // TODO: use heat system
-            currentMessageMax = Random.Range(1, maxMessagesPerConvo);
+            currentMessageMax = Random.Range(1, (int)(maxMessagesPerConvo * heatSystem.CurrentHeat));
 
             Converse(character);
         }
