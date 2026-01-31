@@ -17,6 +17,19 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private ResourceController resourceController;
 
+        [Header("Features")]
+        [Min(1)]
+        [SerializeField]
+        private int maxMessagesPerConvo = 3;
+
+        [Min(0)]
+        [SerializeField]
+        private int maxCorrectMessages = 1;
+
+        [Min(0)]
+        [SerializeField]
+        private int maxIncorrectMessages = 3;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onCorrectChoiceSelected;
@@ -26,6 +39,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [SerializeField]
         private UnityEvent onRandomBlurbChoiceSelected;
+
+        private int currentMessageCount;
+        private int currentMessageMax;
 
         public CharacterActor conversingWith { get; private set; }
 
@@ -46,8 +62,33 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public void StartConversation(CharacterActor character)
         {
             conversingWith = character;
+            currentMessageCount = 0;
 
-            var conversationData = character.CharacterData.Conversation;
+            // TODO: use heat system
+            currentMessageMax = Random.Range(1, maxMessagesPerConvo);
+
+            Converse(character);
+        }
+
+        public void StopConversation()
+        {
+            viewController.HideView();
+
+            if (conversingWith)
+            {
+                conversingWith.CharacterData.ConversationData.ConversedCount++;
+                conversingWith.ConversationStopped();
+                conversingWith = null;
+            }
+
+            currentMessageCount = 0;
+
+            OnConversationStopped?.Invoke();
+        }
+
+        private void Converse(CharacterActor character)
+        {
+            var conversationData = character.CharacterData.ConversationData;
             if (conversationData.ConversedCount <= 0)
             {
                 var correctIncorrect = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
@@ -55,7 +96,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 {
                     OnCorrectIncorrectConversation(character, message);
 
-                    conversationData.ConversedCount++;
+                    currentMessageCount++;
 
                     viewController.ShowView();
                     OnConversationStarted?.Invoke();
@@ -68,7 +109,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             {
                 OnRandomBlurbChoiceConversation(character, blurb);
 
-                conversationData.ConversedCount++;
+                currentMessageCount++;
 
                 viewController.ShowView();
                 OnConversationStarted?.Invoke();
@@ -78,18 +119,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             StopConversation();
         }
 
-        public void StopConversation()
-        {
-            viewController.HideView();
-
-            conversingWith?.ConversationStopped();
-            conversingWith = null;
-
-            OnConversationStopped?.Invoke();
-        }
-
         private void OnCorrectIncorrectConversation(CharacterActor character, CharacterMessageData message)
         {
+            var conversationData = character.CharacterData.ConversationData;
+            conversationData.RemoveMessage(message);
+
             var correctChoices = message.CorrectChoices
                 .OrderBy(_ => Random.value)
                 .Select(choice => new ConversationChoice(
@@ -98,7 +132,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                         messageType: message.MessageType
                     )
                 )
-                .Take(1);
+                .Take(maxCorrectMessages);
 
             var incorrectChoices = message.IncorrectChoices
                 .OrderBy(_ => Random.value)
@@ -108,7 +142,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                         messageType: message.MessageType
                     )
                 )
-                .Take(3);
+                .Take(maxIncorrectMessages);
 
             var choices = correctChoices
                 .Concat(incorrectChoices)
@@ -146,6 +180,14 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 {
                     if (choice.IsCorrect)
                     {
+                        var conversationData = conversingWith.CharacterData.ConversationData;
+                        var isMessagesLeft = conversationData.Messages.Any(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
+                        if (isMessagesLeft && currentMessageCount < currentMessageMax)
+                        {
+                            Converse(conversingWith);
+                            return;
+                        }
+
                         resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
                         onCorrectChoiceSelected.Invoke();
                     }

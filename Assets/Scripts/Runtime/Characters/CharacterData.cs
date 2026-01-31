@@ -44,6 +44,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public Texture2D BackTexture => backTexture;
 
-        public CharacterConversationData Conversation => conversation;
+        public CharacterConversationData ConversationData => conversation;
     }
 }

@@ -28,6 +28,18 @@ MonoBehaviour:
       - Nenoriu
       - "Eik i\u0161 \u010Dia"
       - "Ko \u010Dia \u017Eiuri"
+    - messageType: 0
+      content: Hehehe
+      correctChoices:
+      - Taip
+      incorrectChoices:
+      - Ne
+    - messageType: 0
+      content: Nu, ka tu?
+      correctChoices:
+      - NK
+      incorrectChoices:
+      - GG
     - messageType: 1
       content: "Mes jau kalbejom, eik is \u010Dia"
       correctChoices: []

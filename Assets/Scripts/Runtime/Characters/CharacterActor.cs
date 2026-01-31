@@ -126,7 +126,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public void RemoveMessage(CharacterMessageData message)
         {
-            runtimeData.Conversation.RemoveMessage(message);
+            runtimeData.ConversationData.RemoveMessage(message);
         }
 
         public void ConversationStopped()
