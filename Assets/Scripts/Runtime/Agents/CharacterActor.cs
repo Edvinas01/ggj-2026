@@ -232,8 +232,18 @@ namespace RIEVES.GGJ2026
                             var distanceSqr = (transform.position - CurrentTarget.transform.position).sqrMagnitude;
                             if (distanceSqr >= CurrentTarget.StayWithinRange * CurrentTarget.StayWithinRange)
                             {
-                                if (CurrentTarget != null && !MoveToPoint(CurrentTarget))
+                                if (!MoveToPoint(CurrentTarget))
                                     SetState(agentSystem.GetRandomState(this));
+                            }
+                            else
+                            {
+                                CurrentActivity = CurrentState switch
+                                {
+                                    CharacterState.Guarding => CharacterActivity.Guarding,
+                                    CharacterState.Dancing => CharacterActivity.Dancing,
+                                    CharacterState.Watching => CharacterActivity.Watching,
+                                    _ => CharacterActivity.Idling
+                                };
                             }
                         }
                     }
