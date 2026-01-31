@@ -249,7 +249,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{4a634434-d35f-42bf-92be-eb3cb6aa41b2}" />
-	<object class="SpatialiserEffect" id="{b5af43ee-3417-467d-9883-240f6ad209db}" />
+	<object class="SpatialiserEffect" id="{b5af43ee-3417-467d-9883-240f6ad209db}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{80eb81e8-cb18-4292-b844-621576b3b467}">
 		<property name="position">
 			<value>0</value>
