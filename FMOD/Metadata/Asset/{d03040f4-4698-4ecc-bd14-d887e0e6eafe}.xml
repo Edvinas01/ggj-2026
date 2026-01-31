@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{d03040f4-4698-4ecc-bd14-d887e0e6eafe}">
+		<property name="assetPath">
+			<value>Muzika/Lygis1/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+	</object>
+</objects>
