@@ -5,7 +5,7 @@
 			<value>SFX_ButtonStartGame</value>
 		</property>
 		<property name="outputFormat">
-			<value>5</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ca2bd608-a504-4240-baad-456c0c53c6ab}</destination>
@@ -397,7 +397,7 @@
 			<value>-10.5</value>
 		</property>
 		<property name="inputFormat">
-			<value>5</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{bf563a3d-6033-4855-8b90-1e28def9eb7f}</destination>
@@ -408,7 +408,7 @@
 			<value>-11.5</value>
 		</property>
 		<property name="inputFormat">
-			<value>5</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{fa547b38-eb2e-4666-9b10-21dc62667008}</destination>
@@ -458,7 +458,7 @@
 			<value>-11</value>
 		</property>
 		<property name="inputFormat">
-			<value>5</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{bf563a3d-6033-4855-8b90-1e28def9eb7f}</destination>
@@ -469,7 +469,7 @@
 			<value>-11.5</value>
 		</property>
 		<property name="inputFormat">
-			<value>5</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{fa547b38-eb2e-4666-9b10-21dc62667008}</destination>
