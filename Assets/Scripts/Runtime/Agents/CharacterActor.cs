@@ -319,7 +319,7 @@ namespace RIEVES.GGJ2026
 
         public void ConversationStopped()
         {
-            CurrentActivity = CharacterActivity.Idle;
+            CurrentActivity = CharacterActivity.Idling;
             onConversationStopped.Invoke();
         }
 
