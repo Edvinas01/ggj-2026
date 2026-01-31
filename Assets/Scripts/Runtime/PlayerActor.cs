@@ -2,12 +2,17 @@
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
 using RIEVES.GGJ2026.Runtime.Movement;
+using RIEVES.GGJ2026.Runtime.Popups;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime
 {
     internal sealed class PlayerActor : MonoBehaviour
     {
+        [Header("UI")]
+        [SerializeField]
+        private HoverPopupViewController hoverPopupController;
+
         [Header("Interaction")]
         [SerializeField]
         private Interactor interactor;
@@ -48,12 +53,13 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnInteractorHoverEntered(InteractorHoverEnteredArgs args)
         {
-            Debug.Log($"Player hover entered {args.Interactable.Name}", this);
+            hoverPopupController.TitleText = args.Interactable.Name;
+            hoverPopupController.ShowView();
         }
 
         private void OnInteractorHoverExited(InteractorHoverExitedArgs args)
         {
-            Debug.Log($"Player hover exited {args.Interactable.Name}", this);
+            hoverPopupController.HideView();
         }
 
         private void OnInteractorSelectEntered(InteractorSelectEnteredArgs args)
