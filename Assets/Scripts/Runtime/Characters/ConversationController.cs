@@ -12,6 +12,13 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 {
     internal sealed class ConversationController : MonoBehaviour
     {
+        public enum ConversationResult
+        {
+            Correct,
+            Incorrect,
+            Neutral,
+        }
+
         [Header("General")]
         [SerializeField]
         private ConversationViewController viewController;
@@ -41,6 +48,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [SerializeField]
         private UnityEvent onRandomBlurbChoiceSelected;
+
+        [SerializeField]
+        private UnityEvent onHuntChoiceSelected;
 
         private HeatSystem heatSystem;
 
@@ -78,22 +88,37 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             Converse(character);
         }
 
-        public void StopConversation(bool correct = true)
+        public void StopConversation(ConversationResult result)
         {
             viewController.HideView();
 
             if (conversingWith)
             {
                 conversingWith.CharacterData.ConversationData.ConversedCount++;
-                if (correct)
-                    conversingWith.ConversationStoppedCorrect();
-                else
-                    conversingWith.ConversationStoppedIncorrect();
 
-                conversingWith = null;
+                switch (result)
+                {
+                    case ConversationResult.Correct:
+                    {
+                        conversingWith.ConversationStoppedCorrect();
+                        break;
+                    }
+                    case ConversationResult.Incorrect:
+                    {
+                        conversingWith.ConversationStoppedIncorrect();
+                        break;
+                    }
+                    case ConversationResult.Neutral:
+                    default:
+                    {
+                        conversingWith.ConversationStoppedNeutral();
+                        break;
+                    }
+                }
             }
 
             currentMessageCount = 0;
+            conversingWith = null;
 
             OnConversationStopped?.Invoke();
         }
@@ -101,6 +126,21 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private void Converse(CharacterActor character)
         {
             var conversationData = character.CharacterData.ConversationData;
+            if (character.CurrentState == CharacterState.Hunting)
+            {
+                if (conversationData.Messages.TryGetRandom(out var message))
+                {
+                    OnHuntConversation(character, message);
+
+                    currentMessageCount++;
+
+                    viewController.ShowView();
+                    OnConversationStarted?.Invoke();
+
+                    return;
+                }
+            }
+
             if (conversationData.ConversedCount <= 0)
             {
                 var correctIncorrect = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
@@ -128,7 +168,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 return;
             }
 
-            StopConversation(false);
+            StopConversation(ConversationResult.Neutral);
         }
 
         private void OnCorrectIncorrectConversation(CharacterActor character, CharacterMessageData message)
@@ -184,6 +224,22 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             );
         }
 
+        private void OnHuntConversation(CharacterActor character, CharacterMessageData message)
+        {
+            viewController.Initialize(
+                title: character.CharacterData.CharacterName,
+                content: message.HuntMessage,
+                choices: new[]
+                {
+                    new ConversationChoice(
+                        messageType: CharacterMessageType.Hunter,
+                        isCorrect: false,
+                        content: null
+                    ),
+                }
+            );
+        }
+
         private void OnChoiceSelected(ConversationChoice choice)
         {
             switch (choice.MessageType)
@@ -209,16 +265,25 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                             onIncorrectChoiceSelected.Invoke();
                         }
 
+                        StopConversation(choice.IsCorrect ? ConversationResult.Correct : ConversationResult.Incorrect);
                         break;
                     }
                 case CharacterMessageType.RandomBlurb:
                     {
                         onRandomBlurbChoiceSelected.Invoke();
+                        StopConversation(ConversationResult.Neutral);
                         break;
+                    }
+                case CharacterMessageType.Hunter:
+                    {
+                        resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
+                        onHuntChoiceSelected.Invoke();
+                        StopConversation(ConversationResult.Incorrect);
+                        return;
                     }
             }
 
-            StopConversation(choice.IsCorrect);
+            StopConversation(ConversationResult.Neutral);
         }
     }
 }

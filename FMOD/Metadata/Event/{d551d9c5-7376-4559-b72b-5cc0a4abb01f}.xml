@@ -57,10 +57,17 @@
 			<destination>{e54f6af8-eaa0-4b7f-bd7d-1b9e8a5e526e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{483b28a8-33f9-4b76-88b6-e950c1048eb4}</destination>
+			<destination>{3a49f36f-dbae-432e-b66e-072d106d79db}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{02306c3f-37f0-422b-8fa6-c76da3267365}" />
+	<object class="EventAutomatableProperties" id="{02306c3f-37f0-422b-8fa6-c76da3267365}">
+		<property name="minimumDistance">
+			<value>10</value>
+		</property>
+		<property name="maximumDistance">
+			<value>100</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{4855fb58-7af8-4a9e-954a-4b1cd10cb638}" />
 	<object class="GroupTrack" id="{f74bca68-149d-4f24-9546-173ae6ac9ce3}">
 		<relationship name="automationTracks">
@@ -134,6 +141,7 @@
 			<destination>{5ef1d97e-7910-4f57-8fd9-853070256954}</destination>
 			<destination>{2919e109-9d57-449b-8a11-056554eb2653}</destination>
 			<destination>{99095a7d-2134-46a4-b1e4-1462005e98fe}</destination>
+			<destination>{480ca04d-4f20-44b2-b4d6-4035c1259eb0}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{660cc395-e100-48c0-959f-e9aff6c71748}">
@@ -224,6 +232,11 @@
 			<destination>{bad9adb4-1918-440a-97d7-179854456ac1}</destination>
 		</relationship>
 	</object>
+	<object class="SingleSound" id="{480ca04d-4f20-44b2-b4d6-4035c1259eb0}">
+		<relationship name="audioFile">
+			<destination>{2ba977ec-80ed-43bd-92a8-d47d5f1b84ae}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{b607670b-b2c6-4c77-a6cf-66a9f4360f51}">
 		<relationship name="startPoint">
 			<destination>{db301c03-a75e-428d-abfc-57b32a68a925}</destination>
@@ -265,7 +278,11 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{1980db5a-2dc6-406a-b98a-b8da8d074782}" />
-	<object class="SpatialiserEffect" id="{f2039603-470a-48a0-9f36-484742b1d036}" />
+	<object class="SpatialiserEffect" id="{f2039603-470a-48a0-9f36-484742b1d036}">
+		<property name="panBlend">
+			<value>0.5</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{db301c03-a75e-428d-abfc-57b32a68a925}">
 		<property name="position">
 			<value>0</value>

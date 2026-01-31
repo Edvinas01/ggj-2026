@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{2ba977ec-80ed-43bd-92a8-d47d5f1b84ae}">
 		<property name="assetPath">
-			<value>Muzika/Lygis1/Hiperbolė - Laužai.mp3</value>
+			<value>Muzika/Lygis3/Hiperbolė - Laužai.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
