@@ -21,9 +21,10 @@ namespace RIEVES.GGJ2026
                 desiredProportions[state] = 0;
             }
 
-            desiredProportions[CharacterState.Idle] = 1;
+            desiredProportions[CharacterState.Idling] = 1;
             desiredProportions[CharacterState.Dancing] = 1;
-            desiredProportions[CharacterState.GuardingPointOfInterest] = 3;
+            desiredProportions[CharacterState.Watching] = 2;
+            desiredProportions[CharacterState.Guarding] = 3;
         }
 
         public PointOfInterest PickRandomWaypoint(InterestType interestType)
@@ -79,7 +80,7 @@ namespace RIEVES.GGJ2026
 
             float totalWeight = weights.Sum();
             if (totalWeight <= 0)
-                return CharacterState.Idle;
+                return CharacterState.Idling;
 
             weights.Shuffle();
             float randomValue = Random.Range(0, totalWeight);
@@ -92,7 +93,7 @@ namespace RIEVES.GGJ2026
                 randomValue -= weights[i];
             }
 
-            return CharacterState.Idle;
+            return CharacterState.Idling;
         }
 
         public void AddPointOfInterest(PointOfInterest poi)

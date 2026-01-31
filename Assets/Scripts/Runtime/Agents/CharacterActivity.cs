@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace RIEVES.GGJ2026
 {
-    public enum CharacterState
+    public enum CharacterActivity
     {
-        Idling,
-        Watching,
-        Dancing,
-        Guarding,
-        Talking,
+        Walking,
         Hunting,
+        Idling,
+        Dancing,
+        Watching,
+        Guarding,
     }
 }

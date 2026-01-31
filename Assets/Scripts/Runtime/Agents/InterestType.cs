@@ -2,7 +2,7 @@ namespace RIEVES.GGJ2026
 {
     public enum InterestType
     {
-        Idle,
+        Watch,
         Guard,
         Dancing,
         Patrol,
