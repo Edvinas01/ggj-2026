@@ -5,6 +5,7 @@ using RIEVES.GGJ2026.Runtime.Characters;
 using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
 using RIEVES.GGJ2026.Runtime.Popups;
+using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,10 @@ namespace RIEVES.GGJ2026.Runtime
 {
     internal sealed class PlayerActor : MonoBehaviour
     {
+        [Header("Resources")]
+        [SerializeField]
+        private ResourceController resourceController;
+
         [Header("UI")]
         [SerializeField]
         private HoverPopupViewController defaultHoverPopupController;
@@ -36,8 +41,6 @@ namespace RIEVES.GGJ2026.Runtime
 
         private ICursorSystem cursorSystem;
 
-        public MovementController MovementController => movementController;
-
         private void Awake()
         {
             cursorSystem = GameManager.GetSystem<ICursorSystem>();
@@ -45,6 +48,8 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnEnable()
         {
+            resourceController.OnAlcoholChanged += OnAlcoholChanged;
+
             interactor.OnHoverEntered += OnInteractorHoverEntered;
             interactor.OnHoverExited += OnInteractorHoverExited;
             interactor.OnSelectEntered += OnInteractorSelectEntered;
@@ -56,6 +61,8 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnDisable()
         {
+            resourceController.OnAlcoholChanged -= OnAlcoholChanged;
+
             interactor.OnHoverEntered -= OnInteractorHoverEntered;
             interactor.OnHoverExited -= OnInteractorHoverExited;
             interactor.OnSelectEntered -= OnInteractorSelectEntered;
@@ -68,6 +75,10 @@ namespace RIEVES.GGJ2026.Runtime
         private void Start()
         {
             cursorSystem.LockCursor();
+        }
+
+        private void OnAlcoholChanged(AlcoholChangedArgs args)
+        {
         }
 
         private void OnInteractorHoverEntered(InteractorHoverEnteredArgs args)
@@ -104,23 +115,6 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnInteractorSelectEntered(InteractorSelectEnteredArgs args)
         {
-            if (args.Interactable is not Component component)
-            {
-                return;
-            }
-
-            var character = component.GetComponentInParent<CharacterActor>();
-            if (character)
-            {
-                // TODO: start chat
-                return;
-            }
-
-            var item = component.GetComponentInParent<ItemActor>();
-            if (item)
-            {
-                // TODO: increase alko meter
-            }
         }
 
         private void OnInteractorSelectExited(InteractorSelectExitedArgs args)

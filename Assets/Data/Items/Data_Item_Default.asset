@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b03efe80b6b47789dd9b9c2a43396e8, type: 3}
   m_Name: Data_Item_Default
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Items.ItemData
+  itemName: Default
+  value: 5

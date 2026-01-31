@@ -79,7 +79,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private void OnInteractableSelectEntered(InteractableSelectEnteredArgs args)
         {
-            Debug.Log($"Character select entered {name}", this);
+            // TODO: start chat
+            // var controller = component.GetComponentInParent<ConversationController>();
+            // if (controller)
+            // {
+            //     return;
+            // }
         }
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)

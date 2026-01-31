@@ -10,5 +10,15 @@ namespace RIEVES.GGJ2026.Runtime.Items
     )]
     internal sealed class ItemData : ScriptableObject
     {
+        [SerializeField]
+        private string itemName;
+
+        [Min(0)]
+        [SerializeField]
+        private int value = 5;
+
+        public string ItemName => itemName;
+
+        public int Value => value;
     }
 }
