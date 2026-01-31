@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Heat.HeatSystem
   heatPerSecond: 0.01
   heatMultiplier: 1
+  currentHeat: 1
 --- !u!1 &1856781029335889694
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2593218464680708001
 RectTransform:
   m_ObjectHideFlags: 0
