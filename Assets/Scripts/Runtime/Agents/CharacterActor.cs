@@ -126,7 +126,7 @@ namespace RIEVES.GGJ2026
                         TransitioningAnimationState = newState;
                         changingFromState = true;
                         changingToState = false;
-                        navMeshAgent.enabled = false;
+                        StopMovement();
                         return false;
                     }
                 }
@@ -143,7 +143,7 @@ namespace RIEVES.GGJ2026
                         stateChangeTimer = Time.time + oldTrigger.EndDelay;
                         TransitioningAnimationState = newState;
                         changingFromState = true;
-                        navMeshAgent.enabled = false;
+                        StopMovement();
                         return false;
                     }
                 }
@@ -161,7 +161,7 @@ namespace RIEVES.GGJ2026
                         TransitioningAnimationState = newState;
                         changingToState = true;
                         changingFromState = true;
-                        navMeshAgent.enabled = false;
+                        StopMovement();
                         return false;
                     }
                 }
@@ -193,7 +193,6 @@ namespace RIEVES.GGJ2026
             SetPatienceDuration(newState);
             CurrentActivity = CharacterActivity.Idling;
             CurrentTarget = null;
-            navMeshAgent.enabled = true;
         }
 
         private void Update()
@@ -354,7 +353,7 @@ namespace RIEVES.GGJ2026
                 return true;
             }
 
-            navMeshAgent.enabled = false;
+            StopMovement();
             return false;
         }
 
@@ -364,6 +363,12 @@ namespace RIEVES.GGJ2026
             var characterPosition = rigidBody.position;
             var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
             movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
+        }
+
+        void StopMovement()
+        {
+            navMeshAgent.enabled = false;
+            movementPositionInput.ClearPosition();
         }
 
         private void LateUpdate()
@@ -399,10 +404,15 @@ namespace RIEVES.GGJ2026
             runtimeData.ConversationData.RemoveMessage(message);
         }
 
+        bool wasMovingBeforeConversation = false;
+
         public void ConversationStarted()
         {
             isInteractingWithPlayer = true;
-            navMeshAgent.enabled = false;
+            wasMovingBeforeConversation = navMeshAgent.enabled;
+            if (wasMovingBeforeConversation)
+                StopMovement();
+
             SetAnimationState(CharacterAnimationState.Talking);
             onConversationStarted.Invoke();
         }
@@ -410,7 +420,12 @@ namespace RIEVES.GGJ2026
         public void ConversationStoppedCorrect()
         {
             isInteractingWithPlayer = false;
-            navMeshAgent.enabled = true;
+            if (wasMovingBeforeConversation && CurrentTarget != null)
+            {
+                navMeshAgent.enabled = true;
+                StartMovement(CurrentTarget);
+            }
+
             SetAnimationState(CharacterAnimationState.GoodResponse);
             onConversationStopped.Invoke();
         }
@@ -418,15 +433,22 @@ namespace RIEVES.GGJ2026
         public void ConversationStoppedIncorrect()
         {
             isInteractingWithPlayer = false;
-            navMeshAgent.enabled = true;
-            SetAnimationState(CharacterAnimationState.BadResponse);
+            if (wasMovingBeforeConversation && CurrentTarget != null)
+
+
+                SetAnimationState(CharacterAnimationState.BadResponse);
             onConversationStopped.Invoke();
         }
 
         public void ConversationStoppedNeutral()
         {
             isInteractingWithPlayer = false;
-            navMeshAgent.enabled = true;
+            if (wasMovingBeforeConversation && CurrentTarget != null)
+            {
+                navMeshAgent.enabled = true;
+                StartMovement(CurrentTarget);
+            }
+
             SetAnimationState(CharacterAnimationState.NeutralResponse);
             onConversationStopped.Invoke();
         }
