@@ -7,7 +7,7 @@ namespace RIEVES.GGJ2026
     [System.Serializable]
     public class StateChangeTriggers
     {
-        public CharacterState State;
+        public CharacterAnimationState State;
         public UnityEvent OnStateStarting;
         public float StartDelay;
         public UnityEvent OnStateEnding;
