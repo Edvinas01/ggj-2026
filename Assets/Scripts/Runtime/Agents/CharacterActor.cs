@@ -168,6 +168,7 @@ namespace RIEVES.GGJ2026
             changingFromState = false;
             changingToState = false;
             CurrentAnimationState = newState;
+            Debug.Log($"Character '{name}' changed animation state to {newState}. 4");
             return true;
         }
 
@@ -197,7 +198,6 @@ namespace RIEVES.GGJ2026
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
                 stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
-                Debug.Log($"Changing state due to patience timeout: {currentTargetState} -> {nextState}");
                 if (currentTargetState != nextState)
                     SetState(nextState);
             }
@@ -362,10 +362,17 @@ namespace RIEVES.GGJ2026
             runtimeData.ConversationData.RemoveMessage(message);
         }
 
-        public void ConversationStopped()
+        public void ConversationStoppedCorrect()
         {
             isInteractingWithPlayer = false;
-            SetAnimationState(CharacterAnimationState.Talking);
+            SetAnimationState(CharacterAnimationState.GoodResponse);
+            onConversationStopped.Invoke();
+        }
+
+        public void ConversationStoppedIncorrect()
+        {
+            isInteractingWithPlayer = false;
+            SetAnimationState(CharacterAnimationState.BadResponse);
             onConversationStopped.Invoke();
         }
 

@@ -78,14 +78,18 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             Converse(character);
         }
 
-        public void StopConversation()
+        public void StopConversation(bool correct = true)
         {
             viewController.HideView();
 
             if (conversingWith)
             {
                 conversingWith.CharacterData.ConversationData.ConversedCount++;
-                conversingWith.ConversationStopped();
+                if (correct)
+                    conversingWith.ConversationStoppedCorrect();
+                else
+                    conversingWith.ConversationStoppedIncorrect();
+
                 conversingWith = null;
             }
 
@@ -124,7 +128,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 return;
             }
 
-            StopConversation();
+            StopConversation(false);
         }
 
         private void OnCorrectIncorrectConversation(CharacterActor character, CharacterMessageData message)
@@ -185,36 +189,36 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             switch (choice.MessageType)
             {
                 case CharacterMessageType.CorrectIncorrect:
-                {
-                    if (choice.IsCorrect)
                     {
-                        var conversationData = conversingWith.CharacterData.ConversationData;
-                        var isMessagesLeft = conversationData.Messages.Any(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
-                        if (isMessagesLeft && currentMessageCount < currentMessageMax)
+                        if (choice.IsCorrect)
                         {
-                            Converse(conversingWith);
-                            return;
+                            var conversationData = conversingWith.CharacterData.ConversationData;
+                            var isMessagesLeft = conversationData.Messages.Any(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
+                            if (isMessagesLeft && currentMessageCount < currentMessageMax)
+                            {
+                                Converse(conversingWith);
+                                return;
+                            }
+
+                            resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
+                            onCorrectChoiceSelected.Invoke();
+                        }
+                        else
+                        {
+                            resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
+                            onIncorrectChoiceSelected.Invoke();
                         }
 
-                        resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
-                        onCorrectChoiceSelected.Invoke();
+                        break;
                     }
-                    else
-                    {
-                        resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
-                        onIncorrectChoiceSelected.Invoke();
-                    }
-
-                    break;
-                }
                 case CharacterMessageType.RandomBlurb:
-                {
-                    onRandomBlurbChoiceSelected.Invoke();
-                    break;
-                }
+                    {
+                        onRandomBlurbChoiceSelected.Invoke();
+                        break;
+                    }
             }
 
-            StopConversation();
+            StopConversation(choice.IsCorrect);
         }
     }
 }
