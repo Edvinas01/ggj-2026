@@ -69,27 +69,30 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
         {
-            Debug.Log($"Character hover entered {name}", this);
         }
 
         private void OnInteractableHoverExited(InteractableHoverExitedArgs args)
         {
-            Debug.Log($"Character hover exited {name}", this);
         }
 
         private void OnInteractableSelectEntered(InteractableSelectEnteredArgs args)
         {
-            // TODO: start chat
-            // var controller = component.GetComponentInParent<ConversationController>();
-            // if (controller)
-            // {
-            //     return;
-            // }
+            if (args.Interactor is not Component component)
+            {
+                return;
+            }
+
+            var controller = component.GetComponentInParent<ConversationController>();
+            if (controller)
+            {
+                controller.StartConversation(this);
+            }
+
+            args.Interactor.Deselect();
         }
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
         {
-            Debug.Log($"Character select exited {name}", this);
         }
     }
 }

@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 6100799802290263639}
   - component: {fileID: 8557895804664849490}
   - component: {fileID: 5901985342004967491}
+  - component: {fileID: 3720372723344079548}
   - component: {fileID: 2224434183499480555}
   - component: {fileID: 5391179737800463149}
   m_Layer: 6
@@ -590,13 +591,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb87be592c2c4c01a5f03e7f556c4ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.PlayerActor
+  interactor: {fileID: 5391179737800463149}
+  conversationController: {fileID: 3720372723344079548}
   resourceController: {fileID: 8557895804664849490}
+  movementController: {fileID: 5901985342004967491}
+  interactInputAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   defaultHoverPopupController: {fileID: 9029458643344921814}
   characterHoverPopupController: {fileID: 4097770793118596070}
   itemHoverPopupController: {fileID: 2130607430814783093}
-  interactor: {fileID: 5391179737800463149}
-  movementController: {fileID: 5901985342004967491}
-  interactInputAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &8557895804664849490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +657,18 @@ MonoBehaviour:
   onMoveExited:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3720372723344079548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768234594321391368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48258c1543cd4018a6978a2b7c5a7657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
 --- !u!114 &2224434183499480555
 MonoBehaviour:
   m_ObjectHideFlags: 0

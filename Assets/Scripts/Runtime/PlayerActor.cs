@@ -13,9 +13,25 @@ namespace RIEVES.GGJ2026.Runtime
 {
     internal sealed class PlayerActor : MonoBehaviour
     {
+        [Header("Interaction")]
+        [SerializeField]
+        private Interactor interactor;
+
+        [Header("Conversations")]
+        [SerializeField]
+        private ConversationController conversationController;
+
         [Header("Resources")]
         [SerializeField]
         private ResourceController resourceController;
+
+        [Header("Movement")]
+        [SerializeField]
+        private MovementController movementController;
+
+        [Header("Inputs")]
+        [SerializeField]
+        private InputActionReference interactInputAction;
 
         [Header("UI")]
         [SerializeField]
@@ -26,18 +42,6 @@ namespace RIEVES.GGJ2026.Runtime
 
         [SerializeField]
         private HoverPopupViewController itemHoverPopupController;
-
-        [Header("Interaction")]
-        [SerializeField]
-        private Interactor interactor;
-
-        [Header("Movement")]
-        [SerializeField]
-        private MovementController movementController;
-
-        [Header("Inputs")]
-        [SerializeField]
-        private InputActionReference interactInputAction;
 
         private ICursorSystem cursorSystem;
 
@@ -131,10 +135,6 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnInteractCanceled(InputAction.CallbackContext context)
         {
-            if (interactor.IsSelecting)
-            {
-                interactor.Deselect();
-            }
         }
 
         private void OnDestroy()
