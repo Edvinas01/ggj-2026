@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
-  m_Name: Data_Character_Default
+  m_Name: HunterData
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
   characterName: Defaultis
   addsAlcohol: 10
@@ -53,4 +53,7 @@ MonoBehaviour:
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
-  activityPatience: []
+  activityPatience:
+  - activity: 5
+    minTime: 200
+    maxTime: 400
