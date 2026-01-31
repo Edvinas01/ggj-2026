@@ -1742,6 +1742,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1267336869467435128, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 40b792b1f0c1f46468c3a208a9df437a, type: 2}
+    - target: {fileID: 1267336869467435128, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
       propertyPath: onStateChange.Array.data[1].EndDelay
       value: 0
       objectReference: {fileID: 0}
