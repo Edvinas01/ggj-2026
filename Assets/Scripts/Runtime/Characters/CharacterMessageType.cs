@@ -4,5 +4,6 @@
     {
         CorrectIncorrect,
         RandomBlurb,
+        Hunter,
     }
 }
