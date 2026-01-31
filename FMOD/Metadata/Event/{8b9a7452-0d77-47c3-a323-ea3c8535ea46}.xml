@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{8b9a7452-0d77-47c3-a323-ea3c8535ea46}">
 		<property name="name">
-			<value>ButtonHover</value>
+			<value>SFX_ButtonHover</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
