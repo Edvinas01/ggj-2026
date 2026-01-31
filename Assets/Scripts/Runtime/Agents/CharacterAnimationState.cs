@@ -11,6 +11,7 @@ namespace RIEVES.GGJ2026
         Talking,
         BadResponse,
         GoodResponse,
+        NeutralResponse,
         Walking,
         Hunting,
     }

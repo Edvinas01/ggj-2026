@@ -128,6 +128,7 @@ namespace RIEVES.GGJ2026
                         TransitioningAnimationState = newState;
                         changingFromState = true;
                         changingToState = false;
+                        navMeshAgent.enabled = false;
                         return false;
                     }
                 }
@@ -144,6 +145,7 @@ namespace RIEVES.GGJ2026
                         stateChangeTimer = Time.time + oldTrigger.EndDelay;
                         TransitioningAnimationState = newState;
                         changingFromState = true;
+                        navMeshAgent.enabled = false;
                         return false;
                     }
                 }
@@ -161,6 +163,7 @@ namespace RIEVES.GGJ2026
                         TransitioningAnimationState = newState;
                         changingToState = true;
                         changingFromState = true;
+                        navMeshAgent.enabled = false;
                         return false;
                     }
                 }
@@ -178,6 +181,7 @@ namespace RIEVES.GGJ2026
             stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
             CurrentActivity = CharacterActivity.Idling;
             CurrentTarget = null;
+            navMeshAgent.enabled = true;
         }
 
         private void Update()
@@ -192,7 +196,6 @@ namespace RIEVES.GGJ2026
 
             if (isInteractingWithPlayer)
             {
-                navMeshAgent.enabled = false;
                 RotateTowards(interactingWith.position);
                 return;
             }
@@ -228,7 +231,7 @@ namespace RIEVES.GGJ2026
                                     InterestType.Dancing;
 
                             var newTarget = agentSystem.PickRandomWaypoint(targetType);
-                            if (newTarget != null && !MoveToPoint(newTarget))
+                            if (newTarget != null && !StartMovement(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                         else if (CurrentActivity != CharacterActivity.Walking)
@@ -236,7 +239,7 @@ namespace RIEVES.GGJ2026
                             var distanceSqr = (transform.position - CurrentTarget.transform.position).sqrMagnitude;
                             if (distanceSqr >= CurrentTarget.StayWithinRange * CurrentTarget.StayWithinRange)
                             {
-                                if (!MoveToPoint(CurrentTarget))
+                                if (!StartMovement(CurrentTarget))
                                     SetState(agentSystem.GetRandomState(this));
                             }
                             else
@@ -257,7 +260,7 @@ namespace RIEVES.GGJ2026
                         if (CurrentTarget == null || CurrentActivity != CharacterActivity.Hunting)
                         {
                             var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                            if (newTarget != null && !MoveToPoint(newTarget))
+                            if (newTarget != null && !StartMovement(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                     }
@@ -298,12 +301,10 @@ namespace RIEVES.GGJ2026
                         break;
                     }
                 case CharacterActivity.Idling:
-                    navMeshAgent.enabled = false;
                     SetAnimationState(CharacterAnimationState.Idling);
                     break;
                 default:
                     {
-                        navMeshAgent.enabled = false;
                         if (CurrentTarget != null && CurrentTarget.Facing)
                         {
                             RotateTowards(CurrentTarget.transform.position);
@@ -322,10 +323,27 @@ namespace RIEVES.GGJ2026
             }
         }
 
+        bool StartMovement(PointOfInterest target)
+        {
+            CurrentTarget = null;
+            navMeshAgent.enabled = true;
+
+            if (NavMesh.SamplePosition(target.transform.position, out var hit, 10f, NavMesh.AllAreas))
+            {
+                CurrentTarget = target;
+                navMeshAgent.SetDestination(hit.position);
+                CurrentActivity = CurrentState == CharacterState.Hunting ? CharacterActivity.Hunting : CharacterActivity.Walking;
+                SetAnimationState(CurrentState == CharacterState.Hunting ? CharacterAnimationState.Hunting : CharacterAnimationState.Walking);
+                return true;
+            }
+
+            navMeshAgent.enabled = false;
+            return false;
+        }
+
         void UpdateMovement()
         {
             navMeshAgent.enabled = true;
-
             var characterPosition = rigidBody.position;
             var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
             movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
@@ -339,22 +357,6 @@ namespace RIEVES.GGJ2026
 
             var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
             rigidBody.rotation = Quaternion.Slerp(rigidBody.rotation, targetRotation, Time.deltaTime * 5f);
-        }
-
-        bool MoveToPoint(PointOfInterest target)
-        {
-            CurrentTarget = null;
-            navMeshAgent.enabled = true;
-
-            if (NavMesh.SamplePosition(target.transform.position, out var hit, 10f, NavMesh.AllAreas))
-            {
-                CurrentTarget = target;
-                navMeshAgent.SetDestination(hit.position);
-                CurrentActivity = CurrentState == CharacterState.Hunting ? CharacterActivity.Hunting : CharacterActivity.Walking;
-                SetAnimationState(CurrentState == CharacterState.Hunting ? CharacterAnimationState.Hunting : CharacterAnimationState.Walking);
-                return true;
-            }
-            return false;
         }
 
         private void LateUpdate()
@@ -380,9 +382,18 @@ namespace RIEVES.GGJ2026
             runtimeData.ConversationData.RemoveMessage(message);
         }
 
+        public void ConversationStarted()
+        {
+            isInteractingWithPlayer = true;
+            navMeshAgent.enabled = false;
+            SetAnimationState(CharacterAnimationState.Talking);
+            onConversationStarted.Invoke();
+        }
+
         public void ConversationStoppedCorrect()
         {
             isInteractingWithPlayer = false;
+            navMeshAgent.enabled = true;
             SetAnimationState(CharacterAnimationState.GoodResponse);
             onConversationStopped.Invoke();
         }
@@ -390,7 +401,16 @@ namespace RIEVES.GGJ2026
         public void ConversationStoppedIncorrect()
         {
             isInteractingWithPlayer = false;
+            navMeshAgent.enabled = true;
             SetAnimationState(CharacterAnimationState.BadResponse);
+            onConversationStopped.Invoke();
+        }
+
+        public void ConversationStoppedNeutral()
+        {
+            isInteractingWithPlayer = false;
+            navMeshAgent.enabled = true;
+            SetAnimationState(CharacterAnimationState.NeutralResponse);
             onConversationStopped.Invoke();
         }
 
@@ -412,11 +432,9 @@ namespace RIEVES.GGJ2026
             var controller = component.GetComponentInParent<ConversationController>();
             if (controller)
             {
-                isInteractingWithPlayer = true;
                 interactingWith = component.transform;
-                SetAnimationState(CharacterAnimationState.Talking);
                 controller.StartConversation(this);
-                onConversationStarted.Invoke();
+                ConversationStarted();
             }
         }
 
