@@ -2,6 +2,7 @@
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Input;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
+using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Runtime.Characters;
 using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
@@ -46,11 +47,13 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
         private ICursorSystem cursorSystem;
         private IInputSystem inputSystem;
+        private ISceneSystem sceneSystem;
 
         private void Awake()
         {
             cursorSystem = GameManager.GetSystem<ICursorSystem>();
             inputSystem = GameManager.GetSystem<IInputSystem>();
+            sceneSystem = GameManager.GetSystem<ISceneSystem>();
         }
 
         private void OnEnable()
@@ -97,6 +100,16 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
         private void OnAlcoholChanged(AlcoholChangedArgs args)
         {
+            if (args.Ratio <= 0f)
+            {
+                sceneSystem.LoadGameOverScene();
+                return;
+            }
+
+            if (args.Ratio >= 1f)
+            {
+                sceneSystem.LoadGameVictoryScene();
+            }
         }
 
         private void OnConversationStarted()

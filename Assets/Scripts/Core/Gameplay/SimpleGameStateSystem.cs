@@ -80,7 +80,6 @@ namespace RIEVES.GGJ2026.Core.Gameplay
 
         private static void OnStateChanged(GameState statePrev, GameState stateNext)
         {
-            Debug.Log($"New state {stateNext?.Name}");
         }
 
 
