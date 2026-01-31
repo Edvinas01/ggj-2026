@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{30ad60fc-4c9d-4620-ba0d-a9ac7f667934}">
 		<property name="assetPath">
-			<value>Zbigniew Wodecki/03 Wieczor juz.mp3</value>
+			<value>Muzika/Lygis2/03 Wieczor juz.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

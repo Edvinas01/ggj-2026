@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{c08e025a-a952-4dcd-ba16-046f2db52116}">
 		<property name="assetPath">
-			<value>Zbigniew Wodecki/11 Partyjka.mp3</value>
+			<value>Muzika/Lygis3/11 Partyjka.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
