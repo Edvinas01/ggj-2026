@@ -1,4 +1,5 @@
-﻿using RIEVES.GGJ2026.Core.Constants;
+﻿using System.Collections.Generic;
+using RIEVES.GGJ2026.Core.Constants;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
@@ -30,6 +31,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private Texture2D backTexture;
 
+        [SerializeField]
+        private List<Texture2D> handTextures;
+
         [Header("Chatting")]
         [SerializeField]
         private CharacterConversationData conversation;
@@ -43,6 +47,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public Texture2D FrontTexture => frontTexture;
 
         public Texture2D BackTexture => backTexture;
+
+        public IEnumerable<Texture2D> HandTextures => handTextures;
 
         public CharacterConversationData ConversationData => conversation;
     }
