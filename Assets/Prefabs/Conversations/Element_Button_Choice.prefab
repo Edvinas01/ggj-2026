@@ -376,7 +376,7 @@ MonoBehaviour:
   startScale: {x: 1, y: 1, z: 1}
   startScaleMultiplier: 1
   isTweenToEndScale: 1
-  endScale: {x: 1.1, y: 1.1, z: 1.1}
+  endScale: {x: 1.05, y: 1.05, z: 1.05}
   ease: 24
   duration: 0.3
   randomDurationOffset: 0
