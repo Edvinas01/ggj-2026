@@ -1,4 +1,5 @@
 ﻿using CHARK.GameManagement;
+using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Pausing;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Core.Views;
@@ -17,6 +18,7 @@ namespace RIEVES.GGJ2026.Core.Menus
         [SerializeField]
         private bool isPauseOnShow;
 
+        private ICursorSystem cursorSystem;
         private ISceneSystem sceneSystem;
         private IPauseSystem pauseSystem;
 
@@ -24,6 +26,7 @@ namespace RIEVES.GGJ2026.Core.Menus
         {
             base.Awake();
 
+            cursorSystem = GameManager.GetSystem<ICursorSystem>();
             sceneSystem = GameManager.GetSystem<ISceneSystem>();
             pauseSystem = GameManager.GetSystem<IPauseSystem>();
         }
@@ -114,6 +117,8 @@ namespace RIEVES.GGJ2026.Core.Menus
 
         private void OnViewShown()
         {
+            cursorSystem.UnLockCursor();
+
             if (isPauseOnShow)
             {
                 pauseSystem.PauseGame();
@@ -122,6 +127,8 @@ namespace RIEVES.GGJ2026.Core.Menus
 
         private void OnViewHidden()
         {
+            cursorSystem.LockCursor();
+
             if (isPauseOnShow)
             {
                 pauseSystem.ResumeGame();
