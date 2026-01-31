@@ -37,12 +37,18 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private CinemachineCamera cinemachineCamera;
 
         [SerializeField]
+        private CinemachineImpulseSource cinemachineImpulse;
+
+        [SerializeField]
         [Min(0f)]
         private float zoomInSpeed = 8f;
 
         [SerializeField]
         [Min(0f)]
         private float zoomInFov = 20f;
+
+        [SerializeField]
+        private Vector3 cameraShakeForce = new(0f, 0f, -1f);
 
         [Header("Inputs")]
         [SerializeField]
@@ -145,6 +151,11 @@ namespace RIEVES.GGJ2026.Runtime.Player
             if (args.Ratio >= 1f)
             {
                 sceneSystem.LoadGameVictoryScene();
+            }
+
+            if (args.ValuePrev > args.ValueNext)
+            {
+                cinemachineImpulse.GenerateImpulse(cameraShakeForce);
             }
         }
 
