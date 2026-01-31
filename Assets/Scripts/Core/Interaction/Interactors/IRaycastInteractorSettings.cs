@@ -2,7 +2,7 @@
 
 namespace RIEVES.GGJ2026.Core.Interaction.Interactors
 {
-    internal interface IRaycastInteractorSettings
+    public interface IRaycastInteractorSettings
     {
         public float RaycastDistance { get; }
 

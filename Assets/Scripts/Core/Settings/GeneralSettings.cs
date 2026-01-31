@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RIEVES.GGJ2026.Core.Settings
 {
     [CreateAssetMenu(
-        fileName = CreateAssetMenuConstants.BaseFileName + "/Data_Settings_General",
+        fileName = CreateAssetMenuConstants.BaseFileName + "Data_Settings_General",
         menuName = CreateAssetMenuConstants.BaseMenuName + "/General Settings",
         order = CreateAssetMenuConstants.BaseOrder
     )]

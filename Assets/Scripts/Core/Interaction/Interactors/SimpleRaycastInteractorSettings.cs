@@ -4,11 +4,11 @@ using UnityEngine;
 namespace RIEVES.GGJ2026.Core.Interaction.Interactors
 {
     [CreateAssetMenu(
-        fileName = CreateAssetMenuConstants.BaseFileName + nameof(PopupInteractorSettings),
-        menuName = CreateAssetMenuConstants.BaseMenuName + "/Interaction/Popup Interactor Settings",
+        fileName = CreateAssetMenuConstants.BaseFileName + nameof(SimpleRaycastInteractorSettings),
+        menuName = CreateAssetMenuConstants.BaseMenuName + "/Interaction/Simple Raycast Interactor Settings",
         order = CreateAssetMenuConstants.BaseOrder
     )]
-    internal sealed class PopupInteractorSettings : ScriptableObject, IRaycastInteractorSettings
+    internal sealed class SimpleRaycastInteractorSettings : ScriptableObject, IRaycastInteractorSettings
     {
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.FoldoutGroup("Raycast", Expanded = true)]

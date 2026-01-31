@@ -1,0 +1,21 @@
+{
+    "name": "RIEVES.GGJ2026.Editor",
+    "rootNamespace": "RIEVES.GGJ2026",
+    "references": [
+        "GUID:14790b4e90df4ec49981acd8c199799e",
+        "GUID:945e70f116d06864a8fd7f84193bddfd"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "CsvHelper.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

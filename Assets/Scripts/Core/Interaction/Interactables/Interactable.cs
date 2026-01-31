@@ -7,7 +7,7 @@ using UnityEngine.Events;
 namespace RIEVES.GGJ2026.Core.Interaction.Interactables
 {
     [SelectionBase]
-    internal abstract class Interactable : MonoBehaviour, IInteractable
+    public abstract class Interactable : MonoBehaviour, IInteractable
     {
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.FoldoutGroup("Events")]
