@@ -10,10 +10,26 @@ namespace RIEVES.GGJ2026.Runtime.Items
         [SerializeField]
         private ItemData data;
 
+        [Header("Interaction")]
         [SerializeField]
         private Interactable interactable;
 
+        [Header("Rendering")]
+        [SerializeField]
+        private Renderer frontRenderer;
+
+        [SerializeField]
+        private string texturePropertyId = "_BaseMap";
+
         public string Name => data.ItemName;
+
+        private void Start()
+        {
+            var block = new MaterialPropertyBlock();
+
+            block.SetTexture(texturePropertyId, data.Texture);
+            frontRenderer.SetPropertyBlock(block);
+        }
 
         private void OnEnable()
         {

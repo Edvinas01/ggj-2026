@@ -15,6 +15,16 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private Interactable interactable;
 
+        [Header("Rendering")]
+        [SerializeField]
+        private Renderer frontRenderer;
+
+        [SerializeField]
+        private Renderer backRenderer;
+
+        [SerializeField]
+        private string texturePropertyId = "_BaseMap";
+
         [Header("Physics")]
         [SerializeField]
         private Rigidbody rigidBody;
@@ -59,12 +69,18 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             agent.nextPosition = rigidBody.position;
         }
+
         public void Initialize(CharacterData newData)
         {
             data = newData;
-            // var block = new MaterialPropertyBlock();
-            // block.SetTexture(texturePropertyId, data.Image);
-            // bodyRenderer.SetPropertyBlock(block);
+
+            var block = new MaterialPropertyBlock();
+
+            block.SetTexture(texturePropertyId, data.FrontTexture);
+            frontRenderer.SetPropertyBlock(block);
+
+            block.SetTexture(texturePropertyId, data.BackTexture);
+            backRenderer.SetPropertyBlock(block);
         }
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
