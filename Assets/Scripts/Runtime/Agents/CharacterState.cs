@@ -5,9 +5,8 @@ namespace RIEVES.GGJ2026
     public enum CharacterState
     {
         Idle,
-        GuardingIdle,
+        GuardingPointOfInterest,
         Dancing,
         Hunting,
-        GuardingPointOfInterest,
     }
 }
