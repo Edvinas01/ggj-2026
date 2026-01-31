@@ -21,6 +21,12 @@ namespace RIEVES.GGJ2026.Runtime.Movement
             }
         }
 
+        public void ClearPosition()
+        {
+            isTargetPositionSet = false;
+            moveAxis = Vector2.zero;
+        }
+
         public override Vector2 MoveAxis => moveAxis;
 
         private void OnDrawGizmos()
