@@ -1,4 +1,5 @@
-﻿using CHARK.GameManagement;
+﻿using System.Collections;
+using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Input;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
@@ -46,6 +47,10 @@ namespace RIEVES.GGJ2026.Runtime.Player
         [SerializeField]
         [Min(0f)]
         private float zoomInFov = 20f;
+
+        [SerializeField]
+        [Min(0f)]
+        private float shakeDelay = 0.5f;
 
         [SerializeField]
         private Vector3 cameraShakeForce = new(0f, 0f, -1f);
@@ -155,7 +160,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
             if (args.ValuePrev > args.ValueNext)
             {
-                cinemachineImpulse.GenerateImpulse(cameraShakeForce);
+                StartCoroutine(ShakeCameraRoutine());
             }
         }
 
@@ -234,6 +239,12 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private void OnZoomCanceled(InputAction.CallbackContext context)
         {
             targetFov = initialFov;
+        }
+
+        private IEnumerator ShakeCameraRoutine()
+        {
+            yield return new WaitForSeconds(shakeDelay);
+            cinemachineImpulse.GenerateImpulse(cameraShakeForce);
         }
 
         private void UpdateCameraZoom()
