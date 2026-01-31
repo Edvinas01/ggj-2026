@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace InSun.JamOne.Core.Utilities
+namespace RIEVES.GGJ2026.Core.Utilities
 {
     public static class StringUtilities
     {

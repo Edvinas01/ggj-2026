@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace InSun.JamOne.Core.Utilities
+namespace RIEVES.GGJ2026.Core.Utilities
 {
     public sealed class GameObjectDestroyer : MonoBehaviour
     {

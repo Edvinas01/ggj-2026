@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace InSun.JamOne.Core.Utilities
+namespace RIEVES.GGJ2026.Core.Utilities
 {
     /// <summary>
     /// Taken from and slightly modifier:

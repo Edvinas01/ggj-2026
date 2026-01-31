@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace InSun.JamOne.Core.Utilities
+namespace RIEVES.GGJ2026.Core.Utilities
 {
     internal sealed class RandomEventTrigger : MonoBehaviour
     {
