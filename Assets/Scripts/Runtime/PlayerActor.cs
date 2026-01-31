@@ -1,29 +1,49 @@
 ﻿using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
+using RIEVES.GGJ2026.Runtime.Characters;
+using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
 using RIEVES.GGJ2026.Runtime.Popups;
+using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RIEVES.GGJ2026.Runtime
 {
     internal sealed class PlayerActor : MonoBehaviour
     {
-        [Header("UI")]
-        [SerializeField]
-        private HoverPopupViewController hoverPopupController;
-
         [Header("Interaction")]
         [SerializeField]
         private Interactor interactor;
+
+        [Header("Conversations")]
+        [SerializeField]
+        private ConversationController conversationController;
+
+        [Header("Resources")]
+        [SerializeField]
+        private ResourceController resourceController;
 
         [Header("Movement")]
         [SerializeField]
         private MovementController movementController;
 
-        private ICursorSystem cursorSystem;
+        [Header("Inputs")]
+        [SerializeField]
+        private InputActionReference interactInputAction;
 
-        public MovementController MovementController => movementController;
+        [Header("UI")]
+        [SerializeField]
+        private HoverPopupViewController defaultHoverPopupController;
+
+        [SerializeField]
+        private HoverPopupViewController characterHoverPopupController;
+
+        [SerializeField]
+        private HoverPopupViewController itemHoverPopupController;
+
+        private ICursorSystem cursorSystem;
 
         private void Awake()
         {
@@ -32,18 +52,28 @@ namespace RIEVES.GGJ2026.Runtime
 
         private void OnEnable()
         {
+            resourceController.OnAlcoholChanged += OnAlcoholChanged;
+
             interactor.OnHoverEntered += OnInteractorHoverEntered;
             interactor.OnHoverExited += OnInteractorHoverExited;
             interactor.OnSelectEntered += OnInteractorSelectEntered;
             interactor.OnSelectExited += OnInteractorSelectExited;
+
+            interactInputAction.action.performed += OnInteractPerformed;
+            interactInputAction.action.canceled += OnInteractCanceled;
         }
 
         private void OnDisable()
         {
+            resourceController.OnAlcoholChanged -= OnAlcoholChanged;
+
             interactor.OnHoverEntered -= OnInteractorHoverEntered;
             interactor.OnHoverExited -= OnInteractorHoverExited;
             interactor.OnSelectEntered -= OnInteractorSelectEntered;
             interactor.OnSelectExited -= OnInteractorSelectExited;
+
+            interactInputAction.action.performed -= OnInteractPerformed;
+            interactInputAction.action.canceled -= OnInteractCanceled;
         }
 
         private void Start()
@@ -51,25 +81,60 @@ namespace RIEVES.GGJ2026.Runtime
             cursorSystem.LockCursor();
         }
 
+        private void OnAlcoholChanged(AlcoholChangedArgs args)
+        {
+        }
+
         private void OnInteractorHoverEntered(InteractorHoverEnteredArgs args)
         {
-            hoverPopupController.TitleText = args.Interactable.Name;
-            hoverPopupController.ShowView();
+            if (args.Interactable is not Component component)
+            {
+                defaultHoverPopupController.TitleText = args.Interactable.Name;
+                defaultHoverPopupController.ShowView();
+                return;
+            }
+
+            var character = component.GetComponentInParent<CharacterActor>();
+            if (character)
+            {
+                characterHoverPopupController.TitleText = character.Name;
+                characterHoverPopupController.ShowView();
+                return;
+            }
+
+            var item = component.GetComponentInParent<ItemActor>();
+            if (item)
+            {
+                itemHoverPopupController.TitleText = item.Name;
+                itemHoverPopupController.ShowView();
+            }
         }
 
         private void OnInteractorHoverExited(InteractorHoverExitedArgs args)
         {
-            hoverPopupController.HideView();
+            characterHoverPopupController.HideView();
+            itemHoverPopupController.HideView();
+            defaultHoverPopupController.HideView();
         }
 
         private void OnInteractorSelectEntered(InteractorSelectEnteredArgs args)
         {
-            Debug.Log($"Player select entered {args.Interactable.Name}", this);
         }
 
         private void OnInteractorSelectExited(InteractorSelectExitedArgs args)
         {
-            Debug.Log($"Player select exited {args.Interactable.Name}", this);
+        }
+
+        private void OnInteractPerformed(InputAction.CallbackContext context)
+        {
+            if (interactor.IsHovering)
+            {
+                interactor.Select();
+            }
+        }
+
+        private void OnInteractCanceled(InputAction.CallbackContext context)
+        {
         }
 
         private void OnDestroy()

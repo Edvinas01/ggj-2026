@@ -1,4 +1,5 @@
 ﻿using RIEVES.GGJ2026.Core.Interaction.Interactables;
+using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime.Items
@@ -9,8 +10,26 @@ namespace RIEVES.GGJ2026.Runtime.Items
         [SerializeField]
         private ItemData data;
 
+        [Header("Interaction")]
         [SerializeField]
         private Interactable interactable;
+
+        [Header("Rendering")]
+        [SerializeField]
+        private Renderer frontRenderer;
+
+        [SerializeField]
+        private string texturePropertyId = "_BaseMap";
+
+        public string Name => data.ItemName;
+
+        private void Start()
+        {
+            var block = new MaterialPropertyBlock();
+
+            block.SetTexture(texturePropertyId, data.Texture);
+            frontRenderer.SetPropertyBlock(block);
+        }
 
         private void OnEnable()
         {
@@ -30,22 +49,30 @@ namespace RIEVES.GGJ2026.Runtime.Items
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
         {
-            Debug.Log($"Item hover entered {name}", this);
         }
 
         private void OnInteractableHoverExited(InteractableHoverExitedArgs args)
         {
-            Debug.Log($"Item hover exited {name}", this);
         }
 
         private void OnInteractableSelectEntered(InteractableSelectEnteredArgs args)
         {
-            Debug.Log($"Item select entered {name}", this);
+            if (args.Interactor is not Component component)
+            {
+                return;
+            }
+
+            var resources = component.GetComponentInParent<ResourceController>();
+            if (resources)
+            {
+                resources.AddAlcohol(data.Value);
+            }
+
+            Destroy(gameObject);
         }
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
         {
-            Debug.Log($"Item select exited {name}", this);
         }
     }
 }

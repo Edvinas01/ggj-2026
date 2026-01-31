@@ -15,6 +15,16 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private Interactable interactable;
 
+        [Header("Rendering")]
+        [SerializeField]
+        private Renderer frontRenderer;
+
+        [SerializeField]
+        private Renderer backRenderer;
+
+        [SerializeField]
+        private string texturePropertyId = "_BaseMap";
+
         [Header("Physics")]
         [SerializeField]
         private Rigidbody rigidBody;
@@ -24,6 +34,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private NavMeshAgent agent;
 
         private AgentSystem agentSystem;
+
+        public string Name => data.CharacterName;
 
         private void Awake()
         {
@@ -57,32 +69,46 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             agent.nextPosition = rigidBody.position;
         }
+
         public void Initialize(CharacterData newData)
         {
             data = newData;
-            // var block = new MaterialPropertyBlock();
-            // block.SetTexture(texturePropertyId, data.Image);
-            // bodyRenderer.SetPropertyBlock(block);
+
+            var block = new MaterialPropertyBlock();
+
+            block.SetTexture(texturePropertyId, data.FrontTexture);
+            frontRenderer.SetPropertyBlock(block);
+
+            block.SetTexture(texturePropertyId, data.BackTexture);
+            backRenderer.SetPropertyBlock(block);
         }
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
         {
-            Debug.Log($"Character hover entered {name}", this);
         }
 
         private void OnInteractableHoverExited(InteractableHoverExitedArgs args)
         {
-            Debug.Log($"Character hover exited {name}", this);
         }
 
         private void OnInteractableSelectEntered(InteractableSelectEnteredArgs args)
         {
-            Debug.Log($"Character select entered {name}", this);
+            if (args.Interactor is not Component component)
+            {
+                return;
+            }
+
+            var controller = component.GetComponentInParent<ConversationController>();
+            if (controller)
+            {
+                controller.StartConversation(this);
+            }
+
+            args.Interactor.Deselect();
         }
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
         {
-            Debug.Log($"Character select exited {name}", this);
         }
     }
 }

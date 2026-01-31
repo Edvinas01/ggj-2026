@@ -201,6 +201,151 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4771975944389450584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3423051359246202243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8260041410107984311}
+  - component: {fileID: 4097770793118596070}
+  m_Layer: 6
+  m_Name: UI_Popup_Character
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8260041410107984311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423051359246202243}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4097770793118596070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3423051359246202243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6385579d12a542c8b82273d96f76744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Popups.HoverPopupViewController
+  controllerData:
+    view: {fileID: 2822036968310964496, guid: 6bbc8062b467ff04eb95a810ac2dd81d, type: 3}
+    viewParent: {fileID: 8260041410107984311}
+    startMode: 2
+--- !u!1 &3489607353277950381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6920054493127851465}
+  - component: {fileID: 2130607430814783093}
+  m_Layer: 6
+  m_Name: UI_Popup_Item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6920054493127851465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489607353277950381}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2130607430814783093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3489607353277950381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6385579d12a542c8b82273d96f76744f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Popups.HoverPopupViewController
+  controllerData:
+    view: {fileID: 2822036968310964496, guid: c1dbec80fac41f8459a6d775422d5111, type: 3}
+    viewParent: {fileID: 6920054493127851465}
+    startMode: 2
+--- !u!1 &4318614666142800061
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6042555539102671970}
+  - component: {fileID: 3891850867586591219}
+  m_Layer: 6
+  m_Name: UI_Meter_Alcochol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6042555539102671970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318614666142800061}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3891850867586591219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4318614666142800061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287a58609350490793bc04c65a9ffb04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Resources.AlcoholMeterViewController
+  controllerData:
+    view: {fileID: 477449963560735649, guid: ada9ec574ef44f747aa82a65a8392eeb, type: 3}
+    viewParent: {fileID: 6042555539102671970}
+    startMode: 1
+  resourceController: {fileID: 8557895804664849490}
 --- !u!1 &5313617542729358294
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +397,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -274,7 +419,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6961747848575189930
 Transform:
   m_ObjectHideFlags: 0
@@ -374,7 +519,7 @@ GameObject:
   - component: {fileID: 5571720615813670355}
   - component: {fileID: 9029458643344921814}
   m_Layer: 6
-  m_Name: UI
+  m_Name: UI_Popup_Default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,7 +567,9 @@ GameObject:
   - component: {fileID: 9070244558202797252}
   - component: {fileID: 1441487065709483086}
   - component: {fileID: 6100799802290263639}
+  - component: {fileID: 8557895804664849490}
   - component: {fileID: 5901985342004967491}
+  - component: {fileID: 3720372723344079548}
   - component: {fileID: 2224434183499480555}
   - component: {fileID: 5391179737800463149}
   m_Layer: 6
@@ -448,6 +595,9 @@ Transform:
   - {fileID: 4771975944389450584}
   - {fileID: 4982922085616125435}
   - {fileID: 5571720615813670355}
+  - {fileID: 8260041410107984311}
+  - {fileID: 6920054493127851465}
+  - {fileID: 6042555539102671970}
   - {fileID: 2814657626727972773}
   - {fileID: 6961747848575189930}
   m_Father: {fileID: 0}
@@ -491,9 +641,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb87be592c2c4c01a5f03e7f556c4ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.PlayerActor
-  hoverPopupController: {fileID: 9029458643344921814}
   interactor: {fileID: 5391179737800463149}
+  conversationController: {fileID: 3720372723344079548}
+  resourceController: {fileID: 8557895804664849490}
   movementController: {fileID: 5901985342004967491}
+  interactInputAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  defaultHoverPopupController: {fileID: 9029458643344921814}
+  characterHoverPopupController: {fileID: 4097770793118596070}
+  itemHoverPopupController: {fileID: 2130607430814783093}
+--- !u!114 &8557895804664849490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768234594321391368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b36879b92cf3453fb38ae9d1f02c5704, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Resources.ResourceController
+  alcohol: 0
+  alcoholMax: 100
 --- !u!114 &5901985342004967491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +707,18 @@ MonoBehaviour:
   onMoveExited:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3720372723344079548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768234594321391368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48258c1543cd4018a6978a2b7c5a7657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
 --- !u!114 &2224434183499480555
 MonoBehaviour:
   m_ObjectHideFlags: 0
