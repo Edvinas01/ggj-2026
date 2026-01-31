@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace InSun.JamOne.Core.Utilities
+namespace RIEVES.GGJ2026.Core.Utilities
 {
     public sealed class RandomActivator : MonoBehaviour
     {

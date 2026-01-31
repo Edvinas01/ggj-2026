@@ -3,6 +3,7 @@ using RIEVES.GGJ2026.Core.Menus;
 using RIEVES.GGJ2026.Core.Views;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
 {

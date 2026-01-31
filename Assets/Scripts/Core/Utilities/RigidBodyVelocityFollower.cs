@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace RIEVES.GGJ2026.Core.Utilities
 {
@@ -10,6 +11,17 @@ namespace RIEVES.GGJ2026.Core.Utilities
         [Min(0f)]
         [SerializeField]
         private float rotationSpeed = 5f;
+
+        private void OnDrawGizmosSelected()
+        {
+            if (rigidBody == false)
+            {
+                return;
+            }
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(rigidBody.position, rigidBody.linearVelocity);
+        }
 
         private void LateUpdate()
         {

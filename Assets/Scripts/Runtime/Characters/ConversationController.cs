@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CHARK.GameManagement;
-using InSun.JamOne.Core.Utilities;
+using RIEVES.GGJ2026.Core.Utilities;
 using RIEVES.GGJ2026.Runtime.Heat;
 using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
