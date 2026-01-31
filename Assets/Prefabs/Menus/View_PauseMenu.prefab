@@ -1,5 +1,101 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1545305465494766707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3570762254484864578}
+  - component: {fileID: 1062606560434443313}
+  - component: {fileID: 3767343589060452525}
+  - component: {fileID: 4871762672014573128}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3570762254484864578
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545305465494766707}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1682845272149499982}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1062606560434443313
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545305465494766707}
+  m_CullTransparentMesh: 1
+--- !u!114 &3767343589060452525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545305465494766707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8a4a68103db2f1c47b095500f28ace0e, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 2
+--- !u!114 &4871762672014573128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545305465494766707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.LayoutElement
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &2781146278560147270
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,8 +232,8 @@ MonoBehaviour:
     isAutoSelectGameObject: 1
     isAutoDeselectGameObject: 1
     isSelectLastGameObject: 1
-    showAnimation: {fileID: 2406109507510665596}
-    hideAnimation: {fileID: 3027754217367629486}
+    showAnimation: {fileID: 1678993087937168696}
+    hideAnimation: {fileID: 9056539155891962224}
     onShowEntered:
       m_PersistentCalls:
         m_Calls: []
@@ -227,6 +323,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8225013387295161406}
+  - {fileID: 1682845272149499982}
   m_Father: {fileID: 414004637345161698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -269,7 +366,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -16, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3771674479296233409
 CanvasRenderer:
@@ -299,7 +396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Paused
+  m_text: "Kaimie\u010Dio I\u0161leistuv\u0117s"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da457fb908fefea4a9b6fc2d8a5bbdea, type: 2}
   m_sharedMaterial: {fileID: 823118625441730426, guid: da457fb908fefea4a9b6fc2d8a5bbdea, type: 2}
@@ -326,13 +423,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 17
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -380,7 +477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1922946145413759439}
-  - component: {fileID: 3027754217367629486}
+  - component: {fileID: 9056539155891962224}
   m_Layer: 5
   m_Name: Animation_Hide
   m_TagString: Untagged
@@ -407,7 +504,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3027754217367629486
+--- !u!114 &9056539155891962224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,15 +513,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6157768598179046830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e7858b9fc442b0975ac815b0ed0555, type: 3}
+  m_Script: {fileID: 11500000, guid: 43ce939084e2403c98fe67da3160be29, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.CanvasGroupAnimation
-  target: {fileID: 1673272245857100794}
-  isTweenFromStartAlpha: 0
-  startAlpha: 1
-  isTweenToEndAlpha: 1
-  endAlpha: 0
-  ease: 10
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.ScaleAnimation
+  target: {fileID: 4220041130137377459}
+  isTweenFromStartScale: 1
+  startScale: {x: 1, y: 1, z: 1}
+  startScaleMultiplier: 1
+  isTweenToEndScale: 1
+  endScale: {x: 0, y: 1, z: 0}
+  ease: 9
   duration: 0.2
   randomDurationOffset: 0
   isPlayOnStart: 0
@@ -443,7 +541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1244290207519978851}
-  - component: {fileID: 2406109507510665596}
+  - component: {fileID: 1678993087937168696}
   m_Layer: 5
   m_Name: Animation_Show
   m_TagString: Untagged
@@ -470,7 +568,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2406109507510665596
+--- !u!114 &1678993087937168696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -479,16 +577,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6790418401512398022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e7858b9fc442b0975ac815b0ed0555, type: 3}
+  m_Script: {fileID: 11500000, guid: 43ce939084e2403c98fe67da3160be29, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.CanvasGroupAnimation
-  target: {fileID: 1673272245857100794}
-  isTweenFromStartAlpha: 1
-  startAlpha: 0
-  isTweenToEndAlpha: 1
-  endAlpha: 1
-  ease: 10
-  duration: 0.2
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.ScaleAnimation
+  target: {fileID: 4220041130137377459}
+  isTweenFromStartScale: 1
+  startScale: {x: 0, y: 0, z: 0}
+  startScaleMultiplier: 1
+  isTweenToEndScale: 1
+  endScale: {x: 1, y: 1, z: 1}
+  ease: 24
+  duration: 0.5
   randomDurationOffset: 0
   isPlayOnStart: 0
   isDestroyOnCompleted: 0
@@ -528,7 +627,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4596770579195851508}
-  - {fileID: 1682845272149499982}
   - {fileID: 2692544327287913088}
   - {fileID: 4419800918405091514}
   - {fileID: 3367682596395023339}
@@ -602,18 +700,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7919369463700701087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.08322297, w: -0.99653095}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3570762254484864578}
   - {fileID: 4804672902600458311}
-  m_Father: {fileID: 8225013387295161406}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 150}
+  m_Father: {fileID: 4220041130137377459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1089.548}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 92.7, y: 171.4}
+  m_SizeDelta: {x: 236, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8914835274399065020
 GameObject:
@@ -651,7 +750,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7765973881925052062
 CanvasRenderer:
@@ -674,14 +773,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8a4a68103db2f1c47b095500f28ace0e, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -797,7 +896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2141344025699539840, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_text
-      value: Resume
+      value: "T\u0119sti"
       objectReference: {fileID: 0}
     - target: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_Name
@@ -915,7 +1014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2141344025699539840, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_text
-      value: Main Menu
+      value: "Pab\u0117gt"
       objectReference: {fileID: 0}
     - target: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_Name
@@ -1028,7 +1127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2141344025699539840, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_text
-      value: Restart
+      value: Per naujo
       objectReference: {fileID: 0}
     - target: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_Name
