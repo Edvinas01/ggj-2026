@@ -8,7 +8,6 @@ using RIEVES.GGJ2026.Core.Pausing;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Core.Settings;
 using RIEVES.GGJ2026.Core.Transforms;
-using RIEVES.GGJ2026.Runtime.Agents;
 using RIEVES.GGJ2026.Runtime.Heat;
 using UnityEngine;
 

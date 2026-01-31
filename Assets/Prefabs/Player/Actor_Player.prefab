@@ -218,37 +218,6 @@ MonoBehaviour:
         DecelTime: 0.2
   PlayerIndex: -1
   AutoEnableInputs: 0
---- !u!1 &2232561408820781741
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1195833057543533265}
-  m_Layer: 6
-  m_Name: Interactor_Target
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1195833057543533265
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2232561408820781741}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4771975944389450584}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3423051359246202243
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,10 +739,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
   viewController: {fileID: 7475167151573011031}
   resourceController: {fileID: 8557895804664849490}
+  maxMessagesPerConvo: 3
+  maxCorrectMessages: 1
+  maxIncorrectMessages: 3
   onCorrectChoiceSelected:
     m_PersistentCalls:
       m_Calls: []
   onIncorrectChoiceSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onRandomBlurbChoiceSelected:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2224434183499480555
@@ -813,7 +788,7 @@ MonoBehaviour:
   onSelectExited:
     m_PersistentCalls:
       m_Calls: []
-  raycastTransform: {fileID: 1195833057543533265}
+  raycastTransform: {fileID: 4879422091134088999}
   settings: {fileID: 11400000, guid: 75de571781d7c714783acec326371f14, type: 2}
 --- !u!1001 &3937002846799446719
 PrefabInstance:
@@ -869,14 +844,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1195833057543533265}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
 --- !u!4 &4771975944389450584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
+  m_PrefabInstance: {fileID: 3937002846799446719}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4879422091134088999 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8436433632294565272, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
   m_PrefabInstance: {fileID: 3937002846799446719}
   m_PrefabAsset: {fileID: 0}

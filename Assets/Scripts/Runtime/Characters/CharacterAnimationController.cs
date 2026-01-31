@@ -6,10 +6,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 {
     internal sealed class CharacterAnimationController : MonoBehaviour
     {
-        [Header("Rendering")]
-        [SerializeField]
-        private Renderer handRenderer;
-
         [Header("Animation")]
         [SerializeField]
         private Animator targetAnim;
@@ -83,6 +79,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             isPlayRequested = isPlayNext;
         }
 
+        [ContextMenu("Play")]
         public void Play()
         {
             isPlayRequested = true;
@@ -91,6 +88,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             OnPlay?.Invoke();
         }
 
+        [ContextMenu("Stop")]
         public void Stop()
         {
             targetAnim.Play(targetAnim.GetCurrentAnimatorStateInfo(0).fullPathHash, 0, 0f);
