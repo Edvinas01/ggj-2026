@@ -105,8 +105,6 @@ namespace RIEVES.GGJ2026
         }
 
         float stateChangeTimer = -100f;
-        float minPatienceDuration = 10f;
-        float maxPatienceDuration = 20f;
         bool changingFromState = false;
         bool changingToState = false;
         bool isInteractingWithPlayer = false;
@@ -175,10 +173,24 @@ namespace RIEVES.GGJ2026
             return true;
         }
 
+        void SetPatienceDuration(CharacterState state)
+        {
+            var agentPrefs = CharacterData.ActivityPatience;
+            var matchingPref = agentPrefs.FirstOrDefault(p => p.activity == state);
+            if (matchingPref.minTime > 0 && matchingPref.maxTime >= matchingPref.minTime)
+            {
+                stateChangeTimer = Time.time + UnityEngine.Random.Range(matchingPref.minTime, matchingPref.maxTime);
+            }
+            else
+            {
+                stateChangeTimer = Time.time + UnityEngine.Random.Range(15f, 25f);
+            }
+        }
+
         public void SetState(CharacterState newState)
         {
             CurrentState = newState;
-            stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
+            SetPatienceDuration(newState);
             CurrentActivity = CharacterActivity.Idling;
             CurrentTarget = null;
             navMeshAgent.enabled = true;
@@ -204,7 +216,7 @@ namespace RIEVES.GGJ2026
             {
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
-                stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
+                SetPatienceDuration(nextState);
                 if (currentTargetState != nextState)
                     SetState(nextState);
             }
@@ -291,6 +303,11 @@ namespace RIEVES.GGJ2026
                                     CurrentActivity = CharacterActivity.Dancing;
                                     SetAnimationState(CharacterAnimationState.Dancing);
                                     break;
+                                case CharacterState.Hunting:
+                                    var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
+                                    if (newTarget != null && !StartMovement(newTarget))
+                                        SetState(agentSystem.GetRandomState(this));
+                                    break;
                             }
                         }
                         else
@@ -349,6 +366,11 @@ namespace RIEVES.GGJ2026
             movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
         }
 
+        private void LateUpdate()
+        {
+            navMeshAgent.nextPosition = rigidBody.position;
+        }
+
         void RotateTowards(Vector3 targetPosition)
         {
             var direction = (targetPosition - transform.position).normalized;
@@ -357,11 +379,6 @@ namespace RIEVES.GGJ2026
 
             var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
             rigidBody.rotation = Quaternion.Slerp(rigidBody.rotation, targetRotation, Time.deltaTime * 5f);
-        }
-
-        private void LateUpdate()
-        {
-            navMeshAgent.nextPosition = rigidBody.position;
         }
 
         public void Initialize(CharacterData newData)
