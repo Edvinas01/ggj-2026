@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{97f2b11a-877c-4a3b-82bb-48275fcbf4b0}">
 		<property name="name">
-			<value>Walla</value>
+			<value>SFX_Walla_Full</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{1f63e0f2-dfb1-4e78-a411-a8b4d1013f41}</destination>
+			<destination>{927215cf-9752-427d-9ba7-ba03a4f915ef}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{eb6a1f0b-29d6-4ecd-b0a3-57ad6f26cede}</destination>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{cc73beea-d609-496b-8945-b55f6ed6fbf2}">
 		<property name="name">
-			<value>ButtonStartGame</value>
+			<value>SFX_ButtonStartGame</value>
 		</property>
 		<property name="outputFormat">
 			<value>5</value>

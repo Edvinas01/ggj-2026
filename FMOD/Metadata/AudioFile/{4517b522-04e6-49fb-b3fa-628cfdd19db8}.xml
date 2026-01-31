@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{4517b522-04e6-49fb-b3fa-628cfdd19db8}">
+		<property name="assetPath">
+			<value>Dviracio Zinios 2009 03 12 [qjtXTZ6aYEM].mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>209.97224489795917</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+	</object>
+</objects>
