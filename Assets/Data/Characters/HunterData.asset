@@ -54,6 +54,6 @@ MonoBehaviour:
       correctChoices: []
       incorrectChoices: []
   activityPatience:
-  - activity: 1
-    minTime: 0
-    maxTime: 0
+  - activity: 5
+    minTime: 200
+    maxTime: 400
