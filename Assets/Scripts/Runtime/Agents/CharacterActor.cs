@@ -25,8 +25,8 @@ namespace RIEVES.GGJ2026
 
         [SerializeField]
         private List<StateChangeTriggers> onStateChange = new();
-        public CharacterState CurrentState { get; private set; } = CharacterState.Idle;
-        public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idle;
+        public CharacterState CurrentState { get; private set; } = CharacterState.Idling;
+        public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
         public PointOfInterest CurrentTarget { get; private set; }
 
         [Header("Rendering")]
@@ -64,14 +64,6 @@ namespace RIEVES.GGJ2026
         private AgentSystem agentSystem;
 
         public CharacterData CharacterData => runtimeData;
-
-        public enum CharacterActivity
-        {
-            Idle,
-            Moving,
-            AtDestination,
-            InConversation,
-        }
 
         private void Awake()
         {
@@ -128,7 +120,7 @@ namespace RIEVES.GGJ2026
                         stateChangeTimer = Time.time + OldTrigger.EndDelay;
                         CurrentState = newState;
                         changingFromState = true;
-                        CurrentActivity = CharacterActivity.Idle;
+                        CurrentActivity = CharacterActivity.Idling;
                         CurrentTarget = null;
                         return false;
                     }
@@ -145,7 +137,7 @@ namespace RIEVES.GGJ2026
                     {
                         stateChangeTimer = Time.time + NewTrigger.StartDelay;
                         changingToState = true;
-                        CurrentActivity = CharacterActivity.Idle;
+                        CurrentActivity = CharacterActivity.Idling;
                         CurrentTarget = null;
                         return false;
                     }
@@ -156,19 +148,18 @@ namespace RIEVES.GGJ2026
             changingFromState = false;
             changingToState = false;
             stateChangeTimer = Time.time + UnityEngine.Random.Range(minPatienceDuration, maxPatienceDuration);
-            CurrentActivity = CharacterActivity.Idle;
+            CurrentActivity = CharacterActivity.Idling;
             CurrentTarget = null;
             return true;
         }
 
+        public void SetActivity(CharacterActivity newActivity)
+        {
+            CurrentActivity = newActivity;
+        }
+
         private void Update()
         {
-            if (CurrentActivity == CharacterActivity.InConversation)
-            {
-                navMeshAgent.enabled = false;
-                return;
-            }
-
             if (changingFromState || changingToState)
             {
                 if (stateChangeTimer < Time.time)
@@ -179,7 +170,7 @@ namespace RIEVES.GGJ2026
                 return;
             }
 
-            if (stateChangeTimer < Time.time)
+            if (CurrentState != CharacterState.Talking && stateChangeTimer < Time.time)
             {
                 var currentTargetState = CurrentState;
                 CurrentState = agentSystem.GetRandomState(this);
@@ -191,25 +182,30 @@ namespace RIEVES.GGJ2026
 
             switch (CurrentState)
             {
-                case CharacterState.Idle:
-                    CurrentActivity = CharacterActivity.Idle;
+                case CharacterState.Idling:
+                case CharacterState.Talking:
+                    CurrentActivity = CharacterActivity.Idling;
                     break;
-                case CharacterState.GuardingPointOfInterest:
+
+                case CharacterState.Guarding:
                 case CharacterState.Dancing:
+                case CharacterState.Watching:
                     {
                         if (CurrentTarget == null)
                         {
-                            var targetType = CurrentState == CharacterState.GuardingPointOfInterest ? InterestType.Guard : InterestType.Dancing;
+                            var targetType = CurrentState == CharacterState.Guarding ? InterestType.Guard :
+                                CurrentState == CharacterState.Watching ?
+                                    InterestType.Watch :
+                                    InterestType.Dancing;
+
                             var newTarget = agentSystem.PickRandomWaypoint(targetType);
                             if (newTarget != null)
                                 MoveToPoint(newTarget);
                             else
                                 SetState(agentSystem.GetRandomState(this));
                         }
-                        else if (CurrentActivity != CharacterActivity.Moving)
+                        else if (CurrentActivity != CharacterActivity.Walking)
                         {
-                            var characterPosition = rigidBody.position;
-                            movementPositionInput.TargetPosition = characterPosition;
                             var distanceSqr = (transform.position - CurrentTarget.transform.position).sqrMagnitude;
                             if (distanceSqr >= CurrentTarget.StayWithinRange * CurrentTarget.StayWithinRange)
                             {
@@ -223,7 +219,7 @@ namespace RIEVES.GGJ2026
                     break;
                 case CharacterState.Hunting:
                     {
-                        if (CurrentTarget == null || CurrentActivity != CharacterActivity.Moving)
+                        if (CurrentTarget == null || CurrentActivity != CharacterActivity.Walking)
                         {
                             var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
                             if (newTarget != null)
@@ -239,7 +235,8 @@ namespace RIEVES.GGJ2026
 
             switch (CurrentActivity)
             {
-                case CharacterActivity.Moving:
+                case CharacterActivity.Hunting:
+                case CharacterActivity.Walking:
                     {
                         navMeshAgent.enabled = true;
 
@@ -247,14 +244,30 @@ namespace RIEVES.GGJ2026
                         movementPositionInput.TargetPosition = characterPosition;
                         var distanceSqr = (transform.position - CurrentTarget.transform.position).sqrMagnitude;
                         if (distanceSqr <= CurrentTarget.MoveWithinRange * CurrentTarget.MoveWithinRange)
-                            CurrentActivity = CharacterActivity.AtDestination;
+                        {
+                            switch (CurrentState)
+                            {
+                                case CharacterState.Watching:
+                                    CurrentActivity = CharacterActivity.Watching;
+                                    break;
+                                case CharacterState.Guarding:
+                                    CurrentActivity = CharacterActivity.Guarding;
+                                    break;
+                                case CharacterState.Dancing:
+                                    CurrentActivity = CharacterActivity.Dancing;
+                                    break;
+                            }
+                        }
 
                         var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
                         movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
 
                         break;
                     }
-                case CharacterActivity.AtDestination:
+                case CharacterActivity.Idling:
+                    navMeshAgent.enabled = false;
+                    break;
+                default:
                     {
                         if (CurrentTarget != null && CurrentTarget.Facing)
                         {
@@ -265,9 +278,6 @@ namespace RIEVES.GGJ2026
 
                         break;
                     }
-                default:
-                    navMeshAgent.enabled = false;
-                    break;
             }
         }
 
@@ -280,7 +290,7 @@ namespace RIEVES.GGJ2026
             {
                 CurrentTarget = target;
                 navMeshAgent.SetDestination(hit.position);
-                CurrentActivity = CharacterActivity.Moving;
+                CurrentActivity = CharacterActivity.Walking;
             }
         }
 
@@ -331,7 +341,7 @@ namespace RIEVES.GGJ2026
             var controller = component.GetComponentInParent<ConversationController>();
             if (controller)
             {
-                CurrentActivity = CharacterActivity.InConversation;
+                SetState(CharacterState.Talking);
                 controller.StartConversation(this);
                 onConversationStarted.Invoke();
             }
