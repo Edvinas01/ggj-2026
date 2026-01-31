@@ -10,6 +10,7 @@ using System.Data.Common;
 using UnityEditorInternal;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026
 {
@@ -51,6 +52,13 @@ namespace RIEVES.GGJ2026
         [FormerlySerializedAs("agent")]
         [SerializeField]
         private NavMeshAgent navMeshAgent;
+
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onConversationStarted;
+
+        [SerializeField]
+        private UnityEvent onConversationStopped;
 
         private CharacterData runtimeData;
         private AgentSystem agentSystem;
@@ -302,6 +310,7 @@ namespace RIEVES.GGJ2026
         public void ConversationStopped()
         {
             CurrentActivity = CharacterActivity.Idle;
+            onConversationStopped.Invoke();
         }
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
@@ -324,6 +333,7 @@ namespace RIEVES.GGJ2026
             {
                 CurrentActivity = CharacterActivity.InConversation;
                 controller.StartConversation(this);
+                onConversationStarted.Invoke();
             }
         }
 
