@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RIEVES.GGJ2026.Core.Interaction.Interactors
 {
-    internal abstract class RaycastInteractor : Interactor
+    public abstract class RaycastInteractor : Interactor
     {
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.FoldoutGroup("Transforms", Expanded = true)]

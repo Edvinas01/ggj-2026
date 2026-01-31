@@ -10,26 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
-  m_Name: Data_Character_Bob
+  m_Name: Data_Character_Default
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
-  characterName: Bob
+  characterName: Defaultis
   frontTexture: {fileID: 0}
   backTexture: {fileID: 0}
   conversation:
     messages:
     - messageType: 0
-      content: What do you want?
+      content: "Kaip laikaisi, gal nori i\u0161gerti?"
       correctChoices:
-      - Just talking
-      - Hi
+      - Taip
+      - Labai noriu
       incorrectChoices:
-      - Nothing
-      - Go away
-    - messageType: 0
-      content: Get lost.
-      correctChoices:
-      - Sorry
-      - Okay
-      incorrectChoices:
-      - No
-      - Never
+      - Nenoriu
+      - "Eik i\u0161 \u010Dia"
+      - "Ko \u010Dia \u017Eiuri"

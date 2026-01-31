@@ -3,6 +3,7 @@ using RIEVES.GGJ2026.Core.Audio;
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Gameplay;
 using RIEVES.GGJ2026.Core.Input;
+using RIEVES.GGJ2026.Core.Interaction;
 using RIEVES.GGJ2026.Core.Pausing;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Core.Settings;
@@ -52,6 +53,7 @@ namespace RIEVES.GGJ2026.Runtime
             AddSystem(agentSystem);
 
             AddSystem(new SimpleTransformSystem());
+            AddSystem(new SimpleInteractionSystem());
         }
 
         protected override void OnStarted()

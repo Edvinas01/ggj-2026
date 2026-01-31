@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Core.Interaction.Interactors
 {
-    internal abstract class Interactor : MonoBehaviour, IInteractor
+    public abstract class Interactor : MonoBehaviour, IInteractor
     {
 #if ODIN_INSPECTOR
         [Sirenix.OdinInspector.FoldoutGroup("Events")]
