@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3451977393253962481}
   m_Layer: 0
-  m_Name: AudioScene
+  m_Name: Gameplay_Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

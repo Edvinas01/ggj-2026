@@ -621,6 +621,56 @@ MonoBehaviour:
   isLockX: 1
   isLockY: 0
   isLockZ: 1
+--- !u!1 &6925995998971374950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7097180268212496624}
+  - component: {fileID: 7574008010819458160}
+  m_Layer: 0
+  m_Name: UI_PauseMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7097180268212496624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6925995998971374950}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.6, y: 0, z: 2.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7574008010819458160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6925995998971374950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3868dc28485b431fb25c388808863a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Menus.MainMenuViewController
+  controllerData:
+    view: {fileID: 3663452568848567776, guid: 0068dd62fe3439d47a3c8b5d0bfe17d4, type: 3}
+    viewParent: {fileID: 7097180268212496624}
+    startMode: 2
+  showInputAction: {fileID: 3765912792571382111, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  isPauseOnShow: 1
 --- !u!1 &7319662226924932344
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +762,7 @@ Transform:
   - {fileID: 6920054493127851465}
   - {fileID: 6042555539102671970}
   - {fileID: 604059076321981865}
+  - {fileID: 7097180268212496624}
   - {fileID: 2814657626727972773}
   - {fileID: 4725628482801714555}
   - {fileID: 6961747848575189930}
