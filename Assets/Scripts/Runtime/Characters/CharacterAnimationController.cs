@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace RIEVES.GGJ2026.Runtime.Utilities
+namespace RIEVES.GGJ2026.Runtime.Characters
 {
-    internal sealed class AnimationController : MonoBehaviour
+    internal sealed class CharacterAnimationController : MonoBehaviour
     {
         [Header("Rendering")]
         [SerializeField]

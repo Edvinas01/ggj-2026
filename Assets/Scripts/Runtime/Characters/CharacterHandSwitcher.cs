@@ -1,8 +1,7 @@
 ﻿using RIEVES.GGJ2026.Core.Utilities;
-using RIEVES.GGJ2026.Runtime.Characters;
 using UnityEngine;
 
-namespace RIEVES.GGJ2026.Runtime.Utilities
+namespace RIEVES.GGJ2026.Runtime.Characters
 {
     internal sealed class CharacterHandSwitcher : MonoBehaviour
     {
