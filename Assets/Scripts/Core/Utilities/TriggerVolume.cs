@@ -13,11 +13,13 @@ namespace RIEVES.GGJ2026.Core.Utilities
 
         public void TriggerExit()
         {
+            Debug.Log("TriggerExit");
             onEntered.Invoke();
         }
 
         public void TriggerEnter()
         {
+            Debug.Log("TriggerEnter");
             onExited.Invoke();
         }
     }
