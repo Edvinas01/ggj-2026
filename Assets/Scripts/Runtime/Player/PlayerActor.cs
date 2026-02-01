@@ -5,6 +5,7 @@ using RIEVES.GGJ2026.Core.Input;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Runtime.Characters;
+using RIEVES.GGJ2026.Runtime.Controls;
 using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
 using RIEVES.GGJ2026.Runtime.Popups;
@@ -72,6 +73,9 @@ namespace RIEVES.GGJ2026.Runtime.Player
         [SerializeField]
         private HoverPopupViewController itemHoverPopupController;
 
+        [SerializeField]
+        private ControlsViewController controlsViewController;
+
         private float initialFov;
         private float currentFov;
         private float targetFov;
@@ -100,6 +104,8 @@ namespace RIEVES.GGJ2026.Runtime.Player
         {
             resourceController.OnAlcoholChanged += OnAlcoholChanged;
 
+            movementController.OnMoveEntered += OnMoveEntered;
+
             conversationController.OnConversationStarted += OnConversationStarted;
             conversationController.OnConversationStopped += OnConversationStopped;
 
@@ -118,6 +124,8 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private void OnDisable()
         {
             resourceController.OnAlcoholChanged -= OnAlcoholChanged;
+
+            movementController.OnMoveEntered -= OnMoveEntered;
 
             conversationController.OnConversationStarted -= OnConversationStarted;
             conversationController.OnConversationStopped -= OnConversationStopped;
@@ -162,6 +170,11 @@ namespace RIEVES.GGJ2026.Runtime.Player
             {
                 StartCoroutine(ShakeCameraRoutine());
             }
+        }
+
+        private void OnMoveEntered()
+        {
+            controlsViewController.HideView();
         }
 
         private void OnConversationStarted()
