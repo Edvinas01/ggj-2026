@@ -299,9 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88922b53dd64ec5911b5571de8b12ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterActor
-  data: {fileID: 11400000, guid: bd923bcae9a7c0b4d8488385e07bc612, type: 2}
+  data: {fileID: 11400000, guid: 9b0a3da30ba6bc540861f71431aa7613, type: 2}
   interactable: {fileID: 4005990158675576400}
-  lockCharacterState: 0
+  lockCharacterState: 1
   onStateChange:
   - State: 2
     OnStateStarting:
