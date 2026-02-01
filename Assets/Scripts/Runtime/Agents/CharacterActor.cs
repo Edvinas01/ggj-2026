@@ -597,5 +597,26 @@ namespace RIEVES.GGJ2026
 
             voiceAudioEmitter.Stop();
         }
+
+        public void StartMarozSound()
+        {
+            if (CharacterData.MarozFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            voiceAudioEmitter.EventReference = CharacterData.MarozFmodEvent;
+            voiceAudioEmitter.Play();
+        }
+
+        public void StopMarozSound()
+        {
+            if (CharacterData.MarozFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            voiceAudioEmitter.Stop();
+        }
     }
 }
