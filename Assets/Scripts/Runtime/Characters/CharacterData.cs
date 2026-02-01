@@ -50,6 +50,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private EventReference footstepFmodEvent;
 
+        [SerializeField]
+        private EventReference marozFmodEvent;
+
         [Header("Behaviour Data")]
         [SerializeField]
         private List<ActivityPatiencePair> activityPatience;
@@ -81,5 +84,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public EventReference VoiceFmodEvent => voiceFmodEvent;
         public EventReference FootstepFmodEvent => footstepFmodEvent;
+        public EventReference MarozFmodEvent => marozFmodEvent;
     }
 }
