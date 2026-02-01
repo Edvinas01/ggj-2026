@@ -224,7 +224,19 @@ namespace RIEVES.GGJ2026
             if (stateChangeTimer <= Time.time)
             {
                 if (lockCharacterState && stateChangeTimer >= 0f)
+                {
+                    SetAnimationState(CurrentState switch
+                    {
+                        CharacterState.Idling => CharacterAnimationState.Idling,
+                        CharacterState.Talking => CharacterAnimationState.Idling,
+                        CharacterState.Guarding => CharacterAnimationState.Guarding,
+                        CharacterState.Dancing => CharacterAnimationState.Dancing,
+                        CharacterState.Watching => CharacterAnimationState.Watching,
+                        CharacterState.Hunting => CharacterAnimationState.Hunting,
+                        _ => CharacterAnimationState.Idling
+                    });
                     return;
+                }
 
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
