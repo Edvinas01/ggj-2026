@@ -603,6 +603,11 @@ namespace RIEVES.GGJ2026
 
         private void OnFootstepStarted()
         {
+            if (marozAudioEmitter.IsPlaying())
+            {
+                return;
+            }
+
             if (CharacterData.FootstepFmodEvent.IsNull)
             {
                 return;
@@ -624,6 +629,11 @@ namespace RIEVES.GGJ2026
 
         public void StartMarozSound()
         {
+            if (footstepAudioEmitter.IsPlaying())
+            {
+                footstepAudioEmitter.Stop();
+            }
+
             if (CharacterData.MarozFmodEvent.IsNull)
             {
                 return;
