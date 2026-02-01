@@ -45,8 +45,8 @@ namespace RIEVES.GGJ2026.Core.Menus
             View.OnExitClicked += OnExitClicked;
             View.OnMainMenuClicked += OnMainMenuClicked;
             View.OnRestartClicked += OnRestartClicked;
-            View.OnShowExited += OnViewShown;
-            View.OnHideExited += OnViewHidden;
+            View.OnShowEntered += OnViewShown;
+            View.OnHideEntered += OnViewHidden;
         }
 
         protected override void OnDisable()
@@ -63,8 +63,8 @@ namespace RIEVES.GGJ2026.Core.Menus
             View.OnExitClicked -= OnExitClicked;
             View.OnMainMenuClicked -= OnMainMenuClicked;
             View.OnRestartClicked -= OnRestartClicked;
-            View.OnShowExited -= OnViewShown;
-            View.OnHideExited -= OnViewHidden;
+            View.OnShowEntered -= OnViewShown;
+            View.OnHideEntered -= OnViewHidden;
         }
 
         private void OnShowPerformed(InputAction.CallbackContext context)
