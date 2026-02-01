@@ -34,6 +34,7 @@ MonoBehaviour:
       incorrectChoices:
       - "O ar gra\u017Ei mo\u010Diut\u0117?"
       - "Gal va\u017Eiuojam pas mane?"
+      - "Alkoholio m\u0117g\u0117ja"
     - messageType: 0
       content: "Kas ne\u0161oka tam nelinksma!"
       huntMessage: "Ateini \u010Dia!"
@@ -41,17 +42,19 @@ MonoBehaviour:
       - "Tuoj pa\u0161oksim, kojas pakilnosim!"
       - "Ouj, a\u0161 visad linksmas"
       incorrectChoices:
-      - "Gal i\u0161gerkim?"
+      - "A\u0161 mieliau ger\u010Diau nei \u0161ok\u010Diau"
       - Tau ne per linksma?
+      - "Kas ne\u0161oka tam ir taip linksma"
     - messageType: 0
       content: "Labas! Kurioj klas\u0117j tu mokeisi? Nematytas"
       huntMessage: "Bum \u012F snuk\u012F!"
       correctChoices:
-      - A
-      - B
+      - "Tiesiog pa\u0161okim"
+      - "A\u0161 mokiausi gyvenimo mokykloje"
       incorrectChoices:
-      - C
-      - C
+      - "U\u017Etrai\u0161kanojus gal bi\u0161k\u012F?"
+      - Ne tavo reikalas
+      - O gal su atmintim ne viskas tvarkoj?
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

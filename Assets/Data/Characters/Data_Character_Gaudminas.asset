@@ -33,25 +33,28 @@ MonoBehaviour:
       incorrectChoices:
       - "K\u0105?"
       - "\u017Demaiti\u0161ka?"
+      - Stupid dance
     - messageType: 0
       content: Mokykloje man vadino Audminu, nors mano vardas Gaudminas. Pameni mane?
       huntMessage: Prasileidai!
       correctChoices:
-      - "Taip, mes i\u0161 paralelini\u0173 klasi\u0173"
-      - "Taip, mes i\u0161 paralelini\u0173 klasi\u0173"
+      - "Ne, gal prasilenk\u0117m"
+      - "Nepamenu \u017Einok"
       incorrectChoices:
-      - "Ne, gal prasilenk\u0117m"
-      - "Ne, gal prasilenk\u0117m"
+      - Aha, pamenu, nesutariam mes
+      - "Ne\u0161ioji Audim\u0105?"
+      - Gaudi naktimis?
     - messageType: 0
       content: "Ar ne tu i\u0161kr\u0117tei \u0161kad\u0105 per mokytojo dien\u0105?
         Patiko kai mokytojai pasiuto"
       huntMessage: "Atsakysi u\u017E bazar\u0105!"
       correctChoices:
-      - "Jau planuoju kit\u0105 \u0161kad\u0105 valstyb\u0117s mastu"
-      - "A\u0161 tik prisid\u0117jau, bet organizuoja auk\u0161tesn\u0117s strukt\u016Bros"
+      - "Tie mokytojai visi\u0161ki nevykeliai"
+      - "\u017Dinau, kad tai organizavo auk\u0161tesn\u0117s strukt\u016Bros"
       incorrectChoices:
       - "\u0160kada, \u0161koda, tavo \u016Bsai, apie k\u0105 tu \u010Dia?"
       - "Manai a\u0161 stuka\u010Dius?"
+      - "A\u0161 i\u0161kr\u0117\u010Diau, tik nei\u0161duok niekam"
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

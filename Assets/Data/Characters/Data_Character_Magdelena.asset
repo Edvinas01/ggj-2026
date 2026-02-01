@@ -29,19 +29,21 @@ MonoBehaviour:
       huntMessage: "Ne \u017Emogus, o jovalas!"
       correctChoices:
       - "\u017Dalia gra\u017Eiausia"
-      - "Geltona, \u017Ealia, raudona"
+      - "Ap\u0161vietimas dera prie tavo aprangos"
       incorrectChoices:
       - Ne
       - Spalvos tokios kaip ir visur
+      - "Man tai gra\u017Eiausia kai tamsu"
     - messageType: 0
       content: "Labas. Steb\u0117jau tave. Ar tu vienas?"
       huntMessage: "Prisig\u0117rei tai b\u016Bk vietoj!"
       correctChoices:
-      - "A\u0161 su tavim"
+      - "A\u0161 su visais!"
       - Taip
       incorrectChoices:
       - "Milicija b\u016Bsi?"
       - "Ne, \u016Bkyje turiu karv\u0119, du \u0161unis, vi\u0161t\u0173"
+      - "Kaip suprast steb\u0117jau?"
     - messageType: 0
       content: "Gal \u017Einai kokia \u010Dia daina groja?"
       huntMessage: Sik sik sik!
@@ -51,6 +53,7 @@ MonoBehaviour:
       incorrectChoices:
       - "Gal lietuvi\u0161ka?"
       - "Muzikin\u0117 tokia"
+      - Sik sik sik!
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

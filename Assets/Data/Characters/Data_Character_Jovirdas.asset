@@ -29,30 +29,34 @@ MonoBehaviour:
       huntMessage: Ne tik kaimas, bet ir durnas!
       correctChoices:
       - "Paie\u0161kok va ten"
-      - "Paie\u0161kok va ten"
+      - "Sveikas, \u017Einok nema\u010Diau"
       incorrectChoices:
       - "Kas a\u0161 tau? Seklys?"
       - "\u010Cia kabini mane?"
+      - "Kam tau tos pir\u0161tin\u0117s? Madistas?"
     - messageType: 0
-      content: "\u017Dalia man tai tokia stipri spalva, ja apsireng\u0119s jau\u010Diuosi
+      content: "\u017Dalia man tai tokia stipri spalva, j\u0105 apsireng\u0119s jau\u010Diuosi
         tvirtesnis"
       huntMessage: Nevaidink protingo!
       correctChoices:
       - "Aha, kari\u0161kio spalva"
-      - "Geltona, \u017Ealia, raudona"
+      - "Paie\u0161kok Magdelenos, ji \u017Ealiai apsirengusi \u0161iandien, gal
+        sutarsit"
       incorrectChoices:
       - "\u017Dalias \u0161\u016Bdas"
-      - "\u017Dalias \u0161\u016Bdas"
+      - "\u017Dol\u0117 tai \u017Ealia, bet visai ne tvirta"
+      - Kaip suprast stipri spalva? Spalva yra spalva
     - messageType: 0
       content: "\u017Di\u016Br\u0117k koki\u0105 poz\u0105 laikau. Visai \u017Einok
         sunku, bet a\u0161 sportuoju"
       huntMessage: "Kokia i\u0161vaizda toks ir protas!"
       correctChoices:
-      - "Stipr\u016Bs raumenys"
-      - "Stipr\u016Bs raumenys"
+      - Altus Fortu Citus
+      - Ilgai laikai jau taip?
       incorrectChoices:
       - "Mergaiti\u0161ka poza"
       - "\u010Cia pozuoji? Nieks nefotografuoja"
+      - "Balerina ka\u017Ekokia"
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
