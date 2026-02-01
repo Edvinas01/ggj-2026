@@ -520,6 +520,7 @@ MonoBehaviour:
   frontRenderer: {fileID: 630822908284679852}
   backRenderer: {fileID: 5860055808095123040}
   texturePropertyId: _BaseMap
+  rotationTransform: {fileID: 3324564241237960774}
   movementPositionInput: {fileID: 6074354703141026245}
   rigidBody: {fileID: 3092334648691783407}
   navMeshAgent: {fileID: 3594350978816022881}

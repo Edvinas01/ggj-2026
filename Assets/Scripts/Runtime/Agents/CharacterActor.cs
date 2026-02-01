@@ -40,6 +40,9 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private string texturePropertyId = "_BaseMap";
 
+        [SerializeField]
+        private Transform rotationTransform;
+
         [Header("Movement")]
         [FormerlySerializedAs("movementPointerInput")]
         [SerializeField]
@@ -384,6 +387,7 @@ namespace RIEVES.GGJ2026
             var characterPosition = rigidBody.position;
             var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
             movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
+            RotateTowards(navMeshAgent.steeringTarget);
         }
 
         void StopMovement()
@@ -399,12 +403,16 @@ namespace RIEVES.GGJ2026
 
         void RotateTowards(Vector3 targetPosition)
         {
-            var direction = (targetPosition - transform.position).normalized;
-            if ((targetPosition - transform.position).sqrMagnitude < 0.001f)
+            var vector = targetPosition - transform.position;
+            vector.y = 0f;
+            if (vector.sqrMagnitude < 0.001f)
                 return;
 
-            var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
-            rigidBody.rotation = Quaternion.Slerp(rigidBody.rotation, targetRotation, Time.deltaTime * 5f);
+            if (rotationTransform != null)
+            {
+                var direction = vector.normalized;
+                rotationTransform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
+            }
         }
 
         public void Initialize(CharacterData newData)

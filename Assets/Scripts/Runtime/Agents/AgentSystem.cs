@@ -86,7 +86,6 @@ namespace RIEVES.GGJ2026
             InterestType interest = MapStateToInterest(neededState);
 
             Vector3 position;
-            Quaternion rotation;
             PointOfInterest poi = null;
             if (init)
             {
@@ -94,9 +93,6 @@ namespace RIEVES.GGJ2026
                 if (poi == null)
                     return;
 
-                rotation = poi.Facing
-                    ? poi.transform.rotation
-                    : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
                 position = poi.transform.position;
             }
             else
@@ -105,7 +101,6 @@ namespace RIEVES.GGJ2026
                     return;
 
                 var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
                 position = spawnPoint.transform.position;
             }
 
