@@ -366,8 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9921240b51144ae78f649e6d4184770f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Items.ItemController
-  maxItems: 6
-  spawnCooldown: 45
+  maxItems: 7
+  spawnCooldown: 30
   randomXZOffset: 0.2
   actorPrefab: {fileID: 1637930060703512175, guid: 4bfb49d9e6f353d479bb617664ae3cef, type: 3}
   items:
