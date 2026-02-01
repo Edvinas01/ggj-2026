@@ -28,7 +28,7 @@ namespace RIEVES.GGJ2026
         public CharacterAnimationState CurrentAnimationState { get; private set; } = CharacterAnimationState.Idling;
         public CharacterState CurrentState { get; private set; } = CharacterState.Idling;
         public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
-        public PointOfInterest CurrentTarget { get; private set; }
+        public PointOfInterest CurrentTarget { get; set; }
 
         [Header("Rendering")]
         [SerializeField]
@@ -400,7 +400,7 @@ namespace RIEVES.GGJ2026
         void RotateTowards(Vector3 targetPosition)
         {
             var direction = (targetPosition - transform.position).normalized;
-            if (direction.sqrMagnitude < 0.001f)
+            if ((targetPosition - transform.position).sqrMagnitude < 0.001f)
                 return;
 
             var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
