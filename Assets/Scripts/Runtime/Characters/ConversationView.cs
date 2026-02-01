@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using RIEVES.GGJ2026.Core.Menus;
 using RIEVES.GGJ2026.Core.Views;
+using TMPEffects.Components;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Runtime.Characters
 {
@@ -19,6 +21,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [Header("Text")]
         [SerializeField]
+        private TMPWriter tmpWriter;
+
+        [SerializeField]
         private string defaultButtonText = "Gerai";
 
         [SerializeField]
@@ -26,6 +31,13 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [SerializeField]
         private TMP_Text contentText;
+
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onTextWriterStarted;
+
+        [SerializeField]
+        private UnityEvent onTextWriterFinished;
 
         private readonly List<MenuButtonElement> elements = new();
 
@@ -42,11 +54,17 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         protected override void OnEnable()
         {
             base.OnEnable();
+
+            tmpWriter.OnStartWriter.AddListener(OnStartWriter);
+            tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
+
+            tmpWriter.OnStartWriter.RemoveListener(OnStartWriter);
+            tmpWriter.OnFinishWriter.RemoveListener(OnFinishWriter);
         }
 
         public void AddChoice(ConversationChoice choice, Action onClicked)
@@ -84,6 +102,18 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             }
 
             base.SelectGameObject();
+        }
+
+        private void OnStartWriter(TMPWriter writer)
+        {
+            Debug.Log("Start");
+            onTextWriterStarted.Invoke();
+        }
+
+        private void OnFinishWriter(TMPWriter writer)
+        {
+            Debug.Log("Done");
+            onTextWriterFinished.Invoke();
         }
     }
 }

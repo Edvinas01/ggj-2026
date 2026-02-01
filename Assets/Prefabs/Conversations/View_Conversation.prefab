@@ -278,9 +278,16 @@ MonoBehaviour:
         m_Calls: []
   choiceButtonPrefab: {fileID: 3551938324134560714, guid: b45593e1ea9431c47ae2187971c66903, type: 3}
   choiceParent: {fileID: 5407746743408770858}
+  tmpWriter: {fileID: 8149472442867970605}
   defaultButtonText: Gerai
   titleText: {fileID: 3783183058019199524}
   contentText: {fileID: 7775144418076253866}
+  onTextWriterStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onTextWriterFinished:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3497740746404046504
 GameObject:
   m_ObjectHideFlags: 0
