@@ -33,15 +33,17 @@ MonoBehaviour:
       incorrectChoices:
       - "Man tai \u017Eiema"
       - "Kukur\u016Bzus s\u0117jam pavasar\u012F, o nuimam rugpj\u016Bt\u012F da\u017Eniausiai"
+      - "Vasara man primena Utenos m\u0117lyn\u0105"
     - messageType: 0
       content: "Mes ne Jonyt\u0117s, bet einam pa\u0161okti?"
       huntMessage: "Prisi\u0161nek\u0117jai!"
       correctChoices:
       - "Ne Jonyt\u0117s, bet dvi uogyt\u0117s"
-      - "Ne Jonyt\u0117s, bet dvi uogyt\u0117s"
+      - "\u0160okam!"
       incorrectChoices:
       - "O gal \u017Einot kur Jolanta?"
-      - "O gal \u017Einot kur Jolanta?"
+      - "Einam pa\u0161nioti?"
+      - "Kas ne\u0161oka tam ir taip linksma"
     - messageType: 0
       content: "Kar\u0161tas vakar\u0117lis!"
       huntMessage: "Tyl\u0117k tik!"
@@ -51,6 +53,7 @@ MonoBehaviour:
       incorrectChoices:
       - Reiks tuoj eit miegot jau
       - "O gal \u017Einot kur Jolanta?"
+      - "Mano dvi neken\u010Diamiausios spalvos - \u017Ealia ir raudona"
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

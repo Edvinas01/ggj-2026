@@ -33,24 +33,27 @@ MonoBehaviour:
       incorrectChoices:
       - Man tai normaliai
       - Aha
+      - "Mamo striuk\u0117?"
     - messageType: 0
       content: "Kas \u010Dia groja? Oj kaip kojos kilnojasi"
       huntMessage: Tikras kaimas!
       correctChoices:
       - "Kas kaip moka, tas taip \u0161oka!"
-      - "\u010Cia a\u0161 u\u017Esakiau dain\u0105"
+      - "Groija grojikas \u0161oka \u0161okikas"
       incorrectChoices:
       - Visai kaip arklio
-      - Visai kaip arklio
+      - "Va ten eik pasi\u017Ei\u016Br\u0117si kas groja"
+      - "\u010Cia gi klasika, net ir mano \u0161uo \u017Eino"
     - messageType: 0
       content: "Gal matei Jolant\u0105?"
       huntMessage: "Gr\u012F\u017Ek \u012F tvart\u0105!"
       correctChoices:
       - "A\u0161 jos kaip tik irgi ie\u0161kau"
-      - "A\u0161 jos kaip tik irgi ie\u0161kau"
+      - "Ne, bet prane\u0161iu jai, kad jos ie\u0161kai"
       incorrectChoices:
       - "Jol k\u0105?"
-      - "Jol k\u0105?"
+      - "Kas ta draug\u0117, einam geriau pa\u0161oksim"
+      - "Turiu kur \u017Ei\u016Br\u0117t ir be tavo Jolantos"
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

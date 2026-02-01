@@ -30,10 +30,11 @@ MonoBehaviour:
       huntMessage: Slabakas - ateini!
       correctChoices:
       - Negaliu vertint, man merginos patinka
-      - Negaliu vertint, man merginos patinka
+      - "Pabandyk Jolant\u0105 u\u017Ekalbinti"
       incorrectChoices:
       - "Man tai labai gra\u017Eus ir patrauklus"
-      - "Man tai labai gra\u017Eus ir patrauklus"
+      - "Galim eit nuo\u0161aliau ir pasikalb\u0117t apie tai"
+      - "Merginos ne mus\u0117s, prie \u0160 nelimpa"
     - messageType: 0
       content: "Gal\u0117t\u0173 i\u0161leistuv\u0117s b\u016Bti kiekvien\u0105 dien\u0105!"
       huntMessage: Ne ten pataikei!
@@ -42,7 +43,8 @@ MonoBehaviour:
       - Kartojam rytoj!
       incorrectChoices:
       - Tai, kad vakaras dabar
-      - Tai, kad vakaras dabar
+      - "Matosi i\u0161 veido, kad pa\u0161v\u0119st m\u0117gsti"
+      - "O rytoj tau \u012F darb\u0105 nereikia?"
     - messageType: 0
       content: "Ar pameni mano vard\u0105? Atrodo kartu mok\u0117m\u0117s"
       huntMessage: "M\u0117sgabalis!"
@@ -50,7 +52,8 @@ MonoBehaviour:
       - "Na, mokykla tegul eina velniop! U\u017E \u0161\u012F vakar\u0105!"
       - "Kam man vyr\u0173 vardus atsiminti?"
       incorrectChoices:
-      - "A\u0161 i\u0161 klas\u0117s C"
+      - "A\u0161 i\u0161 klas\u0117s A"
+      - "A\u0161 i\u0161 klas\u0117s B"
       - "A\u0161 i\u0161 klas\u0117s C"
   activityPatience: []
   calmMoveSpeed: 0.3

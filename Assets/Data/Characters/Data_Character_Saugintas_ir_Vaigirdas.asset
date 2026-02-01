@@ -33,16 +33,18 @@ MonoBehaviour:
       incorrectChoices:
       - Vyro energija
       - Silpna energija?
+      - "K\u0105 tu \u010Dia apie energijas..."
     - messageType: 0
       content: "Oj kaip gerai b\u016Bt\u0173 kok\u012F pa\u017E\u012Fstam\u0105 rast
         ir i\u0161gert kartu"
       huntMessage: Grybas!
       correctChoices:
       - "Mes i\u0161 tos pa\u010Dios laidos"
-      - "A\u0161 Jonyt\u0117s draugas"
+      - "A\u0161 Jolantos draugas"
       incorrectChoices:
       - "Galim susipa\u017Eint"
       - "Man patinka naujos pa\u017Eintys"
+      - "Nepa\u017E\u012Fstami mes, bet \u012Fpilk"
     - messageType: 0
       content: "Broliai mes. Mes dviese visk\u0105 darom kartu."
       huntMessage: "Tur\u0117k b\u0117d\u0105!"
@@ -51,7 +53,8 @@ MonoBehaviour:
       - "Kaip Darius ir Gir\u0117nas"
       incorrectChoices:
       - O tualete irgi?
-      - O tualete irgi?
+      - Skamba ne kaip
+      - "\u012Esimyl\u0117j\u0119 gal j\u016Bs?"
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

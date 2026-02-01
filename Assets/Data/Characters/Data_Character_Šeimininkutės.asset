@@ -24,7 +24,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
   conversation:
     messages:
-    - messageType: 1
+    - messageType: 0
       content: "Nel\u012Fsk \u010Dia, kai pagaminsim maisto - atne\u0161im."
       huntMessage: Parazitas!
       correctChoices:
@@ -33,8 +33,9 @@ MonoBehaviour:
       incorrectChoices:
       - "Smirda labai tas j\u016Bs\u0173 maistas"
       - "Atrodo kaip \u0161uniena"
-    - messageType: 1
-      content: "Kaip tau naujos m\u016Bs\u0173 uniformos?"
+      - "Pa\u010Dios pasisl\u0117p\u0119 valgot"
+    - messageType: 0
+      content: "Kaip tau m\u016Bs\u0173 naujos uniformos?"
       huntMessage: Tuoj mes tave!
       correctChoices:
       - "Susiderin\u0119"
@@ -42,6 +43,7 @@ MonoBehaviour:
       incorrectChoices:
       - Seniena
       - Skalbt jau laikas
+      - "Patinka de\u0161ros spalva?"
   activityPatience: []
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
