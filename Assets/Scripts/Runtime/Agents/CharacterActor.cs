@@ -61,6 +61,15 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private StudioEventEmitter voiceAudioEmitter;
 
+        [SerializeField]
+        private StudioEventEmitter marozVoiceAudioEmitter;
+
+        [SerializeField]
+        private StudioEventEmitter footstepAudioEmitter;
+
+        [SerializeField]
+        private StudioEventEmitter marozAudioEmitter;
+
         [Header("AI")]
         [FormerlySerializedAs("agent")]
         [SerializeField]
@@ -396,8 +405,8 @@ namespace RIEVES.GGJ2026
                     return;
                 }
 
-                voiceAudioEmitter.EventReference = CharacterData.MarozVoiceFmodEvent;
-                voiceAudioEmitter.Play();
+                marozVoiceAudioEmitter.EventReference = CharacterData.MarozVoiceFmodEvent;
+                marozVoiceAudioEmitter.Play();
                 return;
             }
             else
@@ -415,6 +424,7 @@ namespace RIEVES.GGJ2026
         public void StopVoice()
         {
             voiceAudioEmitter.Stop();
+            marozVoiceAudioEmitter.Stop();
         }
 
         bool StartMovement(PointOfInterest target)
@@ -598,8 +608,8 @@ namespace RIEVES.GGJ2026
                 return;
             }
 
-            voiceAudioEmitter.EventReference = CharacterData.FootstepFmodEvent;
-            voiceAudioEmitter.Play();
+            footstepAudioEmitter.EventReference = CharacterData.FootstepFmodEvent;
+            footstepAudioEmitter.Play();
         }
 
         private void OnFootstepStopped()
@@ -609,7 +619,7 @@ namespace RIEVES.GGJ2026
                 return;
             }
 
-            voiceAudioEmitter.Stop();
+            footstepAudioEmitter.Stop();
         }
 
         public void StartMarozSound()
@@ -619,8 +629,8 @@ namespace RIEVES.GGJ2026
                 return;
             }
 
-            voiceAudioEmitter.EventReference = CharacterData.MarozFmodEvent;
-            voiceAudioEmitter.Play();
+            marozAudioEmitter.EventReference = CharacterData.MarozFmodEvent;
+            marozAudioEmitter.Play();
         }
 
         public void StopMarozSound()
@@ -630,7 +640,7 @@ namespace RIEVES.GGJ2026
                 return;
             }
 
-            voiceAudioEmitter.Stop();
+            marozAudioEmitter.Stop();
         }
     }
 }
