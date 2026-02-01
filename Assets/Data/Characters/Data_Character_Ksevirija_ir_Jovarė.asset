@@ -61,6 +61,27 @@ MonoBehaviour:
       Data3: 1341994396
       Data4: 385734510
     Path: event:/VO/VO_Mergina
+  footstepFmodEvent:
+    Guid:
+      Data1: -1783365213
+      Data2: 1130370088
+      Data3: -200384072
+      Data4: -507841371
+    Path: event:/SFX/S_Footsteps_HighHeels
+  marozFmodEvent:
+    Guid:
+      Data1: -462005699
+      Data2: 1080775073
+      Data3: -1538803268
+      Data4: -1800361691
+    Path: event:/SFX/S_Footsteps_Maroz
+  marozVoiceFmodEvent:
+    Guid:
+      Data1: -830536824
+      Data2: 1244529280
+      Data3: 907840906
+      Data4: 1622055665
+    Path: event:/VO/VO_Marozas
   activityPatience:
   - activity: 2
     minTime: 40

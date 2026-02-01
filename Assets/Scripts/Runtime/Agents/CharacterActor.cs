@@ -12,6 +12,7 @@ using FMODUnity;
 
 namespace RIEVES.GGJ2026
 {
+    [RequireComponent(typeof(MovementController))]
     internal sealed class CharacterActor : MonoBehaviour
     {
         [Header("General")]
@@ -60,10 +61,21 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private StudioEventEmitter voiceAudioEmitter;
 
+        [SerializeField]
+        private StudioEventEmitter marozVoiceAudioEmitter;
+
+        [SerializeField]
+        private StudioEventEmitter footstepAudioEmitter;
+
+        [SerializeField]
+        private StudioEventEmitter marozAudioEmitter;
+
         [Header("AI")]
         [FormerlySerializedAs("agent")]
         [SerializeField]
         private NavMeshAgent navMeshAgent;
+
+        private MovementController movementController;
 
         private CharacterData runtimeData;
         private AgentSystem agentSystem;
@@ -91,6 +103,7 @@ namespace RIEVES.GGJ2026
         private void Awake()
         {
             agentSystem = GameManager.GetSystem<AgentSystem>();
+            movementController = GetComponent<MovementController>();
 
             navMeshAgent.updatePosition = false;
             navMeshAgent.updateRotation = false;
@@ -110,6 +123,8 @@ namespace RIEVES.GGJ2026
             interactable.OnHoverExited += OnInteractableHoverExited;
             interactable.OnSelectEntered += OnInteractableSelectEntered;
             interactable.OnSelectExited += OnInteractableSelectExited;
+            movementController.OnMoveEntered += OnFootstepStarted;
+            movementController.OnMoveExited += OnFootstepStopped;
         }
 
         private void OnDisable()
@@ -118,6 +133,8 @@ namespace RIEVES.GGJ2026
             interactable.OnHoverExited -= OnInteractableHoverExited;
             interactable.OnSelectEntered -= OnInteractableSelectEntered;
             interactable.OnSelectExited -= OnInteractableSelectExited;
+            movementController.OnMoveEntered -= OnFootstepStarted;
+            movementController.OnMoveExited -= OnFootstepStopped;
         }
 
         float stateChangeTimer = -100f;
@@ -381,18 +398,33 @@ namespace RIEVES.GGJ2026
 
         public void PlayVoice()
         {
-            if (CharacterData.VoiceFmodEvent.IsNull)
+            if (CurrentState == CharacterState.Hunting)
             {
+                if (CharacterData.MarozVoiceFmodEvent.IsNull)
+                {
+                    return;
+                }
+
+                marozVoiceAudioEmitter.EventReference = CharacterData.MarozVoiceFmodEvent;
+                marozVoiceAudioEmitter.Play();
                 return;
             }
+            else
+            {
+                if (CharacterData.VoiceFmodEvent.IsNull)
+                {
+                    return;
+                }
 
-            voiceAudioEmitter.EventReference = CharacterData.VoiceFmodEvent;
-            voiceAudioEmitter.Play();
+                voiceAudioEmitter.EventReference = CharacterData.VoiceFmodEvent;
+                voiceAudioEmitter.Play();
+            }
         }
 
         public void StopVoice()
         {
             voiceAudioEmitter.Stop();
+            marozVoiceAudioEmitter.Stop();
         }
 
         bool StartMovement(PointOfInterest target)
@@ -567,6 +599,58 @@ namespace RIEVES.GGJ2026
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
         {
+        }
+
+        private void OnFootstepStarted()
+        {
+            if (marozAudioEmitter.IsPlaying())
+            {
+                return;
+            }
+
+            if (CharacterData.FootstepFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            footstepAudioEmitter.EventReference = CharacterData.FootstepFmodEvent;
+            footstepAudioEmitter.Play();
+        }
+
+        private void OnFootstepStopped()
+        {
+            if (CharacterData.FootstepFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            footstepAudioEmitter.Stop();
+        }
+
+        public void StartMarozSound()
+        {
+            if (footstepAudioEmitter.IsPlaying())
+            {
+                footstepAudioEmitter.Stop();
+            }
+
+            if (CharacterData.MarozFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            marozAudioEmitter.EventReference = CharacterData.MarozFmodEvent;
+            marozAudioEmitter.Play();
+        }
+
+        public void StopMarozSound()
+        {
+            if (CharacterData.MarozFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            marozAudioEmitter.Stop();
         }
     }
 }
