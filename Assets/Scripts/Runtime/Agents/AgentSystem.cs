@@ -40,6 +40,7 @@ namespace RIEVES.GGJ2026
             desiredProportions[CharacterState.Idling] = 6;
             desiredProportions[CharacterState.Dancing] = 7;
             desiredProportions[CharacterState.Watching] = 10;
+            desiredProportions[CharacterState.Guarding] = 2;
 
             var oldActors = agents.ToList();
             var currentCount = agents.Count;
@@ -60,10 +61,10 @@ namespace RIEVES.GGJ2026
         public void OnUpdated(float deltaTime)
         {
             float heatProgress = Mathf.InverseLerp(1f, 2.2f, heatSystem.CurrentHeat);
-            desiredProportions[CharacterState.Guarding] = Mathf.RoundToInt(Mathf.Lerp(0, 6, heatProgress));
-            desiredProportions[CharacterState.Hunting] = Mathf.RoundToInt(Mathf.Lerp(0, 4, heatProgress));
+            desiredProportions[CharacterState.Guarding] = Mathf.RoundToInt(Mathf.Lerp(2, 8, heatProgress));
+            desiredProportions[CharacterState.Hunting] = Mathf.RoundToInt(Mathf.Lerp(0, 5, heatProgress));
 
-            int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(0, 5, heatProgress));
+            int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(1, 7, heatProgress));
             if (agents.Count < currentGoal)
                 SpawnNewAgent(false);
         }
