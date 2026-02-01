@@ -23,12 +23,16 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private Interactable interactable;
 
+
+        [SerializeField]
+        private bool lockCharacterState;
+
         [SerializeField]
         private List<StateChangeTriggers> onStateChange = new();
         public CharacterAnimationState CurrentAnimationState { get; private set; } = CharacterAnimationState.Idling;
         public CharacterState CurrentState { get; private set; } = CharacterState.Idling;
         public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
-        public PointOfInterest CurrentTarget { get; set; }
+        public PointOfInterest CurrentTarget;
 
         public bool WantsToTalk => CurrentState == CharacterState.Guarding || CurrentState == CharacterState.Hunting;
 
@@ -199,7 +203,8 @@ namespace RIEVES.GGJ2026
             CurrentState = newState;
             SetPatienceDuration(newState);
             CurrentActivity = CharacterActivity.Idling;
-            CurrentTarget = null;
+            if (!lockCharacterState)
+                CurrentTarget = null;
         }
 
         private void Update()
@@ -223,6 +228,9 @@ namespace RIEVES.GGJ2026
 
             if (stateChangeTimer <= Time.time)
             {
+                if (!lockCharacterState || stateChangeTimer >= 0f)
+                    return;
+
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
                 SetPatienceDuration(nextState);
