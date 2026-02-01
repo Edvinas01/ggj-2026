@@ -61,6 +61,13 @@ MonoBehaviour:
       Data3: 1341994396
       Data4: 385734510
     Path: event:/VO/VO_Mergina
+  footstepFmodEvent:
+    Guid:
+      Data1: -1783365213
+      Data2: 1130370088
+      Data3: -200384072
+      Data4: -507841371
+    Path: event:/SFX/S_Footsteps_HighHeels
   activityPatience:
   - activity: 1
     minTime: 40

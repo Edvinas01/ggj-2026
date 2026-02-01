@@ -62,6 +62,13 @@ MonoBehaviour:
       Data3: -1937743710
       Data4: -57751791
     Path: event:/VO/VO_Vaikinas
+  footstepFmodEvent:
+    Guid:
+      Data1: 730479213
+      Data2: 1123402877
+      Data3: -1080882542
+      Data4: -54468195
+    Path: event:/SFX/S_Footsteps_Shoes
   activityPatience:
   - activity: 0
     minTime: 30
