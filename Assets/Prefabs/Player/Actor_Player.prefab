@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &980100351312969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4062529226839158070}
+  - component: {fileID: 2639234642345558973}
+  m_Layer: 6
+  m_Name: UI_Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4062529226839158070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980100351312969}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2639234642345558973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980100351312969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157012e9af8c4b14b51ae320ae435629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Controls.ControlsViewController
+  controllerData:
+    view: {fileID: 6346822260022843732, guid: 3112a1f45a307ac45a9df78d44fae865, type: 3}
+    viewParent: {fileID: 4062529226839158070}
+    startMode: 1
 --- !u!1 &1327535735193303051
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,6 +884,7 @@ Transform:
   m_Children:
   - {fileID: 4771975944389450584}
   - {fileID: 4982922085616125435}
+  - {fileID: 4062529226839158070}
   - {fileID: 5571720615813670355}
   - {fileID: 8260041410107984311}
   - {fileID: 6920054493127851465}
@@ -894,12 +943,14 @@ MonoBehaviour:
   cinemachineImpulse: {fileID: 2483201389401959049}
   zoomInSpeed: 4
   zoomInFov: 20
+  shakeDelay: 0.5
   cameraShakeForce: {x: 0, y: 0, z: -1}
   interactInputAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   zoomInputListener: {fileID: 7318049650304406683, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   defaultHoverPopupController: {fileID: 9029458643344921814}
   characterHoverPopupController: {fileID: 4097770793118596070}
   itemHoverPopupController: {fileID: 2130607430814783093}
+  controlsViewController: {fileID: 2639234642345558973}
 --- !u!114 &8557895804664849490
 MonoBehaviour:
   m_ObjectHideFlags: 0

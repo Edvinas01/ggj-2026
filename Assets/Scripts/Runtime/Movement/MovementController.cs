@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Runtime.Movement
@@ -27,6 +28,9 @@ namespace RIEVES.GGJ2026.Runtime.Movement
         private Rigidbody rigidBody;
         private bool isMoving;
 
+        public event Action OnMoveEntered;
+        public event Action OnMoveExited;
+
         public bool IsMoving
         {
             get => isMoving;
@@ -44,10 +48,12 @@ namespace RIEVES.GGJ2026.Runtime.Movement
 
                 if (isMovingNext)
                 {
+                    OnMoveEntered?.Invoke();
                     onMoveEntered.Invoke();
                 }
                 else
                 {
+                    OnMoveExited?.Invoke();
                     onMoveExited.Invoke();
                 }
             }

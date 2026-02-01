@@ -46,6 +46,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private List<ActivityPatiencePair> activityPatience;
 
+        [SerializeField]
+        private float calmMoveSpeed = 0.3f;
+
+        [SerializeField]
+        private float agitatedMoveSpeed = 1f;
+
         public string CharacterName => characterName;
 
         public int AddsAlcohol => addsAlcohol;
@@ -62,5 +68,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public CharacterConversationData ConversationData => conversation;
         public List<ActivityPatiencePair> ActivityPatience => activityPatience;
+        public float CalmMoveSpeed => calmMoveSpeed;
+        public float AgitatedMoveSpeed => agitatedMoveSpeed;
     }
 }
