@@ -175,7 +175,7 @@ namespace RIEVES.GGJ2026
             return;
         }
 
-        void SetPatienceDuration(CharacterState state)
+        public void SetPatienceDuration(CharacterState state)
         {
             var agentPrefs = CharacterData.ActivityPatience;
             var matchingPref = agentPrefs.FirstOrDefault(p => p.activity == state);

@@ -19,21 +19,94 @@ namespace RIEVES.GGJ2026
 
         readonly Dictionary<CharacterState, int> desiredProportions = new();
         readonly Dictionary<InterestType, List<PointOfInterest>> points = new();
-        readonly List<CharacterActor> agents = new();
+        readonly HashSet<CharacterActor> agents = new();
 
-        private void Start()
+        int desiredPopulation = 20;
+
+        private void InitializeProportions()
         {
-            var states = System.Enum.GetValues(typeof(CharacterState));
-            foreach (CharacterState state in states)
+            foreach (CharacterState state in Enum.GetValues(typeof(CharacterState)))
             {
                 desiredProportions[state] = 0;
             }
 
-            desiredProportions[CharacterState.Idling] = 1;
-            desiredProportions[CharacterState.Dancing] = 1;
-            desiredProportions[CharacterState.Watching] = 2;
-            desiredProportions[CharacterState.Guarding] = 3;
-            desiredProportions[CharacterState.Hunting] = 1;
+            desiredProportions[CharacterState.Idling] = 6;
+            desiredProportions[CharacterState.Dancing] = 7;
+            desiredProportions[CharacterState.Watching] = 10;
+        }
+
+        private void Start()
+        {
+            InitializeProportions();
+
+            foreach (var agent in agents)
+            {
+                CharacterState newState = GetRandomState(agent);
+                agent.SetState(newState);
+                agent.SetPatienceDuration(newState);
+            }
+
+            int currentPop = agents.Count;
+            for (int i = currentPop; i < desiredPopulation; i++)
+            {
+                CharacterState neededState = GetMostNeededState();
+                var desiredInterest = neededState switch
+                {
+                    CharacterState.Watching => InterestType.Watch,
+                    CharacterState.Dancing => InterestType.Dancing,
+                    CharacterState.Guarding => InterestType.Guard,
+                    CharacterState.Hunting => InterestType.Patrol,
+                    _ => InterestType.Watch
+                };
+
+                var spawnPoint = PickRandomWaypoint(desiredInterest);
+                if (spawnPoint == null)
+                {
+                    i--;
+                    continue;
+                }
+
+                Quaternion spawnRotation = spawnPoint.Facing
+                    ? spawnPoint.transform.rotation
+                    : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+
+                CharacterActor newAgent = CreateCharacter(neededState, spawnPoint.transform.position, spawnRotation);
+                if (newAgent != null)
+                {
+                    newAgent.SetState(neededState);
+                    newAgent.SetPatienceDuration(neededState);
+                    agents.Add(newAgent);
+                }
+                else
+                {
+                    i--;
+                }
+            }
+        }
+
+        private CharacterState GetMostNeededState()
+        {
+            var states = (CharacterState[])Enum.GetValues(typeof(CharacterState));
+            int[] currentCounts = new int[states.Length];
+            foreach (var agent in agents)
+                currentCounts[(int)agent.CurrentState]++;
+
+            CharacterState bestState = CharacterState.Idling;
+            int maxDemand = -1;
+
+            foreach (var state in states)
+            {
+                int desired = desiredProportions.ContainsKey(state) ? desiredProportions[state] : 0;
+                int demand = desired - currentCounts[(int)state];
+
+                if (demand > maxDemand)
+                {
+                    maxDemand = demand;
+                    bestState = state;
+                }
+            }
+
+            return bestState;
         }
 
         public PointOfInterest PickRandomWaypoint(InterestType interestType)
@@ -65,34 +138,26 @@ namespace RIEVES.GGJ2026
 
         public CharacterActor CreateCharacter(CharacterState state, Vector3 position, Quaternion rotation)
         {
-            var filteredCharacters = characterSpawnPool.Where(characterData =>
-                {
-                    foreach (var pair in characterData.ActivityPatience)
-                    {
-                        if (pair.activity == state)
-                        {
-                            return true;
-                        }
-                    }
+            var candidates = characterSpawnPool.Where(data =>
+                data.ActivityPatience == null || data.ActivityPatience.Count == 0 ||
+                data.ActivityPatience.Any(p => p.activity == state)
+            ).ToList();
 
-                    return false;
-                }
-            );
-
-            if (filteredCharacters.TryGetRandom(out var character))
+            if (candidates.Count > 0)
             {
+                var characterData = candidates[Random.Range(0, candidates.Count)];
                 var instance = Instantiate(characterPrefab, position, rotation);
-                instance.Initialize(character);
-
+                instance.Initialize(characterData);
                 return instance;
             }
 
-            throw new Exception($"No characters found in {nameof(CharacterData.ActivityPatience)} containing activity {state}");
+            Debug.LogError($"Could not find any CharacterData for {state} or any Generalists.");
+            return null;
         }
 
         public CharacterState GetRandomState(CharacterActor agent)
         {
-            var states = (CharacterState[])System.Enum.GetValues(typeof(CharacterState));
+            var states = (CharacterState[])Enum.GetValues(typeof(CharacterState));
             int stateCount = states.Length;
 
             // 1. Calculate current population counts
@@ -163,22 +228,16 @@ namespace RIEVES.GGJ2026
         private CharacterState HandleDefaultState(CharacterActor agent)
         {
             var agentPrefs = agent.CharacterData.ActivityPatience;
-
-            // Rule: If they can Idle, they should default to Idle.
-            // Generalists (empty list) can always idle.
-            if (agentPrefs.Count == 0)
+            if (agentPrefs == null || agentPrefs.Count == 0)
             {
                 return CharacterState.Idling;
             }
 
-            // Specialists can only idle if they have it in their list.
-            bool canIdle = agentPrefs.Exists(p => p.activity == CharacterState.Idling);
-            if (canIdle)
+            if (agentPrefs.Exists(p => p.activity == CharacterState.Idling))
             {
                 return CharacterState.Idling;
             }
 
-            // If they can't idle, pick their first defined activity so they aren't stuck.
             return agentPrefs[0].activity;
         }
 
