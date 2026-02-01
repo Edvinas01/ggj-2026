@@ -226,9 +226,7 @@ namespace RIEVES.GGJ2026
 
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
-                SetPatienceDuration(nextState);
-                if (currentTargetState != nextState)
-                    SetState(nextState);
+                SetState(nextState);
             }
 
             switch (CurrentState)
@@ -341,7 +339,7 @@ namespace RIEVES.GGJ2026
                     {
                         if (CurrentTarget != null && CurrentTarget.Facing)
                         {
-                            RotateTowards(CurrentTarget.transform.position);
+                            SetRotation(CurrentTarget.transform.rotation);
                         }
 
                         SetAnimationState(CurrentState switch
@@ -403,6 +401,15 @@ namespace RIEVES.GGJ2026
         private void LateUpdate()
         {
             navMeshAgent.nextPosition = rigidBody.position;
+        }
+
+        void SetRotation(Quaternion targetRotation)
+        {
+            if (rotationTransform != null)
+            {
+                targetRotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
+                rotationTransform.rotation = targetRotation;
+            }
         }
 
         void RotateTowards(Vector3 targetPosition)
@@ -479,7 +486,6 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.GoodResponse);
-            stateChangeTimer = Time.time;
         }
 
         public void ConversationStoppedIncorrect()
@@ -489,7 +495,6 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.BadResponse);
-            stateChangeTimer = Time.time;
         }
 
         public void ConversationStoppedNeutral()
@@ -499,7 +504,6 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.NeutralResponse);
-            stateChangeTimer = Time.time;
         }
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
