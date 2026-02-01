@@ -291,13 +291,13 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                         }
 
                         StopConversation(choice.IsCorrect ? ConversationResult.Correct : ConversationResult.Incorrect);
-                        break;
+                        return;
                     }
                 case CharacterMessageType.RandomBlurb:
                     {
                         onRandomBlurbChoiceSelected.Invoke();
                         StopConversation(ConversationResult.Neutral);
-                        break;
+                        return;
                     }
                 case CharacterMessageType.Hunter:
                     {

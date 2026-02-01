@@ -209,6 +209,9 @@ namespace RIEVES.GGJ2026
 
         private void Update()
         {
+            if (isInteractingWithPlayer)
+                RotateTowards(interactingWith.position);
+
             // Leave out the last callback to be played on interruption.
             while (CallBacks.Count > 1)
             {
@@ -221,10 +224,7 @@ namespace RIEVES.GGJ2026
             }
 
             if (isInteractingWithPlayer)
-            {
-                RotateTowards(interactingWith.position);
                 return;
-            }
 
             if (stateChangeTimer <= Time.time)
             {
@@ -274,6 +274,7 @@ namespace RIEVES.GGJ2026
                             }
                             else
                             {
+                                StopMovement();
                                 CurrentActivity = CurrentState switch
                                 {
                                     CharacterState.Guarding => CharacterActivity.Guarding,
@@ -483,7 +484,7 @@ namespace RIEVES.GGJ2026
         {
             isInteractingWithPlayer = false;
             if (wasMovingBeforeConversation)
-                StartMovement(CurrentTarget);
+                navMeshAgent.enabled = true;
 
             SetAnimationState(CharacterAnimationState.GoodResponse);
             onConversationStopped.Invoke();
@@ -493,7 +494,7 @@ namespace RIEVES.GGJ2026
         {
             isInteractingWithPlayer = false;
             if (wasMovingBeforeConversation)
-                StartMovement(CurrentTarget);
+                navMeshAgent.enabled = true;
 
             SetAnimationState(CharacterAnimationState.BadResponse);
             onConversationStopped.Invoke();
@@ -503,7 +504,7 @@ namespace RIEVES.GGJ2026
         {
             isInteractingWithPlayer = false;
             if (wasMovingBeforeConversation)
-                StartMovement(CurrentTarget);
+                navMeshAgent.enabled = true;
 
             SetAnimationState(CharacterAnimationState.NeutralResponse);
             onConversationStopped.Invoke();
