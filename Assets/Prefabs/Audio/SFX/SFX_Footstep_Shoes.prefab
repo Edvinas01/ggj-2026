@@ -53,7 +53,7 @@ MonoBehaviour:
       Data4: -54468195
     Path: event:/SFX/S_Footsteps_Shoes
   Event: 
-  EventPlayTrigger: 11
+  EventPlayTrigger: 0
   EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0

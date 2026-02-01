@@ -139,6 +139,7 @@
 		<relationship name="effects">
 			<destination>{e5aeddc6-db71-4dc0-8dd1-9dc6a89d9fb5}</destination>
 			<destination>{2ffcff30-064a-4248-b862-f74d31b75988}</destination>
+			<destination>{1e2aec8f-a60d-41a7-92d2-2864fcd79726}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{919623aa-7848-4dea-b451-7514c21d9b1a}" />
@@ -152,7 +153,7 @@
 			<value>1</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.0357733667</value>
+			<value>0.171848595</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{172ecdce-a44b-45ee-9d86-bfaf2141e844}">
@@ -178,4 +179,5 @@
 			<value>38</value>
 		</property>
 	</object>
+	<object class="SFXReverbEffect" id="{1e2aec8f-a60d-41a7-92d2-2864fcd79726}" />
 </objects>

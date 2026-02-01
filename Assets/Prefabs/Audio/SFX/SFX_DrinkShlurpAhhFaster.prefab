@@ -53,7 +53,7 @@ MonoBehaviour:
       Data4: 1774164549
     Path: event:/SFX/S_DrinkShlurpAhhhFasterino
   Event: 
-  EventPlayTrigger: 11
+  EventPlayTrigger: 0
   EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0

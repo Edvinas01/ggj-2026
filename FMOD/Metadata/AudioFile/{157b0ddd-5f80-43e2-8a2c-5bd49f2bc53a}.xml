@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{157b0ddd-5f80-43e2-8a2c-5bd49f2bc53a}">
+		<property name="assetPath">
+			<value>VAZIUOJAM/VAS-KI-ČI_Pofke_02.flac</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>4.5619375</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>
+		</relationship>
+	</object>
+</objects>
