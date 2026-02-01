@@ -28,7 +28,7 @@ namespace RIEVES.GGJ2026
         public CharacterAnimationState CurrentAnimationState { get; private set; } = CharacterAnimationState.Idling;
         public CharacterState CurrentState { get; private set; } = CharacterState.Idling;
         public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
-        public PointOfInterest CurrentTarget { get; private set; }
+        public PointOfInterest CurrentTarget { get; set; }
 
         [Header("Rendering")]
         [SerializeField]
