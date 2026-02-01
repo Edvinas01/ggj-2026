@@ -41,6 +41,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private readonly List<MenuButtonElement> elements = new();
 
+        public event Action OnTextWriterStarted;
+
+        public event Action OnTextWriterFinished;
+
+
         public string TitleText
         {
             set => titleText.text = value;
@@ -111,12 +116,24 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 return;
             }
 
+            OnTextWriterStarted?.Invoke();
             onTextWriterStarted.Invoke();
         }
 
         private void OnFinishWriter(TMPWriter writer)
         {
+            OnTextWriterFinished?.Invoke();
             onTextWriterFinished.Invoke();
+        }
+
+        protected override void OnViewHideEntered()
+        {
+            base.OnViewHideEntered();
+
+            if (tmpWriter.IsWriting)
+            {
+                tmpWriter.StopWriter();
+            }
         }
     }
 }

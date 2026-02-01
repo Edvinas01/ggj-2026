@@ -8,6 +8,7 @@ using UnityEngine.AI;
 using UnityEngine.Serialization;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 
 namespace RIEVES.GGJ2026
 {
@@ -55,6 +56,10 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private Rigidbody rigidBody;
 
+        [Header("Audio")]
+        [SerializeField]
+        private StudioEventEmitter voiceAudioEmitter;
+
         [Header("AI")]
         [FormerlySerializedAs("agent")]
         [SerializeField]
@@ -71,6 +76,8 @@ namespace RIEVES.GGJ2026
         public float StateChangeTimer => stateChangeTimer;
 
         public float AnimationDelayTimer => animationDelayTimer;
+
+        public StudioEventEmitter VoiceAudioEmitter => voiceAudioEmitter;
 
 #if UNITY_EDITOR
 

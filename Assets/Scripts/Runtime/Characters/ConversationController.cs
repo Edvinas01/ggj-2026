@@ -247,6 +247,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.Content,
+                eventReference: character.CharacterData.VoiceFmodEvent,
                 choices: choices
             );
         }
@@ -256,6 +257,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.Content,
+                eventReference: character.CharacterData.VoiceFmodEvent,
                 choices: new[]
                 {
                     new ConversationChoice(
@@ -272,6 +274,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.HuntMessage,
+                eventReference: character.CharacterData.VoiceFmodEvent,
                 choices: new[]
                 {
                     new ConversationChoice(
