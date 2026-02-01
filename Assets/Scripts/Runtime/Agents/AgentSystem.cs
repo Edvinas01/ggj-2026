@@ -88,13 +88,17 @@ namespace RIEVES.GGJ2026
 
         public void OnUpdated(float deltaTime)
         {
-            float heatProgress = Mathf.InverseLerp(1f, 3.2f, heatSystem.CurrentHeat);
-            desiredProportions[CharacterState.Guarding] = Mathf.RoundToInt(Mathf.Lerp(3, 10, heatProgress));
-            desiredProportions[CharacterState.Hunting] = Mathf.RoundToInt(Mathf.Lerp(0, 8, heatProgress));
+            float heatDelta = Mathf.Max(0f, heatSystem.CurrentHeat - 1f);
 
-            int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(1, 16, heatProgress));
+            desiredProportions[CharacterState.Guarding] = 0 + Mathf.RoundToInt(2.5f * heatDelta);
+            desiredProportions[CharacterState.Hunting] = 0 + Mathf.RoundToInt(3.1f * heatDelta);
+            desiredProportions[CharacterState.Dancing] = 13 + Mathf.RoundToInt(2.5f * heatDelta);
+
+            int currentGoal = initialBasePopulation + 1 + Mathf.RoundToInt(8f * heatDelta);
             if (agents.Count < currentGoal)
+            {
                 SpawnNewAgent(false);
+            }
         }
 
         private InterestType MapStateToInterest(CharacterState state)
