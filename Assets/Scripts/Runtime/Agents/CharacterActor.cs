@@ -389,13 +389,27 @@ namespace RIEVES.GGJ2026
 
         public void PlayVoice()
         {
-            if (CharacterData.VoiceFmodEvent.IsNull)
+            if (CurrentState == CharacterState.Hunting)
             {
+                if (CharacterData.MarozVoiceFmodEvent.IsNull)
+                {
+                    return;
+                }
+
+                voiceAudioEmitter.EventReference = CharacterData.MarozVoiceFmodEvent;
+                voiceAudioEmitter.Play();
                 return;
             }
+            else
+            {
+                if (CharacterData.VoiceFmodEvent.IsNull)
+                {
+                    return;
+                }
 
-            voiceAudioEmitter.EventReference = CharacterData.VoiceFmodEvent;
-            voiceAudioEmitter.Play();
+                voiceAudioEmitter.EventReference = CharacterData.VoiceFmodEvent;
+                voiceAudioEmitter.Play();
+            }
         }
 
         public void StopVoice()
