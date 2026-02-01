@@ -48,7 +48,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private EventReference voiceFmodEvent;
 
         [SerializeField]
-        private EventReference voiceStartFmodEvent;
+        private EventReference footstepFmodEvent;
 
         [Header("Behaviour Data")]
         [SerializeField]
@@ -80,6 +80,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public float AgitatedMoveSpeed => agitatedMoveSpeed;
 
         public EventReference VoiceFmodEvent => voiceFmodEvent;
-        public EventReference FootstepFmodEvent => voiceStartFmodEvent;
+        public EventReference FootstepFmodEvent => footstepFmodEvent;
     }
 }
