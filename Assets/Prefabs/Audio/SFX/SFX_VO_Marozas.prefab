@@ -53,7 +53,7 @@ MonoBehaviour:
       Data4: 1622055665
     Path: event:/VO/VO_Marozas
   Event: 
-  EventPlayTrigger: 11
+  EventPlayTrigger: 0
   EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
