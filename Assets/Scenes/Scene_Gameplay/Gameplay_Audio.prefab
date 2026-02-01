@@ -47,6 +47,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music
       objectReference: {fileID: 0}
+    - target: {fileID: 7893464925206616210, guid: 9dea43766cee6e4418ccf901f2c19c84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 9dea43766cee6e4418ccf901f2c19c84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.171
@@ -231,7 +235,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7893464925206616210, guid: 833b4881d1010434993ed42ca4c8d5b7, type: 3}
       propertyPath: m_Name
-      value: SFX_Footstep_Walla
+      value: SFX_Walla
       objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 833b4881d1010434993ed42ca4c8d5b7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -272,6 +276,18 @@ PrefabInstance:
     - target: {fileID: 8007590653901388302, guid: 833b4881d1010434993ed42ca4c8d5b7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8499737270850292212, guid: 833b4881d1010434993ed42ca4c8d5b7, type: 3}
+      propertyPath: EventPlayTrigger
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8499737270850292212, guid: 833b4881d1010434993ed42ca4c8d5b7, type: 3}
+      propertyPath: OverrideAttenuation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8499737270850292212, guid: 833b4881d1010434993ed42ca4c8d5b7, type: 3}
+      propertyPath: OverrideMinDistance
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

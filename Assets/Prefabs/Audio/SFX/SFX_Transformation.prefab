@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8007590653901388302}
   - component: {fileID: 8499737270850292212}
   m_Layer: 0
-  m_Name: SFX_Footstep_Punch
+  m_Name: SFX_Transformation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,11 +47,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 262780412
-      Data2: 1214014320
-      Data3: 12006565
-      Data4: 1953831606
-    Path: event:/SFX/S_Punch
+      Data1: -857482627
+      Data2: 1145616404
+      Data3: 1386554038
+      Data4: 1672354271
+    Path: event:/SFX/S_Transformation
   Event: 
   EventPlayTrigger: 0
   EventStopTrigger: 12
