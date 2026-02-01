@@ -280,6 +280,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01fdac9157d45328b4b7c7b220b1ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Agents.AgentSystem
+  characterPrefab: {fileID: 1267336869467435128, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+  characterSpawnPool:
+  - {fileID: 11400000, guid: d3402e15a2e9bc544825b9c108e97b2d, type: 2}
+  - {fileID: 11400000, guid: 11864cdaf196db741bd885b0a17cfaaa, type: 2}
+  - {fileID: 11400000, guid: fc074344bb8e72641a69c633ec7ef506, type: 2}
+  - {fileID: 11400000, guid: 7ec2ff9fb6e48754dbe0d49fecda91b3, type: 2}
+  - {fileID: 11400000, guid: 9680b8dd6d459664092eed6626a6135b, type: 2}
+  - {fileID: 11400000, guid: 33c83776dfc4b1641b8cc44b7c07eb82, type: 2}
+  - {fileID: 11400000, guid: 215931a62a18edc46a3f7ea584faafaa, type: 2}
+  - {fileID: 11400000, guid: 9723ca800e8dc2b40b91e40d4945212d, type: 2}
+  - {fileID: 11400000, guid: 7f4de840257362f409d59a4fe548d049, type: 2}
+  - {fileID: 11400000, guid: 2fb23a685cc19af47b3f70d2391b115c, type: 2}
+  - {fileID: 11400000, guid: c87180c57691b7d45a4b4f5f14d1bafa, type: 2}
+  - {fileID: 11400000, guid: d95d0bf78736752458ff1c2d232bd4ee, type: 2}
 --- !u!1 &2765230389236004446
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,13 +309,14 @@ GameObject:
   - component: {fileID: 4471232973468598618}
   - component: {fileID: 6508656988690658960}
   - component: {fileID: 2612007812678956381}
+  - component: {fileID: 3648999247975421987}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2593218464680708001
 RectTransform:
   m_ObjectHideFlags: 0
@@ -423,6 +438,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 11400000, guid: e20d5cf91381d9f4bbe64396337f8431, type: 2}
+--- !u!114 &3648999247975421987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2765230389236004446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 975cbaf2353845d6b5e6d4ce9bcc4463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transition: {fileID: 11400000, guid: c7ab6b90f40f60948ba01abfd2952a66, type: 2}
 --- !u!1 &3432364474160331398
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3463077769107657138
 RectTransform:
   m_ObjectHideFlags: 0

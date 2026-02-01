@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: CHARK.ScriptableScenes::CHARK.ScriptableScenes.ScriptableSceneCollection
   guid: 8f29ea0173667e64a83741a97bd934d9
   prettyName: Game Over
-  transition: {fileID: 11400000, guid: e20d5cf91381d9f4bbe64396337f8431, type: 2}
+  transition: {fileID: 11400000, guid: eaa263b0af0ed8c44b6f7da23d499677, type: 2}
   scriptableScenes:
   - {fileID: 11400000, guid: 549b35823f4eac24eb08491ed8342385, type: 2}
   collectionEvents:

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: Data_Character_Skirminas
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: Skirminas
+  addsAlcohol: 20
+  removesAlcohol: 20
+  frontTexture: {fileID: 2800000, guid: 66cad3b1bbc5e484ea6573e45d7c6737, type: 3}
+  backTexture: {fileID: 2800000, guid: cce176807ece85940a3d4131a98db7b3, type: 3}
+  giveHandTextures:
+  - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
+  - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
+  punchHandTextures:
+  - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
+  conversation:
+    messages:
+    - messageType: 0
+      content: "Klausyk. Kurios merginos \u010Dia laisvos?"
+      huntMessage: "\u0160itas u\u017E dyk\u0105!"
+      correctChoices:
+      - "\u017Dinau A klas\u0117je nema\u017Eai laisv\u0173"
+      - "Bus laisva valstyb\u0117 - bus laisvos ir merginos"
+      incorrectChoices:
+      - "A\u0161 ne mergina, man\u0119s neklausk"
+      - O kaip tau atrodo?
+    - messageType: 0
+      content: Apsikirpk plaukus hipi
+      huntMessage: Nepatikai!
+      correctChoices:
+      - Gerai
+      - Gerai
+      incorrectChoices:
+      - "Mes u\u017E meil\u0119 - prie\u0161 kar\u0105"
+      - "Mes u\u017E meil\u0119 - prie\u0161 kar\u0105"
+    - messageType: 0
+      content: "Sp\u0117k k\u0105 veiksiu po mokyklos?"
+      huntMessage: Konkretus vaflis!
+      correctChoices:
+      - "J\u016Breiviu b\u016Bsi?"
+      - Laivyne dirbsi?
+      incorrectChoices:
+      - "Gal kaime prie \u017Eagr\u0117s?"
+      - "Nelabai \u012Fdomu"
+  activityPatience: []
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1
