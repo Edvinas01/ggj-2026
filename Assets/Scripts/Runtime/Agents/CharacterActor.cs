@@ -69,6 +69,12 @@ namespace RIEVES.GGJ2026
         public CharacterData CharacterData => runtimeData;
         Transform interactingWith;
 
+        public int CallbackCount => CallBacks.Count;
+
+        public float StateChangeTimer => stateChangeTimer;
+
+        public float AnimationDelayTimer => animationDelayTimer;
+
 #if UNITY_EDITOR
 
         private void OnValidate()

@@ -22,10 +22,14 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             var text = "";
             var poi = character.CurrentTarget ? character.CurrentTarget.name : null;
-            text += $"\nCurrentAnimationState: <color=red>{character.CurrentAnimationState}</color>";
+            text += $"CurrentAnimationState: <color=red>{character.CurrentAnimationState}</color>";
             text += $"\nCurrentState: <color=red>{character.CurrentState}</color>";
             text += $"\nCurrentActivity: <color=red>{character.CurrentActivity}</color>";
             text += $"\nPOI: <color=red>{poi}</color>";
+            text += $"\nStateChangeTimer: <color=red>{character.StateChangeTimer:F1}</color>";
+            text += $"\nCallbackCount: <color=red>{character.CallbackCount}</color>";
+            text += $"\nAnimationDelayTimer: <color=red>{character.AnimationDelayTimer:F1}</color>";
+            text += $"\nStateChangeTimer: <color=red>{character.StateChangeTimer:F1}</color>";
 
             View.DebugInfoText = text;
         }
