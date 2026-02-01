@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Core.Utilities
@@ -52,6 +53,14 @@ namespace RIEVES.GGJ2026.Core.Utilities
         private void Awake()
         {
             mainCamera = Camera.main;
+        }
+
+        private void Start()
+        {
+            foreach (var angleStep in angleSteps)
+            {
+                angleStep.TriggerExit();
+            }
         }
 
         private void LateUpdate()
