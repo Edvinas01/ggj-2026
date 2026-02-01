@@ -959,6 +959,26 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u012Esimesti \u012F t\u016Bs\u0105"
       objectReference: {fileID: 0}
+    - target: {fileID: 3530674208713836207, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
+      propertyPath: EventReference.Path
+      value: event:/UI/SFX_ButtonStartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530674208713836207, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
+      propertyPath: EventReference.Guid.Data1
+      value: -864829718
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530674208713836207, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
+      propertyPath: EventReference.Guid.Data2
+      value: 1231803913
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530674208713836207, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
+      propertyPath: EventReference.Guid.Data3
+      value: 1605715337
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530674208713836207, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
+      propertyPath: EventReference.Guid.Data4
+      value: -218376594
+      objectReference: {fileID: 0}
     - target: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_Name
       value: Element_MenuButton_StartGame
