@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: "Data_Character_Ksevirija_ir_Jovar\u0117"
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: "Ksevirija ir Jovar\u0117"
+  addsAlcohol: 10
+  removesAlcohol: 10
+  frontTexture: {fileID: 2800000, guid: 63719cd4ec863994ca0a47753d461fd0, type: 3}
+  backTexture: {fileID: 2800000, guid: 1e5ff476389595e4ebcc5b814945ff78, type: 3}
+  giveHandTextures:
+  - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
+  - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
+  punchHandTextures:
+  - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
+  conversation:
+    messages:
+    - messageType: 0
+      content: Vasara! Vasara!
+      huntMessage: "Ne\u012Fdomus!"
+      correctChoices:
+      - "J\u016Bra atne\u0161\u0117 man, gintar\u0105 lyg tavo a\u0161ar\u0105"
+      - "Kar\u0161ta bus!"
+      incorrectChoices:
+      - "Man tai \u017Eiema"
+      - "Kukur\u016Bzus s\u0117jam pavasar\u012F, o nuimam rugpj\u016Bt\u012F da\u017Eniausiai"
+    - messageType: 0
+      content: "Mes ne Jonyt\u0117s, bet einam pa\u0161okti?"
+      huntMessage: "Prisi\u0161nek\u0117jai!"
+      correctChoices:
+      - "Ne Jonyt\u0117s, bet dvi uogyt\u0117s"
+      - "Ne Jonyt\u0117s, bet dvi uogyt\u0117s"
+      incorrectChoices:
+      - "O gal \u017Einot kur Jolanta?"
+      - "O gal \u017Einot kur Jolanta?"
+    - messageType: 0
+      content: "Kar\u0161tas vakar\u0117lis!"
+      huntMessage: "Tyl\u0117k tik!"
+      correctChoices:
+      - "Kar\u0161tos ir merginos"
+      - "Kar\u0161ta, bet galim padaryt, kad b\u016Bt\u0173 kar\u0161\u010Diau!"
+      incorrectChoices:
+      - Reiks tuoj eit miegot jau
+      - "O gal \u017Einot kur Jolanta?"
+  activityPatience: []
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1

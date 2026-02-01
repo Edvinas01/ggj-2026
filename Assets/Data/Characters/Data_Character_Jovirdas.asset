@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: Data_Character_Jovirdas
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: Jovirdas
+  addsAlcohol: 10
+  removesAlcohol: 10
+  frontTexture: {fileID: 2800000, guid: e1efe4ec331e129409ed656b80def9ae, type: 3}
+  backTexture: {fileID: 2800000, guid: 0f49814f48d9fb5438ba2c30af8fd0cf, type: 3}
+  giveHandTextures:
+  - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
+  - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
+  punchHandTextures:
+  - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
+  conversation:
+    messages:
+    - messageType: 0
+      content: "Gal matei kur pir\u0161tines pad\u0117jau?"
+      huntMessage: Ne tik kaimas, bet ir durnas!
+      correctChoices:
+      - "Paie\u0161kok va ten"
+      - "Paie\u0161kok va ten"
+      incorrectChoices:
+      - "Kas a\u0161 tau? Seklys?"
+      - "\u010Cia kabini mane?"
+    - messageType: 0
+      content: "\u017Dalia man tai tokia stipri spalva, ja apsireng\u0119s jau\u010Diuosi
+        tvirtesnis"
+      huntMessage: Nevaidink protingo!
+      correctChoices:
+      - "Aha, kari\u0161kio spalva"
+      - "Geltona, \u017Ealia, raudona"
+      incorrectChoices:
+      - "\u017Dalias \u0161\u016Bdas"
+      - "\u017Dalias \u0161\u016Bdas"
+    - messageType: 0
+      content: "\u017Di\u016Br\u0117k koki\u0105 poz\u0105 laikau. Visai \u017Einok
+        sunku, bet a\u0161 sportuoju"
+      huntMessage: "Kokia i\u0161vaizda toks ir protas!"
+      correctChoices:
+      - "Stipr\u016Bs raumenys"
+      - "Stipr\u016Bs raumenys"
+      incorrectChoices:
+      - "Mergaiti\u0161ka poza"
+      - "\u010Cia pozuoji? Nieks nefotografuoja"
+  activityPatience: []
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1

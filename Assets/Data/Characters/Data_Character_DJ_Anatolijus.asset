@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: Data_Character_DJ_Anatolijus
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: DJ Anatolijus
+  addsAlcohol: 5
+  removesAlcohol: 30
+  frontTexture: {fileID: 2800000, guid: 54c90865ac06b234ab83d2cebce4a36f, type: 3}
+  backTexture: {fileID: 2800000, guid: 259694ef281931a4dad23f06ae46c986, type: 3}
+  giveHandTextures:
+  - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
+  - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
+  punchHandTextures:
+  - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
+  conversation:
+    messages:
+    - messageType: 1
+      content: "Gal gali neliest audio \u012Frangos?"
+      huntMessage: "Gausi \u012F d\u016Bd\u0105"
+      correctChoices:
+      - "Atsipra\u0161au, nety\u010Dia u\u017Ekliuvo"
+      - Gerai
+      incorrectChoices:
+      - "\u0160rotas, o ne \u012Franga"
+      - Grot nemoki
+    - messageType: 1
+      content: "Kaip tau \u0161i daina?"
+      huntMessage: Mirt nori?
+      correctChoices:
+      - Puiki muzika
+      - "Gera muzika vis\u0105 vakar\u0105"
+      incorrectChoices:
+      - Senienas groji
+      - "Toki\u0105 muzik\u0105 tik leist tik kaime"
+  activityPatience: []
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1

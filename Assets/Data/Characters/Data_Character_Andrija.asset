@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: Data_Character_Andrija
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: Andrija
+  addsAlcohol: 10
+  removesAlcohol: 10
+  frontTexture: {fileID: 2800000, guid: f5f4971a930d1d746aa477cd512a139f, type: 3}
+  backTexture: {fileID: 2800000, guid: c623d73999d91f2469b1885b857e763a, type: 3}
+  giveHandTextures:
+  - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
+  - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
+  punchHandTextures:
+  - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
+  conversation:
+    messages:
+    - messageType: 0
+      content: "Uf, apsirengiau kiek per \u0161iltai"
+      huntMessage: "Ne\u0161k muil\u0105!"
+      correctChoices:
+      - "Duok pakabinsiu tavo paltuk\u0105"
+      - "Galim \u0161nektelt ir atsikv\u0117pt"
+      incorrectChoices:
+      - Man tai normaliai
+      - Aha
+    - messageType: 0
+      content: "Kas \u010Dia groja? Oj kaip kojos kilnojasi"
+      huntMessage: Tikras kaimas!
+      correctChoices:
+      - "Kas kaip moka, tas taip \u0161oka!"
+      - "\u010Cia a\u0161 u\u017Esakiau dain\u0105"
+      incorrectChoices:
+      - Visai kaip arklio
+      - Visai kaip arklio
+    - messageType: 0
+      content: "Gal matei Jolant\u0105?"
+      huntMessage: "Gr\u012F\u017Ek \u012F tvart\u0105!"
+      correctChoices:
+      - "A\u0161 jos kaip tik irgi ie\u0161kau"
+      - "A\u0161 jos kaip tik irgi ie\u0161kau"
+      incorrectChoices:
+      - "Jol k\u0105?"
+      - "Jol k\u0105?"
+  activityPatience: []
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1
