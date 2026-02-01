@@ -5,13 +5,13 @@
 			<value>Slurp Ahhh Sound Effect.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>22.0499992</value>
 		</property>
 		<property name="channelCount">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="length">
-			<value>4.2318367346938777</value>
+			<value>4.2840816326530611</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f3041ccc-7b6c-4679-8592-d3169f20dadb}</destination>

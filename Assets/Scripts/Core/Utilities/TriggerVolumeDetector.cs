@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Core.Utilities
@@ -14,6 +15,8 @@ namespace RIEVES.GGJ2026.Core.Utilities
         [SerializeField]
         private UnityEvent onExited;
 
+        private readonly Dictionary<TriggerVolume, int> enteredVolumes = new();
+
         private void Awake()
         {
             triggerCollider = GetComponent<Collider>();
@@ -23,8 +26,19 @@ namespace RIEVES.GGJ2026.Core.Utilities
         private void OnTriggerEnter(Collider other)
         {
             var volume = other.GetComponentInParent<TriggerVolume>();
-            if (volume)
+            if (volume == false)
             {
+                return;
+            }
+
+            if (enteredVolumes.TryGetValue(volume, out var count))
+            {
+                enteredVolumes[volume] = count + 1;
+            }
+            else
+            {
+                enteredVolumes.Add(volume, 1);
+
                 volume.TriggerEnter();
                 onEntered.Invoke();
             }
@@ -33,8 +47,21 @@ namespace RIEVES.GGJ2026.Core.Utilities
         private void OnTriggerExit(Collider other)
         {
             var volume = other.GetComponentInParent<TriggerVolume>();
-            if (volume)
+            if (volume == false)
             {
+                return;
+            }
+
+            if (enteredVolumes.TryGetValue(volume, out var count) == false)
+            {
+                return;
+            }
+
+            enteredVolumes[volume] = count - 1;
+            if (enteredVolumes[volume] <= 0)
+            {
+                enteredVolumes.Remove(volume);
+
                 volume.TriggerExit();
                 onExited.Invoke();
             }

@@ -5,7 +5,7 @@
 			<value>VO_Vaikinas</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{0690ca9f-1677-42e9-a373-602f751e0740}</destination>
