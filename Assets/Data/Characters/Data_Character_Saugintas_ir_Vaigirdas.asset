@@ -55,6 +55,12 @@ MonoBehaviour:
       - O tualete irgi?
       - Skamba ne kaip
       - "\u012Esimyl\u0117j\u0119 gal j\u016Bs?"
-  activityPatience: []
+  activityPatience:
+  - activity: 5
+    minTime: 60
+    maxTime: 120
+  - activity: 2
+    minTime: 60
+    maxTime: 120
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

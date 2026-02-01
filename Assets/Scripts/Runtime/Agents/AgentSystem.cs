@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CHARK.GameManagement;
 using CHARK.GameManagement.Systems;
 using RIEVES.GGJ2026.Core.Utilities;
 using RIEVES.GGJ2026.Runtime.Characters;
+using RIEVES.GGJ2026.Runtime.Heat;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,240 +19,201 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private List<CharacterData> characterSpawnPool = new();
 
-        readonly Dictionary<CharacterState, int> desiredProportions = new();
-        readonly Dictionary<InterestType, List<PointOfInterest>> points = new();
-        readonly HashSet<CharacterActor> agents = new();
+        private readonly Dictionary<CharacterState, int> desiredProportions = new();
+        private readonly Dictionary<InterestType, List<PointOfInterest>> points = new();
+        private readonly HashSet<CharacterActor> agents = new HashSet<CharacterActor>();
 
-        int desiredPopulation = 20;
+        private HeatSystem heatSystem;
+        private int initialBasePopulation = 20;
 
-        private void InitializeProportions()
+        private void Awake()
         {
-            foreach (CharacterState state in Enum.GetValues(typeof(CharacterState)))
-            {
-                desiredProportions[state] = 0;
-            }
-
-            desiredProportions[CharacterState.Idling] = 6;
-            desiredProportions[CharacterState.Dancing] = 7;
-            desiredProportions[CharacterState.Watching] = 10;
+            heatSystem = GameManager.GetSystem<HeatSystem>();
         }
 
         private void Start()
         {
-            InitializeProportions();
+            foreach (CharacterState state in Enum.GetValues(typeof(CharacterState)))
+                desiredProportions[state] = 0;
+
+            desiredProportions[CharacterState.Idling] = 6;
+            desiredProportions[CharacterState.Dancing] = 7;
+            desiredProportions[CharacterState.Watching] = 10;
 
             foreach (var agent in agents)
             {
-                CharacterState newState = GetRandomState(agent);
-                agent.SetState(newState);
-                agent.SetPatienceDuration(newState);
+                CharacterState state = GetRandomState(agent);
+                agent.SetState(state);
+                agent.SetPatienceDuration(state);
             }
 
-            int currentPop = agents.Count;
-            for (int i = currentPop; i < desiredPopulation; i++)
-            {
-                CharacterState neededState = GetMostNeededState();
-                var desiredInterest = neededState switch
-                {
-                    CharacterState.Watching => InterestType.Watch,
-                    CharacterState.Dancing => InterestType.Dancing,
-                    CharacterState.Guarding => InterestType.Guard,
-                    CharacterState.Hunting => InterestType.Patrol,
-                    _ => InterestType.Watch
-                };
-
-                var spawnPoint = PickRandomWaypoint(desiredInterest);
-                if (spawnPoint == null)
-                {
-                    i--;
-                    continue;
-                }
-
-                Quaternion spawnRotation = spawnPoint.Facing
-                    ? spawnPoint.transform.rotation
-                    : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
-
-                CharacterActor newAgent = CreateCharacter(neededState, spawnPoint.transform.position, spawnRotation);
-                if (newAgent != null)
-                {
-                    newAgent.SetState(neededState);
-                    newAgent.SetPatienceDuration(neededState);
-                    agents.Add(newAgent);
-                }
-                else
-                {
-                    i--;
-                }
-            }
+            if (agents.Count < initialBasePopulation)
+                SpawnNewAgent();
         }
 
-        private CharacterState GetMostNeededState()
+        public void OnUpdated(float deltaTime)
         {
-            var states = (CharacterState[])Enum.GetValues(typeof(CharacterState));
-            int[] currentCounts = new int[states.Length];
-            foreach (var agent in agents)
-                currentCounts[(int)agent.CurrentState]++;
+            float heatProgress = Mathf.InverseLerp(1f, 2.2f, heatSystem.CurrentHeat);
+            desiredProportions[CharacterState.Guarding] = Mathf.RoundToInt(Mathf.Lerp(0, 6, heatProgress));
+            desiredProportions[CharacterState.Hunting] = Mathf.RoundToInt(Mathf.Lerp(0, 4, heatProgress));
 
-            CharacterState bestState = CharacterState.Idling;
-            int maxDemand = -1;
-
-            foreach (var state in states)
-            {
-                int desired = desiredProportions.ContainsKey(state) ? desiredProportions[state] : 0;
-                int demand = desired - currentCounts[(int)state];
-
-                if (demand > maxDemand)
-                {
-                    maxDemand = demand;
-                    bestState = state;
-                }
-            }
-
-            return bestState;
+            int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(0, 5, heatProgress));
+            if (agents.Count < currentGoal)
+                SpawnNewAgent();
         }
 
-        public PointOfInterest PickRandomWaypoint(InterestType interestType)
+        private InterestType MapStateToInterest(CharacterState state)
         {
-            if (points.Count == 0)
+            return state switch
             {
-                Debug.LogWarning("No points of interest available.");
-                return null;
-            }
-
-            if (!points.ContainsKey(interestType) || points[interestType].Count == 0)
-            {
-                Debug.LogWarning($"No points of interest available for interest type: {interestType}");
-                return null;
-            }
-
-            var unoccupiedPoints = points[interestType]
-                .Where(p => !agents.Any(a => a.CurrentTarget == p))
-                .ToList();
-
-            if (unoccupiedPoints.Count == 0)
-            {
-                Debug.LogWarning($"No unoccupied points of interest available for interest type: {interestType}");
-                return null;
-            }
-
-            return unoccupiedPoints[Random.Range(0, unoccupiedPoints.Count)];
+                CharacterState.Watching => InterestType.Watch,
+                CharacterState.Dancing => InterestType.Dancing,
+                CharacterState.Guarding => InterestType.Guard,
+                CharacterState.Hunting => InterestType.Patrol,
+                _ => InterestType.Watch
+            };
         }
 
-        public CharacterActor CreateCharacter(CharacterState state, Vector3 position, Quaternion rotation)
+        private void SpawnNewAgent()
+        {
+            CharacterState neededState = GetMostNeededState();
+            InterestType interest = MapStateToInterest(neededState);
+
+            var spawnPoint = PickRandomWaypoint(interest);
+            if (spawnPoint == null)
+                return;
+
+            Quaternion rotation = spawnPoint.Facing
+                ? spawnPoint.transform.rotation
+                : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+
+            CharacterActor instance = CreateCharacter(neededState, spawnPoint.transform.position, rotation);
+            if (instance != null)
+            {
+                AddAgent(instance);
+                instance.SetState(neededState);
+                instance.SetPatienceDuration(neededState);
+            }
+        }
+
+        public CharacterActor CreateCharacter(CharacterState state, Vector3 pos, Quaternion rot)
         {
             var candidates = characterSpawnPool.Where(data =>
                 data.ActivityPatience == null || data.ActivityPatience.Count == 0 ||
                 data.ActivityPatience.Any(p => p.activity == state)
             ).ToList();
 
-            if (candidates.Count > 0)
+            if (candidates.Count == 0)
+                return null;
+
+            var characterData = candidates[Random.Range(0, candidates.Count)];
+            var instance = Instantiate(characterPrefab, pos, rot);
+            instance.Initialize(characterData);
+            return instance;
+        }
+
+        private CharacterState GetMostNeededState()
+        {
+            var states = (CharacterState[])Enum.GetValues(typeof(CharacterState));
+            int[] counts = GetCurrentPopulationCounts(states.Length);
+            float[] weights = new float[states.Length];
+            float totalWeight = 0;
+
+            for (int i = 0; i < states.Length; i++)
             {
-                var characterData = candidates[Random.Range(0, candidates.Count)];
-                var instance = Instantiate(characterPrefab, position, rotation);
-                instance.Initialize(characterData);
-                return instance;
+                int desired = desiredProportions.GetValueOrDefault(states[i], 0);
+                int demand = Mathf.Max(0, desired - counts[i]);
+                float weight = demand * demand;
+
+                weights[i] = weight;
+                totalWeight += weight;
             }
 
-            Debug.LogError($"Could not find any CharacterData for {state} or any Generalists.");
-            return null;
+            return RollWeightedState(states, weights, totalWeight);
         }
 
         public CharacterState GetRandomState(CharacterActor agent)
         {
             var states = (CharacterState[])Enum.GetValues(typeof(CharacterState));
-            int stateCount = states.Length;
+            int[] counts = GetCurrentPopulationCounts(states.Length);
+            var prefs = agent.CharacterData.ActivityPatience;
 
-            // 1. Calculate current population counts
-            int[] populationCounts = new int[stateCount];
-            foreach (var a in agents)
-            {
-                populationCounts[(int)a.CurrentState]++;
-            }
-
-            var agentPrefs = agent.CharacterData.ActivityPatience;
-            float[] finalWeights = new float[stateCount];
+            float[] weights = new float[states.Length];
             float totalWeight = 0;
+            bool isGeneralist = prefs == null || prefs.Count == 0;
 
-            // A "Generalist" has no specific activity definitions and can do anything
-            bool isGeneralist = agentPrefs == null || agentPrefs.Count == 0;
-
-            for (int i = 0; i < stateCount; i++)
+            for (int i = 0; i < states.Length; i++)
             {
-                CharacterState state = states[i];
-
-                // Calculate Global Demand: (Desired - Current)
-                int desired = desiredProportions.ContainsKey(state) ? desiredProportions[state] : 0;
-                int demand = Mathf.Max(0, desired - populationCounts[i]);
+                int demand = Mathf.Max(0, desiredProportions.GetValueOrDefault(states[i], 0) - counts[i]);
 
                 if (isGeneralist)
                 {
-                    // Generalists follow pure demand
-                    finalWeights[i] = demand;
+                    weights[i] = demand;
                 }
                 else
                 {
-                    // Specialists only weigh activities they have defined
-                    // Using Find matches the CharacterState directly now
-                    int prefIndex = agentPrefs.FindIndex(p => p.activity == state);
-
-                    if (prefIndex != -1)
-                    {
-                        // Weight = Demand * Max Patience
-                        finalWeights[i] = demand * agentPrefs[prefIndex].maxTime;
-                    }
-                    else
-                    {
-                        finalWeights[i] = 0;
-                    }
+                    var p = prefs.Find(x => x.activity == states[i]);
+                    weights[i] = (p.maxTime > 0) ? demand * p.maxTime : 0;
                 }
-
-                totalWeight += finalWeights[i];
+                totalWeight += weights[i];
             }
 
-            // 2. Selection & Fallback Logic
             if (totalWeight <= 0)
-            {
                 return HandleDefaultState(agent);
-            }
 
-            // Weighted Random Roll
-            float randomValue = Random.Range(0, totalWeight);
+            return RollWeightedState(states, weights, totalWeight);
+        }
+
+        private int[] GetCurrentPopulationCounts(int size)
+        {
+            int[] counts = new int[size];
+            foreach (var agent in agents)
+                counts[(int)agent.CurrentState]++;
+
+            return counts;
+        }
+
+        private CharacterState RollWeightedState(CharacterState[] states, float[] weights, float total)
+        {
+            if (total <= 0)
+                return CharacterState.Idling;
+
+            float roll = Random.Range(0, total);
             float cursor = 0;
-            for (int i = 0; i < stateCount; i++)
+            for (int i = 0; i < weights.Length; i++)
             {
-                cursor += finalWeights[i];
-                if (randomValue <= cursor) return states[i];
+                cursor += weights[i];
+                if (roll <= cursor)
+                    return states[i];
             }
 
-            return HandleDefaultState(agent);
+            return CharacterState.Idling;
         }
 
         private CharacterState HandleDefaultState(CharacterActor agent)
         {
-            var agentPrefs = agent.CharacterData.ActivityPatience;
-            if (agentPrefs == null || agentPrefs.Count == 0)
-            {
+            var prefs = agent.CharacterData.ActivityPatience;
+            if (prefs == null || prefs.Count == 0 || prefs.Exists(p => p.activity == CharacterState.Idling))
                 return CharacterState.Idling;
-            }
 
-            if (agentPrefs.Exists(p => p.activity == CharacterState.Idling))
-            {
-                return CharacterState.Idling;
-            }
+            return prefs.GetRandom().activity;
+        }
 
-            return agentPrefs[0].activity;
+        public PointOfInterest PickRandomWaypoint(InterestType type)
+        {
+            if (!points.TryGetValue(type, out var list) || list.Count == 0)
+                return null;
+
+            var available = list.Where(p => !agents.Any(a => a.CurrentTarget == p)).ToList();
+            return available.Count == 0 ? null : available[Random.Range(0, available.Count)];
         }
 
         public void AddPointOfInterest(PointOfInterest poi)
         {
             if (!points.ContainsKey(poi.InterestType))
-            {
-                points[poi.InterestType] = new List<PointOfInterest> { poi };
-            }
-            else
-            {
-                points[poi.InterestType].Add(poi);
-            }
+                points[poi.InterestType] = new List<PointOfInterest>();
+
+            points[poi.InterestType].Add(poi);
         }
 
         public void RemovePointOfInterest(PointOfInterest poi)
@@ -259,22 +222,8 @@ namespace RIEVES.GGJ2026
                 points[poi.InterestType].Remove(poi);
         }
 
-        public void AddAgent(CharacterActor agent)
-        {
-            agents.Add(agent);
-        }
-
-        public void RemoveAgent(CharacterActor agent)
-        {
-            agents.Remove(agent);
-        }
-
-        public void OnUpdated(float deltaTime)
-        {
-        }
-
-        public void OnFixedUpdated(float deltaTime)
-        {
-        }
+        public void AddAgent(CharacterActor agent) => agents.Add(agent);
+        public void RemoveAgent(CharacterActor agent) => agents.Remove(agent);
+        public void OnFixedUpdated(float deltaTime) { }
     }
 }

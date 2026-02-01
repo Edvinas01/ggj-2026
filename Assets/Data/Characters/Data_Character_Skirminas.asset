@@ -54,6 +54,9 @@ MonoBehaviour:
       - "Gal kaime prie \u017Eagr\u0117s?"
       - Sargu dirbsi?
       - Laivyne dirbsi?
-  activityPatience: []
+  activityPatience:
+  - activity: 5
+    minTime: 60
+    maxTime: 120
   calmMoveSpeed: 0.3
-  agitatedMoveSpeed: 1
+  agitatedMoveSpeed: 2

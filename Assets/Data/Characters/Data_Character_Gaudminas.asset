@@ -55,6 +55,12 @@ MonoBehaviour:
       - "\u0160kada, \u0161koda, tavo \u016Bsai, apie k\u0105 tu \u010Dia?"
       - "Manai a\u0161 stuka\u010Dius?"
       - "A\u0161 i\u0161kr\u0117\u010Diau, tik nei\u0161duok niekam"
-  activityPatience: []
+  activityPatience:
+  - activity: 5
+    minTime: 10
+    maxTime: 30
+  - activity: 0
+    minTime: 10
+    maxTime: 60
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

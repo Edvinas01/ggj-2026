@@ -54,6 +54,15 @@ MonoBehaviour:
       - "Jol k\u0105?"
       - "Kas ta draug\u0117, einam geriau pa\u0161oksim"
       - "Turiu kur \u017Ei\u016Br\u0117t ir be tavo Jolantos"
-  activityPatience: []
+  activityPatience:
+  - activity: 1
+    minTime: 5
+    maxTime: 10
+  - activity: 2
+    minTime: 5
+    maxTime: 30
+  - activity: 0
+    minTime: 3
+    maxTime: 10
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
