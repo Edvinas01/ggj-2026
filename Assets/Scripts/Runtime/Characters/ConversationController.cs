@@ -37,7 +37,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         [Min(0)]
         [SerializeField]
-        private int maxIncorrectMessages = 3;
+        private int maxIncorrectMessages = 1;
 
         [Header("Events")]
         [SerializeField]
@@ -219,7 +219,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                         messageType: message.MessageType
                     )
                 )
-                .Take(maxIncorrectMessages);
+                .Take((int)(maxIncorrectMessages * heatSystem.CurrentHeat));
 
             var choices = correctChoices
                 .Concat(incorrectChoices)
