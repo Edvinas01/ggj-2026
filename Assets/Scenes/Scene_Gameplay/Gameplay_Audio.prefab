@@ -48,10 +48,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Music
       objectReference: {fileID: 0}
-    - target: {fileID: 7893464925206616210, guid: 9dea43766cee6e4418ccf901f2c19c84, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 9dea43766cee6e4418ccf901f2c19c84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.171
@@ -116,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 0a058f0f2e92e2a4cbc7ac3df6d2fc24, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.15734
+      value: 3.92
       objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 0a058f0f2e92e2a4cbc7ac3df6d2fc24, type: 3}
       propertyPath: m_LocalPosition.y
@@ -124,7 +120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 0a058f0f2e92e2a4cbc7ac3df6d2fc24, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.5
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 8007590653901388302, guid: 0a058f0f2e92e2a4cbc7ac3df6d2fc24, type: 3}
       propertyPath: m_LocalRotation.w

@@ -55,6 +55,13 @@ MonoBehaviour:
       - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
       - "A\u0161 irgi ie\u0161kau Jokantos"
       - "A\u0161 irgi ie\u0161kau Juozyt\u0117s"
+  voiceFmodEvent:
+    Guid:
+      Data1: 1960851956
+      Data2: 1287015565
+      Data3: -1937743710
+      Data4: -57751791
+    Path: event:/VO/VO_Vaikinas
   activityPatience:
   - activity: 0
     minTime: 30

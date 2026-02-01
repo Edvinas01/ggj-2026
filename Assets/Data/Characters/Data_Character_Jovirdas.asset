@@ -57,6 +57,13 @@ MonoBehaviour:
       - "Mergaiti\u0161ka poza"
       - "\u010Cia pozuoji? Nieks nefotografuoja"
       - "Balerina ka\u017Ekokia"
+  voiceFmodEvent:
+    Guid:
+      Data1: 1960851956
+      Data2: 1287015565
+      Data3: -1937743710
+      Data4: -57751791
+    Path: event:/VO/VO_Vaikinas
   activityPatience:
   - activity: 0
     minTime: 30

@@ -608,7 +608,7 @@ MonoBehaviour:
   Properties:
     LiveUpdate:
       Value: 1
-      HasValue: 0
+      HasValue: 1
     LiveUpdatePort:
       Value: 0
       HasValue: 0

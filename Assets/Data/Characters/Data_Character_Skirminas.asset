@@ -54,6 +54,13 @@ MonoBehaviour:
       - "Gal kaime prie \u017Eagr\u0117s?"
       - Sargu dirbsi?
       - Laivyne dirbsi?
+  voiceFmodEvent:
+    Guid:
+      Data1: 1960851956
+      Data2: 1287015565
+      Data3: -1937743710
+      Data4: -57751791
+    Path: event:/VO/VO_Vaikinas
   activityPatience:
   - activity: 5
     minTime: 60

@@ -44,6 +44,13 @@ MonoBehaviour:
       - Seniena
       - Skalbt jau laikas
       - "Patinka de\u0161ros spalva?"
+  voiceFmodEvent:
+    Guid:
+      Data1: -411235515
+      Data2: 1322770349
+      Data3: 1341994396
+      Data4: 385734510
+    Path: event:/VO/VO_Mergina
   activityPatience:
   - activity: 0
     minTime: 10000

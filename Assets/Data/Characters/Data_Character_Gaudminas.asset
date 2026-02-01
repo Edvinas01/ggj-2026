@@ -57,11 +57,11 @@ MonoBehaviour:
       - "A\u0161 i\u0161kr\u0117\u010Diau, tik nei\u0161duok niekam"
   voiceFmodEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1960851956
+      Data2: 1287015565
+      Data3: -1937743710
+      Data4: -57751791
+    Path: event:/VO/VO_Vaikinas
   activityPatience:
   - activity: 5
     minTime: 10

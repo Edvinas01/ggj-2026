@@ -53,4 +53,13 @@ MonoBehaviour:
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
+  voiceFmodEvent:
+    Guid:
+      Data1: 1960851956
+      Data2: 1287015565
+      Data3: -1937743710
+      Data4: -57751791
+    Path: event:/VO/VO_Vaikinas
   activityPatience: []
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1

@@ -38,6 +38,8 @@ namespace RIEVES.GGJ2026.Core.Utilities
             }
         }
 
+        public bool ForceStraightDirection { get; set; } = false;
+
         [SerializeField]
         private bool isFlipDirection;
 
@@ -74,12 +76,21 @@ namespace RIEVES.GGJ2026.Core.Utilities
             if (direction.sqrMagnitude < 0.001f)
                 return;
 
+            var isFlipDirection = ForceStraightDirection ? false : this.isFlipDirection;
+
             transform.rotation = Quaternion.LookRotation(
                 isFlipDirection ? -direction : direction
             );
 
             if (angleReference == false)
             {
+                return;
+            }
+
+            if (ForceStraightDirection)
+            {
+                angleSteps[0].TriggerEnter();
+                angleSteps[1].TriggerExit();
                 return;
             }
 
