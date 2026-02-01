@@ -106,13 +106,16 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private void OnStartWriter(TMPWriter writer)
         {
-            Debug.Log("Start");
+            if (State is not (ViewState.Showing or ViewState.Shown))
+            {
+                return;
+            }
+
             onTextWriterStarted.Invoke();
         }
 
         private void OnFinishWriter(TMPWriter writer)
         {
-            Debug.Log("Done");
             onTextWriterFinished.Invoke();
         }
     }
