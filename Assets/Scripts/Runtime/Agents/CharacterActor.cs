@@ -115,6 +115,7 @@ namespace RIEVES.GGJ2026
             interactable.OnSelectEntered += OnInteractableSelectEntered;
             interactable.OnSelectExited += OnInteractableSelectExited;
             movementController.OnMoveEntered += OnFootstepStarted;
+            movementController.OnMoveExited += OnFootstepStopped;
         }
 
         private void OnDisable()
@@ -124,6 +125,7 @@ namespace RIEVES.GGJ2026
             interactable.OnSelectEntered -= OnInteractableSelectEntered;
             interactable.OnSelectExited -= OnInteractableSelectExited;
             movementController.OnMoveEntered -= OnFootstepStarted;
+            movementController.OnMoveExited -= OnFootstepStopped;
         }
 
         float stateChangeTimer = -100f;
