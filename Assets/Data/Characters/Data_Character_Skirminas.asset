@@ -59,4 +59,4 @@ MonoBehaviour:
     minTime: 60
     maxTime: 120
   calmMoveSpeed: 0.3
-  agitatedMoveSpeed: 1
+  agitatedMoveSpeed: 2
