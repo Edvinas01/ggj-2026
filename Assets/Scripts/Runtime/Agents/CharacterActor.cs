@@ -205,7 +205,8 @@ namespace RIEVES.GGJ2026
         private void Update()
         {
             if (isInteractingWithPlayer)
-                RotateTowards(interactingWith.position);
+                if (rotationTransform != null)
+                    RotateTowards(interactingWith.position);
 
             // Leave out the last callback to be played on interruption.
             while (CallBacks.Count > 1)
@@ -435,15 +436,11 @@ namespace RIEVES.GGJ2026
 
         void RotateTowards(Vector3 targetPosition)
         {
-            var vector = targetPosition - transform.position;
-            vector.y = 0f;
-            if (vector.sqrMagnitude < 0.001f)
-                return;
-
-            if (rotationTransform != null)
+            var direction = targetPosition - rotationTransform.position;
+            direction.y = 0f;
+            if (direction.sqrMagnitude > 0.001f)
             {
-                var direction = vector.normalized;
-                rotationTransform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
+                rotationTransform.rotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
             }
         }
 
