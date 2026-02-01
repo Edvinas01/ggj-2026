@@ -434,6 +434,7 @@ namespace RIEVES.GGJ2026
             }
 
             runtimeData = Instantiate(newData);
+            data = newData;
 
             var block = new MaterialPropertyBlock();
 
