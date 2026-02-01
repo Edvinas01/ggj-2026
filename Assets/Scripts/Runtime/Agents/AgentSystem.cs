@@ -25,7 +25,7 @@ namespace RIEVES.GGJ2026
         public readonly HashSet<CharacterActor> agents = new HashSet<CharacterActor>();
 
         private HeatSystem heatSystem;
-        private int initialBasePopulation = 20;
+        private int initialBasePopulation = 25;
 
         private void Awake()
         {
@@ -37,10 +37,9 @@ namespace RIEVES.GGJ2026
             foreach (CharacterState state in Enum.GetValues(typeof(CharacterState)))
                 desiredProportions[state] = 0;
 
-            desiredProportions[CharacterState.Idling] = 6;
-            desiredProportions[CharacterState.Dancing] = 7;
-            desiredProportions[CharacterState.Watching] = 10;
-            desiredProportions[CharacterState.Guarding] = 2;
+            desiredProportions[CharacterState.Idling] = 8;
+            desiredProportions[CharacterState.Dancing] = 10;
+            desiredProportions[CharacterState.Watching] = 13;
 
             var currentCount = agents.Count;
             for (; agents.Count < initialBasePopulation;)
@@ -50,11 +49,11 @@ namespace RIEVES.GGJ2026
 
         public void OnUpdated(float deltaTime)
         {
-            float heatProgress = Mathf.InverseLerp(1f, 2.2f, heatSystem.CurrentHeat);
-            desiredProportions[CharacterState.Guarding] = Mathf.RoundToInt(Mathf.Lerp(2, 8, heatProgress));
-            desiredProportions[CharacterState.Hunting] = Mathf.RoundToInt(Mathf.Lerp(0, 5, heatProgress));
+            float heatProgress = Mathf.InverseLerp(1f, 3.2f, heatSystem.CurrentHeat);
+            desiredProportions[CharacterState.Guarding] = Mathf.RoundToInt(Mathf.Lerp(3, 10, heatProgress));
+            desiredProportions[CharacterState.Hunting] = Mathf.RoundToInt(Mathf.Lerp(0, 8, heatProgress));
 
-            int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(1, 7, heatProgress));
+            int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(1, 16, heatProgress));
             if (agents.Count < currentGoal)
                 SpawnNewAgent(false);
         }

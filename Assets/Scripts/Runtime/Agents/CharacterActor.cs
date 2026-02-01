@@ -63,13 +63,6 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private NavMeshAgent navMeshAgent;
 
-        [Header("Events")]
-        [SerializeField]
-        private UnityEvent onConversationStarted;
-
-        [SerializeField]
-        private UnityEvent onConversationStopped;
-
         private CharacterData runtimeData;
         private AgentSystem agentSystem;
 
@@ -477,7 +470,6 @@ namespace RIEVES.GGJ2026
                 StopMovement();
 
             SetAnimationState(CharacterAnimationState.Talking);
-            onConversationStarted.Invoke();
         }
 
         public void ConversationStoppedCorrect()
@@ -488,7 +480,6 @@ namespace RIEVES.GGJ2026
 
             SetAnimationState(CharacterAnimationState.GoodResponse);
             stateChangeTimer = Time.time;
-            onConversationStopped.Invoke();
         }
 
         public void ConversationStoppedIncorrect()
@@ -499,7 +490,6 @@ namespace RIEVES.GGJ2026
 
             SetAnimationState(CharacterAnimationState.BadResponse);
             stateChangeTimer = Time.time;
-            onConversationStopped.Invoke();
         }
 
         public void ConversationStoppedNeutral()
@@ -510,7 +500,6 @@ namespace RIEVES.GGJ2026
 
             SetAnimationState(CharacterAnimationState.NeutralResponse);
             stateChangeTimer = Time.time;
-            onConversationStopped.Invoke();
         }
 
         private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
