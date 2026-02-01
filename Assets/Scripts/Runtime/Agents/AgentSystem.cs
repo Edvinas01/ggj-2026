@@ -130,7 +130,7 @@ namespace RIEVES.GGJ2026
                     return;
 
                 var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                position = spawnPoint.transform.position;
+                position = spawnPoint.transform.position + Random.insideUnitSphere * spawnPoint.Radius;
             }
 
             CharacterActor instance = CreateCharacter(neededState, position, Quaternion.identity);
