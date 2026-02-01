@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Heat.HeatSystem
   heatPerSecond: 0.01
   heatMultiplier: 1
-  currentHeat: 1
+  fmodParameterId: HeatMeter
 --- !u!1 &1856781029335889694
 GameObject:
   m_ObjectHideFlags: 0

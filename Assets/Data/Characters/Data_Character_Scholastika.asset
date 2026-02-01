@@ -56,11 +56,11 @@ MonoBehaviour:
       - C
   voiceFmodEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -411235515
+      Data2: 1322770349
+      Data3: 1341994396
+      Data4: 385734510
+    Path: event:/VO/VO_Mergina
   activityPatience:
   - activity: 2
     minTime: 60

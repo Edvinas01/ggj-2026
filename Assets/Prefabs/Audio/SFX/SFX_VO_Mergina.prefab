@@ -47,11 +47,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1897575465
-      Data2: 1191404468
-      Data3: -1305061236
-      Data4: 1180217934
-    Path: event:/UI/SFX_ButtonClick
+      Data1: -411235515
+      Data2: 1322770349
+      Data3: 1341994396
+      Data4: 385734510
+    Path: event:/VO/VO_Mergina
   Event: 
   EventPlayTrigger: 11
   EventStopTrigger: 12

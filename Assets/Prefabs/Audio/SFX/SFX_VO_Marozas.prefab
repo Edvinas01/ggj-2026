@@ -47,11 +47,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 1897575465
-      Data2: 1191404468
-      Data3: -1305061236
-      Data4: 1180217934
-    Path: event:/UI/SFX_ButtonClick
+      Data1: -830536824
+      Data2: 1244529280
+      Data3: 907840906
+      Data4: 1622055665
+    Path: event:/VO/VO_Marozas
   Event: 
   EventPlayTrigger: 11
   EventStopTrigger: 12

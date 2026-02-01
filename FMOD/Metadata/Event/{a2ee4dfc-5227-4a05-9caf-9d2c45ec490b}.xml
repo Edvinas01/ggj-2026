@@ -1301,7 +1301,7 @@
 			<value>0</value>
 		</property>
 		<property name="maximum">
-			<value>0.33329999446868896</value>
+			<value>3.3329999446868896</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>
@@ -1324,10 +1324,10 @@
 	</object>
 	<object class="ParameterCondition" id="{e3750fa3-1c3c-4e9a-974c-575d0eb2daff}">
 		<property name="minimum">
-			<value>0.33340001106262207</value>
+			<value>3.3340001106262207</value>
 		</property>
 		<property name="maximum">
-			<value>0.66659998893737793</value>
+			<value>6.6659998893737793</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>
@@ -1350,10 +1350,10 @@
 	</object>
 	<object class="ParameterCondition" id="{3234fc26-290b-4f0f-812c-70cc454511b8}">
 		<property name="minimum">
-			<value>0.66670000553131104</value>
+			<value>6.6670000553131104</value>
 		</property>
 		<property name="maximum">
-			<value>1</value>
+			<value>10</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>
@@ -1379,7 +1379,7 @@
 			<value>0</value>
 		</property>
 		<property name="maximum">
-			<value>0.33329999446868896</value>
+			<value>3.3329999446868896</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>
@@ -1402,10 +1402,10 @@
 	</object>
 	<object class="ParameterCondition" id="{ab52e410-83b9-480d-ba2e-d14d214973f7}">
 		<property name="minimum">
-			<value>0.66670000553131104</value>
+			<value>6.6670000553131104</value>
 		</property>
 		<property name="maximum">
-			<value>1</value>
+			<value>10</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>
@@ -1428,10 +1428,10 @@
 	</object>
 	<object class="ParameterCondition" id="{ddca6218-93e6-4461-a7b0-5cdf253847ee}">
 		<property name="minimum">
-			<value>0.33340001106262207</value>
+			<value>3.3340001106262207</value>
 		</property>
 		<property name="maximum">
-			<value>0.66659998893737793</value>
+			<value>6.6659998893737793</value>
 		</property>
 		<relationship name="parameter">
 			<destination>{f8375576-bd0c-4f90-ba75-f6674341f8d1}</destination>

@@ -55,6 +55,13 @@ MonoBehaviour:
       - "A\u0161 i\u0161 klas\u0117s A"
       - "A\u0161 i\u0161 klas\u0117s B"
       - "A\u0161 i\u0161 klas\u0117s C"
+  voiceFmodEvent:
+    Guid:
+      Data1: 1960851956
+      Data2: 1287015565
+      Data3: -1937743710
+      Data4: -57751791
+    Path: event:/VO/VO_Vaikinas
   activityPatience:
   - activity: 0
     minTime: 5
