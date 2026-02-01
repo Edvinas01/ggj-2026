@@ -15,12 +15,22 @@ namespace RIEVES.GGJ2026.Core.Settings
 
         public override void OnInitialized()
         {
-            ReadSettings();
+            // ReadSettings();
         }
 
         public override void OnDisposed()
         {
             // TODO: probably not the best idea to save on exit as this doesn't handle crashes
+            // WriteSettings();
+        }
+
+        private void Start()
+        {
+            ReadSettings();
+        }
+
+        private void OnDestroy()
+        {
             WriteSettings();
         }
 

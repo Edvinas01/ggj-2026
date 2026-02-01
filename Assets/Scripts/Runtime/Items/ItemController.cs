@@ -8,11 +8,10 @@ namespace RIEVES.GGJ2026.Runtime.Items
     {
         [Min(0)]
         [SerializeField]
-        private int maxItems = 3;
+        private int maxItems = 10;
 
-        [Min(0f)]
         [SerializeField]
-        private float spawnCooldown = 30f;
+        private Vector2 spawnCooldown = new(10f, 30f);
 
         [Min(0f)]
         [SerializeField]
@@ -71,7 +70,7 @@ namespace RIEVES.GGJ2026.Runtime.Items
                 if (item == false)
                 {
                     activeItems.RemoveAt(index);
-                    cooldown = spawnCooldown;
+                    cooldown = RandomUtilities.GetRandomFloat(spawnCooldown);
                 }
             }
 
@@ -106,7 +105,7 @@ namespace RIEVES.GGJ2026.Runtime.Items
             instance.Initialize(item);
             activeItems.Add(instance);
 
-            cooldown = spawnCooldown;
+            cooldown = RandomUtilities.GetRandomFloat(spawnCooldown);
         }
     }
 }
