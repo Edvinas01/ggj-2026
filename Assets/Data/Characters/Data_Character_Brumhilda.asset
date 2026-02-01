@@ -55,6 +55,15 @@ MonoBehaviour:
       - "U\u017Etrai\u0161kanojus gal bi\u0161k\u012F?"
       - Ne tavo reikalas
       - O gal su atmintim ne viskas tvarkoj?
-  activityPatience: []
+  activityPatience:
+  - activity: 0
+    minTime: 5
+    maxTime: 30
+  - activity: 2
+    minTime: 5
+    maxTime: 20
+  - activity: 1
+    minTime: 10
+    maxTime: 60
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

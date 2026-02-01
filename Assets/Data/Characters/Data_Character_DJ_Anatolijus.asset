@@ -44,6 +44,9 @@ MonoBehaviour:
       - Senienas groji
       - "Toki\u0105 muzik\u0105 tik kaime leist"
       - "Sodint u\u017E toki\u0105 muzik\u0105"
-  activityPatience: []
+  activityPatience:
+  - activity: 0
+    minTime: 10000
+    maxTime: 10000
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

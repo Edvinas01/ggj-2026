@@ -57,6 +57,12 @@ MonoBehaviour:
       - "Mergaiti\u0161ka poza"
       - "\u010Cia pozuoji? Nieks nefotografuoja"
       - "Balerina ka\u017Ekokia"
-  activityPatience: []
+  activityPatience:
+  - activity: 0
+    minTime: 30
+    maxTime: 60
+  - activity: 2
+    minTime: 30
+    maxTime: 60
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

@@ -55,6 +55,15 @@ MonoBehaviour:
       - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
       - "A\u0161 irgi ie\u0161kau Jokantos"
       - "A\u0161 irgi ie\u0161kau Juozyt\u0117s"
-  activityPatience: []
+  activityPatience:
+  - activity: 0
+    minTime: 30
+    maxTime: 60
+  - activity: 1
+    minTime: 5
+    maxTime: 30
+  - activity: 5
+    minTime: 20
+    maxTime: 30
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

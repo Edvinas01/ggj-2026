@@ -54,6 +54,12 @@ MonoBehaviour:
       - "Gal lietuvi\u0161ka?"
       - "Muzikin\u0117 tokia"
       - Sik sik sik!
-  activityPatience: []
+  activityPatience:
+  - activity: 2
+    minTime: 30
+    maxTime: 100
+  - activity: 1
+    minTime: 20
+    maxTime: 30
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

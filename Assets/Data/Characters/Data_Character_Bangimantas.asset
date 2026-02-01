@@ -55,6 +55,15 @@ MonoBehaviour:
       - "A\u0161 i\u0161 klas\u0117s A"
       - "A\u0161 i\u0161 klas\u0117s B"
       - "A\u0161 i\u0161 klas\u0117s C"
-  activityPatience: []
+  activityPatience:
+  - activity: 0
+    minTime: 5
+    maxTime: 30
+  - activity: 2
+    minTime: 10
+    maxTime: 60
+  - activity: 1
+    minTime: 5
+    maxTime: 10
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

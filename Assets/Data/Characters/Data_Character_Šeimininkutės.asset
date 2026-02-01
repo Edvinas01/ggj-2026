@@ -44,6 +44,9 @@ MonoBehaviour:
       - Seniena
       - Skalbt jau laikas
       - "Patinka de\u0161ros spalva?"
-  activityPatience: []
+  activityPatience:
+  - activity: 0
+    minTime: 10000
+    maxTime: 10000
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

@@ -54,6 +54,12 @@ MonoBehaviour:
       - Ne
       - "Kotlet\u0105?"
       - Vaidina tik moterys
-  activityPatience: []
+  activityPatience:
+  - activity: 1
+    minTime: 30
+    maxTime: 120
+  - activity: 0
+    minTime: 10
+    maxTime: 60
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

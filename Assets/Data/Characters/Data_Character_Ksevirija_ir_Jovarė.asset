@@ -54,6 +54,12 @@ MonoBehaviour:
       - Reiks tuoj eit miegot jau
       - "O gal \u017Einot kur Jolanta?"
       - "Mano dvi neken\u010Diamiausios spalvos - \u017Ealia ir raudona"
-  activityPatience: []
+  activityPatience:
+  - activity: 2
+    minTime: 60
+    maxTime: 120
+  - activity: 0
+    minTime: 5
+    maxTime: 10
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
