@@ -310,6 +310,7 @@ namespace RIEVES.GGJ2026
                         }
                         else
                         {
+                            SetAnimationState(CurrentState == CharacterState.Hunting ? CharacterAnimationState.Hunting : CharacterAnimationState.Walking);
                             UpdateMovement();
                         }
 
@@ -340,6 +341,13 @@ namespace RIEVES.GGJ2026
 
         bool StartMovement(PointOfInterest target)
         {
+            if (target == null)
+            {
+                SetAnimationState(CharacterAnimationState.Idling);
+                StopMovement();
+                return false;
+            }
+
             CurrentTarget = null;
             navMeshAgent.enabled = true;
 
@@ -354,6 +362,7 @@ namespace RIEVES.GGJ2026
                 return true;
             }
 
+            SetAnimationState(CharacterAnimationState.Idling);
             StopMovement();
             return false;
         }
