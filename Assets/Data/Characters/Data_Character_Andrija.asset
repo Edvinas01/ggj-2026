@@ -68,6 +68,13 @@ MonoBehaviour:
       Data3: -200384072
       Data4: -507841371
     Path: event:/SFX/S_Footsteps_HighHeels
+  marozFmodEvent:
+    Guid:
+      Data1: -462005699
+      Data2: 1080775073
+      Data3: -1538803268
+      Data4: -1800361691
+    Path: event:/SFX/S_Footsteps_Maroz
   activityPatience:
   - activity: 1
     minTime: 5
