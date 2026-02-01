@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FMODUnity;
 using RIEVES.GGJ2026.Core.Constants;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -42,6 +43,10 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private CharacterConversationData conversation;
 
+        [Header("Audio")]
+        [SerializeField]
+        private EventReference voiceFmodEvent;
+
         [Header("Behaviour Data")]
         [SerializeField]
         private List<ActivityPatiencePair> activityPatience;
@@ -70,5 +75,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public List<ActivityPatiencePair> ActivityPatience => activityPatience;
         public float CalmMoveSpeed => calmMoveSpeed;
         public float AgitatedMoveSpeed => agitatedMoveSpeed;
+
+        public EventReference VoiceFmodEvent => voiceFmodEvent;
     }
 }
