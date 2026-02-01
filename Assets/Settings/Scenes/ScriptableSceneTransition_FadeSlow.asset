@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03097c79cf964f619e5637eea2046695, type: 3}
-  m_Name: ScriptableSceneTransition_FadeQuick
+  m_Name: ScriptableSceneTransition_FadeSlow
   m_EditorClassIdentifier: 
   fadeInAlpha: 1
   fadeOutAlpha: 0
-  transitionDelaySeconds: 0
-  fadeInDurationSeconds: 0.01
-  fadeOutDurationSeconds: 0.01
+  transitionDelaySeconds: 1
+  fadeInDurationSeconds: 1
+  fadeOutDurationSeconds: 2
