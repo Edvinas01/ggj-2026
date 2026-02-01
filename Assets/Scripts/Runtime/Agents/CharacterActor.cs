@@ -219,7 +219,7 @@ namespace RIEVES.GGJ2026
                 if (animationDelayTimer <= Time.time)
                     blocking = CallBacks.Dequeue().Invoke();
 
-                if (blocking)
+                if (blocking && !isInteractingWithPlayer)
                     return;
             }
 
@@ -228,7 +228,7 @@ namespace RIEVES.GGJ2026
 
             if (stateChangeTimer <= Time.time)
             {
-                if (!lockCharacterState || stateChangeTimer >= 0f)
+                if (lockCharacterState && stateChangeTimer >= 0f)
                     return;
 
                 var currentTargetState = CurrentState;
@@ -487,6 +487,7 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.GoodResponse);
+            stateChangeTimer = Time.time;
             onConversationStopped.Invoke();
         }
 
@@ -497,6 +498,7 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.BadResponse);
+            stateChangeTimer = Time.time;
             onConversationStopped.Invoke();
         }
 
@@ -507,6 +509,7 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.NeutralResponse);
+            stateChangeTimer = Time.time;
             onConversationStopped.Invoke();
         }
 
