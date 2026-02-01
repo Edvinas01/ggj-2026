@@ -53,6 +53,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private UnityEvent onHuntChoiceSelected;
 
         private HeatSystem heatSystem;
+        private AgentSystem agentSystem;
 
         private int currentMessageCount;
         private int currentMessageMax;
@@ -66,6 +67,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private void Awake()
         {
             heatSystem = GameManager.GetSystem<HeatSystem>();
+            agentSystem = GameManager.GetSystem<AgentSystem>();
         }
 
         private void OnEnable()
@@ -88,8 +90,31 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             Converse(character);
         }
 
+        float convCooldowntimer = -100f;
+
+        void Update()
+        {
+            if (conversingWith != null || Time.time < convCooldowntimer)
+                return;
+
+            foreach (var agent in agentSystem.agents)
+            {
+                var dist = (agent.transform.position - transform.position).sqrMagnitude;
+                if (dist < 1f)
+                {
+                    if (agent.WantsToTalk)
+                    {
+                        agent.StartConversation(transform);
+                        StartConversation(agent);
+                        break;
+                    }
+                }
+            }
+        }
+
         public void StopConversation(ConversationResult result)
         {
+            convCooldowntimer = Time.time + 2f;
             viewController.HideView();
 
             if (conversingWith)
