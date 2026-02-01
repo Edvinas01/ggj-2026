@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
   viewController: {fileID: 7475167151573011031}
   resourceController: {fileID: 8557895804664849490}
-  maxMessagesPerConvo: 3
+  maxMessagesPerConvo: 2
   maxCorrectMessages: 1
   maxIncorrectMessages: 3
   onCorrectChoiceSelected:

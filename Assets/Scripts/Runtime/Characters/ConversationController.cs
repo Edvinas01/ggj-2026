@@ -29,7 +29,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [Header("Features")]
         [Min(1)]
         [SerializeField]
-        private int maxMessagesPerConvo = 3;
+        private int maxMessagesPerConvo = 2;
 
         [Min(0)]
         [SerializeField]
@@ -99,21 +99,21 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 switch (result)
                 {
                     case ConversationResult.Correct:
-                    {
-                        conversingWith.ConversationStoppedCorrect();
-                        break;
-                    }
+                        {
+                            conversingWith.ConversationStoppedCorrect();
+                            break;
+                        }
                     case ConversationResult.Incorrect:
-                    {
-                        conversingWith.ConversationStoppedIncorrect();
-                        break;
-                    }
+                        {
+                            conversingWith.ConversationStoppedIncorrect();
+                            break;
+                        }
                     case ConversationResult.Neutral:
                     default:
-                    {
-                        conversingWith.ConversationStoppedNeutral();
-                        break;
-                    }
+                        {
+                            conversingWith.ConversationStoppedNeutral();
+                            break;
+                        }
                 }
             }
 
