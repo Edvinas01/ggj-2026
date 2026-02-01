@@ -30,6 +30,10 @@ namespace RIEVES.GGJ2026.Runtime.Player
         [SerializeField]
         private ResourceController resourceController;
 
+        [SerializeField]
+        [Min(0f)]
+        private float loseTickDelay = 0.3f;
+
         [Header("Movement")]
         [SerializeField]
         private MovementController movementController;
@@ -51,7 +55,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
         [SerializeField]
         [Min(0f)]
-        private float shakeDelay = 0.5f;
+        private float shakeDelay = 0.3f;
 
         [SerializeField]
         private Vector3 cameraShakeForce = new(0f, 0f, -1f);
@@ -152,12 +156,11 @@ namespace RIEVES.GGJ2026.Runtime.Player
             UpdateCameraZoom();
         }
 
-
         private void OnAlcoholChanged(AlcoholChangedArgs args)
         {
             if (args.Ratio <= 0f)
             {
-                sceneSystem.LoadGameOverScene();
+                StartCoroutine(LoseGameRoutine());
                 return;
             }
 
@@ -269,6 +272,12 @@ namespace RIEVES.GGJ2026.Runtime.Player
             );
 
             cinemachineCamera.Lens.FieldOfView = currentFov;
+        }
+
+        private IEnumerator LoseGameRoutine()
+        {
+            yield return new WaitForSeconds(loseTickDelay);
+            sceneSystem.LoadGameOverScene();
         }
     }
 }

@@ -126,7 +126,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611308942476225935}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0050220634, y: 0.28330338, z: 0.00148357, w: 0.9590161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: 32.91538
+    Value: 0
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -201,7 +201,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: -0.6000742
+    Value: 0
     Center: 0
     Range: {x: -87, y: 87}
     Wrap: 0
@@ -946,7 +946,7 @@ MonoBehaviour:
   cinemachineImpulse: {fileID: 2483201389401959049}
   zoomInSpeed: 4
   zoomInFov: 20
-  shakeDelay: 0.5
+  shakeDelay: 0.3
   cameraShakeForce: {x: 0, y: 0, z: -1}
   interactInputAction: {fileID: 1781555164194001046, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   zoomInputListener: {fileID: 7318049650304406683, guid: 052faaac586de48259a63d0c4782560b, type: 3}
@@ -966,8 +966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b36879b92cf3453fb38ae9d1f02c5704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Resources.ResourceController
-  alcohol: 10
-  alcoholMax: 100
+  alcohol: 20
+  alcoholMax: 150
 --- !u!114 &5901985342004967491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,7 +1223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1231,27 +1231,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9590161
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0050220634
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.28330338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00148357
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -32.736
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
