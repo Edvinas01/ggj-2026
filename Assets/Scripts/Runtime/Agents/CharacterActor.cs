@@ -254,7 +254,7 @@ namespace RIEVES.GGJ2026
                                     InterestType.Dancing;
 
                             var newTarget = agentSystem.PickRandomWaypoint(targetType);
-                            if (newTarget != null && !StartMovement(newTarget))
+                            if (newTarget == null || !StartMovement(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                         else if (CurrentActivity != CharacterActivity.Walking)
@@ -285,7 +285,7 @@ namespace RIEVES.GGJ2026
                         if (CurrentTarget == null || CurrentActivity != CharacterActivity.Hunting)
                         {
                             var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                            if (newTarget != null && !StartMovement(newTarget))
+                            if (newTarget == null || !StartMovement(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                     }
@@ -321,8 +321,15 @@ namespace RIEVES.GGJ2026
                                     break;
                                 case CharacterState.Hunting:
                                     var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                                    if (newTarget != null && !StartMovement(newTarget))
+                                    if (newTarget == null || !StartMovement(newTarget))
                                         SetState(agentSystem.GetRandomState(this));
+                                    break;
+                                default:
+                                    // how did we even get here.
+                                    CurrentActivity = CharacterActivity.Idling;
+                                    SetAnimationState(CharacterAnimationState.Idling);
+                                    StopMovement();
+
                                     break;
                             }
                         }
