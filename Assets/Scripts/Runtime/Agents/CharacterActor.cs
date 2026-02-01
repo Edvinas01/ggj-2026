@@ -77,8 +77,6 @@ namespace RIEVES.GGJ2026
 
         public float AnimationDelayTimer => animationDelayTimer;
 
-        public StudioEventEmitter VoiceAudioEmitter => voiceAudioEmitter;
-
 #if UNITY_EDITOR
 
         private void OnValidate()
@@ -379,6 +377,22 @@ namespace RIEVES.GGJ2026
                         break;
                     }
             }
+        }
+
+        public void PlayVoice()
+        {
+            if (CharacterData.VoiceFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            voiceAudioEmitter.EventReference = CharacterData.VoiceFmodEvent;
+            voiceAudioEmitter.Play();
+        }
+
+        public void StopVoice()
+        {
+            voiceAudioEmitter.Stop();
         }
 
         bool StartMovement(PointOfInterest target)

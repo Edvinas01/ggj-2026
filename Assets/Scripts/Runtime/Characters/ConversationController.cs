@@ -73,11 +73,15 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private void OnEnable()
         {
             viewController.OnChoiceSelected += OnChoiceSelected;
+            viewController.OnTextWriterFinished += OnTextWriterFinished;
+            viewController.OnTextWriterStarted += OnTextWriterStarted;
         }
 
         private void OnDisable()
         {
             viewController.OnChoiceSelected -= OnChoiceSelected;
+            viewController.OnTextWriterFinished -= OnTextWriterFinished;
+            viewController.OnTextWriterStarted -= OnTextWriterStarted;
         }
 
         public void StartConversation(CharacterActor character)
@@ -140,6 +144,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                             break;
                         }
                 }
+            }
+
+            if (conversingWith)
+            {
+                conversingWith.StopVoice();
             }
 
             currentMessageCount = 0;
@@ -247,7 +256,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.Content,
-                eventReference: character.CharacterData.VoiceFmodEvent,
                 choices: choices
             );
         }
@@ -257,7 +265,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.Content,
-                eventReference: character.CharacterData.VoiceFmodEvent,
                 choices: new[]
                 {
                     new ConversationChoice(
@@ -274,7 +281,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.HuntMessage,
-                eventReference: character.CharacterData.VoiceFmodEvent,
                 choices: new[]
                 {
                     new ConversationChoice(
@@ -284,6 +290,22 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     ),
                 }
             );
+        }
+
+        private void OnTextWriterStarted()
+        {
+            if (conversingWith)
+            {
+                conversingWith.PlayVoice();
+            }
+        }
+
+        private void OnTextWriterFinished()
+        {
+            if (conversingWith)
+            {
+                conversingWith.StopVoice();
+            }
         }
 
         private void OnChoiceSelected(ConversationChoice choice)

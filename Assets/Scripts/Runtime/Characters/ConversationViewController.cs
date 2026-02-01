@@ -8,37 +8,36 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 {
     internal sealed class ConversationViewController : ViewController<ConversationView>
     {
-        [SerializeField]
-        private StudioEventEmitter voiceAudioEmitter;
-
         public event Action<ConversationChoice> OnChoiceSelected;
+
+        public event Action OnTextWriterStarted;
+
+        public event Action OnTextWriterFinished;
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            View.OnTextWriterFinished += OnTextWriterFinished;
-            View.OnTextWriterStarted += OnTextWriterStarted;
+            View.OnTextWriterFinished += OnViewTextWriterFinished;
+            View.OnTextWriterStarted += OnViewTextWriterStarted;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
 
-            View.OnTextWriterFinished -= OnTextWriterFinished;
-            View.OnTextWriterStarted -= OnTextWriterStarted;
+            View.OnTextWriterFinished -= OnViewTextWriterFinished;
+            View.OnTextWriterStarted -= OnViewTextWriterStarted;
         }
 
         public void Initialize(
             string title,
             string content,
-            EventReference eventReference,
             IReadOnlyList<ConversationChoice> choices
         )
         {
             View.TitleText = title;
             View.ContentText = content;
-            voiceAudioEmitter.EventReference = eventReference;
 
             View.ClearChoices();
 
@@ -58,24 +57,14 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             base.ShowView();
         }
 
-        private void OnTextWriterFinished()
+        private void OnViewTextWriterFinished()
         {
-            if (voiceAudioEmitter.EventReference.IsNull)
-            {
-                return;
-            }
-
-            voiceAudioEmitter.Stop();
+            OnTextWriterFinished?.Invoke();
         }
 
-        private void OnTextWriterStarted()
+        private void OnViewTextWriterStarted()
         {
-            if (voiceAudioEmitter.EventReference.IsNull)
-            {
-                return;
-            }
-
-            voiceAudioEmitter.Play();
+            OnTextWriterStarted?.Invoke();
         }
     }
 }

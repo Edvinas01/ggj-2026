@@ -9,11 +9,44 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private CharacterActor character;
 
         [SerializeField]
+        private ParticleSystem hunterParticleSystem;
+
+        [SerializeField]
         private bool isDebug;
+
+        private CharacterState characterStatePrev;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            characterStatePrev = character.CurrentState;
+        }
 
         protected override void Update()
         {
             base.Update();
+
+            var characterStateNext = character.CurrentState;
+            if (characterStatePrev == characterStateNext)
+            {
+                return;
+            }
+
+            characterStatePrev = characterStateNext;
+
+            switch (characterStateNext)
+            {
+                case CharacterState.Hunting:
+                {
+                    hunterParticleSystem.Play();
+                    break;
+                }
+                default:
+                {
+                    hunterParticleSystem.Stop();
+                    break;
+                }
+            }
 
             if (isDebug == false)
             {
