@@ -55,6 +55,13 @@ MonoBehaviour:
       - "\u0160kada, \u0161koda, tavo \u016Bsai, apie k\u0105 tu \u010Dia?"
       - "Manai a\u0161 stuka\u010Dius?"
       - "A\u0161 i\u0161kr\u0117\u010Diau, tik nei\u0161duok niekam"
+  voiceFmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   activityPatience:
   - activity: 5
     minTime: 10
@@ -62,5 +69,8 @@ MonoBehaviour:
   - activity: 0
     minTime: 10
     maxTime: 60
+  - activity: 3
+    minTime: 15
+    maxTime: 30
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
