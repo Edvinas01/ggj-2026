@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterActor
   data: {fileID: 11400000, guid: 9b0a3da30ba6bc540861f71431aa7613, type: 2}
   interactable: {fileID: 4005990158675576400}
-  lockCharacterState: 1
+  lockCharacterState: 0
   onStateChange:
   - State: 2
     OnStateStarting:
