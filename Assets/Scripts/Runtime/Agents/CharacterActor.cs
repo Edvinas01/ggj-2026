@@ -12,6 +12,7 @@ using FMODUnity;
 
 namespace RIEVES.GGJ2026
 {
+    [RequireComponent(typeof(MovementController))]
     internal sealed class CharacterActor : MonoBehaviour
     {
         [Header("General")]
@@ -65,6 +66,8 @@ namespace RIEVES.GGJ2026
         [SerializeField]
         private NavMeshAgent navMeshAgent;
 
+        private MovementController movementController;
+
         private CharacterData runtimeData;
         private AgentSystem agentSystem;
 
@@ -91,6 +94,7 @@ namespace RIEVES.GGJ2026
         private void Awake()
         {
             agentSystem = GameManager.GetSystem<AgentSystem>();
+            movementController = GetComponent<MovementController>();
 
             navMeshAgent.updatePosition = false;
             navMeshAgent.updateRotation = false;
@@ -110,6 +114,7 @@ namespace RIEVES.GGJ2026
             interactable.OnHoverExited += OnInteractableHoverExited;
             interactable.OnSelectEntered += OnInteractableSelectEntered;
             interactable.OnSelectExited += OnInteractableSelectExited;
+            movementController.OnMoveEntered += OnFootstepStarted;
         }
 
         private void OnDisable()
@@ -118,6 +123,7 @@ namespace RIEVES.GGJ2026
             interactable.OnHoverExited -= OnInteractableHoverExited;
             interactable.OnSelectEntered -= OnInteractableSelectEntered;
             interactable.OnSelectExited -= OnInteractableSelectExited;
+            movementController.OnMoveEntered -= OnFootstepStarted;
         }
 
         float stateChangeTimer = -100f;
@@ -567,6 +573,27 @@ namespace RIEVES.GGJ2026
 
         private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
         {
+        }
+
+        private void OnFootstepStarted()
+        {
+            if (CharacterData.FootstepFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            voiceAudioEmitter.EventReference = CharacterData.FootstepFmodEvent;
+            voiceAudioEmitter.Play();
+        }
+
+        private void OnFootstepStopped()
+        {
+            if (CharacterData.FootstepFmodEvent.IsNull)
+            {
+                return;
+            }
+
+            voiceAudioEmitter.Stop();
         }
     }
 }
