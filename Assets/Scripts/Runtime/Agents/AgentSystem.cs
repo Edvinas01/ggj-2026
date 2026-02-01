@@ -7,6 +7,7 @@ using RIEVES.GGJ2026.Core.Utilities;
 using RIEVES.GGJ2026.Runtime.Characters;
 using RIEVES.GGJ2026.Runtime.Heat;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace RIEVES.GGJ2026
@@ -32,8 +33,40 @@ namespace RIEVES.GGJ2026
             heatSystem = GameManager.GetSystem<HeatSystem>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            var foundPoints = FindObjectsByType<PointOfInterest>(FindObjectsSortMode.None);
+            var foundSpawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
+
+            if (foundPoints.Length == 0 && foundSpawns.Length == 0)
+                return;
+
+            points.Clear();
+            spawnPoints.Clear();
+            agents.Clear();
+
+            foreach (var poi in foundPoints)
+            {
+                if (!points.ContainsKey(poi.InterestType))
+                    points[poi.InterestType] = new List<PointOfInterest>();
+                points[poi.InterestType].Add(poi);
+            }
+            spawnPoints.AddRange(foundSpawns);
+
+            var existingAgents = FindObjectsByType<CharacterActor>(FindObjectsSortMode.None);
+            foreach (var agent in existingAgents)
+                agents.Add(agent);
+
             foreach (CharacterState state in Enum.GetValues(typeof(CharacterState)))
                 desiredProportions[state] = 0;
 
@@ -41,10 +74,16 @@ namespace RIEVES.GGJ2026
             desiredProportions[CharacterState.Dancing] = 10;
             desiredProportions[CharacterState.Watching] = 13;
 
-            var currentCount = agents.Count;
-            for (; agents.Count < initialBasePopulation;)
+            int maxAttempts = 100;
+            int attempts = 0;
+            while (agents.Count < initialBasePopulation && attempts < maxAttempts)
+            {
                 SpawnNewAgent(true);
+                attempts++;
+            }
 
+            if (attempts >= maxAttempts)
+                Debug.LogWarning("AgentSystem: Population goal not met. Not enough Points of Interest available.");
         }
 
         public void OnUpdated(float deltaTime)
@@ -97,7 +136,7 @@ namespace RIEVES.GGJ2026
             CharacterActor instance = CreateCharacter(neededState, position, Quaternion.identity);
             if (instance != null)
             {
-                AddAgent(instance);
+                agents.Add(instance);
                 if (init)
                 {
                     instance.SetState(neededState);
@@ -219,24 +258,6 @@ namespace RIEVES.GGJ2026
             return available.Count == 0 ? null : available[Random.Range(0, available.Count)];
         }
 
-        public void AddPointOfInterest(PointOfInterest poi)
-        {
-            if (!points.ContainsKey(poi.InterestType))
-                points[poi.InterestType] = new List<PointOfInterest>();
-
-            points[poi.InterestType].Add(poi);
-        }
-
-        public void RemovePointOfInterest(PointOfInterest poi)
-        {
-            if (points.ContainsKey(poi.InterestType))
-                points[poi.InterestType].Remove(poi);
-        }
-
-        public void AddSpawnPoint(SpawnPoint sp) => spawnPoints.Add(sp);
-        public void RemoveSpawnPoint(SpawnPoint sp) => spawnPoints.Remove(sp);
-        public void AddAgent(CharacterActor agent) => agents.Add(agent);
-        public void RemoveAgent(CharacterActor agent) => agents.Remove(agent);
         public void OnFixedUpdated(float deltaTime) { }
     }
 }

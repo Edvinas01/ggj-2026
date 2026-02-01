@@ -104,8 +104,6 @@ namespace RIEVES.GGJ2026
 
         private void OnEnable()
         {
-            agentSystem.AddAgent(this);
-
             interactable.OnHoverEntered += OnInteractableHoverEntered;
             interactable.OnHoverExited += OnInteractableHoverExited;
             interactable.OnSelectEntered += OnInteractableSelectEntered;
@@ -114,8 +112,6 @@ namespace RIEVES.GGJ2026
 
         private void OnDisable()
         {
-            agentSystem.RemoveAgent(this);
-
             interactable.OnHoverEntered -= OnInteractableHoverEntered;
             interactable.OnHoverExited -= OnInteractableHoverExited;
             interactable.OnSelectEntered -= OnInteractableSelectEntered;
