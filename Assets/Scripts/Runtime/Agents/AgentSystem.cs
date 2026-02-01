@@ -1,14 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CHARK.GameManagement.Systems;
 using RIEVES.GGJ2026.Core.Utilities;
+using RIEVES.GGJ2026.Runtime.Characters;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+using Random = UnityEngine.Random;
 
 namespace RIEVES.GGJ2026
 {
     internal sealed class AgentSystem : MonoSystem, IUpdateListener, IFixedUpdateListener
     {
+        [SerializeField]
+        private CharacterActor characterPrefab;
+
+        [SerializeField]
+        private List<CharacterData> characterSpawnPool = new();
+
         readonly Dictionary<CharacterState, int> desiredProportions = new();
         readonly Dictionary<InterestType, List<PointOfInterest>> points = new();
         readonly List<CharacterActor> agents = new();
@@ -53,6 +61,33 @@ namespace RIEVES.GGJ2026
             }
 
             return unoccupiedPoints[Random.Range(0, unoccupiedPoints.Count)];
+        }
+
+        public CharacterActor CreateCharacter(CharacterState state, Vector3 position, Quaternion rotation)
+        {
+            var filteredCharacters = characterSpawnPool.Where(characterData =>
+                {
+                    foreach (var pair in characterData.ActivityPatience)
+                    {
+                        if (pair.activity == state)
+                        {
+                            return true;
+                        }
+                    }
+
+                    return false;
+                }
+            );
+
+            if (filteredCharacters.TryGetRandom(out var character))
+            {
+                var instance = Instantiate(characterPrefab, position, rotation);
+                instance.Initialize(character);
+
+                return instance;
+            }
+
+            throw new Exception($"No characters found in {nameof(CharacterData.ActivityPatience)} containing activity {state}");
         }
 
         public CharacterState GetRandomState(CharacterActor agent)

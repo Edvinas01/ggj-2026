@@ -67,6 +67,17 @@ namespace RIEVES.GGJ2026
         public CharacterData CharacterData => runtimeData;
         Transform interactingWith;
 
+#if UNITY_EDITOR
+
+        private void OnValidate()
+        {
+            if (Application.isPlaying == false && data)
+            {
+                Initialize(data);
+            }
+        }
+#endif
+
         private void Awake()
         {
             agentSystem = GameManager.GetSystem<AgentSystem>();
@@ -398,6 +409,22 @@ namespace RIEVES.GGJ2026
 
         public void Initialize(CharacterData newData)
         {
+            if (runtimeData)
+            {
+#if UNITY_EDITOR
+                if (Application.isPlaying == false)
+                {
+                    DestroyImmediate(runtimeData);
+                }
+                else
+                {
+                    Destroy(runtimeData);
+                }
+#else
+                Destroy(runtimeData);
+#endif
+            }
+
             runtimeData = Instantiate(newData);
 
             var block = new MaterialPropertyBlock();
