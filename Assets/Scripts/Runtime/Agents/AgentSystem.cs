@@ -41,8 +41,20 @@ namespace RIEVES.GGJ2026
             desiredProportions[CharacterState.Dancing] = 7;
             desiredProportions[CharacterState.Watching] = 10;
 
+            var oldActors = agents.ToList();
+            var currentCount = agents.Count;
             for (; agents.Count < initialBasePopulation;)
                 SpawnNewAgent(true);
+
+            // TODO: We should set the target permenantyly instead.
+            foreach (var actor in agents)
+            {
+                if (!oldActors.Contains(actor))
+                    continue;
+
+                actor.CurrentTarget = null;
+            }
+
         }
 
         public void OnUpdated(float deltaTime)
@@ -75,16 +87,17 @@ namespace RIEVES.GGJ2026
 
             Vector3 position;
             Quaternion rotation;
+            PointOfInterest poi = null;
             if (init)
             {
-                var spawnPoint = PickRandomWaypoint(interest);
-                if (spawnPoint == null)
+                poi = PickRandomWaypoint(interest);
+                if (poi == null)
                     return;
 
-                rotation = spawnPoint.Facing
-                    ? spawnPoint.transform.rotation
+                rotation = poi.Facing
+                    ? poi.transform.rotation
                     : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
-                position = spawnPoint.transform.position;
+                position = poi.transform.position;
             }
             else
             {
@@ -104,6 +117,7 @@ namespace RIEVES.GGJ2026
                 {
                     instance.SetState(neededState);
                     instance.SetPatienceDuration(neededState);
+                    instance.CurrentTarget = poi;
                 }
             }
         }
