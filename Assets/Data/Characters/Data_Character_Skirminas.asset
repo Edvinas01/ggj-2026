@@ -33,24 +33,30 @@ MonoBehaviour:
       incorrectChoices:
       - "A\u0161 ne mergina, man\u0119s neklausk"
       - O kaip tau atrodo?
+      - "Tu \u010Dia kabini mane?"
     - messageType: 0
       content: Apsikirpk plaukus hipi
       huntMessage: Nepatikai!
       correctChoices:
       - Gerai
-      - Gerai
+      - Sutarta
       incorrectChoices:
       - "Mes u\u017E meil\u0119 - prie\u0161 kar\u0105"
-      - "Mes u\u017E meil\u0119 - prie\u0161 kar\u0105"
+      - Ar gaila tau?
+      - Kad ir pats mauras
     - messageType: 0
       content: "Sp\u0117k k\u0105 veiksiu po mokyklos?"
       huntMessage: Konkretus vaflis!
       correctChoices:
-      - "J\u016Breiviu b\u016Bsi?"
-      - Laivyne dirbsi?
+      - "\u012E politik\u0105 gal?"
+      - "Gydytoju b\u016Bsi?"
       incorrectChoices:
       - "Gal kaime prie \u017Eagr\u0117s?"
-      - "Nelabai \u012Fdomu"
-  activityPatience: []
+      - Sargu dirbsi?
+      - Laivyne dirbsi?
+  activityPatience:
+  - activity: 5
+    minTime: 60
+    maxTime: 120
   calmMoveSpeed: 0.3
-  agitatedMoveSpeed: 1
+  agitatedMoveSpeed: 2

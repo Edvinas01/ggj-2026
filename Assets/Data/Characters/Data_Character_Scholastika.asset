@@ -33,24 +33,33 @@ MonoBehaviour:
       incorrectChoices:
       - Geltona
       - Gelsva
+      - Ta prasme?
     - messageType: 0
       content: "Saul\u0117 ar m\u0117nulis?"
       huntMessage: "\u010Cia tau ne vieta!"
       correctChoices:
       - "Saul\u0117"
-      - "\u017Dvaig\u017Ed\u0117!"
+      - "Ir m\u0117nulis su tavo \u0161ypsena kaip saul\u0117 \u0161viest\u0173!"
       incorrectChoices:
       - "M\u0117nulis"
       - "Kas \u010Dia per klausimas?"
+      - Nematau skirtumo
     - messageType: 0
-      content: "Sveikas. Nematytas. I\u0161 kokios klas\u0117s tu?"
+      content: "Sveikas. Ar pameni i\u0161 kurios klas\u0117s a\u0161?"
       huntMessage: Tepk slides!
       correctChoices:
+      - Tikrai pamenu
+      - "\u0160\u012F vakar\u0105 klas\u0117s baigiasi, rytoj mes laisvi \u017Emon\u0117s!"
+      incorrectChoices:
       - A
       - B
-      incorrectChoices:
       - C
-      - C
-  activityPatience: []
-  calmMoveSpeed: 0.3
-  agitatedMoveSpeed: 1
+  activityPatience:
+  - activity: 2
+    minTime: 60
+    maxTime: 120
+  - activity: 0
+    minTime: 10
+    maxTime: 20
+  calmMoveSpeed: 1
+  agitatedMoveSpeed: 2

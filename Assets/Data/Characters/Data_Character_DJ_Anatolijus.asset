@@ -24,7 +24,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: bdf57be46c5fef14e9c83158dbc22d27, type: 3}
   conversation:
     messages:
-    - messageType: 1
+    - messageType: 0
       content: "Gal gali neliest audio \u012Frangos?"
       huntMessage: "Gausi \u012F d\u016Bd\u0105"
       correctChoices:
@@ -33,7 +33,8 @@ MonoBehaviour:
       incorrectChoices:
       - "\u0160rotas, o ne \u012Franga"
       - Grot nemoki
-    - messageType: 1
+      - Nes kas bus?
+    - messageType: 0
       content: "Kaip tau \u0161i daina?"
       huntMessage: Mirt nori?
       correctChoices:
@@ -41,7 +42,11 @@ MonoBehaviour:
       - "Gera muzika vis\u0105 vakar\u0105"
       incorrectChoices:
       - Senienas groji
-      - "Toki\u0105 muzik\u0105 tik leist tik kaime"
-  activityPatience: []
+      - "Toki\u0105 muzik\u0105 tik kaime leist"
+      - "Sodint u\u017E toki\u0105 muzik\u0105"
+  activityPatience:
+  - activity: 0
+    minTime: 10000
+    maxTime: 10000
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

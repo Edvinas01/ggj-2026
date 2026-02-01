@@ -33,7 +33,8 @@ MonoBehaviour:
       - Daug atlaikai, stora oda kaip sakoma
       incorrectChoices:
       - "Storas pakalb\u0117t u\u017Esimanei?"
-      - "Storas pakalb\u0117t u\u017Esimanei?"
+      - "K\u0105 storas?"
+      - "Ma\u010Diau lydekos ten yra ir baltos mi\u0161rain\u0117s"
     - messageType: 0
       content: "Gal matei mano peteli\u0161k\u0119?"
       huntMessage: "Nesveikas ka\u017Ekoks!"
@@ -42,16 +43,27 @@ MonoBehaviour:
       - "Palauk, lyg ma\u010Diau ka\u017Ekur"
       incorrectChoices:
       - Suvalgei gal?
-      - Suvalgei gal?
+      - Nuskrido gal
+      - Gerai, kad su galva nepametei
     - messageType: 0
-      content: "Jonyt\u0117 mano ses\u0117. Gal matei j\u0105? Ka\u017Ekur dingus"
+      content: "Jolanta mano ses\u0117. Gal matei j\u0105? Ka\u017Ekur dingus"
       huntMessage: Teftelis!
       correctChoices:
-      - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
-      - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
+      - "Pa\u017Ei\u016Br\u0117k \u0161oki\u0173 aik\u0161tel\u0117je"
+      - "Andrija jos irgi ie\u0161ko"
       incorrectChoices:
       - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
-      - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
-  activityPatience: []
+      - "A\u0161 irgi ie\u0161kau Jokantos"
+      - "A\u0161 irgi ie\u0161kau Juozyt\u0117s"
+  activityPatience:
+  - activity: 0
+    minTime: 30
+    maxTime: 60
+  - activity: 1
+    minTime: 5
+    maxTime: 30
+  - activity: 5
+    minTime: 20
+    maxTime: 30
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

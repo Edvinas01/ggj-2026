@@ -32,7 +32,8 @@ MonoBehaviour:
       - "O gal ses\u0117s?"
       incorrectChoices:
       - Matau
-      - Matau
+      - "Jei dvejint\u0173si b\u016Bt\u0173 dvigubai blogiau"
+      - "Ne dvyn\u0117s? O tai gal o\u017E\u0117s?"
     - messageType: 0
       content: "Sveikas! Sp\u0117k koks m\u016Bs\u0173 bendras hobis"
       huntMessage: Tau laikas namo!
@@ -42,15 +43,23 @@ MonoBehaviour:
       incorrectChoices:
       - Karoliai
       - "D\u017Einsai"
+      - Vyrai?
     - messageType: 0
       content: "Sveikas! Ar ne tu vaidinai Otel\u0105?"
       huntMessage: "\u010Ciuo\u017Ek i\u0161 \u010Dia tik!"
       correctChoices:
-      - "A\u0161"
-      - "A\u0161"
+      - "Patinka \u0160ekspyras?"
+      - Patinka teatras?
       incorrectChoices:
       - Ne
       - "Kotlet\u0105?"
-  activityPatience: []
+      - Vaidina tik moterys
+  activityPatience:
+  - activity: 1
+    minTime: 30
+    maxTime: 120
+  - activity: 0
+    minTime: 10
+    maxTime: 60
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
