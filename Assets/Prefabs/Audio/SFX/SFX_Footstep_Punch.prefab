@@ -53,7 +53,7 @@ MonoBehaviour:
       Data4: 1953831606
     Path: event:/SFX/S_Punch
   Event: 
-  EventPlayTrigger: 11
+  EventPlayTrigger: 0
   EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0

@@ -53,7 +53,7 @@ MonoBehaviour:
       Data4: 1189754245
     Path: event:/UI/SFX_ButtonHover
   Event: 
-  EventPlayTrigger: 11
+  EventPlayTrigger: 0
   EventStopTrigger: 12
   AllowFadeout: 1
   TriggerOnce: 0
