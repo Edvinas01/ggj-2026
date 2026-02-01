@@ -8,5 +8,10 @@ namespace RIEVES.GGJ2026.Runtime.Popups
         {
             set => View.TitleText = value;
         }
+
+        public bool IsBlocked
+        {
+            set => View.IsBlocked = value;
+        }
     }
 }

@@ -148,6 +148,24 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             OnConversationStopped?.Invoke();
         }
 
+        public bool IsContainsMessages(CharacterActor character)
+        {
+            if (character.CurrentState == CharacterState.Hunting)
+            {
+                return true;
+            }
+
+            var conversationData = character.CharacterData.ConversationData;
+            var messages = conversationData.Messages.ToList();
+
+            if (conversationData.ConversedCount <= 0 && messages.Any(m => m.MessageType == CharacterMessageType.CorrectIncorrect))
+            {
+                return true;
+            }
+
+            return messages.Any(m => m.MessageType == CharacterMessageType.RandomBlurb);
+        }
+
         private void Converse(CharacterActor character)
         {
             var conversationData = character.CharacterData.ConversationData;

@@ -2,6 +2,7 @@
 using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Input;
+using RIEVES.GGJ2026.Core.Interaction.Interactables;
 using RIEVES.GGJ2026.Core.Interaction.Interactors;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Runtime.Characters;
@@ -100,6 +101,9 @@ namespace RIEVES.GGJ2026.Runtime.Player
             initialFov = cinemachineCamera.Lens.FieldOfView;
             targetFov = cinemachineCamera.Lens.FieldOfView;
             currentFov = cinemachineCamera.Lens.FieldOfView;
+
+            // interactor.HoverValidator = IsInteractableValid;
+            interactor.SelectValidator = IsInteractableValid;
 
             cursorSystem.LockCursor();
         }
@@ -207,6 +211,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
             if (character)
             {
                 characterHoverPopupController.TitleText = character.CharacterData.CharacterName;
+                characterHoverPopupController.IsBlocked = conversationController.IsContainsMessages(character) == false;
                 characterHoverPopupController.ShowView();
                 return;
             }
@@ -278,6 +283,25 @@ namespace RIEVES.GGJ2026.Runtime.Player
         {
             yield return new WaitForSeconds(loseTickDelay);
             sceneSystem.LoadGameOverScene();
+        }
+
+        private bool IsInteractableValid(IInteractable interactable)
+        {
+            if (interactable is not Component component)
+            {
+                return true;
+            }
+
+            var character = component.GetComponentInParent<CharacterActor>();
+            if (character)
+            {
+                if (character.CharacterData.ConversationData.ConversedCount > 0)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

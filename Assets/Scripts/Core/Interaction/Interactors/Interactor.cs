@@ -39,6 +39,9 @@ namespace RIEVES.GGJ2026.Core.Interaction.Interactors
         [SerializeField]
         public UnityEvent<InteractorSelectExitedArgs> onSelectExited;
 
+        public Func<IInteractable, bool> HoverValidator { get; set; }
+        public Func<IInteractable, bool> SelectValidator { get; set; }
+
         private IInteractionSystem interactionSystem;
 
         private readonly List<IInteractable> hoveredInteractables = new();
@@ -122,6 +125,11 @@ namespace RIEVES.GGJ2026.Core.Interaction.Interactors
                     continue;
                 }
 
+                if (SelectValidator != null && SelectValidator.Invoke(hoveredInteractable) == false)
+                {
+                    continue;
+                }
+
                 selectedInteractables.Add(hoveredInteractable);
                 hoveredInteractable.UnHover(this);
 
@@ -181,6 +189,11 @@ namespace RIEVES.GGJ2026.Core.Interaction.Interactors
         protected void Hover(IInteractable interactable)
         {
             if (IsHovered(interactable) || IsSelected(interactable))
+            {
+                return;
+            }
+
+            if (HoverValidator != null && HoverValidator.Invoke(interactable) == false)
             {
                 return;
             }
