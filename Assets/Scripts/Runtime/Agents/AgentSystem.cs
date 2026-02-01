@@ -42,19 +42,9 @@ namespace RIEVES.GGJ2026
             desiredProportions[CharacterState.Watching] = 10;
             desiredProportions[CharacterState.Guarding] = 2;
 
-            var oldActors = agents.ToList();
             var currentCount = agents.Count;
             for (; agents.Count < initialBasePopulation;)
                 SpawnNewAgent(true);
-
-            // TODO: We should set the target permenantyly instead.
-            foreach (var actor in agents)
-            {
-                if (!oldActors.Contains(actor))
-                    continue;
-
-                actor.CurrentTarget = null;
-            }
 
         }
 
