@@ -22,7 +22,7 @@ namespace RIEVES.GGJ2026
         private readonly Dictionary<CharacterState, int> desiredProportions = new();
         private readonly Dictionary<InterestType, List<PointOfInterest>> points = new();
         private readonly List<SpawnPoint> spawnPoints = new();
-        private readonly HashSet<CharacterActor> agents = new HashSet<CharacterActor>();
+        public readonly HashSet<CharacterActor> agents = new HashSet<CharacterActor>();
 
         private HeatSystem heatSystem;
         private int initialBasePopulation = 20;

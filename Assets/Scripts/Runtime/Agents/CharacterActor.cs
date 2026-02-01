@@ -30,6 +30,8 @@ namespace RIEVES.GGJ2026
         public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
         public PointOfInterest CurrentTarget { get; set; }
 
+        public bool WantsToTalk => CurrentState == CharacterState.Guarding || CurrentState == CharacterState.Hunting;
+
         [Header("Rendering")]
         [SerializeField]
         private Renderer frontRenderer;
@@ -452,7 +454,13 @@ namespace RIEVES.GGJ2026
 
         bool wasMovingBeforeConversation = false;
 
-        public void ConversationStarted()
+        public void StartConversation(Transform component)
+        {
+            interactingWith = component;
+            ConversationStarted();
+        }
+
+        void ConversationStarted()
         {
             isInteractingWithPlayer = true;
             wasMovingBeforeConversation = navMeshAgent.enabled;
@@ -511,9 +519,8 @@ namespace RIEVES.GGJ2026
             var controller = component.GetComponentInParent<ConversationController>();
             if (controller)
             {
-                interactingWith = component.transform;
                 controller.StartConversation(this);
-                ConversationStarted();
+                StartConversation(component.transform);
             }
         }
 
