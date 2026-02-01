@@ -54,11 +54,21 @@ MonoBehaviour:
       - A
       - B
       - C
+  voiceFmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   activityPatience:
   - activity: 2
     minTime: 60
     maxTime: 120
   - activity: 0
+    minTime: 10
+    maxTime: 20
+  - activity: 3
     minTime: 10
     maxTime: 20
   calmMoveSpeed: 1

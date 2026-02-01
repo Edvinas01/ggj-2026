@@ -54,12 +54,22 @@ MonoBehaviour:
       - Reiks tuoj eit miegot jau
       - "O gal \u017Einot kur Jolanta?"
       - "Mano dvi neken\u010Diamiausios spalvos - \u017Ealia ir raudona"
+  voiceFmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   activityPatience:
   - activity: 2
-    minTime: 60
-    maxTime: 120
+    minTime: 40
+    maxTime: 80
   - activity: 0
     minTime: 5
     maxTime: 10
+  - activity: 3
+    minTime: 15
+    maxTime: 25
   calmMoveSpeed: 0.6
   agitatedMoveSpeed: 2

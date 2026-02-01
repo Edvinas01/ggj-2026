@@ -54,12 +54,19 @@ MonoBehaviour:
       - Ne
       - "Kotlet\u0105?"
       - Vaidina tik moterys
+  voiceFmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   activityPatience:
   - activity: 1
-    minTime: 30
-    maxTime: 120
+    minTime: 40
+    maxTime: 90
   - activity: 0
     minTime: 10
-    maxTime: 60
+    maxTime: 50
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1
