@@ -356,6 +356,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 4454898617881708500}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.Billboard, RIEVES.GGJ2026.Core
+          m_MethodName: set_ForceStraightDirection
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     StartDelay: 0
     OnStateEnding:
       m_PersistentCalls:
@@ -385,6 +397,18 @@ MonoBehaviour:
         - m_Target: {fileID: 3275830012860846667}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4454898617881708500}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.Billboard, RIEVES.GGJ2026.Core
+          m_MethodName: set_ForceStraightDirection
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -428,6 +452,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 4454898617881708500}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.Billboard, RIEVES.GGJ2026.Core
+          m_MethodName: set_ForceStraightDirection
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     EndDelay: 0
   - State: 7
     OnStateStarting:
@@ -440,6 +476,18 @@ MonoBehaviour:
         - m_Target: {fileID: 3275830012860846667}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4454898617881708500}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.Billboard, RIEVES.GGJ2026.Core
+          m_MethodName: set_ForceStraightDirection
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
