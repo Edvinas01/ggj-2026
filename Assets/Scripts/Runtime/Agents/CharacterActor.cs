@@ -400,7 +400,7 @@ namespace RIEVES.GGJ2026
         void RotateTowards(Vector3 targetPosition)
         {
             var direction = (targetPosition - transform.position).normalized;
-            if (direction.sqrMagnitude < 0.001f)
+            if ((targetPosition - transform.position).sqrMagnitude < 0.001f)
                 return;
 
             var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);

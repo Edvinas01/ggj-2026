@@ -87,7 +87,7 @@ namespace RIEVES.GGJ2026
                 ? spawnPoint.transform.rotation
                 : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
 
-            CharacterActor instance = CreateCharacter(neededState, spawnPoint.transform.position, rotation);
+            CharacterActor instance = CreateCharacter(neededState, spawnPoint.transform.position, Quaternion.identity);
             if (instance != null)
             {
                 AddAgent(instance);
