@@ -21,6 +21,7 @@ namespace RIEVES.GGJ2026
 
         private readonly Dictionary<CharacterState, int> desiredProportions = new();
         private readonly Dictionary<InterestType, List<PointOfInterest>> points = new();
+        private readonly List<SpawnPoint> spawnPoints = new();
         private readonly HashSet<CharacterActor> agents = new HashSet<CharacterActor>();
 
         private HeatSystem heatSystem;
@@ -40,15 +41,8 @@ namespace RIEVES.GGJ2026
             desiredProportions[CharacterState.Dancing] = 7;
             desiredProportions[CharacterState.Watching] = 10;
 
-            foreach (var agent in agents)
-            {
-                CharacterState state = GetRandomState(agent);
-                agent.SetState(state);
-                agent.SetPatienceDuration(state);
-            }
-
-            if (agents.Count < initialBasePopulation)
-                SpawnNewAgent();
+            for (; agents.Count < initialBasePopulation;)
+                SpawnNewAgent(true);
         }
 
         public void OnUpdated(float deltaTime)
@@ -59,7 +53,7 @@ namespace RIEVES.GGJ2026
 
             int currentGoal = initialBasePopulation + Mathf.RoundToInt(Mathf.Lerp(0, 5, heatProgress));
             if (agents.Count < currentGoal)
-                SpawnNewAgent();
+                SpawnNewAgent(false);
         }
 
         private InterestType MapStateToInterest(CharacterState state)
@@ -74,25 +68,43 @@ namespace RIEVES.GGJ2026
             };
         }
 
-        private void SpawnNewAgent()
+        private void SpawnNewAgent(bool init)
         {
             CharacterState neededState = GetMostNeededState();
             InterestType interest = MapStateToInterest(neededState);
 
-            var spawnPoint = PickRandomWaypoint(interest);
-            if (spawnPoint == null)
-                return;
+            Vector3 position;
+            Quaternion rotation;
+            if (init)
+            {
+                var spawnPoint = PickRandomWaypoint(interest);
+                if (spawnPoint == null)
+                    return;
 
-            Quaternion rotation = spawnPoint.Facing
-                ? spawnPoint.transform.rotation
-                : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+                rotation = spawnPoint.Facing
+                    ? spawnPoint.transform.rotation
+                    : Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+                position = spawnPoint.transform.position;
+            }
+            else
+            {
+                if (spawnPoints.Count == 0)
+                    return;
 
-            CharacterActor instance = CreateCharacter(neededState, spawnPoint.transform.position, rotation);
+                var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
+                rotation = Quaternion.Euler(0, Random.Range(0f, 360f), 0);
+                position = spawnPoint.transform.position;
+            }
+
+            CharacterActor instance = CreateCharacter(neededState, position, rotation);
             if (instance != null)
             {
                 AddAgent(instance);
-                instance.SetState(neededState);
-                instance.SetPatienceDuration(neededState);
+                if (init)
+                {
+                    instance.SetState(neededState);
+                    instance.SetPatienceDuration(neededState);
+                }
             }
         }
 
@@ -222,6 +234,8 @@ namespace RIEVES.GGJ2026
                 points[poi.InterestType].Remove(poi);
         }
 
+        public void AddSpawnPoint(SpawnPoint sp) => spawnPoints.Add(sp);
+        public void RemoveSpawnPoint(SpawnPoint sp) => spawnPoints.Remove(sp);
         public void AddAgent(CharacterActor agent) => agents.Add(agent);
         public void RemoveAgent(CharacterActor agent) => agents.Remove(agent);
         public void OnFixedUpdated(float deltaTime) { }
