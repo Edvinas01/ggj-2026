@@ -95,10 +95,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         }
 
         float convCooldowntimer = -100f;
+        float defendedCooldowntimer = -100f;
+        float defendChance = 0.9f;
 
         void Update()
         {
-            if (conversingWith != null || Time.time < convCooldowntimer)
+            if (Time.time < convCooldowntimer)
                 return;
 
             foreach (var agent in agentSystem.agents)
@@ -108,6 +110,19 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 {
                     if (agent.WantsToTalk)
                     {
+                        if (conversingWith != null)
+                        {
+                            if (Time.time < defendedCooldowntimer)
+                                return;
+
+                            var rng = Random.value;
+                            if (rng < defendChance)
+                            {
+                                defendedCooldowntimer = Time.time + 0.5f;
+                                return;
+                            }
+                        }
+
                         agent.StartConversation(transform);
                         StartConversation(agent);
                         break;
