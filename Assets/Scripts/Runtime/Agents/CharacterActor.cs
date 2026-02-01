@@ -221,7 +221,19 @@ namespace RIEVES.GGJ2026
             if (stateChangeTimer <= Time.time)
             {
                 if (lockCharacterState && stateChangeTimer >= 0f)
+                {
+                    SetAnimationState(CurrentState switch
+                    {
+                        CharacterState.Idling => CharacterAnimationState.Idling,
+                        CharacterState.Talking => CharacterAnimationState.Idling,
+                        CharacterState.Guarding => CharacterAnimationState.Guarding,
+                        CharacterState.Dancing => CharacterAnimationState.Dancing,
+                        CharacterState.Watching => CharacterAnimationState.Watching,
+                        CharacterState.Hunting => CharacterAnimationState.Hunting,
+                        _ => CharacterAnimationState.Idling
+                    });
                     return;
+                }
 
                 var currentTargetState = CurrentState;
                 var nextState = agentSystem.GetRandomState(this);
@@ -251,7 +263,7 @@ namespace RIEVES.GGJ2026
                                     InterestType.Dancing;
 
                             var newTarget = agentSystem.PickRandomWaypoint(targetType);
-                            if (newTarget != null && !StartMovement(newTarget))
+                            if (newTarget == null || !StartMovement(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                         else if (CurrentActivity != CharacterActivity.Walking)
@@ -282,7 +294,7 @@ namespace RIEVES.GGJ2026
                         if (CurrentTarget == null || CurrentActivity != CharacterActivity.Hunting)
                         {
                             var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                            if (newTarget != null && !StartMovement(newTarget))
+                            if (newTarget == null || !StartMovement(newTarget))
                                 SetState(agentSystem.GetRandomState(this));
                         }
                     }
@@ -318,8 +330,15 @@ namespace RIEVES.GGJ2026
                                     break;
                                 case CharacterState.Hunting:
                                     var newTarget = agentSystem.PickRandomWaypoint(InterestType.Patrol);
-                                    if (newTarget != null && !StartMovement(newTarget))
+                                    if (newTarget == null || !StartMovement(newTarget))
                                         SetState(agentSystem.GetRandomState(this));
+                                    break;
+                                default:
+                                    // how did we even get here.
+                                    CurrentActivity = CharacterActivity.Idling;
+                                    SetAnimationState(CharacterAnimationState.Idling);
+                                    StopMovement();
+
                                     break;
                             }
                         }

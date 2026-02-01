@@ -111,11 +111,12 @@ namespace RIEVES.GGJ2026
 
         private void SpawnNewAgent(bool init)
         {
-            CharacterState neededState = GetMostNeededState();
+            CharacterState neededState = GetMostNeededState(allowIdle: init);
             InterestType interest = MapStateToInterest(neededState);
 
             Vector3 position;
             PointOfInterest poi = null;
+
             if (init)
             {
                 poi = PickRandomWaypoint(interest);
@@ -130,7 +131,7 @@ namespace RIEVES.GGJ2026
                     return;
 
                 var spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                position = spawnPoint.transform.position;
+                position = spawnPoint.transform.position + Random.insideUnitSphere * spawnPoint.Radius;
             }
 
             CharacterActor instance = CreateCharacter(neededState, position, Quaternion.identity);
@@ -162,7 +163,7 @@ namespace RIEVES.GGJ2026
             return instance;
         }
 
-        private CharacterState GetMostNeededState()
+        private CharacterState GetMostNeededState(bool allowIdle)
         {
             var states = (CharacterState[])Enum.GetValues(typeof(CharacterState));
             int[] counts = GetCurrentPopulationCounts(states.Length);
@@ -171,7 +172,16 @@ namespace RIEVES.GGJ2026
 
             for (int i = 0; i < states.Length; i++)
             {
-                int desired = desiredProportions.GetValueOrDefault(states[i], 0);
+                CharacterState state = states[i];
+
+                // If we are avoiding Idle and this is the Idle state, skip it
+                if (!allowIdle && state == CharacterState.Idling)
+                {
+                    weights[i] = 0;
+                    continue;
+                }
+
+                int desired = desiredProportions.GetValueOrDefault(state, 0);
                 int demand = Mathf.Max(0, desired - counts[i]);
                 float weight = demand * demand;
 

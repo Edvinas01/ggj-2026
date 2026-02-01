@@ -114,7 +114,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public void StopConversation(ConversationResult result)
         {
-            convCooldowntimer = Time.time + 2f;
+            convCooldowntimer = Time.time + 3f;
             viewController.HideView();
 
             if (conversingWith)
