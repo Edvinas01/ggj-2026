@@ -484,7 +484,7 @@ namespace RIEVES.GGJ2026
         {
             isInteractingWithPlayer = false;
             if (wasMovingBeforeConversation)
-                navMeshAgent.enabled = true;
+                StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.GoodResponse);
             onConversationStopped.Invoke();
@@ -494,7 +494,7 @@ namespace RIEVES.GGJ2026
         {
             isInteractingWithPlayer = false;
             if (wasMovingBeforeConversation)
-                navMeshAgent.enabled = true;
+                StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.BadResponse);
             onConversationStopped.Invoke();
@@ -504,7 +504,7 @@ namespace RIEVES.GGJ2026
         {
             isInteractingWithPlayer = false;
             if (wasMovingBeforeConversation)
-                navMeshAgent.enabled = true;
+                StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.NeutralResponse);
             onConversationStopped.Invoke();
