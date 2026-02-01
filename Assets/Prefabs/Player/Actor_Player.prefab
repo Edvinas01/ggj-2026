@@ -941,6 +941,7 @@ MonoBehaviour:
   interactor: {fileID: 5391179737800463149}
   conversationController: {fileID: 3720372723344079548}
   resourceController: {fileID: 8557895804664849490}
+  loseTickDelay: 0.3
   movementController: {fileID: 5901985342004967491}
   cinemachineCamera: {fileID: 761219450461382918}
   cinemachineImpulse: {fileID: 2483201389401959049}
@@ -1028,7 +1029,7 @@ MonoBehaviour:
   resourceController: {fileID: 8557895804664849490}
   maxMessagesPerConvo: 2
   maxCorrectMessages: 1
-  maxIncorrectMessages: 3
+  maxIncorrectMessages: 1
   onCorrectChoiceSelected:
     m_PersistentCalls:
       m_Calls:
