@@ -109,7 +109,7 @@ namespace RIEVES.GGJ2026
                 position = spawnPoint.transform.position;
             }
 
-            CharacterActor instance = CreateCharacter(neededState, position, rotation);
+            CharacterActor instance = CreateCharacter(neededState, position, Quaternion.identity);
             if (instance != null)
             {
                 AddAgent(instance);
