@@ -1,4 +1,5 @@
 ﻿using CHARK.GameManagement.Systems;
+using FMODUnity;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime.Heat
@@ -17,11 +18,16 @@ namespace RIEVES.GGJ2026.Runtime.Heat
         [SerializeField]
         private float currentHeat = 1f;
 
+        [ParamRef]
+        [SerializeField]
+        private string fmodParameterId;
+
         public float CurrentHeat => currentHeat;
 
         public void OnUpdated(float deltaTime)
         {
             currentHeat += heatPerSecond * heatMultiplier * deltaTime;
+            RuntimeManager.StudioSystem.setParameterByName(fmodParameterId, currentHeat);
         }
     }
 }
