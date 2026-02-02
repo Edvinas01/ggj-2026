@@ -27,6 +27,7 @@ namespace RIEVES.GGJ2026
 
         private HeatSystem heatSystem;
         private int initialBasePopulation = 25;
+        private bool isSceneActive = false;
 
         private void Awake()
         {
@@ -36,24 +37,33 @@ namespace RIEVES.GGJ2026
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+            SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+        }
+
+        private void OnSceneUnloaded(Scene scene)
+        {
+            isSceneActive = false;
+
+            points.Clear();
+            spawnPoints.Clear();
+            agents.Clear();
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            isSceneActive = true;
+
             var foundPoints = FindObjectsByType<PointOfInterest>(FindObjectsSortMode.None);
             var foundSpawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
 
             if (foundPoints.Length == 0 && foundSpawns.Length == 0)
                 return;
-
-            points.Clear();
-            spawnPoints.Clear();
-            agents.Clear();
 
             foreach (var poi in foundPoints)
             {
@@ -88,6 +98,9 @@ namespace RIEVES.GGJ2026
 
         public void OnUpdated(float deltaTime)
         {
+            if (!isSceneActive)
+                return;
+
             float heatDelta = Mathf.Max(0f, heatSystem.CurrentHeat - 1f);
 
             desiredProportions[CharacterState.Guarding] = 0 + Mathf.RoundToInt(2.5f * heatDelta);
