@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Data_Interactor_Player
   m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Interaction.Interactors.SimpleRaycastInteractorSettings
   data:
-    raycastDistance: 2
+    raycastDistance: 3
     raycastRadius: 0.1
     raycastLayer:
       serializedVersion: 2
