@@ -141,6 +141,8 @@
 			<destination>{2919e109-9d57-449b-8a11-056554eb2653}</destination>
 			<destination>{99095a7d-2134-46a4-b1e4-1462005e98fe}</destination>
 			<destination>{480ca04d-4f20-44b2-b4d6-4035c1259eb0}</destination>
+			<destination>{5984181f-b75c-4210-810b-04966b565816}</destination>
+			<destination>{bf4e155e-de99-4fa0-8732-7b27b454ab74}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{660cc395-e100-48c0-959f-e9aff6c71748}">
@@ -229,6 +231,16 @@
 	<object class="SingleSound" id="{480ca04d-4f20-44b2-b4d6-4035c1259eb0}">
 		<relationship name="audioFile">
 			<destination>{2ba977ec-80ed-43bd-92a8-d47d5f1b84ae}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{5984181f-b75c-4210-810b-04966b565816}">
+		<relationship name="audioFile">
+			<destination>{6ef82bdf-a0d5-4dbf-8f29-960380c1d307}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{bf4e155e-de99-4fa0-8732-7b27b454ab74}">
+		<relationship name="audioFile">
+			<destination>{5613d78b-9822-44b8-aea3-099b0b74ed5f}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{b607670b-b2c6-4c77-a6cf-66a9f4360f51}">
