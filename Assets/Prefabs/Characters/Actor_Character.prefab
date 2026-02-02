@@ -1006,6 +1006,7 @@ GameObject:
   - component: {fileID: 8415470224758548957}
   - component: {fileID: 4510912771218753189}
   - component: {fileID: 7891312255184121637}
+  - component: {fileID: 863692380265877240}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -1117,6 +1118,21 @@ MonoBehaviour:
   targetRenderer: {fileID: 8415470224758548957}
   textureType: 1
   texturePropertyId: _BaseMap
+--- !u!114 &863692380265877240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818642445958629738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68dd09e0c1d7834f8db9efd2747f286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.Billboard
+  isFlipDirection: 0
+  angleReference: {fileID: 0}
+  angleSteps: []
 --- !u!1 &3037815610376703408
 GameObject:
   m_ObjectHideFlags: 0
