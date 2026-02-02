@@ -34,7 +34,10 @@ namespace RIEVES.GGJ2026.Runtime.Items
             Gizmos.color = Color.blue;
             foreach (var waypoint in waypoints)
             {
-                Gizmos.DrawSphere(waypoint.position, 0.1f);
+                if (waypoint)
+                {
+                    Gizmos.DrawSphere(waypoint.position, 0.1f);
+                }
             }
         }
 
