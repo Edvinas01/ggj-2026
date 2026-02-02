@@ -96,7 +96,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         float conversationTimer = 0f;
         float convCooldowntimer = -100f;
         float defendedCooldowntimer = -100f;
-        float defendChance = 0.9f;
+        float defendChance = 0.8f;
 
         void Update()
         {
@@ -233,8 +233,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 }
             }
 
-            conversationTimer = Time.time + character.CharacterData.ConversationDuration;
-
             if (conversationData.ConversedCount <= 0)
             {
                 var correctIncorrect = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
@@ -246,9 +244,13 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
                     viewController.ShowView();
                     OnConversationStarted?.Invoke();
+
+                    conversationTimer = Time.time + character.CharacterData.ConversationDuration;
                     return;
                 }
             }
+
+            conversationTimer = Time.time + character.CharacterData.BlurbDuration;
 
             var randomBlurbs = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.RandomBlurb);
             if (randomBlurbs.TryGetRandom(out var blurb))

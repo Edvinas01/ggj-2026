@@ -47,6 +47,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private float conversationDuration = 15f;
 
         [SerializeField]
+        private float blurbDuration = 9f;
+
+        [SerializeField]
         private float agitatedConversationDuration = 4f;
 
         [Header("Audio")]
@@ -88,6 +91,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public CharacterConversationData ConversationData => conversation;
         public float ConversationDuration => conversationDuration;
+        public float BlurbDuration => blurbDuration;
         public float AgitatedConversationDuration => agitatedConversationDuration;
         public List<ActivityPatiencePair> ActivityPatience => activityPatience;
         public float CalmMoveSpeed => calmMoveSpeed;
