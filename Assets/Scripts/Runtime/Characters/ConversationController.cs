@@ -88,18 +88,24 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             conversingWith = character;
             currentMessageCount = 0;
-
             currentMessageMax = Random.Range(1, (int)(maxMessagesPerConvo * heatSystem.CurrentHeat));
 
             Converse(character);
         }
 
+        float conversationTimer = 0f;
         float convCooldowntimer = -100f;
         float defendedCooldowntimer = -100f;
         float defendChance = 0.9f;
 
         void Update()
         {
+            if (conversingWith && Time.time > conversationTimer)
+            {
+                StopConversation(ConversationResult.Incorrect);
+                return;
+            }
+
             if (Time.time < convCooldowntimer)
                 return;
 
@@ -199,6 +205,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private void Converse(CharacterActor character)
         {
+            convCooldowntimer = Time.time + 1.5f;
+
             var conversationData = character.CharacterData.ConversationData;
             if (character.CurrentState == CharacterState.Hunting)
             {
@@ -211,9 +219,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     viewController.ShowView();
                     OnConversationStarted?.Invoke();
 
+                    conversationTimer = Time.time + character.CharacterData.AgitatedConversationDuration;
                     return;
                 }
             }
+
+            conversationTimer = Time.time + character.CharacterData.ConversationDuration;
 
             if (conversationData.ConversedCount <= 0)
             {
