@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: Data_Character_Olga
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: Olga
+  addsAlcohol: 10
+  removesAlcohol: 5
+  frontTexture: {fileID: 2800000, guid: eb636c49a75eb62428d02556fa0cf07c, type: 3}
+  backTexture: {fileID: 2800000, guid: 055890b3b989b4440860275aa60e553d, type: 3}
+  giveHandTextures: []
+  punchHandTextures: []
+  conversation:
+    messages:
+    - messageType: 0
+      content: "Vergra ver\u017Eiai verat verro verdai"
+      huntMessage: Ververk versi!
+      correctChoices:
+      - "Vera ver\u010Di\u016B"
+      - "Verd\u0117 verkui"
+      incorrectChoices:
+      - Vergai?
+      - Verbos?
+      - "Ver k\u0105?"
+    - messageType: 0
+      content: "Gal matei mano gelton\u0105 \u0161varkel\u012F ka\u017Ekur?"
+      huntMessage: "I\u0161leistuvi\u0173 fanaras!"
+      correctChoices:
+      - "Lyg Scholastika geltonai apsirengus, gal tavo u\u017Esid\u0117jo"
+      - "Kaip \u017Evai\u017Eg\u0117 ir taip jau \u0161vieti"
+      incorrectChoices:
+      - Ne per daug geltonos tau?
+      - "Gelta tai liga tokia \u017Einok yra"
+      - "Prag\u0117rei jau?"
+    - messageType: 0
+      content: "Matei? Ka\u017Ekokia kvai\u0161a kopijuoja mano stili\u0173"
+      huntMessage: "Prisikalb\u0117jai!"
+      correctChoices:
+      - Scholastika!
+      - Tau geltona labiau tinka nei jai
+      incorrectChoices:
+      - Geltona seniai nebemadinga
+      - Mano apatiniai irgi geltoni
+      - "Mergin\u0173 reikalai"
+    - messageType: 1
+      content: "Prastas pa\u0161nekovas"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
+  voiceFmodEvent:
+    Guid:
+      Data1: -411235515
+      Data2: 1322770349
+      Data3: 1341994396
+      Data4: 385734510
+    Path: event:/VO/VO_Mergina
+  footstepFmodEvent:
+    Guid:
+      Data1: -1783365213
+      Data2: 1130370088
+      Data3: -200384072
+      Data4: -507841371
+    Path: event:/SFX/S_Footsteps_HighHeels
+  marozFmodEvent:
+    Guid:
+      Data1: -462005699
+      Data2: 1080775073
+      Data3: -1538803268
+      Data4: -1800361691
+    Path: event:/SFX/S_Footsteps_Maroz
+  marozVoiceFmodEvent:
+    Guid:
+      Data1: -830536824
+      Data2: 1244529280
+      Data3: 907840906
+      Data4: 1622055665
+    Path: event:/VO/VO_Marozas
+  activityPatience:
+  - activity: 2
+    minTime: 30
+    maxTime: 50
+  - activity: 0
+    minTime: 5
+    maxTime: 20
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1

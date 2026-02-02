@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
+  m_Name: "Data_Character_Aukl\u0117toja"
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
+  characterName: "Aukl\u0117toja"
+  addsAlcohol: 0
+  removesAlcohol: 20
+  frontTexture: {fileID: 2800000, guid: bc9b71552409ff24795f73885fd4af69, type: 3}
+  backTexture: {fileID: 2800000, guid: 9dc5eb0d9d4fb8f42b3bbedd288ed8e3, type: 3}
+  giveHandTextures: []
+  punchHandTextures: []
+  conversation:
+    messages:
+    - messageType: 0
+      content: "Kas tave kviet\u0117 \u012F i\u0161leistuves?"
+      huntMessage: "Blizg\u0117!"
+      correctChoices:
+      - Laisvo oro direktorius
+      - "Pa\u017Eadu neprisigert"
+      incorrectChoices:
+      - "O k\u0105 tu man? T\u0117vus i\u0161kviesi?"
+      - "O tu \u0161okiam ne per sena?"
+      - "\u0160iandien i\u0161leistuv\u0117s, tu man nenurodin\u0117si"
+    - messageType: 0
+      content: "Klausk, gal matei Jolant\u0105?"
+      huntMessage: "Gr\u012F\u017Ek pas kiaules!"
+      correctChoices:
+      - "A\u0161 jos kaip tik irgi ie\u0161kau"
+      - "Jei rasiu pasakysiu, kad ie\u0161kojai"
+      incorrectChoices:
+      - "Aha, gatava jau, i\u0161kvie\u010Diau policij\u0105 jai"
+      - "Aukl\u0117tojos dukra, bet jau gatava?"
+      - "Ma\u010Diau, tavo dukra tikra paleistuv\u0117"
+    - messageType: 0
+      content: "\u0160iandien tau paskutin\u0117 proga susirasti draug\u0173"
+      huntMessage: "Aukl\u0117tojos pliauska!"
+      correctChoices:
+      - Pasistengsiu
+      - "Be draug\u0173 negerai"
+      incorrectChoices:
+      - Tau irgi
+      - "Gal einam nuo\u0161aliau? Artimiau susipa\u017Einsim"
+      - "Tau \u0161ita proga jau seniai pra\u0117jo"
+    - messageType: 1
+      content: "Jolantai visai blogai, b\u0117gu palaikyti jai plaukus"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
+  voiceFmodEvent:
+    Guid:
+      Data1: -411235515
+      Data2: 1322770349
+      Data3: 1341994396
+      Data4: 385734510
+    Path: event:/VO/VO_Mergina
+  footstepFmodEvent:
+    Guid:
+      Data1: -1783365213
+      Data2: 1130370088
+      Data3: -200384072
+      Data4: -507841371
+    Path: event:/SFX/S_Footsteps_HighHeels
+  marozFmodEvent:
+    Guid:
+      Data1: -462005699
+      Data2: 1080775073
+      Data3: -1538803268
+      Data4: -1800361691
+    Path: event:/SFX/S_Footsteps_Maroz
+  marozVoiceFmodEvent:
+    Guid:
+      Data1: -830536824
+      Data2: 1244529280
+      Data3: 907840906
+      Data4: 1622055665
+    Path: event:/VO/VO_Marozas
+  activityPatience:
+  - activity: 1
+    minTime: 10
+    maxTime: 60
+  - activity: 3
+    minTime: 10
+    maxTime: 60
+  - activity: 0
+    minTime: 5
+    maxTime: 10
+  calmMoveSpeed: 0.3
+  agitatedMoveSpeed: 1
