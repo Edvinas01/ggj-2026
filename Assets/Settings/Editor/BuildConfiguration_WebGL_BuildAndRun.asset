@@ -19,7 +19,7 @@ MonoBehaviour:
   buildTargets: 06000000
   buildDirectory: Builds
   archiveDirectory: Builds
-  buildNameOverride: 
+  buildNameOverride: Kaimiecio Isleistuves
   buildVersionOverride: 
   buildNameDelimiter: ' '
   buildDateTimeFormat: yyyyMMHHmm
@@ -27,6 +27,9 @@ MonoBehaviour:
   isAppendPlatformToBuildName: 0
   isAppendDateToBuildName: 0
   isArchive: 0
+  archiveDelimiter: ' '
   isAppendVersionToArchiveName: 1
   isAppendPlatformToArchiveName: 1
   isAppendDateToArchiveName: 1
+  isLowerCaseArchiveName: 0
+  isDashArchiveName: 0
