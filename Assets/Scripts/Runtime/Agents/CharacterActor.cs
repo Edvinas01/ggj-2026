@@ -140,6 +140,7 @@ namespace RIEVES.GGJ2026
         float stateChangeTimer = -100f;
         float animationDelayTimer = -100f;
         bool isInteractingWithPlayer = false;
+        float rotateDelay = 0;
 
         public Queue<Func<bool>> CallBacks = new Queue<Func<bool>>();
 
@@ -378,11 +379,6 @@ namespace RIEVES.GGJ2026
                     break;
                 default:
                     {
-                        if (CurrentTarget != null && CurrentTarget.Facing)
-                        {
-                            SetRotation(CurrentTarget.transform.rotation);
-                        }
-
                         SetAnimationState(CurrentState switch
                         {
                             CharacterState.Watching => CharacterAnimationState.Watching,
@@ -390,6 +386,15 @@ namespace RIEVES.GGJ2026
                             CharacterState.Dancing => CharacterAnimationState.Dancing,
                             _ => CharacterAnimationState.Idling
                         });
+
+                        if (CurrentTarget != null && CurrentTarget.Facing && rotateDelay <= Time.time
+                            && CurrentAnimationState != CharacterAnimationState.Talking
+                            && CurrentAnimationState != CharacterAnimationState.GoodResponse
+                            && CurrentAnimationState != CharacterAnimationState.BadResponse
+                            && CurrentAnimationState != CharacterAnimationState.NeutralResponse)
+                        {
+                            SetRotation(CurrentTarget.transform.rotation);
+                        }
 
                         break;
                     }
@@ -550,6 +555,7 @@ namespace RIEVES.GGJ2026
         public void ConversationStoppedCorrect()
         {
             isInteractingWithPlayer = false;
+            rotateDelay = Time.time + 2f;
             if (wasMovingBeforeConversation)
                 StartMovement(CurrentTarget);
 
@@ -559,6 +565,7 @@ namespace RIEVES.GGJ2026
         public void ConversationStoppedIncorrect()
         {
             isInteractingWithPlayer = false;
+            rotateDelay = Time.time + 2f;
             if (wasMovingBeforeConversation)
                 StartMovement(CurrentTarget);
 
@@ -568,6 +575,7 @@ namespace RIEVES.GGJ2026
         public void ConversationStoppedNeutral()
         {
             isInteractingWithPlayer = false;
+            rotateDelay = Time.time + 2f;
             if (wasMovingBeforeConversation)
                 StartMovement(CurrentTarget);
 
