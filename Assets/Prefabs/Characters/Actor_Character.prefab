@@ -6378,7 +6378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.Billboard
   isFlipDirection: 0
-  angleReference: {fileID: 1969010529400570132}
+  angleReference: {fileID: 5245456870027734552}
   angleSteps:
   - minAngle: -90
     maxAngle: 90
