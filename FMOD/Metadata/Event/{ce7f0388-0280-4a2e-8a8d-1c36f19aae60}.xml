@@ -103,7 +103,7 @@
 			<value>6.5</value>
 		</property>
 		<property name="volume">
-			<value>6</value>
+			<value>4</value>
 		</property>
 		<property name="pitch">
 			<value>-1.20000005</value>
@@ -116,9 +116,6 @@
 		</property>
 		<property name="maximumTimeBetweenSounds">
 			<value>500</value>
-		</property>
-		<property name="spawnRate">
-			<value>48</value>
 		</property>
 		<property name="minimumScatterDistance">
 			<value>0</value>

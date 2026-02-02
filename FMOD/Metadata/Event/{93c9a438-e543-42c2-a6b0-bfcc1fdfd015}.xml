@@ -99,6 +99,9 @@
 		<property name="start">
 			<value>0.20000000000000001</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{3f334eef-cdea-48e1-a09e-a33f2d9bb51b}</destination>
+		</relationship>
 		<relationship name="sounds">
 			<destination>{efe8d0e5-c5c4-4a5b-b045-4c89d4d5c1ed}</destination>
 			<destination>{f7431393-8f5a-4a98-bb23-f695f16effa1}</destination>
@@ -145,6 +148,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{301ce7b7-7432-4a11-81a1-233fa635b447}" />
 	<object class="MixerBusFader" id="{94857ee0-5ac3-4afd-a2c7-e591b5bf6e69}" />
+	<object class="RandomizerModulator" id="{3f334eef-cdea-48e1-a09e-a33f2d9bb51b}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="amount">
+			<value>9</value>
+		</property>
+	</object>
 	<object class="EventSound" id="{efe8d0e5-c5c4-4a5b-b045-4c89d4d5c1ed}">
 		<relationship name="event">
 			<destination>{6c4af745-571a-445e-83ca-2b2abb99e05d}</destination>
@@ -174,7 +185,6 @@
 	<object class="MixerBusEffectChain" id="{ecfee9a3-1ee3-46f1-a358-333465da26ce}">
 		<relationship name="effects">
 			<destination>{713e5f1d-ac70-4f67-ab29-1e4cb5e512c1}</destination>
-			<destination>{8bd331f8-3d7e-4e37-96db-364f105869f3}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e524fa57-f20d-482b-8a3e-4b66f787f2ed}" />
@@ -208,20 +218,4 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{713e5f1d-ac70-4f67-ab29-1e4cb5e512c1}" />
-	<object class="GainEffect" id="{8bd331f8-3d7e-4e37-96db-364f105869f3}">
-		<property name="gain">
-			<value>-0.5</value>
-		</property>
-		<relationship name="modulators">
-			<destination>{39b7db1c-3313-498a-bb55-61c1555986c3}</destination>
-		</relationship>
-	</object>
-	<object class="RandomizerModulator" id="{39b7db1c-3313-498a-bb55-61c1555986c3}">
-		<property name="nameOfPropertyBeingModulated">
-			<value>gain</value>
-		</property>
-		<property name="amount">
-			<value>12.5</value>
-		</property>
-	</object>
 </objects>

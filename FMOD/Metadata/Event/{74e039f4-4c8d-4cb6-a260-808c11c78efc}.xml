@@ -102,6 +102,9 @@
 		<property name="length">
 			<value>6.5</value>
 		</property>
+		<property name="volume">
+			<value>4</value>
+		</property>
 		<property name="polyphony">
 			<value>3</value>
 		</property>
