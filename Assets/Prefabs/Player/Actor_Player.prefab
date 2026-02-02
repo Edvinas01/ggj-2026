@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 6310845559937529140}
   - component: {fileID: 5601937858192424090}
   - component: {fileID: 2911027050803610651}
+  - component: {fileID: 7991125583669691707}
   - component: {fileID: 2483201389401959049}
   m_Layer: 6
   m_Name: Camera_FreeLook
@@ -126,7 +127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1611308942476225935}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.066978924, y: 0.010981903, z: -0.0007372563, w: 0.9976937}
+  m_LocalRotation: {x: 0.049637627, y: 0.19671266, z: -0.009972239, w: 0.97915316}
   m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -191,7 +192,7 @@ MonoBehaviour:
   ReferenceFrame: 0
   RecenterTarget: 0
   PanAxis:
-    Value: 1.2612915
+    Value: 22.7191
     Center: 0
     Range: {x: -180, y: 180}
     Wrap: 1
@@ -201,7 +202,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   TiltAxis:
-    Value: 7.681434
+    Value: 5.804187
     Center: 0
     Range: {x: -87, y: 87}
     Wrap: 0
@@ -292,6 +293,23 @@ MonoBehaviour:
     FrequencyGain: 1
     Duration: 1
     m_NoiseOffsets: {x: -416.58273, y: 994.60535, z: -760.53687}
+--- !u!114 &7991125583669691707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611308942476225935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBasicMultiChannelPerlin
+  NoiseProfile: {fileID: 11400000, guid: b46e53ea5911e894281e0bf1685be23c, type: 2}
+  PivotOffset: {x: 0, y: 0, z: 0}
+  AmplitudeGain: 1
+  FrequencyGain: 1
+  m_NoiseOffsets: {x: -428.7461, y: 112.19656, z: 67.292816}
 --- !u!114 &2483201389401959049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,10 +907,11 @@ GameObject:
   - component: {fileID: 9070244558202797252}
   - component: {fileID: 1441487065709483086}
   - component: {fileID: 6100799802290263639}
+  - component: {fileID: 3720372723344079548}
   - component: {fileID: 8557895804664849490}
   - component: {fileID: 5901985342004967491}
-  - component: {fileID: 3720372723344079548}
   - component: {fileID: 2224434183499480555}
+  - component: {fileID: 4396648985857791308}
   - component: {fileID: 5391179737800463149}
   m_Layer: 6
   m_Name: Actor_Player
@@ -988,6 +1007,83 @@ MonoBehaviour:
   characterHoverPopupController: {fileID: 4097770793118596070}
   itemHoverPopupController: {fileID: 2130607430814783093}
   controlsViewController: {fileID: 2639234642345558973}
+--- !u!114 &3720372723344079548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768234594321391368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48258c1543cd4018a6978a2b7c5a7657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
+  viewController: {fileID: 7475167151573011031}
+  resourceController: {fileID: 8557895804664849490}
+  maxMessagesPerConvo: 2
+  maxCorrectMessages: 1
+  maxIncorrectMessages: 1
+  onCorrectChoiceSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1311493825079410651}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onIncorrectChoiceSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7369237415675536036}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onRandomBlurbChoiceSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4175181475729152754}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHuntChoiceSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7369237415675536036}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8557895804664849490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1099,83 +1195,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3720372723344079548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8768234594321391368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48258c1543cd4018a6978a2b7c5a7657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
-  viewController: {fileID: 7475167151573011031}
-  resourceController: {fileID: 8557895804664849490}
-  maxMessagesPerConvo: 2
-  maxCorrectMessages: 1
-  maxIncorrectMessages: 1
-  onCorrectChoiceSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1311493825079410651}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onIncorrectChoiceSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7369237415675536036}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onRandomBlurbChoiceSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4175181475729152754}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onHuntChoiceSelected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7369237415675536036}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2224434183499480555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,6 +1208,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Movement.ActionInputProvider
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+--- !u!114 &4396648985857791308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768234594321391368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d739437dfd424049a3d811badd1c7040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Movement.MovementCameraAnimator
+  movementController: {fileID: 5901985342004967491}
+  cinemachineNoise: {fileID: 7991125583669691707}
+  maxSpeed: 5
+  smoothing: 5
 --- !u!114 &5391179737800463149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,19 +1357,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9949036
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.09929042
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.017471593
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0017436482
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

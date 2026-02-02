@@ -76,6 +76,8 @@ namespace RIEVES.GGJ2026.Runtime.Movement
             }
         }
 
+        public float Speed => rigidBody.linearVelocity.magnitude;
+
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody>();
