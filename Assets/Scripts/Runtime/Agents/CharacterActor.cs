@@ -33,7 +33,7 @@ namespace RIEVES.GGJ2026
         public CharacterActivity CurrentActivity { get; private set; } = CharacterActivity.Idling;
         public PointOfInterest CurrentTarget;
 
-        public bool WantsToTalk => CurrentState == CharacterState.Guarding || CurrentState == CharacterState.Hunting;
+        public bool WantsToTalk => CurrentState == CharacterState.Hunting || (CurrentState == CharacterState.Guarding && CurrentActivity != CharacterActivity.Walking);
 
         [Header("Rendering")]
         [SerializeField]
