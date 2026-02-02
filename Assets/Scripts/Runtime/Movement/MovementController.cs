@@ -18,6 +18,19 @@ namespace RIEVES.GGJ2026.Runtime.Movement
         [SerializeField]
         private AnimationCurve forceBySpeed;
 
+        [SerializeField]
+        private AnimationCurve forceMulByAngle;
+
+        [Header("Ground")]
+        [SerializeField]
+        private float groundCheckDistance = 5f;
+
+        [SerializeField]
+        private float groundCheckCooldown = 0.3f;
+
+        [SerializeField]
+        private LayerMask groundMask;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onMoveEntered;
@@ -25,7 +38,11 @@ namespace RIEVES.GGJ2026.Runtime.Movement
         [SerializeField]
         private UnityEvent onMoveExited;
 
+        private RaycastHit groundHit;
         private Rigidbody rigidBody;
+
+        private float groundedCooldown;
+        private bool isGrounded;
         private bool isMoving;
 
         public event Action OnMoveEntered;
@@ -66,6 +83,28 @@ namespace RIEVES.GGJ2026.Runtime.Movement
 
         private void FixedUpdate()
         {
+            if (groundedCooldown <= 0f)
+            {
+                UpdateGroundChecks();
+                groundedCooldown = groundCheckCooldown;
+            }
+            groundedCooldown -= Time.deltaTime;
+            UpdateMovement();
+        }
+
+        private void UpdateGroundChecks()
+        {
+            isGrounded = Physics.Raycast(
+                origin: transform.position + Vector3.up * 0.1f,
+                direction: Vector3.down,
+                layerMask: groundMask,
+                hitInfo: out groundHit,
+                maxDistance: groundCheckDistance
+            );
+        }
+
+        private void UpdateMovement()
+        {
             var axis = inputProvider.MoveAxis;
 
             var forward = forwardSource.forward;
@@ -82,6 +121,16 @@ namespace RIEVES.GGJ2026.Runtime.Movement
 
             var moveForce = forceBySpeed.Evaluate(planarSpeed);
             var force = moveDirection * moveForce;
+
+            if (isGrounded)
+            {
+                var angle = Vector3.Angle(groundHit.normal, Vector3.up);
+                if (angle > 0f)
+                {
+                    var mul = forceMulByAngle.Evaluate(angle);
+                    force *= mul;
+                }
+            }
 
             rigidBody.AddForce(force, ForceMode.Acceleration);
 

@@ -542,7 +542,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6087298014309840320
 MonoBehaviour:
@@ -614,7 +614,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -637,8 +637,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.45
-  m_Height: 1.9
+  m_Radius: 0.35
+  m_Height: 1.95
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6122874507203024641
@@ -1007,6 +1007,35 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  forceMulByAngle:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 10
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  groundCheckDistance: 5
+  groundCheckCooldown: 0.3
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
   onMoveEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -1224,7 +1253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1232,7 +1261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.08
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.w
