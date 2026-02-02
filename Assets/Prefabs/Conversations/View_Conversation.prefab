@@ -249,7 +249,7 @@ MonoBehaviour:
     canvasGroup: {fileID: 578881009487931536}
     gameObjectToSelect: {fileID: 0}
     isAutoSelectGameObject: 1
-    isAutoDeselectGameObject: 0
+    isAutoDeselectGameObject: 1
     isSelectLastGameObject: 0
     showAnimation: {fileID: 3665992425814042617}
     hideAnimation: {fileID: 6435119125207564385}
