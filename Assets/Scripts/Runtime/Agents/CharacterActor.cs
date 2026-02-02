@@ -466,7 +466,9 @@ namespace RIEVES.GGJ2026
             var characterPosition = rigidBody.position;
             var characterMoveDir = navMeshAgent.steeringTarget - characterPosition;
             movementPositionInput.TargetPosition = characterPosition + characterMoveDir;
-            RotateTowards(navMeshAgent.steeringTarget);
+
+            if (rotateDelay <= Time.time)
+                RotateTowards(navMeshAgent.steeringTarget);
         }
 
         void StopMovement()
