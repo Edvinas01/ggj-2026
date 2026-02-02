@@ -49,7 +49,7 @@
 			<value>frequencyA</value>
 		</property>
 		<property name="value">
-			<value>216.682251</value>
+			<value>460</value>
 		</property>
 		<relationship name="automatableObject">
 			<destination>{33b92b1a-83fa-455d-8150-e860d2ae8de0}</destination>
