@@ -79,6 +79,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{c1fe3e4c-bd57-45c7-b84f-a2172b7460e2}">
+		<relationship name="modulators">
+			<destination>{fdf2ec01-257d-4df1-a940-417afc7e228c}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{6f547479-1b92-45c5-9cb9-301cd4fd19a3}</destination>
 		</relationship>
@@ -103,7 +106,7 @@
 			<value>6</value>
 		</property>
 		<property name="pitch">
-			<value>-3.4000001</value>
+			<value>-1.20000005</value>
 		</property>
 		<property name="polyphony">
 			<value>3</value>
@@ -155,6 +158,26 @@
 			<destination>{20d43f99-2b47-491d-a41f-559f6d53f679}</destination>
 		</relationship>
 	</object>
+	<object class="ADSRModulator" id="{fdf2ec01-257d-4df1-a940-417afc7e228c}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>0</value>
+		</property>
+		<property name="releaseTime">
+			<value>540</value>
+		</property>
+		<property name="releaseShape">
+			<value>1</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{6f547479-1b92-45c5-9cb9-301cd4fd19a3}">
 		<relationship name="effects">
 			<destination>{5e149ff9-c2d5-4b69-abcf-a342b10115d0}</destination>
@@ -170,6 +193,7 @@
 	<object class="MixerBusEffectChain" id="{e6b7a350-272e-4559-8878-5205eb307254}">
 		<relationship name="effects">
 			<destination>{23e636bf-5818-4237-87eb-8fab041bfd4d}</destination>
+			<destination>{9a3d62be-09ff-488d-9b85-3b29f085e331}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f2e043dd-31d4-4896-95e0-4ce9563bf250}" />
@@ -186,6 +210,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{23e636bf-5818-4237-87eb-8fab041bfd4d}" />
+	<object class="MultibandEqEffect" id="{9a3d62be-09ff-488d-9b85-3b29f085e331}">
+		<property name="filterTypeA">
+			<value>9</value>
+		</property>
+		<property name="frequencyA">
+			<value>9215.05566</value>
+		</property>
+		<property name="gainA">
+			<value>8.79310417</value>
+		</property>
+	</object>
 	<object class="RandomizerModulator" id="{8058054b-8c04-422c-99a5-5544173268a1}">
 		<property name="nameOfPropertyBeingModulated">
 			<value>startOffset</value>

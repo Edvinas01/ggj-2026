@@ -5,7 +5,7 @@
 			<value>S_BottleSmash</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{927215cf-9752-427d-9ba7-ba03a4f915ef}</destination>
@@ -117,7 +117,6 @@
 	<object class="MixerBusEffectChain" id="{f5cd5fe9-4bdb-4661-a149-985d70d63700}">
 		<relationship name="effects">
 			<destination>{db544860-6588-42b7-8efe-88fb25b9cdd3}</destination>
-			<destination>{a13cbb7d-fe2d-482f-958f-b846ebf18782}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{c07d57c3-5401-443d-bc63-ba62f9d43df7}" />
@@ -149,6 +148,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{669ca053-10e5-4856-9854-44847ccc35d2}" />
 	<object class="MixerBusFader" id="{db544860-6588-42b7-8efe-88fb25b9cdd3}" />
-	<object class="SpatialiserEffect" id="{a13cbb7d-fe2d-482f-958f-b846ebf18782}" />
 	<object class="MixerBusFader" id="{d0066a77-2da2-4c7e-9d9f-cacbd49395da}" />
 </objects>

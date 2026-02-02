@@ -5,7 +5,7 @@
 			<value>S_BottleSlosh</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{927215cf-9752-427d-9ba7-ba03a4f915ef}</destination>
@@ -118,7 +118,6 @@
 	<object class="MixerBusEffectChain" id="{25a4458a-4918-4e4e-8e89-31d49488e5ce}">
 		<relationship name="effects">
 			<destination>{0ac84ddc-0c30-44ae-806e-c23b94b41f6a}</destination>
-			<destination>{e747cac2-e0e0-4d5c-a70e-b97dcdb4658a}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ec858465-f23f-4bea-b962-df498d2f1555}" />
@@ -140,6 +139,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{5e0d5264-3940-4f02-8d32-7a19fb1d76ce}" />
 	<object class="MixerBusFader" id="{0ac84ddc-0c30-44ae-806e-c23b94b41f6a}" />
-	<object class="SpatialiserEffect" id="{e747cac2-e0e0-4d5c-a70e-b97dcdb4658a}" />
 	<object class="MixerBusFader" id="{0c1b052e-11e4-449f-8089-947205458fdb}" />
 </objects>
