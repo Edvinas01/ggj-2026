@@ -25,12 +25,12 @@ MonoBehaviour:
   conversation:
     messages:
     - messageType: 0
-      content: "Labas! Mo\u010Diut\u0117 pra\u0161\u0117 neu\u017Esiv\u0117lint,
-        bet a\u0161 vis dar \u010Dia"
+      content: "Mo\u010Diut\u0117 pra\u0161\u0117 neu\u017Esiv\u0117lint, bet a\u0161
+        vis dar \u010Dia"
       huntMessage: Bam!
       correctChoices:
       - "Geras vakaras! Pa\u0161okim dar!"
-      - "Labas! Nieko tokio, puikiai leid\u017Eiam laik\u0105"
+      - "Nieko tokio, puikiai leid\u017Eiam laik\u0105"
       incorrectChoices:
       - "O ar gra\u017Ei mo\u010Diut\u0117?"
       - "Gal va\u017Eiuojam pas mane?"
@@ -46,7 +46,7 @@ MonoBehaviour:
       - Tau ne per linksma?
       - "Kas ne\u0161oka tam ir taip linksma"
     - messageType: 0
-      content: "Labas! Kurioj klas\u0117j tu mokeisi? Nematytas"
+      content: "Kurioj klas\u0117j tu mokeisi? Nematytas"
       huntMessage: "Bum \u012F snuk\u012F!"
       correctChoices:
       - "Tiesiog pa\u0161okim"
@@ -55,6 +55,11 @@ MonoBehaviour:
       - "U\u017Etrai\u0161kanojus gal bi\u0161k\u012F?"
       - Ne tavo reikalas
       - O gal su atmintim ne viskas tvarkoj?
+    - messageType: 1
+      content: "Vergra ver\u017Eiai verat verro verdai"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: -411235515

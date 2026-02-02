@@ -44,6 +44,11 @@ MonoBehaviour:
       - Seniena
       - Skalbt jau laikas
       - "Patinka de\u0161ros spalva?"
+    - messageType: 1
+      content: "Einu kotletus apversiu, Kastoras i\u0161bad\u0117j\u0119s"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: -411235515

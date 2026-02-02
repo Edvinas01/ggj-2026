@@ -50,11 +50,16 @@ MonoBehaviour:
       huntMessage: "M\u0117sgabalis!"
       correctChoices:
       - "Na, mokykla tegul eina velniop! U\u017E \u0161\u012F vakar\u0105!"
-      - "Kam man vyr\u0173 vardus atsiminti?"
+      - "\u0160iandien \u010Dia juk visi i\u0161 tos pa\u010Dios laidos, visi savi"
       incorrectChoices:
-      - "A\u0161 i\u0161 klas\u0117s A"
-      - "A\u0161 i\u0161 klas\u0117s B"
-      - "A\u0161 i\u0161 klas\u0117s C"
+      - "Ka\u017Ekas ten apie \u017Euv\u012F"
+      - Lyg Mantas?
+      - "Kam man vyr\u0173 vardus atsiminti?"
+    - messageType: 1
+      content: "Pakalb\u0117sim v\u0117liau, einu pas Jolant\u0105"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: 1960851956

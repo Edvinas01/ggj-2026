@@ -29,7 +29,7 @@ MonoBehaviour:
       huntMessage: Ne tik kaimas, bet ir durnas!
       correctChoices:
       - "Paie\u0161kok va ten"
-      - "Sveikas, \u017Einok nema\u010Diau"
+      - "\u017Dinok nema\u010Diau"
       incorrectChoices:
       - "Kas a\u0161 tau? Seklys?"
       - "\u010Cia kabini mane?"
@@ -57,6 +57,11 @@ MonoBehaviour:
       - "Mergaiti\u0161ka poza"
       - "\u010Cia pozuoji? Nieks nefotografuoja"
       - "Balerina ka\u017Ekokia"
+    - messageType: 1
+      content: "B\u016Bt\u0173 \u012Fdomu gal pakalb\u0117\u010Diau, bet n\u0117ra"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: 1960851956

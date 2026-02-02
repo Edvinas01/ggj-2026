@@ -25,7 +25,7 @@ MonoBehaviour:
   conversation:
     messages:
     - messageType: 0
-      content: Hello. Happy dance!
+      content: Happy dance!
       huntMessage: "B\u016Bm b\u016Bm b\u016Bm!"
       correctChoices:
       - We dance, we dance!
@@ -55,6 +55,11 @@ MonoBehaviour:
       - "\u0160kada, \u0161koda, tavo \u016Bsai, apie k\u0105 tu \u010Dia?"
       - "Manai a\u0161 stuka\u010Dius?"
       - "A\u0161 i\u0161kr\u0117\u010Diau, tik nei\u0161duok niekam"
+    - messageType: 1
+      content: "Tu \u010Dia su vyrais at\u0117jai pakalb\u0117t ar kas tau?"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: 1960851956

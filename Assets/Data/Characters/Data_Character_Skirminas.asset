@@ -54,6 +54,11 @@ MonoBehaviour:
       - "Gal kaime prie \u017Eagr\u0117s?"
       - Sargu dirbsi?
       - Laivyne dirbsi?
+    - messageType: 1
+      content: "U\u017Eteks, geriau einu merginas pakalbinti"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: 1960851956

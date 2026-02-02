@@ -35,7 +35,7 @@ MonoBehaviour:
       - Spalvos tokios kaip ir visur
       - "Man tai gra\u017Eiausia kai tamsu"
     - messageType: 0
-      content: "Labas. Steb\u0117jau tave. Ar tu vienas?"
+      content: "Steb\u0117jau tave. Ar tu vienas?"
       huntMessage: "Prisig\u0117rei tai b\u016Bk vietoj!"
       correctChoices:
       - "A\u0161 su visais!"
@@ -54,6 +54,11 @@ MonoBehaviour:
       - "Gal lietuvi\u0161ka?"
       - "Muzikin\u0117 tokia"
       - Sik sik sik!
+    - messageType: 1
+      content: "Tu \u010Dia su visai pakalb\u0117t bandai ar kas tau? Neturiu laiko"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: -411235515

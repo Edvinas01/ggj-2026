@@ -44,6 +44,21 @@ MonoBehaviour:
       - Senienas groji
       - "Toki\u0105 muzik\u0105 tik kaime leist"
       - "Sodint u\u017E toki\u0105 muzik\u0105"
+    - messageType: 1
+      content: Varom varom varom!
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
+    - messageType: 1
+      content: Nuostabu nuostabu!
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
+    - messageType: 1
+      content: "Va\u017Eiuojam!"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: 1960851956

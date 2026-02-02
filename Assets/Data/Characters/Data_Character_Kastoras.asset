@@ -55,6 +55,11 @@ MonoBehaviour:
       - "A\u0161 irgi ie\u0161kau Jonyt\u0117s"
       - "A\u0161 irgi ie\u0161kau Jokantos"
       - "A\u0161 irgi ie\u0161kau Juozyt\u0117s"
+    - messageType: 1
+      content: Seni, netrukdyk, einu pavalgyt
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: 1960851956

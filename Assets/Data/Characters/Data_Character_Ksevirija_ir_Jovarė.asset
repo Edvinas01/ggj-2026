@@ -54,6 +54,11 @@ MonoBehaviour:
       - Reiks tuoj eit miegot jau
       - "O gal \u017Einot kur Jolanta?"
       - "Mano dvi neken\u010Diamiausios spalvos - \u017Ealia ir raudona"
+    - messageType: 1
+      content: Nelimpa pokalbis
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: -411235515

@@ -33,7 +33,7 @@ MonoBehaviour:
       incorrectChoices:
       - Man tai normaliai
       - Aha
-      - "Mamo striuk\u0117?"
+      - "Mamos striuk\u0117?"
     - messageType: 0
       content: "Kas \u010Dia groja? Oj kaip kojos kilnojasi"
       huntMessage: Tikras kaimas!
@@ -54,6 +54,11 @@ MonoBehaviour:
       - "Jol k\u0105?"
       - "Kas ta draug\u0117, einam geriau pa\u0161oksim"
       - "Turiu kur \u017Ei\u016Br\u0117t ir be tavo Jolantos"
+    - messageType: 1
+      content: "\u0160iuo metu nenoriu kalb\u0117tis, labiau noriu \u0161okt"
+      huntMessage: 
+      correctChoices: []
+      incorrectChoices: []
   voiceFmodEvent:
     Guid:
       Data1: -411235515
