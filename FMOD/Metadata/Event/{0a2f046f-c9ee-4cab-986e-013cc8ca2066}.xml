@@ -5,7 +5,7 @@
 			<value>S_BottlePourFast</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{927215cf-9752-427d-9ba7-ba03a4f915ef}</destination>
@@ -118,7 +118,6 @@
 	<object class="MixerBusEffectChain" id="{78d5b8d2-bd7b-407e-a50d-6f1923a7686a}">
 		<relationship name="effects">
 			<destination>{f564ada2-7dd2-4928-a86d-03685b82308e}</destination>
-			<destination>{fc8aee97-6116-473e-80c5-82057c1a43ea}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cc64a46c-dc64-41c8-9308-e81a49c17f40}" />
@@ -140,6 +139,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{7ff9c045-c899-4c6f-a6f9-938c64126618}" />
 	<object class="MixerBusFader" id="{f564ada2-7dd2-4928-a86d-03685b82308e}" />
-	<object class="SpatialiserEffect" id="{fc8aee97-6116-473e-80c5-82057c1a43ea}" />
 	<object class="MixerBusFader" id="{58f2bf26-1c57-42e2-93da-ccdfcc25743f}" />
 </objects>
