@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Utilities;
@@ -194,22 +195,20 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             OnConversationStopped?.Invoke();
         }
 
-        public bool IsContainsMessages(CharacterActor character)
+        public bool IsContainsAnyMessages(CharacterActor character)
         {
             if (character.CurrentState == CharacterState.Hunting)
             {
-                return true;
+                return GetMessages(character, CharacterMessageType.Hunter).Any();
             }
 
             var conversationData = character.CharacterData.ConversationData;
-            var messages = conversationData.Messages.ToList();
-
-            if (conversationData.ConversedCount <= 0 && messages.Any(m => m.MessageType == CharacterMessageType.CorrectIncorrect))
+            if (conversationData.ConversedCount <= 0 && GetMessages(character, CharacterMessageType.CorrectIncorrect).Any())
             {
                 return true;
             }
 
-            return messages.Any(m => m.MessageType == CharacterMessageType.RandomBlurb);
+            return GetMessages(character, CharacterMessageType.RandomBlurb).Any();
         }
 
         private void Converse(CharacterActor character)
@@ -219,7 +218,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             var conversationData = character.CharacterData.ConversationData;
             if (character.CurrentState == CharacterState.Hunting)
             {
-                if (conversationData.Messages.TryGetRandom(out var message))
+                var huntMessages = GetMessages(character, CharacterMessageType.Hunter);
+                if (huntMessages.TryGetRandom(out var message))
                 {
                     OnHuntConversation(character, message);
 
@@ -235,7 +235,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             if (conversationData.ConversedCount <= 0)
             {
-                var correctIncorrect = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.CorrectIncorrect);
+                var correctIncorrect = GetMessages(character, CharacterMessageType.CorrectIncorrect);
                 if (correctIncorrect.TryGetRandom(out var message))
                 {
                     OnCorrectIncorrectConversation(character, message);
@@ -252,7 +252,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             conversationTimer = Time.time + character.CharacterData.BlurbDuration;
 
-            var randomBlurbs = conversationData.Messages.Where(m => m.MessageType == CharacterMessageType.RandomBlurb);
+            var randomBlurbs = GetMessages(character, CharacterMessageType.RandomBlurb);
             if (randomBlurbs.TryGetRandom(out var blurb))
             {
                 OnRandomBlurbChoiceConversation(character, blurb);
@@ -392,5 +392,20 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             StopConversation(ConversationResult.Neutral);
         }
+
+        private static IEnumerable<CharacterMessageData> GetMessages(CharacterActor character, CharacterMessageType type)
+        {
+            var conversationData = character.CharacterData.ConversationData;
+            var messages = conversationData.Messages;
+
+            return type switch
+            {
+                CharacterMessageType.CorrectIncorrect => messages.Where(m => m.MessageType == CharacterMessageType.CorrectIncorrect),
+                CharacterMessageType.RandomBlurb => messages.Where(m => m.MessageType == CharacterMessageType.RandomBlurb),
+                CharacterMessageType.Hunter => messages.Where(m => m.MessageType == CharacterMessageType.Hunter || string.IsNullOrWhiteSpace(m.HuntMessage) == false),
+                _ => Array.Empty<CharacterMessageData>(),
+            };
+        }
+
     }
 }
