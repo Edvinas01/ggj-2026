@@ -156,6 +156,20 @@ namespace RIEVES.GGJ2026.Editor
                 EditorUtility.SetDirty(characterData);
 
                 importedCharacters++;
+                continue;
+
+                void SetField<TTarget, TValue>(TTarget target, string fieldName, TValue value)
+                {
+                    var field = typeof(TTarget).GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
+                    if (field != null)
+                    {
+                        field.SetValue(target, value);
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Field is not set", characterData);
+                    }
+                }
             }
 
             Debug.Log($"Imported {importedCharacters} characters");
@@ -173,15 +187,6 @@ namespace RIEVES.GGJ2026.Editor
 
             var path = $"{DirectoryTextures}/{textureName}";
             return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
-        }
-
-        private static void SetField<TTarget, TValue>(TTarget target, string fieldName, TValue value)
-        {
-            var field = typeof(TTarget).GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);
-            if (field != null)
-            {
-                field.SetValue(target, value);
-            }
         }
     }
 }
