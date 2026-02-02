@@ -65,6 +65,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             View.TitleText = title;
             View.ContentText = content;
+            View.RemainingTime = remainingSecondsPrev;
             View.IsRemainingTimeEnabled = remainingSecondsPrev > 0;
 
             View.ClearChoices();

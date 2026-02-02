@@ -21,7 +21,7 @@ namespace RIEVES.GGJ2026.Runtime.Items
         [SerializeField]
         private string texturePropertyId = "_BaseMap";
 
-        public string Name => data.ItemName;
+        public ItemData Data => data;
 
         private void Start()
         {

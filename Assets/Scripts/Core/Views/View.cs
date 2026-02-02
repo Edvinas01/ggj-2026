@@ -204,13 +204,13 @@ namespace RIEVES.GGJ2026.Core.Views
 
         public virtual void Show(bool isAnimate)
         {
+            if (viewData.HideAnimation)
+            {
+                viewData.HideAnimation.Stop();
+            }
+
             if (isAnimate && viewData.ShowAnimation)
             {
-                if (viewData.HideAnimation)
-                {
-                    viewData.HideAnimation.Stop();
-                }
-
                 viewData.ShowAnimation.Play();
             }
             else
@@ -222,13 +222,13 @@ namespace RIEVES.GGJ2026.Core.Views
 
         public virtual void Hide(bool isAnimate)
         {
+            if (viewData.ShowAnimation)
+            {
+                viewData.ShowAnimation.Stop();
+            }
+
             if (isAnimate && viewData.HideAnimation)
             {
-                if (viewData.ShowAnimation)
-                {
-                    viewData.ShowAnimation.Stop();
-                }
-
                 viewData.HideAnimation.Play();
             }
             else

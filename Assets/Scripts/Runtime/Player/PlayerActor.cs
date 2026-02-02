@@ -32,6 +32,12 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private ResourceController resourceController;
 
         [SerializeField]
+        private ItemPreview itemGrabPreview;
+
+        [SerializeField]
+        private CharacterAnimationController itemGrabAnimation;
+
+        [SerializeField]
         [Min(0f)]
         private float loseTickDelay = 0.3f;
 
@@ -219,7 +225,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
             var item = component.GetComponentInParent<ItemActor>();
             if (item)
             {
-                itemHoverPopupController.TitleText = item.Name;
+                itemHoverPopupController.TitleText = item.Data.ItemName;
                 itemHoverPopupController.ShowView();
             }
         }
@@ -233,6 +239,17 @@ namespace RIEVES.GGJ2026.Runtime.Player
 
         private void OnInteractorSelectEntered(InteractorSelectEnteredArgs args)
         {
+            if (args.Interactable is not Component component)
+            {
+                return;
+            }
+
+            var item = component.GetComponentInParent<ItemActor>();
+            if (item)
+            {
+                itemGrabAnimation.Play();
+                itemGrabPreview.Show(item.Data);
+            }
         }
 
         private void OnInteractorSelectExited(InteractorSelectExitedArgs args)

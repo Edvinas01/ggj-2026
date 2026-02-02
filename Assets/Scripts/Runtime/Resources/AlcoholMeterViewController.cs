@@ -32,6 +32,7 @@ namespace RIEVES.GGJ2026.Runtime.Resources
         private void OnAlcoholChanged(AlcoholChangedArgs args)
         {
             View.Fill = args.Ratio;
+            View.SpawnIndicator(args.ValueNext - args.ValuePrev);
         }
     }
 }

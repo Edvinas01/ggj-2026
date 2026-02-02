@@ -28,6 +28,11 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             get
             {
+                if (targetAnim.enabled == false)
+                {
+                    return false;
+                }
+
                 var stateInfo = targetAnim.GetCurrentAnimatorStateInfo(0);
                 if (stateInfo.IsName(stateName) && stateInfo.normalizedTime < 1f)
                 {
@@ -86,6 +91,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             targetAnim.enabled = true;
             targetAnim.Play(stateName, -1, 0f);
             OnPlay?.Invoke();
+            onPlay.Invoke();
         }
 
         [ContextMenu("Stop")]
@@ -95,6 +101,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             targetAnim.Update(0f);
             targetAnim.enabled = false;
             OnStop?.Invoke();
+            onStop.Invoke();
         }
     }
 }
