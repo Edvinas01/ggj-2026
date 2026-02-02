@@ -60,6 +60,9 @@ MonoBehaviour:
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
+  conversationDuration: 13
+  blurbDuration: 5
+  agitatedConversationDuration: 4
   voiceFmodEvent:
     Guid:
       Data1: 1960851956
