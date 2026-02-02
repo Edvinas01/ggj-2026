@@ -336,6 +336,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                                 return;
                             }
 
+                            if (conversingWith.CharacterData.AddsAlcohol <= 0)
+                            {
+                                StopConversation(ConversationResult.Neutral);
+                                return;
+                            }
+
                             resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
                             onCorrectChoiceSelected.Invoke();
                         }
