@@ -21,7 +21,7 @@ Tonight is the school prom, but nobody invited you because, well - you’re a lo
 ## Global Game Jam 2026
 
 <p align="center">
-  <img width="100%" src="team.png" />
+  <img width="50%" src="team.png" />
 </p>
 
 The team behind this game:
