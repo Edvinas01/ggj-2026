@@ -24,7 +24,7 @@
 	<object class="MixerBusPanner" id="{e5b3a87a-a4d2-434e-970a-28998ede21fc}" />
 	<object class="DistortionEffect" id="{a28842bb-05bb-49b6-b032-8d6f58133fde}">
 		<property name="level">
-			<value>0</value>
+			<value>0.204999998</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{e5b4d801-570b-4a36-abac-debb6d147412}" />

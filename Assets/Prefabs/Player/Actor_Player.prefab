@@ -897,6 +897,7 @@ Transform:
   - {fileID: 8976031566189957470}
   - {fileID: 641433002300165153}
   - {fileID: 2532349190114715912}
+  - {fileID: 599986359824037726}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1441487065709483086
@@ -1038,10 +1039,34 @@ MonoBehaviour:
     m_Bits: 1
   onMoveEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1334784232245789860}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onMoveExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1334784232245789860}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3720372723344079548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1253,7 +1278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1261,7 +1286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1372,6 +1397,79 @@ Transform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8499737270850292212, guid: 88a913ebde9749a42835f488d536fe71, type: 3}
   m_PrefabInstance: {fileID: 5477533205857735430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+--- !u!1001 &7454364670575742288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9070244558202797252}
+    m_Modifications:
+    - target: {fileID: 7893464925206616210, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_Name
+      value: SFX_Footstep_Shoes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+--- !u!4 &599986359824037726 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8007590653901388302, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+  m_PrefabInstance: {fileID: 7454364670575742288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1334784232245789860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8499737270850292212, guid: 6dc75d1d94ec3fa409f39b56ad81ed42, type: 3}
+  m_PrefabInstance: {fileID: 7454364670575742288}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
