@@ -157,11 +157,13 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 {
                     case ConversationResult.Correct:
                         {
+                            resourceController.UseAlcohol(conversingWith.CharacterData.AddsAlcohol);
                             conversingWith.ConversationStoppedCorrect();
                             break;
                         }
                     case ConversationResult.Incorrect:
                         {
+                            resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
                             conversingWith.ConversationStoppedIncorrect();
                             break;
                         }
@@ -363,12 +365,10 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                                 return;
                             }
 
-                            resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
                             onCorrectChoiceSelected.Invoke();
                         }
                         else
                         {
-                            resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
                             onIncorrectChoiceSelected.Invoke();
                         }
 
@@ -383,7 +383,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     }
                 case CharacterMessageType.Hunter:
                     {
-                        resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
                         onHuntChoiceSelected.Invoke();
                         StopConversation(ConversationResult.Incorrect);
                         return;
