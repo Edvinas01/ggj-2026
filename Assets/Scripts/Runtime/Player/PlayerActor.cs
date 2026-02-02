@@ -211,7 +211,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
             if (character)
             {
                 characterHoverPopupController.TitleText = character.CharacterData.CharacterName;
-                characterHoverPopupController.IsBlocked = conversationController.IsContainsMessages(character) == false;
+                characterHoverPopupController.IsBlocked = conversationController.IsContainsAnyMessages(character) == false;
                 characterHoverPopupController.ShowView();
                 return;
             }
@@ -295,7 +295,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
             var character = component.GetComponentInParent<CharacterActor>();
             if (character)
             {
-                return conversationController.IsContainsMessages(character);
+                return conversationController.IsContainsAnyMessages(character);
             }
 
             return true;
