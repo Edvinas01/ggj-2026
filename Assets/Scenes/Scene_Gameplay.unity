@@ -343,6 +343,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9976937
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.066978924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.010981903
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0007372563
+      objectReference: {fileID: 0}
     - target: {fileID: 8768234594321391368, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
       propertyPath: m_Name
       value: Actor_Player
