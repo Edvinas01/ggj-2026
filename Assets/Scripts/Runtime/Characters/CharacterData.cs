@@ -43,6 +43,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private CharacterConversationData conversation;
 
+        [SerializeField]
+        private float conversationDuration = 15f;
+
+        [SerializeField]
+        private float agitatedConversationDuration = 4f;
+
         [Header("Audio")]
         [SerializeField]
         private EventReference voiceFmodEvent;
@@ -81,6 +87,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public IEnumerable<Texture2D> PunchHandTextures => punchHandTextures;
 
         public CharacterConversationData ConversationData => conversation;
+        public float ConversationDuration => conversationDuration;
+        public float AgitatedConversationDuration => agitatedConversationDuration;
         public List<ActivityPatiencePair> ActivityPatience => activityPatience;
         public float CalmMoveSpeed => calmMoveSpeed;
         public float AgitatedMoveSpeed => agitatedMoveSpeed;

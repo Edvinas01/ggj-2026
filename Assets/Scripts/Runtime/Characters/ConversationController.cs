@@ -88,18 +88,24 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         {
             conversingWith = character;
             currentMessageCount = 0;
-
             currentMessageMax = Random.Range(1, (int)(maxMessagesPerConvo * heatSystem.CurrentHeat));
 
             Converse(character);
         }
 
+        float conversationTimer = 0f;
         float convCooldowntimer = -100f;
         float defendedCooldowntimer = -100f;
         float defendChance = 0.9f;
 
         void Update()
         {
+            if (conversingWith && Time.time > conversationTimer)
+            {
+                StopConversation(ConversationResult.Incorrect);
+                return;
+            }
+
             if (Time.time < convCooldowntimer)
                 return;
 
@@ -138,7 +144,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             }
         }
 
-        public void StopConversation(ConversationResult result)
+        public void StopConversation(ConversationResult result, bool hunter = false)
         {
             convCooldowntimer = Time.time + 3f;
             viewController.HideView();
@@ -151,17 +157,26 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 {
                     case ConversationResult.Correct:
                         {
+                            onCorrectChoiceSelected.Invoke();
+                            resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
                             conversingWith.ConversationStoppedCorrect();
                             break;
                         }
                     case ConversationResult.Incorrect:
                         {
+                            if (hunter)
+                                onHuntChoiceSelected.Invoke();
+                            else
+                                onIncorrectChoiceSelected.Invoke();
+
+                            resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
                             conversingWith.ConversationStoppedIncorrect();
                             break;
                         }
                     case ConversationResult.Neutral:
                     default:
                         {
+                            onRandomBlurbChoiceSelected.Invoke();
                             conversingWith.ConversationStoppedNeutral();
                             break;
                         }
@@ -199,6 +214,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         private void Converse(CharacterActor character)
         {
+            convCooldowntimer = Time.time + 1.5f;
+
             var conversationData = character.CharacterData.ConversationData;
             if (character.CurrentState == CharacterState.Hunting)
             {
@@ -211,9 +228,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     viewController.ShowView();
                     OnConversationStarted?.Invoke();
 
+                    conversationTimer = Time.time + character.CharacterData.AgitatedConversationDuration;
                     return;
                 }
             }
+
+            conversationTimer = Time.time + character.CharacterData.ConversationDuration;
 
             if (conversationData.ConversedCount <= 0)
             {
@@ -351,14 +371,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                                 StopConversation(ConversationResult.Neutral);
                                 return;
                             }
-
-                            resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
-                            onCorrectChoiceSelected.Invoke();
-                        }
-                        else
-                        {
-                            resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
-                            onIncorrectChoiceSelected.Invoke();
                         }
 
                         StopConversation(choice.IsCorrect ? ConversationResult.Correct : ConversationResult.Incorrect);
@@ -366,15 +378,12 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     }
                 case CharacterMessageType.RandomBlurb:
                     {
-                        onRandomBlurbChoiceSelected.Invoke();
                         StopConversation(ConversationResult.Neutral);
                         return;
                     }
                 case CharacterMessageType.Hunter:
                     {
-                        resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
-                        onHuntChoiceSelected.Invoke();
-                        StopConversation(ConversationResult.Incorrect);
+                        StopConversation(ConversationResult.Incorrect, true);
                         return;
                     }
             }
