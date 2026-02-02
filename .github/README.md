@@ -26,10 +26,10 @@ Tonight is the school prom, but nobody invited you because, well - you’re a lo
 
 The team behind this game:
 
-- [Edvinas Danevičius](https://edvinas.dev)
 - [Gustas Kažukauskas](https://github.com/PunkPun)
-- [Rokas Sutkus](https://www.instagram.com/sutkusaudio/)
+- [Edvinas Danevičius](https://edvinas.dev)
 - [Teresė Žvinakevičiūtė](https://www.instagram.com/teresesutkus/)
+- [Rokas Sutkus](https://www.instagram.com/sutkusaudio/)
 - [Dovydas Reitelaitis](https://www.instagram.com/reitelaitis/)
 
 ## Links
