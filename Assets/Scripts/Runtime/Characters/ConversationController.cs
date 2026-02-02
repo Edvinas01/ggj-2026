@@ -100,7 +100,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         void Update()
         {
-            if (Time.time < convCooldowntimer || conversingWith != null)
+            if (Time.time < convCooldowntimer)
                 return;
 
             foreach (var agent in agentSystem.agents)
@@ -108,17 +108,27 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 var dist = (agent.transform.position - transform.position).sqrMagnitude;
                 if (dist < 1f)
                 {
-                    if (agent.WantsToTalk)
+                    if (agent.WantsToTalk && conversingWith != agent)
                     {
-                            // if (Time.time < defendedCooldowntimer)
-                            //     return;
-                            //
-                            // var rng = Random.value;
-                            // if (rng < defendChance)
-                            // {
-                            //     defendedCooldowntimer = Time.time + 0.5f;
-                            //     return;
-                            // }
+                        // Handle interrupting conversations.
+                        if (conversingWith != null)
+                        {
+                            // Don't interrupt when guarding.
+                            if (agent.CurrentState == CharacterState.Guarding)
+                                continue;
+
+                            if (Time.time < defendedCooldowntimer)
+                                return;
+
+                            var rng = Random.value;
+                            if (rng < defendChance)
+                            {
+                                defendedCooldowntimer = Time.time + 0.5f;
+                                return;
+                            }
+
+                            StopConversation(ConversationResult.Neutral);
+                        }
 
                         agent.StartConversation(transform);
                         StartConversation(agent);
