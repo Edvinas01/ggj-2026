@@ -117,10 +117,10 @@ namespace RIEVES.GGJ2026.Core.Views
 
                 if (viewData.Canvas.enabled)
                 {
-                    return ViewState.Showing;
+                    return ViewState.Shown;
                 }
 
-                return ViewState.Hiding;
+                return ViewState.Hidden;
             }
         }
 
