@@ -316,17 +316,17 @@ namespace RIEVES.GGJ2026.Core.Views
             EnableCanvas();
             EnableInteraction();
 
-            if (viewData.IsAutoSelectGameObject)
-            {
-                SelectGameObject();
-            }
-
             OnShowEntered?.Invoke();
             viewData.OnShowEntered.Invoke();
         }
 
         protected virtual void OnViewShowExited()
         {
+            if (viewData.IsAutoSelectGameObject)
+            {
+                SelectGameObject();
+            }
+
             OnShowExited?.Invoke();
             viewData.OnShowExited.Invoke();
         }
