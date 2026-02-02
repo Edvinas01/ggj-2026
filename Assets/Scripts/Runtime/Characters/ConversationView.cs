@@ -32,12 +32,18 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private TMP_Text contentText;
 
+        [SerializeField]
+        private TMP_Text timeText;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onTextWriterStarted;
 
         [SerializeField]
         private UnityEvent onTextWriterFinished;
+
+        [SerializeField]
+        private UnityEvent onTimerChanged;
 
         private readonly List<MenuButtonElement> elements = new();
 
@@ -54,6 +60,20 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         public string ContentText
         {
             set => contentText.text = value;
+        }
+
+        public int RemainingTime
+        {
+            set
+            {
+                timeText.text = $"{value.ToString()}s";
+                onTimerChanged.Invoke();
+            }
+        }
+
+        public bool IsRemainingTimeEnabled
+        {
+            set => timeText.gameObject.SetActive(value);
         }
 
         protected override void OnEnable()

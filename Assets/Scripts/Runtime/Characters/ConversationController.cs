@@ -53,11 +53,19 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         [SerializeField]
         private UnityEvent onHuntChoiceSelected;
 
+
         private HeatSystem heatSystem;
         private AgentSystem agentSystem;
 
         private int currentMessageCount;
         private int currentMessageMax;
+
+        private float conversationTimer = 0f;
+        private float convCooldowntimer = -100f;
+        private float defendedCooldowntimer = -100f;
+        private float defendChance = 0.8f;
+
+        public float RemainingConversationTime => Mathf.Max(0f, conversationTimer - Time.time);
 
         public CharacterActor conversingWith { get; private set; }
 
@@ -93,11 +101,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
             Converse(character);
         }
-
-        float conversationTimer = 0f;
-        float convCooldowntimer = -100f;
-        float defendedCooldowntimer = -100f;
-        float defendChance = 0.8f;
 
         void Update()
         {
@@ -221,6 +224,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 var huntMessages = GetMessages(character, CharacterMessageType.Hunter);
                 if (huntMessages.TryGetRandom(out var message))
                 {
+                    conversationTimer = Time.time + character.CharacterData.AgitatedConversationDuration;
+
                     OnHuntConversation(character, message);
 
                     currentMessageCount++;
@@ -228,7 +233,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     viewController.ShowView();
                     OnConversationStarted?.Invoke();
 
-                    conversationTimer = Time.time + character.CharacterData.AgitatedConversationDuration;
                     return;
                 }
             }
@@ -238,6 +242,8 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 var correctIncorrect = GetMessages(character, CharacterMessageType.CorrectIncorrect);
                 if (correctIncorrect.TryGetRandom(out var message))
                 {
+                    conversationTimer = Time.time + character.CharacterData.ConversationDuration;
+
                     OnCorrectIncorrectConversation(character, message);
 
                     currentMessageCount++;
@@ -245,7 +251,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     viewController.ShowView();
                     OnConversationStarted?.Invoke();
 
-                    conversationTimer = Time.time + character.CharacterData.ConversationDuration;
                     return;
                 }
             }
@@ -300,6 +305,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.Content,
+                newRemainingTimeProvider: () => RemainingConversationTime,
                 choices: choices
             );
         }
@@ -309,6 +315,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.Content,
+                newRemainingTimeProvider: () => RemainingConversationTime,
                 choices: new[]
                 {
                     new ConversationChoice(
@@ -325,6 +332,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             viewController.Initialize(
                 title: character.CharacterData.CharacterName,
                 content: message.HuntMessage,
+                newRemainingTimeProvider: () => RemainingConversationTime,
                 choices: new[]
                 {
                     new ConversationChoice(
