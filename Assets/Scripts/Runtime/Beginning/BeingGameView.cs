@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using RIEVES.GGJ2026.Core.Menus;
 using RIEVES.GGJ2026.Core.Views;
 using TMPro;
@@ -20,10 +21,9 @@ namespace RIEVES.GGJ2026.Runtime.Beginning
             set
             {
                 beginButton.SetInteractable(value);
-
                 if (value)
                 {
-                    EventSystem.current.SetSelectedGameObject(beginButton.gameObject);
+                    StartCoroutine(SelectButtonRoutine());
                 }
             }
         }
@@ -52,6 +52,12 @@ namespace RIEVES.GGJ2026.Runtime.Beginning
         private void OnBeginButtonClicked()
         {
             OnBeginClicked?.Invoke();
+        }
+
+        private IEnumerator SelectButtonRoutine()
+        {
+            yield return null;
+            EventSystem.current.SetSelectedGameObject(beginButton.gameObject);
         }
     }
 }
