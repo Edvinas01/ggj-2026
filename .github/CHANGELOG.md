@@ -4,7 +4,8 @@
 
 - Floating text above alko bottle shown when picking up items.
 - Item grab animation.
-- Added maroz footsteps
+- Added maroz footsteps.
+- Credits to victory screen.
 
 ### Changed
 
