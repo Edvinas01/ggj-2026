@@ -66,12 +66,9 @@ namespace RIEVES.GGJ2026.Runtime
 
             audioSystem.LoadBanks();
 
-            // WebGL uses the initial scene with BeginGameViewController to start the game so that
-            // audio works correctly.
-            // Desktop can go straight into the game.
-#if UNITY_WEBGL == false
-            sceneSystem.LoadInitialScene();
-#endif
+            // The initial scene uses BeginGameViewController to start the game so that
+            // audio works correctly in Web builds. We keep the same flow in Desktop as well to
+            // avoid differences in builds.
         }
 
     }
