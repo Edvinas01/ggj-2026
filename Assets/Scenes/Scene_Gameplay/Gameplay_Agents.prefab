@@ -847,7 +847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5094268792650663044, guid: be6bb37e224814572a027eaad04fd086, type: 3}
       propertyPath: MoveWithinRange
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5094268792650663044, guid: be6bb37e224814572a027eaad04fd086, type: 3}
       propertyPath: StayWithinRange
