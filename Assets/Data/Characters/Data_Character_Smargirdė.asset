@@ -65,18 +65,18 @@ MonoBehaviour:
   agitatedConversationDuration: 4
   voiceFmodEvent:
     Guid:
-      Data1: 1960851956
-      Data2: 1287015565
-      Data3: -1937743710
-      Data4: -57751791
-    Path: event:/VO/VO_Vaikinas
+      Data1: -411235515
+      Data2: 1322770349
+      Data3: 1341994396
+      Data4: 385734510
+    Path: event:/VO/VO_Mergina
   footstepFmodEvent:
     Guid:
-      Data1: 730479213
-      Data2: 1123402877
-      Data3: -1080882542
-      Data4: -54468195
-    Path: event:/SFX/S_Footsteps_Shoes
+      Data1: -1783365213
+      Data2: 1130370088
+      Data3: -200384072
+      Data4: -507841371
+    Path: event:/SFX/S_Footsteps_HighHeels
   marozFootstepFmodEvent:
     Guid:
       Data1: -462005699
