@@ -66,25 +66,13 @@ namespace RIEVES.GGJ2026.Runtime
 
             audioSystem.LoadBanks();
 
-#if UNITY_WEBGL
-            StartCoroutine(LoadGameRoutine());
-#else
+            // WebGL uses the initial scene with BeginGameViewController to start the game so that
+            // audio works correctly.
+            // Desktop can go straight into the game.
+#if UNITY_WEBGL == false
             sceneSystem.LoadInitialScene();
 #endif
         }
 
-#if UNITY_WEBGL
-        private System.Collections.IEnumerator LoadGameRoutine()
-        {
-            if (audioSystem.IsLoading)
-            {
-                yield return null;
-            }
-
-            // TODO: scuffed workaround for WebGL not playing audio in main menu, oh well...
-            yield return new WaitForSeconds(1f);
-            sceneSystem.LoadInitialScene();
-        }
-#endif
     }
 }

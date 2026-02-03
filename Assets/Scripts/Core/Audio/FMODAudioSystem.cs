@@ -37,6 +37,14 @@ namespace RIEVES.GGJ2026.Core.Audio
                     return true;
                 }
 
+                foreach (var bank in bankLoader.Banks)
+                {
+                    if (RuntimeManager.HasBankLoaded(bank) == false)
+                    {
+                        return true;
+                    }
+                }
+
                 if (RuntimeManager.AnySampleDataLoading())
                 {
                     return true;
