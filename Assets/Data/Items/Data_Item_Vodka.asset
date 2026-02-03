@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Data_Item_Vodka
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Items.ItemData
   itemName: Vodka
-  value: 20
+  value: 15
   texture: {fileID: 2800000, guid: 2d413a72f021a7148a5da831c25b2cea, type: 3}
