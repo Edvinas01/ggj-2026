@@ -282,21 +282,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Agents.AgentSystem
   characterPrefab: {fileID: 1267336869467435128, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
   characterSpawnPool:
+  - {fileID: 11400000, guid: 6a86d09bde7bfcb48add831914b7c468, type: 2}
   - {fileID: 11400000, guid: d3402e15a2e9bc544825b9c108e97b2d, type: 2}
+  - {fileID: 11400000, guid: 2af7acae06e39844b9d48b9f06aaa23d, type: 2}
   - {fileID: 11400000, guid: 11864cdaf196db741bd885b0a17cfaaa, type: 2}
+  - {fileID: 11400000, guid: 0b191bdc0f9c3214ca07cfee1214e7a0, type: 2}
   - {fileID: 11400000, guid: fc074344bb8e72641a69c633ec7ef506, type: 2}
+  - {fileID: 11400000, guid: e3c28069dd0bcb54d910766fd75ec207, type: 2}
+  - {fileID: 11400000, guid: e214fba93746a8744b37825184ca9fa5, type: 2}
   - {fileID: 11400000, guid: 7ec2ff9fb6e48754dbe0d49fecda91b3, type: 2}
+  - {fileID: 11400000, guid: b443e4cf4d64b314c8097c4656e242a7, type: 2}
   - {fileID: 11400000, guid: 9680b8dd6d459664092eed6626a6135b, type: 2}
   - {fileID: 11400000, guid: 33c83776dfc4b1641b8cc44b7c07eb82, type: 2}
+  - {fileID: 11400000, guid: b935d6b5d5040b4489d52ea27d613bba, type: 2}
   - {fileID: 11400000, guid: 215931a62a18edc46a3f7ea584faafaa, type: 2}
+  - {fileID: 11400000, guid: 419f2181268b363439782363bbcda463, type: 2}
+  - {fileID: 11400000, guid: 94ff25dbd4381de43af73998ffe4a57f, type: 2}
   - {fileID: 11400000, guid: 9723ca800e8dc2b40b91e40d4945212d, type: 2}
+  - {fileID: 11400000, guid: 411e23d8d31cf1b4dbc0e74d3c793dc6, type: 2}
   - {fileID: 11400000, guid: 7f4de840257362f409d59a4fe548d049, type: 2}
+  - {fileID: 11400000, guid: f3aa88bea2bc19643889d5849642ab28, type: 2}
+  - {fileID: 11400000, guid: 44f800899b536c04f96c5ff535b2d18d, type: 2}
+  - {fileID: 11400000, guid: 7ed6e5b79e708ce4f96708a874d48428, type: 2}
   - {fileID: 11400000, guid: 2fb23a685cc19af47b3f70d2391b115c, type: 2}
   - {fileID: 11400000, guid: c87180c57691b7d45a4b4f5f14d1bafa, type: 2}
   - {fileID: 11400000, guid: d95d0bf78736752458ff1c2d232bd4ee, type: 2}
-  - {fileID: 11400000, guid: 2af7acae06e39844b9d48b9f06aaa23d, type: 2}
-  - {fileID: 11400000, guid: b443e4cf4d64b314c8097c4656e242a7, type: 2}
-  - {fileID: 11400000, guid: f3aa88bea2bc19643889d5849642ab28, type: 2}
+  - {fileID: 11400000, guid: 41b58a5876c5e0940ad7a2714839176a, type: 2}
+  - {fileID: 11400000, guid: e0bc47b46d79e6c4687e4f7c233c3d1f, type: 2}
 --- !u!1 &2765230389236004446
 GameObject:
   m_ObjectHideFlags: 0
