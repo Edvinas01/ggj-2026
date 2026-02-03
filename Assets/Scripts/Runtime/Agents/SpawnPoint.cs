@@ -12,6 +12,6 @@ namespace RIEVES.GGJ2026
             UnityEditor.Handles.color = Color.green;
             UnityEditor.Handles.DrawWireDisc(transform.position, Vector3.up, Radius);
         }
-    }
 #endif
+    }
 }
