@@ -60,6 +60,9 @@ namespace RIEVES.GGJ2026.Runtime.Characters
         private EventReference footstepFmodEvent;
 
         [SerializeField]
+        private EventReference marozFootstepFmodEvent;
+
+        [SerializeField]
         private EventReference marozFmodEvent;
 
         [SerializeField]
@@ -99,6 +102,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public EventReference VoiceFmodEvent => voiceFmodEvent;
         public EventReference FootstepFmodEvent => footstepFmodEvent;
+        public EventReference MarozFootstepFmodEvent => marozFootstepFmodEvent;
         public EventReference MarozFmodEvent => marozFmodEvent;
         public EventReference MarozVoiceFmodEvent => marozVoiceFmodEvent;
     }

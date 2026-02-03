@@ -49,6 +49,9 @@ MonoBehaviour:
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
+  conversationDuration: 15
+  blurbDuration: 9
+  agitatedConversationDuration: 4
   voiceFmodEvent:
     Guid:
       Data1: -411235515
@@ -63,13 +66,20 @@ MonoBehaviour:
       Data3: -200384072
       Data4: -507841371
     Path: event:/SFX/S_Footsteps_HighHeels
-  marozFmodEvent:
+  marozFootstepFmodEvent:
     Guid:
       Data1: -462005699
       Data2: 1080775073
       Data3: -1538803268
       Data4: -1800361691
     Path: event:/SFX/S_Footsteps_Maroz
+  marozFmodEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   marozVoiceFmodEvent:
     Guid:
       Data1: -830536824
@@ -78,7 +88,7 @@ MonoBehaviour:
       Data4: 1622055665
     Path: event:/VO/VO_Marozas
   activityPatience:
-  - activity: 0
+  - activity: 1
     minTime: 10000
     maxTime: 10000
   calmMoveSpeed: 0.3

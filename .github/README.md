@@ -16,7 +16,7 @@ This game will be developed during [Global Game Jam 2026](https://globalgamejam.
 
 ### EN
 
-Tonight is the school prom, but nobody invited you because, well - you’re a loser. You’re not exactly known for your social skills, and on top of that, you’re from another village. Hide behind your glasses and your dad’s best clothes and try not to stand out - maybe you’ll blend in and even get a drink. And if not, some local thugs might smash your face. Looks like an interesting night ahead!
+Look, today’s the school prom, but nobody invited you ’cause, well—you’re a loser. Zero social game, and worse, you’re from a different village. Infiltrate, hide behind your shades and your dad’s best drip. Crush it and score drinks, or kiss the carpet. No matter what, it’s gonna be a wild night.
 
 ## Global Game Jam 2026
 
