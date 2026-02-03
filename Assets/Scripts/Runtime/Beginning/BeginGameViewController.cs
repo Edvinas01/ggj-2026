@@ -20,6 +20,14 @@ namespace RIEVES.GGJ2026.Runtime.Beginning
             audioSystem = GameManager.GetSystem<IAudioSystem>();
         }
 
+        protected override void Start()
+        {
+            base.Start();
+
+            View.IsBeginButtonEnabled = false;
+            View.IsLoadingTextEnabled = true;
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();

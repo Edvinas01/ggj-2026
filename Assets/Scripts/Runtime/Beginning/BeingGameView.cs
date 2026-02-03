@@ -4,6 +4,7 @@ using RIEVES.GGJ2026.Core.Menus;
 using RIEVES.GGJ2026.Core.Views;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 namespace RIEVES.GGJ2026.Runtime.Beginning
@@ -16,14 +17,20 @@ namespace RIEVES.GGJ2026.Runtime.Beginning
         [SerializeField]
         private MenuButtonElement beginButton;
 
+        [SerializeField]
+        private UnityEvent onBeginButtonEnabled;
+
+
         public bool IsBeginButtonEnabled
         {
             set
             {
-                beginButton.SetInteractable(value);
+                beginButton.gameObject.SetActive(value);
+
                 if (value)
                 {
                     StartCoroutine(SelectButtonRoutine());
+                    onBeginButtonEnabled.Invoke();
                 }
             }
         }
