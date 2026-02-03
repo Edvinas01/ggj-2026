@@ -5,6 +5,10 @@
 - Floating text above alko bottle shown when picking up items.
 - Item grab animation.
 
+### Changed
+
+- Enabled vsync.
+
 ### Fixed
 
 - Chat timer text keeping the old value.
