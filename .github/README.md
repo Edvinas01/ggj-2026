@@ -8,7 +8,9 @@
 
 ## About
 
-This game will be developed during [Global Game Jam 2026](https://globalgamejam.org/games/2026/kaimiecio-isleistuves-4) in 48 hours, where the theme was "Mask".
+<p align="center">
+  <img width="100%" src="characters.png" />
+</p>
 
 ### LT
 
@@ -18,10 +20,16 @@ This game will be developed during [Global Game Jam 2026](https://globalgamejam.
 
 Look, today’s the school prom, but nobody invited you ’cause, well—you’re a loser. Zero social game, and worse, you’re from a different village. Infiltrate, hide behind your shades and your dad’s best drip. Crush it and score drinks, or kiss the carpet. No matter what, it’s gonna be a wild night.
 
+<p align="center">
+  <img width="100%" src="masks.png" />
+</p>
+
 ## Global Game Jam 2026
 
+This game was developed as a part of [Global Game Jam 2026 in Kaunas](https://globalgamejam.org/games/2026/kaimiecio-isleistuves-4), where the theme was "Mask".
+
 <p align="center">
-  <img width="50%" src="team.png" />
+  <img width="100%" src="team.png" />
 </p>
 
 The team behind this game:
