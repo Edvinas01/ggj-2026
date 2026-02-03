@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
-  m_Name: Data_Character_DJ_Anatolijus
+  m_Name: Data_Character_Pranckus
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
-  characterName: DJ Anatolijus
-  addsAlcohol: 5
-  removesAlcohol: 30
-  frontTexture: {fileID: 2800000, guid: 54c90865ac06b234ab83d2cebce4a36f, type: 3}
-  backTexture: {fileID: 2800000, guid: 259694ef281931a4dad23f06ae46c986, type: 3}
+  characterName: Pranckus
+  addsAlcohol: 10
+  removesAlcohol: 10
+  frontTexture: {fileID: 2800000, guid: 9ef6e76194b6f4c4f8b3867616fbb752, type: 3}
+  backTexture: {fileID: 2800000, guid: 807aa905d263c6d40a591966418c9bc4, type: 3}
   giveHandTextures:
   - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
   - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
@@ -25,41 +25,42 @@ MonoBehaviour:
   conversation:
     messages:
     - messageType: 0
-      content: "Gal gali neliest audio \u012Frangos?"
-      huntMessage: "Gausi \u012F d\u016Bd\u0105"
+      content: Juda mano rankos!!
+      huntMessage: Kartais reikia.
       correctChoices:
-      - "Atsipra\u0161au, nety\u010Dia u\u017Ekliuvo"
-      - Gerai
+      - Juda mano siela!
+      - "Jolanta jau u\u017Ejud\u0117jo"
       incorrectChoices:
-      - "\u0160rotas, o ne \u012Franga"
-      - Grot nemoki
+      - Tavo nelabai judesiukai
+      - "Pana\u0161iau \u012F konvulsijas"
+      - "Prie tav\u0119s nor\u0117\u010Diau prisiglaust!"
     - messageType: 0
-      content: "Kaip tau \u0161i daina?"
-      huntMessage: Mirt nori?
+      content: "\u0160is vakar\u0117lis tiesiog liepsnoja!"
+      huntMessage: "\u017Dinai u\u017E k\u0105!"
       correctChoices:
-      - Puiki muzika
-      - "Gera muzika vis\u0105 vakar\u0105"
+      - "Paduodam daugiau kar\u0161\u010Dio!"
+      - "Aha, darosi kar\u0161ta!"
       incorrectChoices:
-      - Senienas groji
-      - "Toki\u0105 muzik\u0105 tik kaime leist"
-      - "Sodint u\u017E toki\u0105 muzik\u0105"
+      - "Tu irgi visai kar\u0161tas"
+      - "Gal normaliam baliuj nebuv\u0119s?"
+      - "Kas tave \u010Dia \u012Fleido? Neadekvatus"
+    - messageType: 0
+      content: "J\u016Bs\u0173 politinis kredo?"
+      huntMessage: Chamas!
+      correctChoices:
+      - "O, m\u0117gsti klasik\u0105?"
+      - Visada!
+      incorrectChoices:
+      - Atsirado tvarto politikas
+      - Nesupratau bajerio
+      - "Kur \u010Dia toki\u0173 \u017Eod\u017Ei\u0173 i\u0161mokai?"
     - messageType: 1
-      content: Varom varom varom!
-      huntMessage: 
-      correctChoices: []
-      incorrectChoices: []
-    - messageType: 1
-      content: Nuostabu nuostabu!
-      huntMessage: 
-      correctChoices: []
-      incorrectChoices: []
-    - messageType: 1
-      content: "Va\u017Eiuojam!"
+      content: "B\u0117gu \u012F aik\u0161tel\u0119!"
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
   conversationDuration: 15
-  blurbDuration: 9
+  blurbDuration: 6
   agitatedConversationDuration: 4
   voiceFmodEvent:
     Guid:
@@ -97,8 +98,14 @@ MonoBehaviour:
       Data4: 1622055665
     Path: event:/VO/VO_Marozas
   activityPatience:
+  - activity: 0
+    minTime: 5
+    maxTime: 15
   - activity: 2
-    minTime: 10000
-    maxTime: 10000
+    minTime: 30
+    maxTime: 120
+  - activity: 5
+    minTime: 10
+    maxTime: 40
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

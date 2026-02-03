@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 469ecb2c679440159d13189fe3b9c78a, type: 3}
-  m_Name: Data_Character_DJ_Anatolijus
+  m_Name: Data_Character_Fizrukas
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.CharacterData
-  characterName: DJ Anatolijus
-  addsAlcohol: 5
-  removesAlcohol: 30
-  frontTexture: {fileID: 2800000, guid: 54c90865ac06b234ab83d2cebce4a36f, type: 3}
-  backTexture: {fileID: 2800000, guid: 259694ef281931a4dad23f06ae46c986, type: 3}
+  characterName: Fizrukas
+  addsAlcohol: 10
+  removesAlcohol: 10
+  frontTexture: {fileID: 2800000, guid: 43b65038880937f4fb1d2752d8cd1d29, type: 3}
+  backTexture: {fileID: 2800000, guid: 148133a9699b212468dff6a024ec78b6, type: 3}
   giveHandTextures:
   - {fileID: 2800000, guid: a6eaa85ece30e974f8eb20f154cfd6e2, type: 3}
   - {fileID: 2800000, guid: c1f6ab71d99b21445bc82c760ddcc521, type: 3}
@@ -25,41 +25,42 @@ MonoBehaviour:
   conversation:
     messages:
     - messageType: 0
-      content: "Gal gali neliest audio \u012Frangos?"
-      huntMessage: "Gausi \u012F d\u016Bd\u0105"
+      content: "Pala, tu ne tas kur i\u0161met\u0117m u\u017E nera\u0161tigum\u0105?"
+      huntMessage: "Te\u0161lius!"
       correctChoices:
-      - "Atsipra\u0161au, nety\u010Dia u\u017Ekliuvo"
-      - Gerai
+      - "Man j\u016Bs\u0173 pamokos labiausiai patiko"
+      - "B\u016Bkit sveikas!"
       incorrectChoices:
-      - "\u0160rotas, o ne \u012Franga"
-      - Grot nemoki
+      - "Patikdavo kai \u0161iltas \u012F pamokas ateidavot"
+      - "Prakalbo ra\u0161ytojas"
+      - "Kas \u010Dia tokio sakinio i\u0161mok\u0117?"
     - messageType: 0
-      content: "Kaip tau \u0161i daina?"
-      huntMessage: Mirt nori?
+      content: "Sportavai \u0161iandien?"
+      huntMessage: "Pajud\u0117si tu man"
       correctChoices:
-      - Puiki muzika
-      - "Gera muzika vis\u0105 vakar\u0105"
+      - "\u0160okam - sportuojam"
+      - "Gyvenimas - am\u017Einas l\u0117kimas"
       incorrectChoices:
-      - Senienas groji
-      - "Toki\u0105 muzik\u0105 tik kaime leist"
-      - "Sodint u\u017E toki\u0105 muzik\u0105"
+      - "Stikliuk\u0105 kilnoju kaip ir tu"
+      - "I\u0161 smarv\u0117s jau\u010Diu, kad tu tai sportavai"
+      - "Kas a\u0161, arklys?"
+    - messageType: 0
+      content: "Pala ar ne tavo ten aukl\u0117toja? Visad man patiko..."
+      huntMessage: "M\u0117\u0161lavabali tu!"
+      correctChoices:
+      - "Ta pati. M\u0117gsta tulpes"
+      - Gera moteris, griebkit
+      incorrectChoices:
+      - "Pamir\u0161k, \u012F kum\u0161tuk\u0105 tau tik"
+      - "Smirdi jai i\u0161 burnos, sutartum\u0117t"
+      - Jinai? Ne tau Martynai
     - messageType: 1
-      content: Varom varom varom!
+      content: "Ie\u0161kau Jolantos, nel\u012Fsk"
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
-    - messageType: 1
-      content: Nuostabu nuostabu!
-      huntMessage: 
-      correctChoices: []
-      incorrectChoices: []
-    - messageType: 1
-      content: "Va\u017Eiuojam!"
-      huntMessage: 
-      correctChoices: []
-      incorrectChoices: []
-  conversationDuration: 15
-  blurbDuration: 9
+  conversationDuration: 12
+  blurbDuration: 4
   agitatedConversationDuration: 4
   voiceFmodEvent:
     Guid:
@@ -97,8 +98,17 @@ MonoBehaviour:
       Data4: 1622055665
     Path: event:/VO/VO_Marozas
   activityPatience:
-  - activity: 2
-    minTime: 10000
-    maxTime: 10000
+  - activity: 0
+    minTime: 10
+    maxTime: 40
+  - activity: 1
+    minTime: 10
+    maxTime: 20
+  - activity: 3
+    minTime: 15
+    maxTime: 50
+  - activity: 5
+    minTime: 10
+    maxTime: 50
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

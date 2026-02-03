@@ -51,7 +51,7 @@ MonoBehaviour:
         sunku, bet a\u0161 sportuoju"
       huntMessage: "Kokia i\u0161vaizda toks ir protas!"
       correctChoices:
-      - Altus Fortu Citus
+      - Citius, Altius, Fortius
       - Ilgai laikai jau taip?
       incorrectChoices:
       - "Mergaiti\u0161ka poza"

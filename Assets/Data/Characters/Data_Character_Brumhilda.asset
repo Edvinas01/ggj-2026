@@ -56,7 +56,7 @@ MonoBehaviour:
       - Ne tavo reikalas
       - O gal su atmintim ne viskas tvarkoj?
     - messageType: 1
-      content: "Vergra ver\u017Eiai verat verro verdai"
+      content: "\u0160iuo metu nenoriu kalb\u0117tis, labiau noriu \u0161okt"
       huntMessage: 
       correctChoices: []
       incorrectChoices: []

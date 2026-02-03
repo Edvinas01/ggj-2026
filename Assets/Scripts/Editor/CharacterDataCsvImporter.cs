@@ -1,19 +1,19 @@
 ﻿using System;
 using RIEVES.GGJ2026.Core.Constants;
 using RIEVES.GGJ2026.Runtime.Characters;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using CsvHelper;
+using CsvHelper.Configuration;
+using UnityEditor;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace RIEVES.GGJ2026.Editor
 {
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
-    using System.Linq;
-    using System.Reflection;
-    using CsvHelper;
-    using CsvHelper.Configuration;
-    using UnityEditor;
-    using UnityEngine;
-
     internal static class CharacterDataCsvImporter
     {
         private const string DirectoryTextures = "Assets/Visuals/Characters/Textures";
@@ -21,6 +21,11 @@ namespace RIEVES.GGJ2026.Editor
 
         [MenuItem(MenuItemConstants.BaseWindowItemName + "/Character Data Importer")]
         private static void ImportFromCsv()
+        {
+            CharacterImporterWindow.ShowWindow();
+        }
+
+        internal static void PerformImport(CharacterData templateObject)
         {
             var path = EditorUtility.OpenFilePanel("Select Character CSV", Application.dataPath, "csv");
             if (string.IsNullOrEmpty(path))
@@ -92,7 +97,15 @@ namespace RIEVES.GGJ2026.Editor
                 var characterData = AssetDatabase.LoadAssetAtPath<CharacterData>(assetPath);
                 if (characterData == false)
                 {
-                    characterData = ScriptableObject.CreateInstance<CharacterData>();
+                    if (templateObject != null)
+                    {
+                        characterData = Object.Instantiate(templateObject);
+                    }
+                    else
+                    {
+                        characterData = ScriptableObject.CreateInstance<CharacterData>();
+                    }
+
                     AssetDatabase.CreateAsset(characterData, assetPath);
                 }
 
@@ -187,6 +200,54 @@ namespace RIEVES.GGJ2026.Editor
 
             var path = $"{DirectoryTextures}/{textureName}";
             return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+        }
+    }
+
+    internal class CharacterImporterWindow : EditorWindow
+    {
+        private CharacterData templateObject;
+
+        internal static void ShowWindow()
+        {
+            var window = GetWindow<CharacterImporterWindow>("Character Data Importer");
+            window.minSize = new Vector2(400, 150);
+            window.Show();
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.Label("Character Data CSV Importer", EditorStyles.boldLabel);
+            GUILayout.Space(10);
+
+            GUILayout.Label("Template Scriptable Object (Optional):", EditorStyles.label);
+            templateObject = (CharacterData)EditorGUILayout.ObjectField(
+                templateObject,
+                typeof(CharacterData),
+                false
+            );
+
+            GUILayout.Space(10);
+
+            EditorGUILayout.HelpBox(
+                "Select a template CharacterData object to use as a base for newly created assets. " + "If no template is selected, default ScriptableObjects will be created.",
+                MessageType.Info
+            );
+
+            GUILayout.Space(20);
+
+            GUI.enabled = true;
+            if (GUILayout.Button("Import CSV", GUILayout.Height(30)))
+            {
+                Close();
+                CharacterDataCsvImporter.PerformImport(templateObject);
+            }
+
+            GUILayout.Space(10);
+
+            if (GUILayout.Button("Cancel"))
+            {
+                Close();
+            }
         }
     }
 }
