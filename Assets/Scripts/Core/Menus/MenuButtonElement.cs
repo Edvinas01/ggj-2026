@@ -78,6 +78,7 @@ namespace RIEVES.GGJ2026.Core.Menus
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            EventSystem.current.SetSelectedGameObject(null);
             SetSelected(isSelected: true);
         }
 

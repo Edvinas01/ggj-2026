@@ -17,6 +17,7 @@
 - Tooltips bugging out and not showing.
 - Curtains should not billboard.
 - Fixed "Šeiminukės" rotation.
+- Menu buttons not deselecting correctly when using mouse pointer.
 
 ## [v1.0.0](https://github.com/Edvinas01/ggj-2026/compare/v1.0.0) - 2026-02-03
 
