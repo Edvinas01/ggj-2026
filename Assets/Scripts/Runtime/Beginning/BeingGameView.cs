@@ -29,7 +29,11 @@ namespace RIEVES.GGJ2026.Runtime.Beginning
 
                 if (value)
                 {
+                    // Force user to select the button as otherwise audio will be broken in Web builds.
+#if UNITY_WEBGL == false
                     StartCoroutine(SelectButtonRoutine());
+#endif
+
                     onBeginButtonEnabled.Invoke();
                 }
             }
