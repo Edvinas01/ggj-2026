@@ -68,6 +68,9 @@ namespace RIEVES.GGJ2026
         private StudioEventEmitter footstepAudioEmitter;
 
         [SerializeField]
+        private StudioEventEmitter marozFootstepAudioEmitter;
+
+        [SerializeField]
         private StudioEventEmitter marozAudioEmitter;
 
         [Header("AI")]
@@ -428,8 +431,11 @@ namespace RIEVES.GGJ2026
 
         public void StopVoice()
         {
-            voiceAudioEmitter.Stop();
-            marozVoiceAudioEmitter.Stop();
+            if (!CharacterData.VoiceFmodEvent.IsNull)
+                voiceAudioEmitter.Stop();
+
+            if (!CharacterData.MarozVoiceFmodEvent.IsNull)
+                marozVoiceAudioEmitter.Stop();
         }
 
         bool StartMovement(PointOfInterest target)
@@ -613,6 +619,18 @@ namespace RIEVES.GGJ2026
 
         private void OnFootstepStarted()
         {
+            if (CurrentState == CharacterState.Hunting)
+            {
+                if (CharacterData.MarozFootstepFmodEvent.IsNull)
+                {
+                    return;
+                }
+
+                marozFootstepAudioEmitter.EventReference = CharacterData.MarozFootstepFmodEvent;
+                marozFootstepAudioEmitter.Play();
+                return;
+            }
+
             if (CharacterData.FootstepFmodEvent.IsNull)
             {
                 return;
@@ -624,12 +642,11 @@ namespace RIEVES.GGJ2026
 
         private void OnFootstepStopped()
         {
-            if (CharacterData.FootstepFmodEvent.IsNull)
-            {
-                return;
-            }
+            if (!CharacterData.FootstepFmodEvent.IsNull)
+                footstepAudioEmitter.Stop();
 
-            footstepAudioEmitter.Stop();
+            if (!CharacterData.MarozFootstepFmodEvent.IsNull)
+                marozFootstepAudioEmitter.Stop();
         }
 
         public void StartMarozSound()

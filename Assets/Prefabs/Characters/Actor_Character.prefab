@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 4824178829050973084}
   - component: {fileID: 4010704545688330215}
   - component: {fileID: 3820139549683807865}
+  - component: {fileID: 4142585295067658791}
   m_Layer: 7
   m_Name: Actor_Character
   m_TagString: Untagged
@@ -605,6 +606,7 @@ MonoBehaviour:
   voiceAudioEmitter: {fileID: 4068761391158071199}
   marozVoiceAudioEmitter: {fileID: 4824178829050973084}
   footstepAudioEmitter: {fileID: 4010704545688330215}
+  marozFootstepAudioEmitter: {fileID: 4142585295067658791}
   marozAudioEmitter: {fileID: 3820139549683807865}
   navMeshAgent: {fileID: 3594350978816022881}
 --- !u!114 &4005990158675576400
@@ -992,6 +994,37 @@ MonoBehaviour:
   OverrideMinDistance: -1
   OverrideMaxDistance: -1
 --- !u!114 &3820139549683807865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2672928781318159380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
+--- !u!114 &4142585295067658791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
