@@ -101,9 +101,9 @@ Assets/Settings.md.meta
 fmod_editor.log
 
 # FMOD Studio project
-/FMODAssets/.unsaved
-/FMODAssets/.user
-/FMODAssets/.cache
+/FMOD/.unsaved
+/FMOD/.user
+/FMOD/.cache
 
 # Bakery
 .denoiserlog.txt
