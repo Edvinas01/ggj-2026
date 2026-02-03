@@ -50,5 +50,5 @@ The team behind this game:
 
 - Unity [Unity 6000.3.3f1](unityhub://6000.3.3f1/ef04196de0d6)
 - [GitHub Desktop](https://desktop.github.com/download/) or [Git Bash](https://git-scm.com/downloads)
-- [Rider](https://www.jetbrains.com/rider) or [Visual Studio](https://visualstudio.microsoft.com)
+- [Rider](https://www.jetbrains.com/rider), [Visual Studio](https://visualstudio.microsoft.com) or [Visual Studio Code](https://code.visualstudio.com)
 - [FMOD Studio 2.03](https://www.fmod.com/download) (optional)

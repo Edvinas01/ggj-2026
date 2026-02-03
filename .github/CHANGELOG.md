@@ -10,6 +10,8 @@
 ### Changed
 
 - Enabled vsync.
+- Nerfed items.
+- Added more people and guards.
 
 ### Fixed
 

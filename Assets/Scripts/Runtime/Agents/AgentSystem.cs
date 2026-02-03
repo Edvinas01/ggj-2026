@@ -103,11 +103,11 @@ namespace RIEVES.GGJ2026
 
             float heatDelta = Mathf.Max(0f, heatSystem.CurrentHeat - 1f);
 
-            desiredProportions[CharacterState.Guarding] = 0 + Mathf.RoundToInt(2.5f * heatDelta);
+            desiredProportions[CharacterState.Guarding] = 0 + Mathf.RoundToInt(3.5f * heatDelta);
             desiredProportions[CharacterState.Hunting] = 0 + Mathf.RoundToInt(3.5f * heatDelta);
             desiredProportions[CharacterState.Dancing] = 13 + Mathf.RoundToInt(2.5f * heatDelta);
 
-            int currentGoal = initialBasePopulation + 1 + Mathf.RoundToInt(8.4f * heatDelta);
+            int currentGoal = initialBasePopulation + 1 + Mathf.RoundToInt(9.4f * heatDelta);
             if (agents.Count < currentGoal)
             {
                 SpawnNewAgent(false);
