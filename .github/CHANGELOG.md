@@ -10,8 +10,9 @@
 ### Changed
 
 - Enabled vsync.
-- Nerfed items.
+- Balancing of items.
 - Added more people and guards.
+- Improve pathfinding.
 
 ### Fixed
 
