@@ -6,6 +6,7 @@
 - Item grab animation.
 - Added maroz footsteps.
 - Credits to victory screen.
+- Start screen to address audio issues.
 
 ### Changed
 
