@@ -62,7 +62,7 @@ namespace RIEVES.GGJ2026.Runtime.Resources
             set
             {
                 fillImage.fillAmount = value;
-                fillText.text = value.ToString("P0");
+                fillText.text = $"{value:P0}";
                 onFillChanged.Invoke();
             }
         }
@@ -93,7 +93,7 @@ namespace RIEVES.GGJ2026.Runtime.Resources
             }
         }
 
-        public void SpawnIndicator(int value)
+        public void SpawnIndicator(float value)
         {
             var instance = Instantiate(floatTextTemplate, floatTextTemplate.transform.parent);
             var tmpText = instance.GetComponent<TMP_Text>();
@@ -102,20 +102,20 @@ namespace RIEVES.GGJ2026.Runtime.Resources
             if (value > 0)
             {
                 tmpText.color = positiveColor;
-                tmpText.text = $"+{value}";
+                tmpText.text = $"+{value:P0}";
             }
             else if (value < 0)
             {
                 tmpText.color = negativeColor;
-                tmpText.text = $"{value}";
+                tmpText.text = $"{value:P0}";
             }
             else
             {
                 tmpText.color = Color.white;
-                tmpText.text = $"{value}";
+                tmpText.text = $"{value:P0}";
             }
 
-            instance.gameObject.SetActive(true);
+            instance.SetActive(true);
 
             texts.Add(new FloatingText(tmpText, hideAnim, floatLifetime));
         }
