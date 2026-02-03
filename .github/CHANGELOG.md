@@ -4,6 +4,7 @@
 
 - Floating text above alko bottle shown when picking up items.
 - Item grab animation.
+- Added maroz footsteps
 
 ### Changed
 
@@ -14,6 +15,7 @@
 - Chat timer text keeping the old value.
 - Tooltips bugging out and not showing.
 - Curtains should not billboard.
+- Fixed "Šeiminukės" rotation.
 
 ## [v1.0.0](https://github.com/Edvinas01/ggj-2026/compare/v1.0.0) - 2026-02-03
 

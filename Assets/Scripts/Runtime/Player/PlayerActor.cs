@@ -179,7 +179,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
                 sceneSystem.LoadGameVictoryScene();
             }
 
-            if (args.ValuePrev > args.ValueNext)
+            if (args.RatioPrev > args.Ratio)
             {
                 StartCoroutine(ShakeCameraRoutine());
             }

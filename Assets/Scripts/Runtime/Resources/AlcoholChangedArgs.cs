@@ -2,16 +2,12 @@
 {
     internal readonly struct AlcoholChangedArgs
     {
-        public int ValuePrev { get; }
-
-        public int ValueNext { get; }
-
+        public float RatioPrev { get; }
         public float Ratio { get; }
 
-        public AlcoholChangedArgs(int valuePrev, int valueNext, float ratio)
+        public AlcoholChangedArgs(float retioPrev, float ratio)
         {
-            ValuePrev = valuePrev;
-            ValueNext = valueNext;
+            RatioPrev = retioPrev;
             Ratio = ratio;
         }
     }

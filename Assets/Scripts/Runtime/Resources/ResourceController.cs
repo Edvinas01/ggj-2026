@@ -27,9 +27,10 @@ namespace RIEVES.GGJ2026.Runtime.Resources
                 return;
             }
 
+            var prevRatio = AlcoholRatio;
             alcohol = alcoholNext;
 
-            OnAlcoholChanged?.Invoke(new AlcoholChangedArgs(alcoholPrev, alcoholNext, AlcoholRatio));
+            OnAlcoholChanged?.Invoke(new AlcoholChangedArgs(prevRatio, AlcoholRatio));
         }
 
         public void UseAlcohol(int amount)
@@ -42,9 +43,10 @@ namespace RIEVES.GGJ2026.Runtime.Resources
                 return;
             }
 
+            var prevRatio = AlcoholRatio;
             alcohol = alcoholNext;
 
-            OnAlcoholChanged?.Invoke(new AlcoholChangedArgs(alcoholPrev, alcoholNext, AlcoholRatio));
+            OnAlcoholChanged?.Invoke(new AlcoholChangedArgs(prevRatio, AlcoholRatio));
         }
     }
 }
