@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b5d8f71082ad46348ae9964cbffae36d, type: 2}
+    - target: {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6300439445613250518, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -71,6 +75,10 @@ PrefabInstance:
     - target: {fileID: 7587092919490278765, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
       propertyPath: m_Name
       value: Decoration_Food_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7852147745114289781, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.198
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

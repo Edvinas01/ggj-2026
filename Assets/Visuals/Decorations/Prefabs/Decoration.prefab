@@ -1,5 +1,180 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &626293483601789109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3254892893456571840}
+  - component: {fileID: 7496575341113222545}
+  m_Layer: 10
+  m_Name: Scale_Tall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3254892893456571840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626293483601789109}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6300439445613250518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7496575341113222545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626293483601789109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ce939084e2403c98fe67da3160be29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.ScaleAnimation
+  target: {fileID: 6514083611934690725}
+  isTweenFromStartScale: 1
+  startScale: {x: 1, y: 1.2, z: 1}
+  startScaleMultiplier: 1
+  isTweenToEndScale: 0
+  endScale: {x: 1, y: 1, z: 1}
+  ease: 24
+  duration: 0.3
+  randomDurationOffset: 0.1
+  isPlayOnStart: 0
+  isDestroyOnCompleted: 0
+  isIndependentUpdate: 1
+  isPlayOnce: 0
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &4494623472569212758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700446569892045195}
+  - component: {fileID: 82697914657394238}
+  m_Layer: 10
+  m_Name: Scale_Wide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &700446569892045195
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494623472569212758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6300439445613250518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &82697914657394238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494623472569212758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ce939084e2403c98fe67da3160be29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.ScaleAnimation
+  target: {fileID: 6514083611934690725}
+  isTweenFromStartScale: 1
+  startScale: {x: 1.2, y: 1, z: 1}
+  startScaleMultiplier: 1
+  isTweenToEndScale: 0
+  endScale: {x: 1, y: 1, z: 1}
+  ease: 24
+  duration: 0.3
+  randomDurationOffset: 0.1
+  isPlayOnStart: 0
+  isDestroyOnCompleted: 0
+  isIndependentUpdate: 1
+  isPlayOnce: 0
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &5542641437581747555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7852147745114289781}
+  - component: {fileID: 3460512909066401701}
+  m_Layer: 10
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7852147745114289781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542641437581747555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6300439445613250518}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3460512909066401701
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542641437581747555}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6012545410569170735
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +232,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6300439445613250518}
+  - component: {fileID: 5277805309664444786}
+  - component: {fileID: 3834419496451840905}
+  - component: {fileID: 2343567261839082952}
+  - component: {fileID: 8798387991757369895}
+  - component: {fileID: 5063006190112953912}
+  - component: {fileID: 8374887716597250311}
   m_Layer: 10
   m_Name: Decoration
   m_TagString: Untagged
@@ -78,8 +259,279 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6514083611934690725}
+  - {fileID: 700446569892045195}
+  - {fileID: 3254892893456571840}
+  - {fileID: 7852147745114289781}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5277805309664444786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587092919490278765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9f7a566d104d3b9f3751f61528c75d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Interaction.Interactables.SimpleInteractable
+  onHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  onHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  onSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3834419496451840905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587092919490278765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a91b7b2f46440f79203fcb28d4e7323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Decorations.DecorationActor
+  interactable: {fileID: 5277805309664444786}
+  isDestructible: 1
+  maxSelectCountRange: {x: 10, y: 40}
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8798387991757369895}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5063006190112953912}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8374887716597250311}
+        m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.GameObjectSpawner,
+          RIEVES.GGJ2026.Core
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7587092919490278765}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2343567261839082952}
+        m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.RandomSelectorTrigger,
+          RIEVES.GGJ2026.Core
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8798387991757369895}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2343567261839082952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587092919490278765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5fa158bad4941ae89da2eae44d75ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.RandomSelectorTrigger
+  triggers:
+  - onTriggered:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 82697914657394238}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
+            RIEVES.GGJ2026.Core
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7496575341113222545}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
+            RIEVES.GGJ2026.Core
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - onTriggered:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 82697914657394238}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
+            RIEVES.GGJ2026.Core
+          m_MethodName: Stop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7496575341113222545}
+          m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
+            RIEVES.GGJ2026.Core
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &8798387991757369895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587092919490278765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 262780412
+      Data2: 1214014320
+      Data3: 12006565
+      Data4: 1953831606
+    Path: event:/SFX/S_Punch
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &5063006190112953912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587092919490278765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 564934015
+      Data2: 1318297373
+      Data3: -501365102
+      Data4: -1120139715
+    Path: event:/SFX/S_BottleSmash
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &8374887716597250311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7587092919490278765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2227ee3fc8448eaa436b3b50f64bc7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.GameObjectSpawner
+  gameObjectPrefab: {fileID: 7099010122504335502, guid: a31c53f4fae174842be44a01ca868fd1, type: 3}
+  parentTransformName: VFX
+  isSpawnOnStart: 0
+  isIgnoreRotation: 0
 --- !u!1 &8031331178730840009
 GameObject:
   m_ObjectHideFlags: 0

@@ -1230,12 +1230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Resources.ResourceController
   alcohol: 20
   alcoholMax: 150
-  onAlcoholIncreased:
-    m_PersistentCalls:
-      m_Calls: []
-  onAlcoholDecreased:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3720372723344079548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,19 +1626,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.74689466
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.10971218
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.6488661
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.09531266
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

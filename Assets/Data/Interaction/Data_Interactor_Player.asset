@@ -17,6 +17,6 @@ MonoBehaviour:
     raycastRadius: 0.1
     raycastLayer:
       serializedVersion: 2
-      m_Bits: 384
+      m_Bits: 1409
     queryTriggerInteraction: 1
     raycastColor: {r: 1, g: 0, b: 0, a: 1}
