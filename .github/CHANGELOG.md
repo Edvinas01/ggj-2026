@@ -3,6 +3,9 @@
 ### Added
 
 - Destructible items.
+- Boucne animation to intro screen.
+- Juice to punches and picking up items.
+- Bathroom.
 
 ### Changed
 
@@ -12,6 +15,7 @@
 ### Fixed
 
 - Raycasts going through walls.
+- Some lvl design jank.
 
 ## [v1.1.0](https://github.com/Edvinas01/ggj-2026/compare/v1.0.0...v1.1.0) - 2026-02-03
 

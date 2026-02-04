@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace RIEVES.GGJ2026.Core.Utilities
@@ -26,6 +27,11 @@ namespace RIEVES.GGJ2026.Core.Utilities
             probe.refreshMode = ReflectionProbeRefreshMode.ViaScripting;
 
             timer = refreshIntervalSeconds;
+        }
+
+        private void Start()
+        {
+            probe.RenderProbe();
         }
 
         private void Update()

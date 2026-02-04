@@ -29,17 +29,19 @@ namespace RIEVES.GGJ2026.Runtime.Items
         private readonly List<ItemActor> activeItems = new();
         private float cooldown;
 
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.blue;
+            UnityEditor.Handles.color = Color.greenYellow;
             foreach (var waypoint in waypoints)
             {
                 if (waypoint)
                 {
-                    Gizmos.DrawSphere(waypoint.position, 0.1f);
+                    UnityEditor.Handles.DrawWireDisc(waypoint.position, Vector3.up, randomXZOffset);
                 }
             }
         }
+#endif
 
         private void Start()
         {

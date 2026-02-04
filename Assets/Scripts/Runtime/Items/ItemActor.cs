@@ -1,6 +1,5 @@
-﻿using RIEVES.GGJ2026.Core.Interaction.Interactables;
-using RIEVES.GGJ2026.Runtime.Resources;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace RIEVES.GGJ2026.Runtime.Items
 {
@@ -10,16 +9,16 @@ namespace RIEVES.GGJ2026.Runtime.Items
         [SerializeField]
         private ItemData data;
 
-        [Header("Interaction")]
-        [SerializeField]
-        private Interactable interactable;
-
         [Header("Rendering")]
         [SerializeField]
         private Renderer frontRenderer;
 
         [SerializeField]
         private string texturePropertyId = "_BaseMap";
+
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onUsed;
 
         public ItemData Data => data;
 
@@ -29,22 +28,6 @@ namespace RIEVES.GGJ2026.Runtime.Items
             {
                 Initialize(data);
             }
-        }
-
-        private void OnEnable()
-        {
-            interactable.OnHoverEntered += OnInteractableHoverEntered;
-            interactable.OnHoverExited += OnInteractableHoverExited;
-            interactable.OnSelectEntered += OnInteractableSelectEntered;
-            interactable.OnSelectExited += OnInteractableSelectExited;
-        }
-
-        private void OnDisable()
-        {
-            interactable.OnHoverEntered -= OnInteractableHoverEntered;
-            interactable.OnHoverExited -= OnInteractableHoverExited;
-            interactable.OnSelectEntered -= OnInteractableSelectEntered;
-            interactable.OnSelectExited -= OnInteractableSelectExited;
         }
 
         public void Initialize(ItemData newData)
@@ -57,32 +40,10 @@ namespace RIEVES.GGJ2026.Runtime.Items
             frontRenderer.SetPropertyBlock(block);
         }
 
-        private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
+        public void Use()
         {
-        }
-
-        private void OnInteractableHoverExited(InteractableHoverExitedArgs args)
-        {
-        }
-
-        private void OnInteractableSelectEntered(InteractableSelectEnteredArgs args)
-        {
-            if (args.Interactor is not Component component)
-            {
-                return;
-            }
-
-            var resources = component.GetComponentInParent<ResourceController>();
-            if (resources)
-            {
-                resources.AddAlcohol(data.Value);
-            }
-
+            onUsed.Invoke();
             Destroy(gameObject);
-        }
-
-        private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
-        {
         }
     }
 }

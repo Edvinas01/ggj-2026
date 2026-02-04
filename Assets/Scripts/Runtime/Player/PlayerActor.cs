@@ -7,12 +7,15 @@ using RIEVES.GGJ2026.Core.Interaction.Interactors;
 using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Runtime.Characters;
 using RIEVES.GGJ2026.Runtime.Controls;
+using RIEVES.GGJ2026.Runtime.Decorations;
+using RIEVES.GGJ2026.Runtime.Doors;
 using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
 using RIEVES.GGJ2026.Runtime.Popups;
 using RIEVES.GGJ2026.Runtime.Resources;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace RIEVES.GGJ2026.Runtime.Player
@@ -34,13 +37,6 @@ namespace RIEVES.GGJ2026.Runtime.Player
         [SerializeField]
         private ItemPreview itemGrabPreview;
 
-        [SerializeField]
-        private CharacterAnimationController itemGrabAnimation;
-
-        [SerializeField]
-        [Min(0f)]
-        private float loseTickDelay = 0.3f;
-
         [Header("Movement")]
         [SerializeField]
         private MovementController movementController;
@@ -50,22 +46,12 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private CinemachineCamera cinemachineCamera;
 
         [SerializeField]
-        private CinemachineImpulseSource cinemachineImpulse;
-
-        [SerializeField]
         [Min(0f)]
         private float zoomInSpeed = 8f;
 
         [SerializeField]
         [Min(0f)]
         private float zoomInFov = 20f;
-
-        [SerializeField]
-        [Min(0f)]
-        private float shakeDelay = 0.3f;
-
-        [SerializeField]
-        private Vector3 cameraShakeForce = new(0f, 0f, -1f);
 
         [Header("Inputs")]
         [SerializeField]
@@ -85,7 +71,22 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private HoverPopupViewController itemHoverPopupController;
 
         [SerializeField]
+        private HoverPopupViewController doorHoverPopupController;
+
+        [SerializeField]
         private ControlsViewController controlsViewController;
+
+        [Header("Gameplay")]
+        [SerializeField]
+        [Min(0f)]
+        private float loseTickDelay = 0.3f;
+
+        [Header("Events")]
+        [SerializeField]
+        private UnityEvent onItemUsed;
+
+        [SerializeField]
+        private UnityEvent onDecorationPunched;
 
         private float initialFov;
         private float currentFov;
@@ -178,11 +179,6 @@ namespace RIEVES.GGJ2026.Runtime.Player
             {
                 sceneSystem.LoadGameVictoryScene();
             }
-
-            if (args.RatioPrev > args.Ratio)
-            {
-                StartCoroutine(ShakeCameraRoutine());
-            }
         }
 
         private void OnMoveEntered()
@@ -227,6 +223,14 @@ namespace RIEVES.GGJ2026.Runtime.Player
             {
                 itemHoverPopupController.TitleText = item.Data.ItemName;
                 itemHoverPopupController.ShowView();
+                return;
+            }
+
+            var door = component.GetComponentInParent<DoorActor>();
+            if (door)
+            {
+                doorHoverPopupController.TitleText = door.IsOpen ? "Uždaryti" : "Atidaryti";
+                doorHoverPopupController.ShowView();
             }
         }
 
@@ -235,6 +239,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
             characterHoverPopupController.HideView();
             itemHoverPopupController.HideView();
             defaultHoverPopupController.HideView();
+            doorHoverPopupController.HideView();
         }
 
         private void OnInteractorSelectEntered(InteractorSelectEnteredArgs args)
@@ -244,11 +249,38 @@ namespace RIEVES.GGJ2026.Runtime.Player
                 return;
             }
 
+            args.Interactable.Deselect();
+
+            var character = component.GetComponentInParent<CharacterActor>();
+            if (character)
+            {
+                conversationController.StartConversation(character);
+                character.StartConversation(transform);
+                return;
+            }
+
             var item = component.GetComponentInParent<ItemActor>();
             if (item)
             {
-                itemGrabAnimation.Play();
                 itemGrabPreview.Show(item.Data);
+                resourceController.AddAlcohol(item.Data.Value);
+                item.Use();
+                onItemUsed.Invoke();
+                return;
+            }
+
+            var decoration = component.GetComponentInParent<DecorationActor>();
+            if (decoration)
+            {
+                decoration.Punch();
+                onDecorationPunched.Invoke();
+                return;
+            }
+
+            var door = component.GetComponentInParent<DoorActor>();
+            if (door)
+            {
+                door.Open();
             }
         }
 
@@ -277,12 +309,6 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private void OnZoomCanceled(InputAction.CallbackContext context)
         {
             targetFov = initialFov;
-        }
-
-        private IEnumerator ShakeCameraRoutine()
-        {
-            yield return new WaitForSeconds(shakeDelay);
-            cinemachineImpulse.GenerateImpulse(cameraShakeForce);
         }
 
         private void UpdateCameraZoom()

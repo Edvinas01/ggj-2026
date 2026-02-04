@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 532972e728d592a4e93445797fbda2a6, type: 2}
+    - target: {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_Height
+      value: 0.5276481
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_Center.y
+      value: -0.23617595
+      objectReference: {fileID: 0}
     - target: {fileID: 6300439445613250518, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.568
@@ -56,8 +64,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Decoration_Komoda
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5542641437581747555, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4144967334836015618}
   m_SourcePrefab: {fileID: 100100000, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+--- !u!1 &5062225645835900524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5542641437581747555, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+  m_PrefabInstance: {fileID: 768928484704678671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4144967334836015618
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062225645835900524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.3038242, z: 0.036948398}
+  m_Center: {x: 0, y: -0.20425957, z: -0.017027594}

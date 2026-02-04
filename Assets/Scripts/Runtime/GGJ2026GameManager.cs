@@ -64,7 +64,8 @@ namespace RIEVES.GGJ2026.Runtime
         {
             base.OnStarted();
 
-            audioSystem.LoadBanks();
+            // Seems that we have automatic bank loading enabled, so just yeeting this.
+            // audioSystem.LoadBanks();
 
             // The initial scene uses BeginGameViewController to start the game so that
             // audio works correctly in Web builds. We keep the same flow in Desktop as well to

@@ -300,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a91b7b2f46440f79203fcb28d4e7323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Decorations.DecorationActor
-  interactable: {fileID: 5277805309664444786}
   isDestructible: 1
   maxSelectCountRange: {x: 10, y: 40}
   onDestroy:
@@ -507,7 +506,7 @@ MonoBehaviour:
     Path: event:/SFX/S_BottleSmash
   Event: 
   EventPlayTrigger: 0
-  EventStopTrigger: 2
+  EventStopTrigger: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0

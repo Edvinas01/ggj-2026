@@ -6,10 +6,18 @@ namespace RIEVES.GGJ2026.Core.Utilities
 {
     internal sealed class DelayTrigger : MonoBehaviour
     {
+        [Header("Features")]
         [Min(0f)]
         [SerializeField]
         private float delaySeconds = 3f;
 
+        [SerializeField]
+        private bool isTriggerOnce = true;
+
+        [SerializeField]
+        private bool isDestroyOnTrigger = true;
+
+        [Header("Events")]
         [SerializeField]
         private UnityEvent onTrigger;
 
@@ -22,7 +30,7 @@ namespace RIEVES.GGJ2026.Core.Utilities
 
         private IEnumerator TriggerRoutine()
         {
-            if (isTriggered)
+            if (isTriggerOnce && isTriggered)
             {
                 yield break;
             }
@@ -30,7 +38,11 @@ namespace RIEVES.GGJ2026.Core.Utilities
             isTriggered = true;
             yield return new WaitForSeconds(delaySeconds);
             onTrigger.Invoke();
-            Destroy(this);
+
+            if (isDestroyOnTrigger)
+            {
+                Destroy(this);
+            }
         }
     }
 }

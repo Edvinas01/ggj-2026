@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf873d1456942e395e59f00f2b5c2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.ProbeRefresher
-  refreshIntervalSeconds: 0.1
+  refreshIntervalSeconds: 0.15
 --- !u!1 &5100959137989809639
 GameObject:
   m_ObjectHideFlags: 0

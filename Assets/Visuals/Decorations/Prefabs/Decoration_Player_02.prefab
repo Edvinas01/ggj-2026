@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: isDestructible
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5542641437581747555, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6300439445613250518, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

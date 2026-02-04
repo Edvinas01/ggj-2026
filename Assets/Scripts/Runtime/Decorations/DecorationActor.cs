@@ -1,5 +1,4 @@
-﻿using RIEVES.GGJ2026.Core.Interaction.Interactables;
-using RIEVES.GGJ2026.Core.Utilities;
+﻿using RIEVES.GGJ2026.Core.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,10 +6,6 @@ namespace RIEVES.GGJ2026.Runtime.Decorations
 {
     internal sealed class DecorationActor : MonoBehaviour
     {
-        [Header("Interaction")]
-        [SerializeField]
-        private Interactable interactable;
-
         [Header("Destruction")]
         [SerializeField]
         private bool isDestructible = true;
@@ -35,20 +30,8 @@ namespace RIEVES.GGJ2026.Runtime.Decorations
             maxSelectCount = RandomUtilities.GetRandomInt(maxSelectCountRange);
         }
 
-        private void OnEnable()
+        public void Punch()
         {
-            interactable.OnSelectEntered += OnSelectEntered;
-        }
-
-        private void OnDisable()
-        {
-            interactable.OnSelectEntered -= OnSelectEntered;
-        }
-
-        private void OnSelectEntered(InteractableSelectEnteredArgs args)
-        {
-            args.Interactor.Deselect();
-
             if (isDestructible == false)
             {
                 return;

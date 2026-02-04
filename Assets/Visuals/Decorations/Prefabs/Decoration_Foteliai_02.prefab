@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 8b22ddc28c3075147928e6207c783044, type: 2}
+    - target: {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_Height
+      value: 0.3790698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_Center.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460512909066401701, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_Center.y
+      value: -0.3104651
+      objectReference: {fileID: 0}
     - target: {fileID: 6300439445613250518, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -59,5 +71,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5542641437581747555, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6854830764150240728}
   m_SourcePrefab: {fileID: 100100000, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+--- !u!1 &901776764570982984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5542641437581747555, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+  m_PrefabInstance: {fileID: 4641146564685856555}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &6854830764150240728
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901776764570982984}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.1
+  m_Height: 0.3790698
+  m_Direction: 1
+  m_Center: {x: -0.26, y: -0.3104651, z: 0}

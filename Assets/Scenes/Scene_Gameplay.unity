@@ -378,6 +378,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1148914706}
     m_Modifications:
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4771975944389450584, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8768234594321391368, guid: 59c6284a8121f624d99b43e9b79dd665, type: 3}
       propertyPath: m_Name
       value: Actor_Player

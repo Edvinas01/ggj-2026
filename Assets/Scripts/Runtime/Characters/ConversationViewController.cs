@@ -7,6 +7,10 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 {
     internal sealed class ConversationViewController : ViewController<ConversationView>
     {
+        [Min(0)]
+        [SerializeField]
+        private int showTimerSeconds = 3;
+
         private Func<float> remainingTimeProvider;
         private int remainingSecondsPrev;
         private bool isInitialized;
@@ -45,7 +49,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 if (remainingSecondsPrev != remainingSecondsNext)
                 {
                     View.RemainingTime = remainingSecondsNext;
-                    View.IsRemainingTimeEnabled = remainingSecondsNext > 0;
+                    View.IsRemainingTimeEnabled = remainingSecondsNext > 0 && remainingSecondsNext <= showTimerSeconds;
 
                     remainingSecondsPrev = remainingSecondsNext;
                 }
@@ -66,7 +70,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             View.TitleText = title;
             View.ContentText = content;
             View.RemainingTime = remainingSecondsPrev;
-            View.IsRemainingTimeEnabled = remainingSecondsPrev > 0;
+            View.IsRemainingTimeEnabled = remainingSecondsPrev > 0 && remainingSecondsPrev <= showTimerSeconds;
 
             View.ClearChoices();
 

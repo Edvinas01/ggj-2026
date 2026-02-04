@@ -20,10 +20,6 @@ namespace RIEVES.GGJ2026
         private CharacterData data;
 
         [SerializeField]
-        private Interactable interactable;
-
-
-        [SerializeField]
         private bool lockCharacterState;
 
         [SerializeField]
@@ -122,20 +118,12 @@ namespace RIEVES.GGJ2026
 
         private void OnEnable()
         {
-            interactable.OnHoverEntered += OnInteractableHoverEntered;
-            interactable.OnHoverExited += OnInteractableHoverExited;
-            interactable.OnSelectEntered += OnInteractableSelectEntered;
-            interactable.OnSelectExited += OnInteractableSelectExited;
             movementController.OnMoveEntered += OnFootstepStarted;
             movementController.OnMoveExited += OnFootstepStopped;
         }
 
         private void OnDisable()
         {
-            interactable.OnHoverEntered -= OnInteractableHoverEntered;
-            interactable.OnHoverExited -= OnInteractableHoverExited;
-            interactable.OnSelectEntered -= OnInteractableSelectEntered;
-            interactable.OnSelectExited -= OnInteractableSelectExited;
             movementController.OnMoveEntered -= OnFootstepStarted;
             movementController.OnMoveExited -= OnFootstepStopped;
         }
@@ -588,33 +576,6 @@ namespace RIEVES.GGJ2026
                 StartMovement(CurrentTarget);
 
             SetAnimationState(CharacterAnimationState.NeutralResponse);
-        }
-
-        private void OnInteractableHoverEntered(InteractableHoverEnteredArgs args)
-        {
-        }
-
-        private void OnInteractableHoverExited(InteractableHoverExitedArgs args)
-        {
-        }
-
-        private void OnInteractableSelectEntered(InteractableSelectEnteredArgs args)
-        {
-            if (args.Interactor is not Component component)
-            {
-                return;
-            }
-
-            var controller = component.GetComponentInParent<ConversationController>();
-            if (controller)
-            {
-                controller.StartConversation(this);
-                StartConversation(component.transform);
-            }
-        }
-
-        private void OnInteractableSelectExited(InteractableSelectExitedArgs args)
-        {
         }
 
         private void OnFootstepStarted()

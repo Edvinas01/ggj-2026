@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 697387858342401595}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.8, y: 1.947, z: 16.222}
+  m_LocalPosition: {x: 34.925, y: 1.947, z: 16.203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -304,7 +304,7 @@ Transform:
   m_GameObject: {fileID: 4389157623042031649}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.84, y: 1.983, z: 18.43}
+  m_LocalPosition: {x: 34.974, y: 1.983, z: 18.628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -335,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 4577842766717508357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.73, y: 0.831, z: 21.533}
+  m_LocalPosition: {x: 8.73, y: 0.831, z: 21.598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -459,7 +459,7 @@ Transform:
   m_GameObject: {fileID: 6237633994371431962}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.629, y: 1.287, z: 24.538}
+  m_LocalPosition: {x: 0.762, y: 1.287, z: 24.538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Items.ItemController
   maxItems: 10
   spawnCooldown: {x: 10, y: 30}
-  randomXZOffset: 0.2
+  randomXZOffset: 0.15
   actorPrefab: {fileID: 1637930060703512175, guid: 4bfb49d9e6f353d479bb617664ae3cef, type: 3}
   items:
   - {fileID: 11400000, guid: 3605d591f41770043848bee49409e037, type: 2}
@@ -574,11 +574,13 @@ MonoBehaviour:
   waypoints:
   - {fileID: 6233812238972547575}
   - {fileID: 3214396365501327666}
+  - {fileID: 3726308948719683886}
   - {fileID: 3389071057960991532}
   - {fileID: 7832885910398868893}
   - {fileID: 2077464390457507317}
   - {fileID: 3828044049918678176}
   - {fileID: 2086252365495454227}
+  - {fileID: 6391197246332573252}
   - {fileID: 7781181833398355641}
   - {fileID: 5744422303043120656}
   - {fileID: 2302001002467976119}
@@ -613,7 +615,7 @@ Transform:
   m_GameObject: {fileID: 8879580118131254560}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.502, y: 0.378, z: 7.799}
+  m_LocalPosition: {x: 20.89, y: 0.378, z: 7.541}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -644,7 +646,7 @@ Transform:
   m_GameObject: {fileID: 8962636372687687535}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.894, y: 1.235, z: 24.699}
+  m_LocalPosition: {x: 1.896, y: 1.235, z: 24.767}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
