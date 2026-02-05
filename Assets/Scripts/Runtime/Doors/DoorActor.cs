@@ -16,6 +16,28 @@ namespace RIEVES.GGJ2026.Runtime.Doors
 
         public void Open()
         {
+            if (IsOpen)
+            {
+                return;
+            }
+
+            onOpened.Invoke();
+            IsOpen = true;
+        }
+
+        public void Close()
+        {
+            if (IsOpen == false)
+            {
+                return;
+            }
+
+            onClosed.Invoke();
+            IsOpen = false;
+        }
+
+        public void ToggleOpen()
+        {
             IsOpen = !IsOpen;
 
             if (IsOpen)

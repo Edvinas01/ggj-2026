@@ -280,7 +280,14 @@ namespace RIEVES.GGJ2026.Runtime.Player
             var door = component.GetComponentInParent<DoorActor>();
             if (door)
             {
-                door.Open();
+                if (door.IsOpen)
+                {
+                    door.Close();
+                }
+                else
+                {
+                    door.Open();
+                }
             }
         }
 

@@ -11,12 +11,12 @@ namespace RIEVES.GGJ2026.Core.Utilities
         [SerializeField]
         private UnityEvent onExited;
 
-        public void TriggerExit()
+        public void TriggerEnter()
         {
             onEntered.Invoke();
         }
 
-        public void TriggerEnter()
+        public void TriggerExit()
         {
             onExited.Invoke();
         }
