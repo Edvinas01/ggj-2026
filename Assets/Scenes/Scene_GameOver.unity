@@ -232,6 +232,7 @@ MonoBehaviour:
     startMode: 1
   showInputAction: {fileID: 0}
   isPauseOnShow: 0
+  startGameScene: {fileID: 11400000, guid: 25a5811220efa1b4888e92b0282ed65b, type: 2}
 --- !u!1 &1103835147
 GameObject:
   m_ObjectHideFlags: 0
