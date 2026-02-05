@@ -22,6 +22,17 @@ namespace RIEVES.GGJ2026.Runtime.Items
 
         public ItemData Data => data;
 
+#if UNITY_EDITOR
+
+        private void OnValidate()
+        {
+            if (Application.isPlaying == false && data && gameObject.scene.IsValid())
+            {
+                Initialize(data);
+            }
+        }
+#endif
+
         private void Start()
         {
             if (data)
@@ -38,6 +49,14 @@ namespace RIEVES.GGJ2026.Runtime.Items
 
             block.SetTexture(texturePropertyId, newData.Texture);
             frontRenderer.SetPropertyBlock(block);
+
+            var namePrev = name;
+            var nameNext = $"Actor_Item ({data.ItemName})";
+
+            if (string.Equals(namePrev, nameNext) == false)
+            {
+                name = nameNext;
+            }
         }
 
         public void Use()

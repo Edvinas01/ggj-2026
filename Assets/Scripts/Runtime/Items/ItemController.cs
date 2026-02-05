@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using CHARK.GameManagement;
+using RIEVES.GGJ2026.Core.Transforms;
 using RIEVES.GGJ2026.Core.Utilities;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace RIEVES.GGJ2026.Runtime.Items
 {
@@ -26,6 +29,7 @@ namespace RIEVES.GGJ2026.Runtime.Items
         [SerializeField]
         private List<Transform> waypoints;
 
+        private ITransformSystem transformSystem;
         private readonly List<ItemActor> activeItems = new();
         private float cooldown;
 
@@ -42,6 +46,11 @@ namespace RIEVES.GGJ2026.Runtime.Items
             }
         }
 #endif
+
+        private void Awake()
+        {
+            transformSystem = GameManager.GetSystem<ITransformSystem>();
+        }
 
         private void Start()
         {
@@ -106,7 +115,13 @@ namespace RIEVES.GGJ2026.Runtime.Items
             var offset = Random.insideUnitSphere * randomXZOffset;
             offset.y = 0f;
 
-            var instance = Instantiate(actorPrefab, position: position + offset, rotation: point.rotation);
+            var instance = Instantiate(
+                original: actorPrefab,
+                position: position + offset,
+                rotation: point.rotation,
+                parent: transformSystem.GetTransform("Runtime_Items")
+            );
+
             instance.Initialize(item);
             activeItems.Add(instance);
 

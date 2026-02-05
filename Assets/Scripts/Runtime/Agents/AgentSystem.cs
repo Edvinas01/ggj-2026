@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CHARK.GameManagement;
 using CHARK.GameManagement.Systems;
+using RIEVES.GGJ2026.Core.Transforms;
 using RIEVES.GGJ2026.Core.Utilities;
 using RIEVES.GGJ2026.Runtime.Characters;
 using RIEVES.GGJ2026.Runtime.Heat;
@@ -25,12 +26,15 @@ namespace RIEVES.GGJ2026
         private readonly List<SpawnPoint> spawnPoints = new();
         public readonly HashSet<CharacterActor> agents = new HashSet<CharacterActor>();
 
+        private ITransformSystem transformSystem;
         private HeatSystem heatSystem;
+
         private int initialBasePopulation = 25;
         private bool isSceneActive = false;
 
         private void Awake()
         {
+            transformSystem = GameManager.GetSystem<ITransformSystem>();
             heatSystem = GameManager.GetSystem<HeatSystem>();
         }
 
@@ -177,7 +181,7 @@ namespace RIEVES.GGJ2026
                 return null;
 
             var characterData = candidates[Random.Range(0, candidates.Count)];
-            var instance = Instantiate(characterPrefab, pos, rot);
+            var instance = Instantiate(characterPrefab, pos, rot, parent: transformSystem.GetTransform("Runtime_Agents"));
             instance.Initialize(characterData);
             return instance;
         }
