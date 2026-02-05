@@ -1358,6 +1358,7 @@ MonoBehaviour:
     startMode: 2
   showInputAction: {fileID: 3765912792571382111, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   isPauseOnShow: 1
+  startGameScene: {fileID: 0}
 --- !u!1 &7319662226924932344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
   ImpulseDefinition:
     ImpulseChannel: 1
-    ImpulseShape: 2
+    ImpulseShape: 0
     CustomImpulseShape:
       serializedVersion: 2
       m_Curve:
@@ -1466,14 +1467,32 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.20571253
-        value: 0.74768484
-        inSlope: 0.23159121
-        outSlope: 0.23159121
+        time: 0.25273708
+        value: -0.9653942
+        inSlope: 0.007449124
+        outSlope: 0.007449124
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.05538341
+        outWeight: 0.524862
+      - serializedVersion: 3
+        time: 0.53721976
+        value: 0.15655933
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.105107844
+      - serializedVersion: 3
+        time: 0.74445754
+        value: -0.10109014
+        inSlope: -0.09404983
+        outSlope: -0.09404983
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.5390476
       - serializedVersion: 3
         time: 1
         value: 0
