@@ -1,4 +1,5 @@
 ﻿using CHARK.GameManagement;
+using CHARK.ScriptableScenes;
 using RIEVES.GGJ2026.Core.Cursors;
 using RIEVES.GGJ2026.Core.Pausing;
 using RIEVES.GGJ2026.Core.Scenes;
@@ -17,6 +18,10 @@ namespace RIEVES.GGJ2026.Core.Menus
         [Header("Features")]
         [SerializeField]
         private bool isPauseOnShow;
+
+        [Header("Scenes")]
+        [SerializeField]
+        private ScriptableSceneCollection startGameScene;
 
         private ICursorSystem cursorSystem;
         private ISceneSystem sceneSystem;
@@ -93,7 +98,7 @@ namespace RIEVES.GGJ2026.Core.Menus
 
         private void OnStartClicked()
         {
-            sceneSystem.LoadGameplayScene();
+            sceneSystem.LoadScene(startGameScene);
         }
 
         private void OnExitClicked()
