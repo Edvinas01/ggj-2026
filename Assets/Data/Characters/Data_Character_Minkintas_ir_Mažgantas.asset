@@ -25,7 +25,7 @@ MonoBehaviour:
   conversation:
     messages:
     - messageType: 0
-      content: "Na ir kas, kad neauk\u0161ti mes, daug pakeliam "
+      content: "Na ir kas, kad neauk\u0161ti mes, daug pakeliam"
       huntMessage: "Vien\u0105 i\u0161 apa\u010Dios!"
       correctChoices:
       - "Vyrai m\u016Brai \u0105\u017Euolai!"

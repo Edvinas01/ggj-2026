@@ -55,7 +55,7 @@ MonoBehaviour:
       - "Prie soviet\u0173 buvo geriau?"
       - Tiek geriat, keista, kad dar pamenat
     - messageType: 1
-      content: "U\u017Eteks tu\u0161\u010Dia\u017Eod\u017Eiauti, reikia veiksmo. "
+      content: "U\u017Eteks tu\u0161\u010Dia\u017Eod\u017Eiauti, reikia veiksmo."
       huntMessage: 
       correctChoices: []
       incorrectChoices: []

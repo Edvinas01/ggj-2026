@@ -56,7 +56,7 @@ MonoBehaviour:
       - "Matyt moksliuk\u0117 tu"
       - Tai atsipalaiduok
     - messageType: 1
-      content: "Einu pris\u0117st ka\u017Ekur ramiau, iki. "
+      content: "Einu pris\u0117st ka\u017Ekur ramiau, iki."
       huntMessage: 
       correctChoices: []
       incorrectChoices: []
