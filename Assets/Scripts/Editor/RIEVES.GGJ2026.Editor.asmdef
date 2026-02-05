@@ -3,7 +3,8 @@
     "rootNamespace": "RIEVES.GGJ2026",
     "references": [
         "GUID:14790b4e90df4ec49981acd8c199799e",
-        "GUID:945e70f116d06864a8fd7f84193bddfd"
+        "GUID:945e70f116d06864a8fd7f84193bddfd",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [
         "Editor"
