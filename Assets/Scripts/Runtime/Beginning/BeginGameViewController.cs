@@ -70,7 +70,7 @@ namespace RIEVES.GGJ2026.Runtime.Beginning
             yield return null;
 
             var loadDuration = 0f;
-            while (audioSystem.IsLoading == false && loadDuration < maxLoadDuration)
+            while (audioSystem.IsLoading && loadDuration < maxLoadDuration)
             {
                 // We wait a bit longer here as there is no need to poll often.
                 yield return new WaitForSeconds(loadTickDelay);
