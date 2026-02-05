@@ -28,6 +28,7 @@ namespace RIEVES.GGJ2026.Editor
 
         [SerializeField]
         private string googleSheetsUrl = "";
+
         private bool isImporting;
 
         [MenuItem(MenuItemConstants.BaseWindowItemName + "/Character Data Importer")]
@@ -187,10 +188,7 @@ namespace RIEVES.GGJ2026.Editor
                 var characterData = AssetDatabase.LoadAssetAtPath<CharacterData>(assetPath);
                 if (characterData == false)
                 {
-                    characterData = templateObject
-                        ? CreateInstance<CharacterData>()
-                        : Instantiate(templateObject);
-
+                    characterData = templateObject ? Instantiate(templateObject) : CreateInstance<CharacterData>();
                     AssetDatabase.CreateAsset(characterData, assetPath);
                 }
 
