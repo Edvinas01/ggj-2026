@@ -98,7 +98,14 @@ namespace RIEVES.GGJ2026.Core.Menus
 
         private void OnStartClicked()
         {
-            sceneSystem.LoadScene(startGameScene);
+            if (startGameScene)
+            {
+                sceneSystem.LoadScene(startGameScene);
+            }
+            else
+            {
+                sceneSystem.LoadGameplayScene();
+            }
         }
 
         private void OnExitClicked()
