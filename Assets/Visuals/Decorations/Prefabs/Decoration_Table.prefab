@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Decoration_Table
       objectReference: {fileID: 0}
+    - target: {fileID: 7852147745114289781, guid: 7f4b402ec4b72e54ebe8e03a4c2dbf7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.587
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
