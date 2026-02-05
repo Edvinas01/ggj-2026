@@ -1,3 +1,5 @@
+## [v1.3.0](https://github.com/Edvinas01/ggj-2026/compare/v1.2.0...v1.3.0) - 2026-02-XX
+
 ## [v1.2.0](https://github.com/Edvinas01/ggj-2026/compare/v1.1.0...v1.2.0) - 2026-02-05
 
 ### Added
@@ -12,7 +14,6 @@
 
 - Start menu to have more juice.
 - Controls helper to include controls for gamepad.
-
 ### Fixed
 
 - Raycasts going through walls.
