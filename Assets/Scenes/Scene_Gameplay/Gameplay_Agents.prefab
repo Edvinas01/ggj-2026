@@ -3771,6 +3771,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6859866971450193479}
     m_Modifications:
+    - target: {fileID: 580170524637385618, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.047
+      objectReference: {fileID: 0}
     - target: {fileID: 1267336869467435128, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
       propertyPath: data
       value: 
@@ -3787,9 +3791,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Actor_Character (Kakalis)
       objectReference: {fileID: 0}
+    - target: {fileID: 2870667330358905641, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.302
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870667330358905641, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870667330358905641, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.228
+      objectReference: {fileID: 0}
     - target: {fileID: 3092334648691783407, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3275830012860846667, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324564241237960774, guid: 390a6cee537c62c4eaf9a037f21e0261, type: 3}
       propertyPath: m_LocalPosition.y
