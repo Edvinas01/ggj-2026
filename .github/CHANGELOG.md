@@ -3,9 +3,9 @@
 ### Added
 
 - Destructible items.
-- Boucne animation to intro screen.
+- Bounce animation to intro screen.
 - Juice to punches and picking up items.
-- Bathroom with Bahtroom guy.
+- Bathroom with Bathroom guy.
 - Intro text to mention what is goin' on.
 
 ### Changed
