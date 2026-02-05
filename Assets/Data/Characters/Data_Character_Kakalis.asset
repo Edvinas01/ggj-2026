@@ -87,6 +87,9 @@ MonoBehaviour:
       Data3: 907840906
       Data4: 1622055665
     Path: event:/VO/VO_Marozas
-  activityPatience: []
+  activityPatience:
+  - activity: 1
+    minTime: 100000
+    maxTime: 100000
   calmMoveSpeed: 0.3
   agitatedMoveSpeed: 1

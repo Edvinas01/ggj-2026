@@ -92,7 +92,7 @@ namespace RIEVES.GGJ2026
 
         private void OnValidate()
         {
-            if (Application.isPlaying == false && data)
+            if (Application.isPlaying == false && data && gameObject.scene.IsValid())
             {
                 Initialize(data);
             }
@@ -523,6 +523,14 @@ namespace RIEVES.GGJ2026
 
             block.SetTexture(texturePropertyId, data.BackTexture);
             backRenderer.SetPropertyBlock(block);
+
+            var namePrev = name;
+            var nameNext = $"Actor_Character ({data.CharacterName})";
+
+            if (string.Equals(namePrev, nameNext) == false)
+            {
+                name = nameNext;
+            }
         }
 
         public void RemoveMessage(CharacterMessageData message)
