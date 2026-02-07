@@ -1,4 +1,4 @@
-## [v1.3.0](https://github.com/Edvinas01/ggj-2026/compare/v1.2.0...v1.3.0) - 2026-02-XX
+## [v1.3.0](https://github.com/Edvinas01/ggj-2026/compare/v1.2.0...v1.3.0) - 2026-02-07
 
 ### Added
 
