@@ -14,12 +14,18 @@ namespace RIEVES.GGJ2026.Core.Input
         [SerializeField]
         private List<GameObject> gamepadObjects;
 
+        [SerializeField]
+        private List<GameObject> touchObjects;
+
         [Header("Events")]
         [SerializeField]
         private UnityEvent onKeyboardMouse;
 
         [SerializeField]
         private UnityEvent onGamepad;
+
+        [SerializeField]
+        private UnityEvent onTouch;
 
         private IInputSystem inputSystem;
 
@@ -60,6 +66,11 @@ namespace RIEVES.GGJ2026.Core.Input
                         obj.SetActive(false);
                     }
 
+                    foreach (var obj in touchObjects)
+                    {
+                        obj.SetActive(false);
+                    }
+
                     onKeyboardMouse.Invoke();
                     break;
                 }
@@ -75,12 +86,32 @@ namespace RIEVES.GGJ2026.Core.Input
                         obj.SetActive(true);
                     }
 
+                    foreach (var obj in touchObjects)
+                    {
+                        obj.SetActive(false);
+                    }
+
                     onGamepad.Invoke();
                     break;
                 }
-                default:
+                case ControlScheme.Touch or ControlScheme.Joystick:
                 {
-                    Debug.LogWarning($"Unsupported control scheme: {controlScheme}", this);
+                    foreach (var obj in keyboardMouseObjects)
+                    {
+                        obj.SetActive(false);
+                    }
+
+                    foreach (var obj in gamepadObjects)
+                    {
+                        obj.SetActive(false);
+                    }
+
+                    foreach (var obj in touchObjects)
+                    {
+                        obj.SetActive(true);
+                    }
+
+                    onTouch.Invoke();
                     break;
                 }
             }

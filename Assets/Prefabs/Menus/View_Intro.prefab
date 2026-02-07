@@ -67,11 +67,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u017D\u0117k, \u0161iandien mokyklos laidos i\u0161leistuv\u0117s, bet
-    tav\u0119s niekas nekviet\u0117, nes nu - tu lopas. \r\nI\u0161kalba nepasi\u017Eymi,
-    plius - dar ir i\u0161 kito kaimo. Pasisl\u0117p\u0119s po akiniais ir geriausiais
-    t\u0117vo r\u016Bbais nei\u0161siduok, gal pritapsi ir i\u0161gert gausi. O jei
-    ne - makufel\u012F dau\u017Eys tau gezai.\n\nNusimato \u012Fdomus vakaras!\r\n"
+  m_text: "T\u0117vo skudurai pad\u0117s, bet vistiek gali suost, kad \u010Dia a\u0161.
+    Reik kuo grei\u010Diau prilakt ir primest, kad a\u0161 prie chebros. Kitaip sulups
+    mane"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: da457fb908fefea4a9b6fc2d8a5bbdea, type: 2}
   m_sharedMaterial: {fileID: 823118625441730426, guid: da457fb908fefea4a9b6fc2d8a5bbdea, type: 2}

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2688596629446725247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.DelayTrigger
   delaySeconds: 3
+  isTriggerOnce: 1
+  isDestroyOnTrigger: 1
   onTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -342,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3323242643061328679
 RectTransform:
   m_ObjectHideFlags: 0
@@ -350,17 +352,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953609619057053759}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4220041130137377459}
+  m_Father: {fileID: 8409106349714668511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -322.76434, y: 0}
+  m_SizeDelta: {x: 645.5287, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7320176407475136077
 CanvasRenderer:
@@ -726,6 +728,32 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 6584417851971170883}
+        m_TargetAssemblyTypeName: RIEVES.GGJ2026.Runtime.Stats.StatsViewController,
+          RIEVES.GGJ2026.Runtime
+        m_MethodName: ShowView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3400249364065443199}
+        m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
+          RIEVES.GGJ2026.Core
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!328 &769619679224557927
 VideoPlayer:
@@ -889,11 +917,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4596770579195851508}
-  - {fileID: 8225013387295161406}
   - {fileID: 5268274027003153546}
   - {fileID: 351750704018045815}
-  - {fileID: 8899473548684540994}
-  - {fileID: 3323242643061328679}
+  - {fileID: 2729490264347842588}
+  - {fileID: 8409106349714668511}
+  - {fileID: 8225013387295161406}
   m_Father: {fileID: 414004637345161698}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1052,7 +1080,7 @@ GameObject:
   - component: {fileID: 2575144920832427232}
   - component: {fileID: 3400249364065443199}
   m_Layer: 5
-  m_Name: Text_Subtitle
+  m_Name: Sequence_01_Text_Subtitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1296,17 +1324,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4872858947498737603}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4220041130137377459}
+  m_Father: {fileID: 8409106349714668511}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -8, y: 8}
+  m_SizeDelta: {x: -48, y: -48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4074138609913110351
 CanvasRenderer:
@@ -1365,15 +1393,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -1443,7 +1471,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 4934022192521229761}
         m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
         m_MethodName: Play
@@ -1491,6 +1519,43 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 7806773254662348715}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 460436033735699900}
+        m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
+          RIEVES.GGJ2026.Core
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6456970855682032931}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
   OnSkipWriter:
     m_PersistentCalls:
@@ -1560,12 +1625,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4872858947498737603}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed87279aff8e41d28c9e5214aa850989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Utilities.DelayTrigger
   delaySeconds: 5
+  isTriggerOnce: 1
+  isDestroyOnTrigger: 1
   onTrigger:
     m_PersistentCalls:
       m_Calls:
@@ -1580,7 +1647,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 5059803360000783178}
         m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
         m_MethodName: set_enabled
@@ -1592,7 +1659,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 7335260636156341362}
         m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
         m_MethodName: Play
@@ -1604,7 +1671,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 6245572776328961756}
         m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Animations.ScaleAnimation,
           RIEVES.GGJ2026.Core
@@ -1617,7 +1684,44 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
-        m_CallState: 2
+        m_CallState: 0
+--- !u!1 &6432344393297543508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8409106349714668511}
+  m_Layer: 5
+  m_Name: Sequence_03_Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8409106349714668511
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432344393297543508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8899473548684540994}
+  - {fileID: 3323242643061328679}
+  m_Father: {fileID: 4220041130137377459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.6, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -8, y: 0}
+  m_SizeDelta: {x: -48, y: -64}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7457334464393314996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1734,7 @@ GameObject:
   - component: {fileID: 1172208561785054563}
   - component: {fileID: 6055054135725924608}
   m_Layer: 5
-  m_Name: Video
+  m_Name: Sequence_01_Video
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1699,9 +1803,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8225013387295161406}
-  - component: {fileID: 6006269684996396467}
+  - component: {fileID: 365059139194054455}
+  - component: {fileID: 460436033735699900}
+  - component: {fileID: 6456970855682032931}
   m_Layer: 5
-  m_Name: Elements
+  m_Name: Sequence_04_Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1725,11 +1831,11 @@ RectTransform:
   m_Father: {fileID: 4220041130137377459}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6006269684996396467
+--- !u!114 &365059139194054455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1738,23 +1844,82 @@ MonoBehaviour:
   m_GameObject: {fileID: 7806773254662348715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.HorizontalLayoutGroup
   m_Padding:
     m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 16
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &460436033735699900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7806773254662348715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ce939084e2403c98fe67da3160be29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Core::RIEVES.GGJ2026.Core.Animations.ScaleAnimation
+  target: {fileID: 8225013387295161406}
+  isTweenFromStartScale: 1
+  startScale: {x: 0, y: 0, z: 0}
+  startScaleMultiplier: 1
+  isTweenToEndScale: 1
+  endScale: {x: 1, y: 1, z: 1}
+  ease: 24
+  duration: 0.7
+  randomDurationOffset: 0
+  isPlayOnStart: 0
+  isDestroyOnCompleted: 0
+  isIndependentUpdate: 1
+  isPlayOnce: 0
+  onCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6456970855682032931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7806773254662348715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 262780412
+      Data2: 1214014320
+      Data3: 12006565
+      Data4: 1953831606
+    Path: event:/SFX/S_Punch
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &7919369463700701087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,7 +1935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1682845272149499982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1788,9 +1953,76 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -273.787}
+  m_AnchoredPosition: {x: 150, y: -342.30008}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &8387657793272986530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2729490264347842588}
+  - component: {fileID: 6584417851971170883}
+  m_Layer: 5
+  m_Name: Sequence_02_Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2729490264347842588
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387657793272986530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4220041130137377459}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6584417851971170883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387657793272986530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5eada54b9ed46e0a163f786e0501b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Stats.StatsViewController
+  controllerData:
+    view: {fileID: 7373096349207214397, guid: d52df750ea6af1343851cd07bbac68fe, type: 3}
+    viewParent: {fileID: 2729490264347842588}
+    startMode: 2
+  onStatsShown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7030780931178907675}
+        m_TargetAssemblyTypeName: TMPEffects.Components.TMPWriter, TMPEffects
+        m_MethodName: StartWriter
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8914835274399065020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,7 +2132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1932,11 +2164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -424.787
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1952,7 +2184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2141344025699539840, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_text
-      value: Restart
+      value: "\u017Daisti dar kart\u0105"
       objectReference: {fileID: 0}
     - target: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_Name
@@ -2018,7 +2250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2050,11 +2282,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 375
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -510.787
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 50761664178898035, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2070,7 +2302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2141344025699539840, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_text
-      value: Main Menu
+      value: Tepti slides
       objectReference: {fileID: 0}
     - target: {fileID: 4789629569132551517, guid: 73577e5eee5291147a5a23b66b940b53, type: 3}
       propertyPath: m_Name

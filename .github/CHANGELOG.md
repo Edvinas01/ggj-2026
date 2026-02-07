@@ -1,5 +1,17 @@
 ## [v1.3.0](https://github.com/Edvinas01/ggj-2026/compare/v1.2.0...v1.3.0) - 2026-02-XX
 
+### Added
+
+- Touch controls for mobile.
+- Eastergg behind the curtains.
+- Stats screen.
+
+### Changed
+
+- Added more item spawn locations so it's more random.
+- Adjusted AI waypoints.
+- Intro text.
+
 ## [v1.2.0](https://github.com/Edvinas01/ggj-2026/compare/v1.1.0...v1.2.0) - 2026-02-05
 
 ### Added

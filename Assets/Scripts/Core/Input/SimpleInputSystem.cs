@@ -21,6 +21,12 @@ namespace RIEVES.GGJ2026.Core.Input
         [SerializeField]
         private string gamepadControlScheme = "Gamepad";
 
+        [SerializeField]
+        private string touchControlScheme = "Touch";
+
+        [SerializeField]
+        private string joystickControlScheme = "Joystick";
+
         [Header("Action Maps")]
         [SerializeField]
         private string playerActionMapName = "Player";
@@ -145,11 +151,25 @@ namespace RIEVES.GGJ2026.Core.Input
         {
             if (input == false)
             {
-                // Defaults to keyboard & mouse.
-                return ControlScheme.KeyboardMouse;
+                return ControlScheme.Unknown;
             }
 
             var schemeName = input.currentControlScheme;
+            if (UnityEngine.Device.Application.isMobilePlatform)
+            {
+                if (string.Equals(schemeName, touchControlScheme))
+                {
+                    return ControlScheme.Touch;
+                }
+
+                if (string.Equals(schemeName, joystickControlScheme))
+                {
+                    return ControlScheme.Joystick;
+                }
+
+                return ControlScheme.Touch;
+            }
+
             if (string.Equals(schemeName, keyboardMouseControlScheme))
             {
                 return ControlScheme.KeyboardMouse;
@@ -160,8 +180,17 @@ namespace RIEVES.GGJ2026.Core.Input
                 return ControlScheme.Gamepad;
             }
 
-            // Defaults to keyboard & mouse.
-            return ControlScheme.KeyboardMouse;
+            if (string.Equals(schemeName, touchControlScheme))
+            {
+                return ControlScheme.Touch;
+            }
+
+            if (string.Equals(schemeName, joystickControlScheme))
+            {
+                return ControlScheme.Joystick;
+            }
+
+            return ControlScheme.Unknown;
         }
     }
 }

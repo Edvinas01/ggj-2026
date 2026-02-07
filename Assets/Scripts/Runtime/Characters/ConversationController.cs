@@ -4,7 +4,6 @@ using System.Linq;
 using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Utilities;
 using RIEVES.GGJ2026.Runtime.Heat;
-using RIEVES.GGJ2026.Runtime.Resources;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
@@ -20,12 +19,22 @@ namespace RIEVES.GGJ2026.Runtime.Characters
             Neutral,
         }
 
+        public readonly struct ConversationStoppedArgs
+        {
+            public CharacterActor ConversingWith { get; }
+
+            public ConversationResult Result { get; }
+
+            public ConversationStoppedArgs(CharacterActor conversingWith, ConversationResult result)
+            {
+                ConversingWith = conversingWith;
+                Result = result;
+            }
+        }
+
         [Header("General")]
         [SerializeField]
         private ConversationViewController viewController;
-
-        [SerializeField]
-        private ResourceController resourceController;
 
         [Header("Features")]
         [Min(1)]
@@ -71,7 +80,7 @@ namespace RIEVES.GGJ2026.Runtime.Characters
 
         public event Action OnConversationStarted;
 
-        public event Action OnConversationStopped;
+        public event Action<ConversationStoppedArgs> OnConversationStopped;
 
         private void Awake()
         {
@@ -162,7 +171,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                     case ConversationResult.Correct:
                         {
                             onCorrectChoiceSelected.Invoke();
-                            resourceController.AddAlcohol(conversingWith.CharacterData.AddsAlcohol);
                             conversingWith.ConversationStoppedCorrect();
                             break;
                         }
@@ -173,7 +181,6 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                             else
                                 onIncorrectChoiceSelected.Invoke();
 
-                            resourceController.UseAlcohol(conversingWith.CharacterData.RemovesAlcohol);
                             conversingWith.ConversationStoppedIncorrect();
                             break;
                         }
@@ -192,10 +199,10 @@ namespace RIEVES.GGJ2026.Runtime.Characters
                 conversingWith.StopVoice();
             }
 
+            OnConversationStopped?.Invoke(new ConversationStoppedArgs(conversingWith, result));
+
             currentMessageCount = 0;
             conversingWith = null;
-
-            OnConversationStopped?.Invoke();
         }
 
         public bool IsContainsAnyMessages(CharacterActor character)

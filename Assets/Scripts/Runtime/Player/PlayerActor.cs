@@ -13,6 +13,7 @@ using RIEVES.GGJ2026.Runtime.Items;
 using RIEVES.GGJ2026.Runtime.Movement;
 using RIEVES.GGJ2026.Runtime.Popups;
 using RIEVES.GGJ2026.Runtime.Resources;
+using RIEVES.GGJ2026.Runtime.Stats;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
@@ -95,12 +96,14 @@ namespace RIEVES.GGJ2026.Runtime.Player
         private ICursorSystem cursorSystem;
         private IInputSystem inputSystem;
         private ISceneSystem sceneSystem;
+        private StatsSystem statsSystem;
 
         private void Awake()
         {
             cursorSystem = GameManager.GetSystem<ICursorSystem>();
             inputSystem = GameManager.GetSystem<IInputSystem>();
             sceneSystem = GameManager.GetSystem<ISceneSystem>();
+            statsSystem = GameManager.GetSystem<StatsSystem>();
         }
 
         private void Start()
@@ -193,8 +196,28 @@ namespace RIEVES.GGJ2026.Runtime.Player
             interactor.enabled = false;
         }
 
-        private void OnConversationStopped()
+        private void OnConversationStopped(ConversationController.ConversationStoppedArgs args)
         {
+            switch (args.Result)
+            {
+                case ConversationController.ConversationResult.Correct:
+                {
+                    resourceController.AddAlcohol(args.ConversingWith.CharacterData.AddsAlcohol);
+                    break;
+                }
+                case ConversationController.ConversationResult.Incorrect:
+                {
+                    resourceController.UseAlcohol(args.ConversingWith.CharacterData.RemovesAlcohol);
+                    break;
+                }
+                case ConversationController.ConversationResult.Neutral:
+                default:
+                {
+                    break;
+                }
+            }
+
+            statsSystem.RecordStat(new ConversationStat(args.ConversingWith.CharacterData, args.Result));
             cursorSystem.LockCursor();
             inputSystem.EnablePlayerInput();
             interactor.enabled = true;
@@ -264,6 +287,7 @@ namespace RIEVES.GGJ2026.Runtime.Player
             {
                 itemGrabPreview.Show(item.Data);
                 resourceController.AddAlcohol(item.Data.Value);
+                statsSystem.RecordStat(new ItemUsedStat(item.Data));
                 item.Use();
                 onItemUsed.Invoke();
                 return;

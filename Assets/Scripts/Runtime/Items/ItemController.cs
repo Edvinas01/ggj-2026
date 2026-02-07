@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CHARK.GameManagement;
 using RIEVES.GGJ2026.Core.Transforms;
 using RIEVES.GGJ2026.Core.Utilities;
@@ -54,7 +55,7 @@ namespace RIEVES.GGJ2026.Runtime.Items
 
         private void Start()
         {
-            var availablePoints = new List<Transform>(waypoints);
+            var availablePoints = waypoints.OrderBy(_ => Random.value).ToList();
             for (var index = 0; index < maxItems; index++)
             {
                 if (availablePoints.Count <= 0)
@@ -67,6 +68,8 @@ namespace RIEVES.GGJ2026.Runtime.Items
 
                 SpawnRandomItem(point);
             }
+
+            cooldown = RandomUtilities.GetRandomFloat(spawnCooldown);
         }
 
         private void Update()

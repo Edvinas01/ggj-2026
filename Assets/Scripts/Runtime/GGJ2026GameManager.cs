@@ -9,6 +9,7 @@ using RIEVES.GGJ2026.Core.Scenes;
 using RIEVES.GGJ2026.Core.Settings;
 using RIEVES.GGJ2026.Core.Transforms;
 using RIEVES.GGJ2026.Runtime.Heat;
+using RIEVES.GGJ2026.Runtime.Stats;
 using UnityEngine;
 
 namespace RIEVES.GGJ2026.Runtime
@@ -43,6 +44,9 @@ namespace RIEVES.GGJ2026.Runtime
         [SerializeField]
         private HeatSystem heatSystem;
 
+        [SerializeField]
+        private StatsSystem statsSystem;
+
         protected override void OnBeforeInitializeSystems()
         {
             AddSystem(audioSystem);
@@ -55,6 +59,7 @@ namespace RIEVES.GGJ2026.Runtime
             AddSystem(gameStateSystem);
             AddSystem(agentSystem);
             AddSystem(heatSystem);
+            AddSystem(statsSystem);
 
             AddSystem(new SimpleTransformSystem());
             AddSystem(new SimpleInteractionSystem());

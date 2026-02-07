@@ -48,6 +48,54 @@ MonoBehaviour:
     view: {fileID: 6346822260022843732, guid: 3112a1f45a307ac45a9df78d44fae865, type: 3}
     viewParent: {fileID: 4062529226839158070}
     startMode: 1
+--- !u!1 &37255744412049697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6129010902063158176}
+  - component: {fileID: 6357084436360723886}
+  m_Layer: 6
+  m_Name: UI_MoveJoystick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6129010902063158176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37255744412049697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9070244558202797252}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6357084436360723886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37255744412049697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b90f000f8734ebe97ea21b01e9dc043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Controls.VirtualJoystickViewController
+  controllerData:
+    view: {fileID: 2104767319068762925, guid: 58172ea6ba1b5d44387dbce5a5f7ff99, type: 3}
+    viewParent: {fileID: 6129010902063158176}
+    startMode: 1
 --- !u!1 &1327535735193303051
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +306,7 @@ GameObject:
   - component: {fileID: 761219450461382918}
   - component: {fileID: 7972339616640730710}
   - component: {fileID: 6310845559937529140}
+  - component: {fileID: 7396540112236710641}
   - component: {fileID: 5601937858192424090}
   - component: {fileID: 2911027050803610651}
   - component: {fileID: 7991125583669691707}
@@ -382,6 +431,22 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &7396540112236710641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611308942476225935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3a06fb8d3043248af87ee5ac69e7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Controls.TouchPanTiltController
+  panTiltInput: {fileID: 5601937858192424090}
+  panTilt: {fileID: 7972339616640730710}
+  panLerpSpeed: 5
+  panSensitivity: 0.1
 --- !u!114 &5601937858192424090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,6 +1885,7 @@ Transform:
   - {fileID: 6042555539102671970}
   - {fileID: 604059076321981865}
   - {fileID: 7097180268212496624}
+  - {fileID: 6129010902063158176}
   - {fileID: 2814657626727972773}
   - {fileID: 4725628482801714555}
   - {fileID: 1235309579288952522}
@@ -1990,7 +2056,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: RIEVES.GGJ2026.Runtime::RIEVES.GGJ2026.Runtime.Characters.ConversationController
   viewController: {fileID: 7475167151573011031}
-  resourceController: {fileID: 8559465232601630941}
   maxMessagesPerConvo: 2
   maxCorrectMessages: 1
   maxIncorrectMessages: 1
@@ -2057,6 +2122,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7369237415675536036}
         m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7201903619976768968}
+        m_TargetAssemblyTypeName: RIEVES.GGJ2026.Core.Utilities.DelayTrigger, RIEVES.GGJ2026.Core
+        m_MethodName: Trigger
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2320,7 +2397,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2328,15 +2405,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9900012
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14105923
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8402166508471720423, guid: 04eb4670ed2ba424391dcf5945c784c0, type: 3}
       propertyPath: m_LocalRotation.y
